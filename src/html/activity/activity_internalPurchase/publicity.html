@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+    <!--缓存强制清理-->
+    <!--<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"/>-->
+    <!--<meta http-equiv="Pragma" content="no-cache"/>-->
+    <!--<meta http-equiv="Expires" content="0"/>-->
+    <style>
+
+        html, body, p, div {
+            font-family: 'Microsoft YaHei', 'Hiragino Sans GB', Helvetica, Arial, 'Lucida Grande', sans-serif;
+            margin: 0;
+            padding: 0;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            width: 3.2rem;
+            margin: 0 auto;
+        }
+
+        .bg {
+            background: url("../../../images/internalPurchase/bg.jpg") no-repeat;
+            background-size: 100% 100%;
+        }
+
+        a {
+            -webkit-tap-highlight-color: transparent;
+            text-decoration: none;
+            outline: none;
+        }
+
+        .get-btn {
+            z-index: 8;
+            width: 1.15rem;
+            height: 0.435rem;
+            float: right;
+            background: url('../../../images/internalPurchase/buyBtn.png');
+            background-size: 100% 100%;
+            margin-right: 0.27rem;
+        }
+
+        .detail-btn {
+            z-index: 8;
+            width: 1.15rem;
+            height: 0.435rem;
+            float: left;
+            background: url('../../../images/internalPurchase/detailBtn.png');
+            background-size: 100% 100%;
+            margin-left: 0.28rem;
+        }
+
+        .show-btn {
+            opacity: 1;
+            -webkit-transition: opacity 0.5s ease-in-out;
+        }
+
+        .hide {
+            display: none;
+        }
+
+        /* 兼容iphone4/4s */
+        @media (device-width: 320px )and (device-height: 480px) and (-webkit-min-device-pixel-ratio: 2 ) {
+            .text {
+                font-size: 0.15rem;
+                font-weight: 500;
+                position: absolute;
+                width: 100%;
+                text-align: center;
+                bottom: 0.7rem;
+                line-height: 0.25rem;
+                z-index: 1;
+            }
+
+            .get-btn {
+                bottom: 0.35rem;
+            }
+
+        }
+
+    </style>
+    <title>东方车险团购</title>
+
+    <script src="../../../js/common.js"></script>
+    <script src="../../../js/jweixin-1.0.0.js"></script>
+    <script src="../../../js/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript">
+        weixinShare({
+            shareUrl: config.shareRootUrl + '/weixinouter/basepage/pages/activity/activity_internalPurchase/publicity.html',
+            shareText: '东方资产集团旗下员工投保专享三重壕礼',
+            isNeedRecord: false
+        });
+    </script>
+
+</head>
+<body class="hide">
+<div class="bg">
+    <div id="btn-div" style="width: 3.2rem;">
+        <div class="detail-btn" onclick="{window.location.href = 'rule.html'}"></div>
+        <div class="get-btn" onclick="showDialog()"></div>
+    </div>
+
+</div>
+</body>
+
+<script type="text/javascript">
+    closeProduct(107);
+    autoWidth();
+    var fontSize = $('html').css('font-size').substr(0, $('html').css('font-size').length - 2);
+    var minHeight = getBgHeight();
+    $('.bg').css("height", minHeight);
+    $('#btn-div').css("padding-top", minHeight - 0.63 * fontSize);
+    getOpenId();
+    var openId = window.localStorage.getItem(config.openIdName);
+    var isFocus = false;
+    $(function () {
+        if (openId != null && openId.length != 0) {
+            GetAsyncData("../../rest/User/1006", function (backData) {
+                isFocus = backData.data.flag;
+                $('.get-btn').addClass('show-btn');
+                $('.detail-btn').addClass('show-btn');
+            }, {"openId": openId});
+        } else {
+            $('.get-btn').addClass('show-btn');
+            $('.detail-btn').addClass('show-btn');
+        }
+//        log.print('openId', openId);
+//        log.print('isFocus', isFocus);
+//        log.print('url', config.activity.internalPurchaseUrl + "&linkId=70" + openId);
+    });
+    baiduCollection();
+    function showDialog() {
+        if (isFocus) {
+            window.location.href = config.activity.internalPurchaseUrl + "&linkId=1070" + openId;
+        } else {
+            showCodeDialog(window.document.location.href.split('basepage')[0] + 'basepage/images/qrCode/qrCode_internalPurchase.jpg');
+        }
+    }
+</script>
+</html>

@@ -1,0 +1,249 @@
+@charset "utf-8";
+
+.header {
+	width: 6.4rem;
+	background: url(../images/indexHeader.png) no-repeat left top;
+	background-size: 6.4rem;
+	height: 6.34rem;
+}
+
+.header .header_lq {
+	position: absolute;
+	left: 3.97rem;
+	top: 5.45rem;
+	width: 1.5rem;
+	height: .6rem;
+}
+
+.content {
+	width: 6.4rem;
+	height: 22.63rem;
+	background: url(../images/indexBg.png) repeat-x;
+	background-size: 6.4rem 22.63rem;
+}
+
+.main1 {
+	width: 6.4rem;
+	height: 5.54rem;
+}
+
+.main1_top {
+	width: 5.05rem;
+	height: 3.34rem;
+	background: url(../images/content_bg.png) left top no-repeat;
+	background-size: 5.05rem 6.76rem;
+	overflow: hidden;
+	margin: 0 auto;
+}
+
+.main1_bottom {
+	width: 5.05rem;
+	height: 2.2rem;
+	background: url(../images/content_bg.png) left bottom no-repeat;
+	background-size: 5.05rem;
+	overflow: hidden;
+	margin: 0 auto;
+}
+
+h3 {
+	height: 1.46rem;
+	margin-top: .4rem;
+	width: 5.05rem;
+	text-align: center;
+	font-size: .36rem;
+	line-height: 1.46rem;
+	color: #6a4502;
+}
+
+p {
+	color: #6a4502;
+	font-size: .24rem;
+	text-align: center;
+	padding-left: .2rem;
+	line-height: .44rem;
+}
+
+p span {
+	font-size: .28rem;
+	color: #f3495d;;
+	font-weight: 900;
+}
+
+.toubao {
+	color: #ed6122;
+	font-size: .28rem;
+	display: block;
+	text-align: center;
+	padding-left: .2rem;
+	height: .6rem;
+	line-height: .6rem;
+	width: 5.05rem;
+}
+
+.more {
+	color: #f3495d;
+	display: block;
+	font-size: .24rem;
+	text-align: center;
+	text-decoration: underline;
+	width: 5.05rem;
+	padding-left: .2rem;
+	margin-top: .2rem;
+}
+
+.main2 {
+	width: 6.4rem;
+	height: 5.9rem;
+}
+
+.main2_top {
+	width: 5.05rem;
+	height: 3.7rem;
+	background: url(../images/content_bg.png) left top no-repeat;
+	background-size: 5.05rem 6.76rem;
+	overflow: hidden;
+	margin: 0 auto;
+}
+
+.main3 {
+	width: 6.4rem;
+	height: 6.76rem;
+}
+
+.main3_top {
+	width: 5.05rem;
+	height: 4.62rem;
+	background: url(../images/content_bg.png) left top no-repeat;
+	background-size: 5.05rem 6.76rem;
+	overflow: hidden;
+	margin: 0 auto;
+}
+
+.footer {
+	display: block;
+	width: 3.34rem;
+	height: .8rem;
+	background-color: #c11569;
+	margin: 1rem auto;
+	font-size: .24rem;
+	color: #fff;
+	text-align: center;
+	line-height: .68rem;
+	border-radius: .1rem;
+	border: .06rem solid #ffe401;
+}
+
+.luckyDrowNow {
+	display: block;
+	width: 1.65rem;
+	height: 1.68rem;
+	position: fixed;
+	left: 0;
+	top: 7rem;
+}
+
+.luckyDrowNow img {
+	display: block;
+	width: 1.65rem;
+	height: 1.68rem;
+}
+
+/*loading*/
+.alertBg {
+	display: none;
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	width: 100%;
+	background-color: rgba(0, 0, 0, 0.65);
+	z-index: 100;
+}
+/*.loading img{
+	width: .6rem;
+	height: .6rem;
+	display: block;
+	margin: 5rem auto 0;
+}*/
+.content b {
+	display: block;
+	width: 6.4rem;
+	padding: 0 0.5rem;
+	font-size: .24rem;
+	color: #6a4502;
+	text-align: center;
+	line-height: .4rem;
+	font-weight: 100;
+}
+/*分享须知*/
+.activeKonwn {
+	width: 5.64rem;
+	padding: .55rem .25rem;
+	margin: 2.6rem auto;
+	background-color: #fff;
+	border-radius: .1rem;
+	display: none;
+	position: absolute;
+	left: 0;
+	right: 0;
+	padding-top: 0;
+}
+
+.activeKonwn img {
+	display: block;
+	width: .68rem;
+	height: 1.59rem;
+	position: absolute;
+	top: -1.59rem;
+	right: 0rem;
+}
+
+.activeKonwn h4 {
+	height: 1.1rem;
+	line-height: 1.1rem;
+	color: #e72326;
+	border-bottom: 1px solid #eee;
+	text-align: center;
+}
+
+.activeKonwn .aContent {
+	height: 5rem;
+	overflow: scroll;
+	font-size: .2rem;
+	color: #323232;
+	line-height: .34rem;
+	padding: .2rem 0;
+}
+
+.success{
+	z-index: 200;
+	display: none;
+	position: relative;
+	width: 5.2rem;
+	padding: .55rem .25rem;
+	margin: 3rem .6rem 0 .6rem;
+	background-color: #fff2c5;
+	border-radius: .1rem;
+}
+.success p span{
+	font-size: .28rem;
+	color: #ad321a;
+}
+.success img{
+	position: absolute;
+	left: -.1rem;
+	top: -2rem;
+	width: 5.4rem;
+	height: 2.19rem;
+}
+.success .enter {
+	display: block;
+	background-color: #ff960e;
+	width: 3.5rem;
+	height: .7rem;
+	line-height: .7rem;
+	color: #fff;
+	border-radius: .07rem;
+	text-align: center;
+	margin: .4rem auto 0;
+	border-bottom: 5px solid #ff6c00;
+}

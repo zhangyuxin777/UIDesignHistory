@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <link rel="stylesheet" href="css/common.css"/>
+    <link rel="stylesheet" href="css/index.css">
+    <title>老爸测试</title>
+</head>
+<body>
+<a href="./one.html"></a>
+</body>
+</html>
+<script src="./js/common/jquery-1.7.2.min.js"></script>
+<script src="./js/common/rem.js"></script>
+<script src='../../../../js/jweixin-1.0.0.js'></script>
+<script src='../../../../js/common.js'></script>
+<script type='text/javascript'>
+
+    getOpenId();
+    var openId = window.localStorage.getItem(config.openIdName);
+    weixinShare({
+        shareUrl: config.shareRootUrl + '/weixinouter/basepage/pages/activity/activity_holiday/fathersDay/index.html',
+        shareIcon: config.shareRootUrl + '/weixinouter/basepage/pages/activity/activity_holiday/fathersDay/img/share_icon' + Math.ceil(Math.random() * 3) + '.jpg',
+        shareText: '我的老爸是XXXX型。【老爸性格大测试】快来测测你真的了解你的老爸吗？',
+        isNeedRecord: true,
+        openId: openId,
+        activityId: '108',
+        typeTimeline: 'zhbx-3',
+        typeAppMessage: 'zhbx-4',
+        isGiveCoin: 'N'
+    });
+    baiduCollection();
+    closeActivity(config.activityEndTime.fathersDay);
+</script>

@@ -1,0 +1,1148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport'
+          content='width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui'>
+    <meta name='apple-mobile-web-app-capable' content='yes'>
+    <meta name='apple-mobile-web-app-status-bar-style' content='black'>
+    <meta name="format-detection" content="telephone=no"/>
+
+    <title>环保星级大比拼</title>
+
+    <style>
+        html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+            margin: 0;
+            padding: 0;
+            border: 0;
+            font-size: 100%;
+            font: inherit;
+            vertical-align: baseline;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        article, aside, details, figcaption, figure, footer, header, menu, nav, section {
+            display: block
+        }
+
+        body {
+            line-height: 1;
+        }
+
+        ol, ul {
+            list-style: none
+        }
+
+        blockquote, q {
+            quotes: none
+        }
+
+        blockquote:before, blockquote:after, q:before, q:after {
+            content: '';
+            content: none
+        }
+
+        table {
+            border-collapse: collapse;
+            border-spacing: 0
+        }
+
+    </style>
+
+    <style>
+        @charset "utf-8";
+        /* CSS Document */
+        body, html {
+            height: 100%;
+        }
+
+        body {
+            background: rgb(209, 228, 234);
+            /*background: -moz-radial-gradient(center, ellipse cover, rgba(209, 228, 234, 1) 0%, rgba(186, 228, 244, 1) 100%);*/
+            /*background: -webkit-gradient(radial, center center, 0rem, center center, 100%, color-stop(0%, rgba(209, 228, 234, 1)), color-stop(100%, rgba(186, 228, 244, 1)));*/
+            /*background: -webkit-radial-gradient(center, ellipse cover, rgba(209, 228, 234, 1) 0%, rgba(186, 228, 244, 1) 100%);*/
+            /*background: -o-radial-gradient(center, ellipse cover, rgba(209, 228, 234, 1) 0%, rgba(186, 228, 244, 1) 100%);*/
+            /*background: -ms-radial-gradient(center, ellipse cover, rgba(209, 228, 234, 1) 0%, rgba(186, 228, 244, 1) 100%);*/
+            /*background: radial-gradient(ellipse at center, rgba(209, 228, 234, 1) 0%, rgba(186, 228, 244, 1) 100%);*/
+            filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#d1e4ea', endColorstr='#bae4f4', GradientType=1);
+
+            padding: 0;
+            /*width: 6.4rem;*/
+            /*margin: 0 auto;*/
+        }
+
+        .country-wrap {
+            position: relative;
+            width: 100%;
+            height: 10.08rem;
+            overflow: hidden;
+        }
+
+        .street {
+            background: #7a7a7a;
+            height: 0.80rem;
+            width: 102%;
+            position: absolute;
+            bottom: 0;
+            box-shadow: 0 0.01rem 0.16rem rgba(111, 35, 51, 0.4) inset;
+        }
+
+        .street:after {
+            content: '';
+            display: block;
+            position: absolute;
+            width: 100%;
+            height: 0.10rem;
+            background: #cdbcb4;
+            bottom: 0;
+            border-bottom: 0.03rem solid #72625a;
+            z-index: 1;
+        }
+
+        .street:before {
+            content: '';
+            display: block;
+            position: absolute;
+            width: 100%;
+            height: 0.07rem;
+            background: #c2a99d;
+            bottom: -0.07rem;
+            z-index: 1;
+        }
+
+        .street-stripe {
+            background: #d4d4d4;
+            height: 0.08rem;
+            width: 1.00rem;
+            position: absolute;
+            bottom: 0.44rem;
+            border-radius: 0.02rem;
+            box-shadow: 2rem 0 0 #d4d4d4, 4rem 0 0 #d4d4d4, 6rem 0 0 #d4d4d4, 8rem 0 0 #d4d4d4, 10rem 0 0 #d4d4d4, 12rem 0 0 #d4d4d4, 140rem 0 0 #d4d4d4, 16rem 0 0 #d4d4d4, 18rem 0 0 #d4d4d4, 20rem 0 0 #d4d4d4;
+        }
+
+        .grass {
+            height: 0.40rem;
+            width: 100%;
+            background-color: #dbcac2;
+            position: absolute;
+            bottom: 0.60rem;
+        }
+
+        .grass:before {
+            position: absolute;
+            content: '';
+            top: 0.14rem;
+            left: 0;
+            height: 0.08rem;
+            width: 100%;
+            background-color: #b99f93;
+        }
+
+        .grass:after {
+            position: absolute;
+            content: '';
+            top: -0.04rem;
+            left: 0;
+            width: 100%;
+            height: 0.08rem;
+            background-color: #0aa;
+            background: linear-gradient(135deg, transparent 25%, #0aa 25%);
+            background-size: 0.10rem 0.10rem;
+        }
+
+        /*styles for car*/
+        .car {
+            position: absolute;
+            top: -35%;
+            z-index: 10;
+            -moz-animation: myfirst 8s linear infinite;
+            -webkit-animation: myfirst 8s linear infinite;
+        }
+
+        @-moz-keyframes myfirst {
+            0% {
+                left: -25%;
+            }
+            100% {
+                left: 100%;
+            }
+        }
+
+        @-webkit-keyframes myfirst {
+            0% {
+                left: -25%;
+            }
+            100% {
+                left: 100%;
+            }
+        }
+
+        .tyre {
+            width: 0.30rem;
+            height: 0.30rem;
+            border-radius: 50%;
+            background: #3f3f40;
+            position: absolute;
+            z-index: 2;
+            left: 0.09rem;
+            top: 0.20rem;
+            -moz-animation: tyre-rotate 1s infinite linear;
+            -webkit-animation: tyre-rotate 1s infinite linear;
+        }
+
+        @-moz-keyframes tyre-rotate {
+            /*from {*/
+            /*-moz-transform: rotate(-360deg);*/
+            /*}*/
+            /*to {*/
+            /*-moz-transform: rotate(0deg);*/
+            /*}*/
+
+        }
+
+        @-webkit-keyframes tyre-rotate {
+            /*from {*/
+            /*-webkit-transform: rotate(-360deg);*/
+            /*}*/
+            /*to {*/
+            /*-webkit-transform: rotate(0deg);*/
+            /*}*/
+
+        }
+
+        .tyre:before {
+            content: '';
+            width: 0.05rem;
+            height: 0.05rem;
+            border-radius: 50%;
+            background: #bdc2bd;
+            position: absolute;
+            top: 0.12rem;
+            left: 0.12rem;
+        }
+
+        .gap {
+            /*background: #3f3f40;*/
+            /*width: 0.02rem;*/
+            /*height: 0;*/
+            /*position: absolute;*/
+            /*left: 0.14rem;*/
+            /*top: 0.08rem;*/
+            /*box-shadow: 0 0.09rem 0 #3f3f40;*/
+        }
+
+        .gap:before {
+            /*content: '';*/
+            /*display: block;*/
+            /*width: 0.02rem;*/
+            /*height: 0.04rem;*/
+            /*position: absolute;*/
+            /*background: #3f3f40;*/
+            /*box-shadow: 0 0.12rem 0 #3f3f40;*/
+            /*-webkit-transform: rotate(-90deg);*/
+            /*-webkit-transform-origin: 0 0.07rem;*/
+            /*-moz-transform: rotate(-90deg);*/
+            /*-moz-transform-origin: 0 0.07rem;*/
+            /*z-index: 3;*/
+        }
+
+        .car-base {
+            position: absolute;
+            display: block;
+            width: 1.25rem;
+            height: 0.30rem;
+            background: #000000;
+            border-radius: 10% 10% 50% 50% / 60% 100% 20% 10%;
+            -webkit-transform: rotate(-2deg);
+            -moz-transform: rotate(-2deg);
+            border: solid;
+            border-color: #000000;
+        }
+
+        .tyre.front {
+            left: 0.94rem;
+        }
+
+        .car-body {
+            /*width:125rem;
+            height:24rem;
+            background:#d1352b;
+            border-top:1rem solid #a82e27;*/
+            border-bottom: 0.24rem solid #d1352b;
+            height: 0;
+            top: 0.10rem;
+            width: 1.20rem;
+            position: relative;
+        }
+
+        .car-body:before {
+            content: '';
+            display: inline-block;
+            width: 0.30rem;
+            height: 0.24rem;
+            position: absolute;
+            right: -0.05rem;
+            background: #d1352b;
+            border-top-right-radius: 0.04rem;
+            z-index: 1;
+        }
+
+        .car-body:after {
+            content: '';
+            display: inline-block;
+            width: 1.21rem;
+            border-bottom: 0.01rem solid #942b25;
+            border-right: 0.02rem solid transparent;
+            height: 0;
+            z-index: 2;
+            position: absolute;
+        }
+
+        .car-gate {
+            width: 0.32rem;
+            height: 0.20rem;
+            background: #d1352b;
+            border-radius: 0 0 0.02rem 0.08rem / 0 0 0.02rem 0.08rem;
+            box-shadow: 0 0 0 0.01rem #892924;
+            position: absolute;
+            left: 0.48rem;
+
+        }
+
+        .car-gate:before {
+            content: '';
+            width: 0.08rem;
+            height: 0.02rem;
+            background: #4c4b4b;
+            position: absolute;
+            top: 0.02rem;
+            left: 0.04rem;
+            box-shadow: 0.01rem 0.01rem 0.01rem rgba(0, 0, 0, 0.1);
+        }
+
+        .car-top-back {
+            background: none repeat scroll 0 0 #4C4B4B;
+            border-radius: 0.05rem 0 0 0;
+            height: 0.20rem;
+            left: 0.04rem;
+            position: absolute;
+            top: -0.20rem;
+            width: 0.58rem;
+        }
+
+        .car-top-back:before {
+            width: 0.30rem;
+            height: 0.15rem;
+            background: #736f6f;
+            content: '';
+            position: absolute;
+            top: 0.03rem;
+            left: 0.08rem;
+            border-radius: 0.02rem;
+        }
+
+        .car-top-back:after {
+            content: '';
+            background: #4c4b4b;
+            border-radius: 30%;
+            height: 0.05rem;
+            left: 0.03rem;
+            position: absolute;
+            top: -0.01rem;
+            width: 0.62rem;
+        }
+
+        .car-top-front {
+            top: -0.19rem;
+            position: absolute;
+            left: 0.47rem;
+            width: 0.20rem;
+            height: 0.20rem;
+            background: #d1352b;
+            border-left: 0.01rem solid #892924;
+            border-radius: 0.02rem 0 0 0;
+
+        }
+
+        .car-top-front:after {
+            width: 0.26rem;
+            height: 0.20rem;
+            -webkit-transform: skew(37deg);
+            -moz-transform: skew(37deg);
+            background: #d1352b;
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0.06rem;
+            border-radius: 0.04rem 0 0.04rem 0.04rem;
+        }
+
+        .car-top-front:before {
+            width: 0.12rem;
+            height: 0.05rem;
+            background: #d1352b;
+            content: '';
+            position: absolute;
+            top: 0.14rem;
+            left: 0.28rem;
+            z-index: 1;
+            border: solid #a82e27;
+            border-width: 0 0.01rem 0.01rem 0;
+        }
+
+        .wind-sheild {
+            top: 0.03rem;
+            left: 0.03rem;
+            position: absolute;
+            z-index: 3;
+            width: 0.18rem;
+            height: 0.12rem;
+            background: #f5e7e7;
+            border-radius: 0 0.03rem 0 0;
+        }
+
+        .wind-sheild:after {
+            width: 0.12rem;
+            height: 0.12rem;
+            -webkit-transform: skew(25deg);
+            -moz-transform: skew(25deg);
+            background: #f5e7e7;
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0.10rem;
+            border-radius: 0.03rem;
+        }
+
+        .boundary-tyre-cover {
+            position: absolute;
+            top: 0.14rem;
+            left: 0.10rem;
+            border-bottom: 0.20rem solid #4c4b4b;
+            border-right: 0.10rem solid transparent;
+            height: 0;
+            width: 0.20rem;
+        }
+
+        .boundary-tyre-cover:before {
+            content: '';
+            position: absolute;
+            display: inline-block;
+            background: #4c4b4b;
+            height: 0.20rem;
+            width: 0.15rem;
+            -webkit-transform: skewX(-20deg);
+            -moz-transform: skewX(-20deg);
+            border-radius: 0.03rem;
+            left: -0.06rem;
+            top: 0;
+        }
+
+        .boundary-tyre-cover:after {
+            content: '';
+            position: absolute;
+            display: inline-block;
+            background: #4c4b4b;
+            height: 0.20rem;
+            width: 0.20rem;
+            -webkit-transform: skewx(40deg);
+            -moz-transform: skewX(40deg);
+            border-radius: 0.03rem;
+            right: -0.14rem;
+            top: 0;
+        }
+
+        .boundary-tyre-cover-inner {
+            position: absolute;
+            top: 0.04rem;
+            left: 0.04rem;
+            border-bottom: 0.16rem solid black;
+            border-right: 0.10rem solid transparent;
+            height: 0;
+            width: 0.15rem;
+            z-index: 2;
+        }
+
+        .boundary-tyre-cover-inner:before {
+            content: '';
+            position: absolute;
+            display: inline-block;
+            background: black;
+            height: 0.16rem;
+            width: 0.15rem;
+            -webkit-transform: skewX(-20deg);
+            -moz-transform: skewX(-20deg);
+            border-radius: 0.03rem 0.03rem 0 0;
+            left: -0.06rem;
+            top: 0;
+        }
+
+        .boundary-tyre-cover-inner:after {
+            content: '';
+            position: absolute;
+            display: inline-block;
+            background: black;
+            height: 0.16rem;
+            width: 0.20rem;
+            -webkit-transform: skewx(40deg);
+            -moz-transform: skewX(40deg);
+            border-radius: 0.03rem 0.03rem 0 0;
+            right: -0.11rem;
+            top: 0;
+        }
+
+        .boundary-tyre-cover-back-bottom {
+            position: absolute;
+            width: 0.14rem;
+            height: 0.08rem;
+            background: #4c4b4b;
+            top: 0.12rem;
+            left: -0.19rem;
+        }
+
+        .bonet-front {
+            background: #d1352b;
+            border-radius: 0.05rem 2.58rem 0 0.38rem / 0.36rem 0.50rem 0 0;
+            height: 0.04rem;
+            position: absolute;
+            right: 0;
+            top: -0.04rem;
+            width: 0.40rem;
+            z-index: 0;
+        }
+
+        .back-curve {
+            background: none repeat scroll 0 0 #4C4B4B;
+            border-radius: 960% 100% 0 0;
+            height: 0.20rem;
+            left: -0.03rem;
+            position: absolute;
+            top: 0.01rem;
+            transform: rotate(6deg);
+            width: 0.05rem;
+        }
+
+        .stepney {
+            height: 0.06rem;
+            left: -0.04rem;
+            position: absolute;
+            top: 0.06rem;
+            width: 0.08rem;
+            z-index: -1;
+            background: #3f3f40;
+        }
+
+        .stepney:before {
+            width: 0.08rem;
+            height: 0.12rem;
+            background: #3f3f40;
+            content: '';
+            position: absolute;
+            top: -0.10rem;
+            left: -0.07rem;
+            border-radius: 0.03rem 0.03rem 0 0;
+        }
+
+        .stepney:after {
+            width: 0.08rem;
+            height: 0.12rem;
+            background: #0d0c0d;
+            content: '';
+            position: absolute;
+            top: 0rem;
+            left: -0.07rem;
+            border-radius: 0 0 0.03rem 0.03rem;
+        }
+
+        .tyre-cover-front {
+            background: #4c4b4b;
+            height: 0.04rem;
+            left: 0.97rem;
+            position: absolute;
+            top: 0.13rem;
+            width: 0.22rem;
+            z-index: 1;
+        }
+
+        .tyre-cover-front:before {
+            background: none repeat scroll 0 0 #4c4b4b;
+            content: "";
+            display: inline-block;
+            height: 0.21rem;
+            left: -0.10rem;
+            position: absolute;
+            top: 0;
+            transform: skewX(-30deg);
+            width: 0.10rem;
+            z-index: 6;
+            border-radius: 0.04rem 0 0 0;
+        }
+
+        .tyre-cover-front:after {
+            background: none repeat scroll 0 0 #4c4b4b;
+            content: "";
+            display: inline-block;
+            height: 0.06rem;
+            left: 0.14rem;
+            position: absolute;
+            top: 0;
+            transform: skewX(30deg);
+            width: 0.17rem;
+            z-index: 6;
+            border-radius: 0 0.04rem 0.02rem 0;
+        }
+
+        .boundary-tyre-cover-inner-front {
+            position: absolute;
+            top: 0.04rem;
+            left: 0.04rem;
+            border-bottom: 0.16rem solid black;
+            border-right: 0.10rem solid transparent;
+            height: 0;
+            width: 0.15rem;
+            z-index: 7;
+        }
+
+        .boundary-tyre-cover-inner-front:before {
+            background: none repeat scroll 0 0 #000000;
+            border-radius: 0.03rem 0.03rem 0 0;
+            content: "";
+            display: inline-block;
+            height: 0.17rem;
+            left: -0.10rem;
+            position: absolute;
+            top: 0;
+            transform: skewX(-30deg);
+            width: 0.15rem;
+        }
+
+        .boundary-tyre-cover-inner-front:after {
+            content: '';
+            position: absolute;
+            display: inline-block;
+            background: black;
+            height: 0.16rem;
+            width: 0.20rem;
+            -webkit-transform: skewx(25deg);
+            -moz-transform: skewX(25deg);
+            border-radius: 0.03rem 0.03rem 0 0;
+            right: -0.12rem;
+            top: 0;
+        }
+
+        .base-axcel {
+            background: none repeat scroll 0 0 black;
+            bottom: -0.15rem;
+            height: 0.10rem;
+            left: 0.30rem;
+            position: absolute;
+            transform: rotate(-2deg);
+            width: 0.70rem;
+            z-index: -1;
+        }
+
+        .base-axcel:before {
+            background: none repeat scroll 0 0 black;
+            border-radius: 0 0 0 0.10rem / 0 0 0 0.05rem;
+            content: "";
+            height: 0.10rem;
+            left: -0.35rem;
+            position: absolute;
+            top: -0.02rem;
+            transform: rotate(6deg);
+            width: 0.30rem;
+        }
+
+        .base-axcel:after {
+            background: none repeat scroll 0 0 black;
+            border-radius: 0 0 0 0.10rem / 0 0 0 0.05rem;
+            content: "";
+            height: 0.10rem;
+            right: -0.33rem;
+            position: absolute;
+            top: -0.01rem;
+            transform: rotate(-4deg);
+            width: 0.40rem;
+            border-radius: 0 0.10rem 0.05rem 0;
+        }
+
+        .front-bumper {
+            background: none repeat scroll 0 0 #4c4b4b;
+            border-radius: 0 0.02rem 0.02rem 0;
+            height: 0.08rem;
+            position: absolute;
+            right: -0.15rem;
+            width: 0.11rem;
+            z-index: 1;
+            -moz-transform: rotate(-5deg);
+            -webkit-transform: rotate(-5deg);
+        }
+
+        .front-bumper:before {
+            background: none repeat scroll 0 0 #000000;
+            content: "";
+            height: 0.10rem;
+            left: -0.07rem;
+            position: absolute;
+            transform: rotate(-22deg);
+            width: 0.09rem;
+            z-index: 1;
+        }
+
+        .car-shadow {
+            background: none repeat scroll 0 0 rgba(0, 0, 0, 0);
+            bottom: -0.15rem;
+            box-shadow: -0.05rem 0.10rem 0.15rem 0.03rem #000000;
+            left: -0.07rem;
+            position: absolute;
+            width: 1.36rem;
+        }
+
+        .hill {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 100%;
+            height: 2.0rem;
+            border-top-right-radius: 160%;
+            border-top-left-radius: 100%;
+            background-color: #adde60;
+            z-index: -1;
+        }
+
+        .hill:after {
+            content: '';
+            position: absolute;
+            bottom: -0.5rem;
+            right: -4.00rem;
+            width: 120%;
+            height: 110%;
+            border-top-right-radius: 100%;
+            border-top-left-radius: 0%;
+            background-color: #94c943;
+            -moz-transform: rotate(-12deg);
+            -webkit-transform: rotate(-12deg);
+            box-shadow: 0 0 0.25rem #cbf191 inset;
+        }
+
+        .hill:before {
+            background-color: #93cc3a;
+            border-top-left-radius: 0;
+            border-top-right-radius: 100%;
+            bottom: -0.50rem;
+            content: "";
+            height: 110%;
+            left: -0.54rem;
+            position: absolute;
+            transform: rotate(4deg);
+            width: 120%;
+        }
+
+        .logo {
+            position: absolute;
+            width: 1.58rem;
+            height: 0.59rem;
+            margin-top: 0.10rem;
+            margin-left: 0.20rem;
+        }
+
+        .tree1 {
+            width: 0.305rem;
+            height: 0.375rem;
+            position: absolute;
+            left: 1.00rem;
+            bottom: 1.05rem;
+            z-index: 9;
+        }
+
+        .tree2 {
+            width: 0.21rem;
+            height: 0.25rem;
+            position: absolute;
+            left: 4.00rem;
+            bottom: 1.40rem;
+            z-index: 9
+        }
+
+        .content {
+            position: relative;
+            width: 5.85rem;
+            height: 7.68rem;
+            left: 50%;
+            margin-left: -2.925rem;
+            top: 0.6rem;
+            background: url("../../../images/activity/app_calculator/box.png");
+            background-size: 100% 100%;
+            z-index: 11;
+        }
+
+        input {
+            position: absolute;
+            width: 0.7rem;
+            height: 0.4rem;
+            right: 1.11rem;
+            background: transparent;
+            outline: none;
+            padding: 0 0.3rem;
+            text-align: center;
+            font-size: 0.22rem;
+            color: #fff;
+            border: 0 none;
+        }
+
+        .fast-car {
+            position: absolute;
+            top: -35%;
+            z-index: 10;
+            -moz-animation: fast 5s linear infinite;
+            -webkit-animation: fast 5s linear infinite;
+        }
+
+        @-moz-keyframes fast {
+            0% {
+                left: -75%;
+            }
+            100% {
+                left: 100%;
+            }
+        }
+
+        @-webkit-keyframes fast {
+            0% {
+                left: -75%;
+            }
+            100% {
+                left: 100%;
+            }
+        }
+
+        .under-car {
+            top: 10%;
+        }
+
+        .enter-btn {
+            position: absolute;
+            width: 2.2rem;
+            height: 0.6rem;;
+            bottom: 0.5rem;
+            right: 0.7rem;
+        }
+
+        .rule-btn {
+            position: absolute;
+            width: 2.2rem;
+            height: 0.6rem;;
+            bottom: 0.5rem;
+            left: 0.7rem;
+        }
+
+        .hide {
+            display: none;
+        }
+
+        .rule {
+            position: absolute;
+            width: 5.74rem;
+            height: 5.82rem;
+            left: 50%;
+            margin-left: -2.87rem;
+            top: 1.6rem;
+            background: url("../../../images/activity/app_calculator/rule.png");
+            background-size: 100% 100%;
+            z-index: 11;
+            display: none;
+        }
+
+        .close-btn {
+            position: absolute;
+            width: 0.7rem;
+            height: 0.7rem;
+            bottom: 0.05rem;
+            left: 50%;
+            margin-left: -0.35rem;
+        }
+
+        .input1 {
+            top: 2.75rem;
+        }
+
+        .input2 {
+            top: 4.07rem
+        }
+
+        .input3 {
+            top: 5.39rem
+        }
+
+        @media (device-width: 320px ) and (device-height: 568px) and (-webkit-min-device-pixel-ratio: 2 ) {
+            /* 兼容iphone5 */
+            .input1 {
+                top: 2.73rem;
+            }
+
+            .input2 {
+                top: 4.05rem
+            }
+
+            .input3 {
+                top: 5.37rem
+            }
+        }
+
+        @media (device-width: 375px ) and (device-height: 667px) and (-webkit-min-device-pixel-ratio: 2 ) {
+            /* 兼容iphone6 */
+            .input1 {
+                top: 2.73rem;
+            }
+
+            .input2 {
+                top: 4.05rem
+            }
+
+            .input3 {
+                top: 5.37rem
+            }
+        }
+
+        @media (device-width: 414px ) and (device-height: 736px) and (-webkit-min-device-pixel-ratio: 2 ) {
+            /* 兼容iphone6 Plus */
+            .input1 {
+                top: 2.73rem;
+            }
+
+            .input2 {
+                top: 4.05rem
+            }
+
+            .input3 {
+                top: 5.37rem
+            }
+        }
+
+    </style>
+
+    <link rel="stylesheet" href="../../../css/common-view.css">
+</head>
+
+<body class="hide bg">
+<div class="country-wrap">
+    <img src="../../../images/wanlin_logo_h.png" class="logo">
+    <img src="../../../images/activity/app_calculator/tree.png" class="tree1">
+    <img src="../../../images/activity/app_calculator/tree.png" class="tree2">
+    <div class="content">
+        <input type="tel" id="fuel" class="input1" oninput="onlyNumber.decimal(this)"/>
+        <input type="tel" id="day" class="input2" oninput="onlyNumber.decimal(this)"/>
+        <input type="tel" id="length" class="input3" oninput="onlyNumber.decimal(this)"/>
+        <div class="enter-btn" onclick="toResult()"></div>
+        <div class="rule-btn" onclick="toDetail()"></div>
+    </div>
+    <div class="rule">
+        <div class="close-btn" onclick="closeDetail();"></div>
+    </div>
+
+    <!--<div class="mountain-1"></div>-->
+    <!--<div class="mountain-2"></div>-->
+    <!--<div class="sun"></div>-->
+    <div class="grass"></div>
+    <div class="street">
+        <div id="fast-car" class="">
+            <!--<div class="car-base"></div>-->
+            <div class="car-body">
+                <div class="car-top-back">
+                    <div class="back-curve"></div>
+                </div>
+                <div class="car-gate"></div>
+                <div class="car-top-front">
+                    <div class="wind-sheild"></div>
+                </div>
+                <div class="bonet-front"></div>
+                <div class="stepney"></div>
+            </div>
+            <div class="boundary-tyre-cover">
+                <div class="boundary-tyre-cover-back-bottom"></div>
+                <div class="boundary-tyre-cover-inner"></div>
+            </div>
+            <div class="tyre-cover-front">
+                <div class="boundary-tyre-cover-inner-front"></div>
+            </div>
+            <div class="base-axcel">
+
+            </div>
+            <div class="front-bumper"></div>
+            <div class="tyre">
+                <div class="gap"></div>
+            </div>
+            <div class="tyre front">
+                <div class="gap"></div>
+            </div>
+            <div class="car-shadow"></div>
+        </div>
+        <div id="under-car" class="">
+            <!--<div class="car-base"></div>-->
+            <div class="car-body">
+                <div class="car-top-back">
+                    <div class="back-curve"></div>
+                </div>
+                <div class="car-gate"></div>
+                <div class="car-top-front">
+                    <div class="wind-sheild"></div>
+                </div>
+                <div class="bonet-front"></div>
+                <div class="stepney"></div>
+            </div>
+            <div class="boundary-tyre-cover">
+                <div class="boundary-tyre-cover-back-bottom"></div>
+                <div class="boundary-tyre-cover-inner"></div>
+            </div>
+            <div class="tyre-cover-front">
+                <div class="boundary-tyre-cover-inner-front"></div>
+            </div>
+            <div class="base-axcel">
+
+            </div>
+            <div class="front-bumper"></div>
+            <div class="tyre">
+                <div class="gap"></div>
+            </div>
+            <div class="tyre front">
+                <div class="gap"></div>
+            </div>
+            <div class="car-shadow"></div>
+        </div>
+    </div>
+    <div class="street-stripe"></div>
+    <div class="hill">
+        <!--<div class="tree-1">
+            <div class="branch-1"></div>
+            <div class="branch-2"></div>
+            <div class="branch-3"></div>
+        </div>
+        <div class="tree-1">
+        <div class="branch"></div>
+        <div class="trunk"></div>
+    </div>-->
+    </div>
+</div>
+
+</body>
+<script src="../../../js/common.js"></script>
+<script src="../../../js/jweixin-1.0.0.js"></script>
+<script src="../../../js/jquery-1.9.1.min.js"></script>
+<script src="../../../js/common-view.js"></script>
+<script type='text/javascript'>
+    closeProduct(109);
+    autoWidthCurrent();
+    var minHeight = getBgHeight();
+    $('.country-wrap').css("height", minHeight);
+
+    loading.show(2500, function () {
+        $('#fast-car').addClass('fast-car');
+        $('#under-car').addClass('car under-car');
+    });
+    $('.wlload').css('width', '100%');
+
+    getOpenId();
+    var openId = window.localStorage.getItem(config.openIdName);
+    preLoading(['../../../images/activity/app_calculator/star.png',
+                '../../../images/activity/app_calculator/reward.png',
+                '../../../images/activity/app_calculator/bg2.jpg',
+                '../../../images/activity/app_calculator/get-bg.png'],
+            ['../../../js/common-view.js'], 1000);
+
+    function autoWidthCurrent() {
+        var docEle = document.documentElement,
+                initWidth = 640, initSize = 100,
+                resizeEvent = 'orientationchange' in window ? 'orientationchange' : 'resize';
+
+        function init(win) {
+            var w = win.innerWidth > 640 ? 640 : win.innerWidth;
+            docEle.style.fontSize = w / initWidth * initSize + 'px';
+        }
+
+        window.addEventListener('orientationchange', function (e) {
+            e.preventDefault();
+            if (Math.abs(window.orientation) === 90) {
+                alert('为了您更好的体验，请不要使用横屏浏览');
+            }
+        }, false);
+
+        window.addEventListener(resizeEvent, function (e) {
+            init(window);
+        }, false);
+
+        init(window);
+
+        //移除隐藏body 的hide class
+        var reg = new RegExp('(\\s|^)' + 'hide' + '(\\s|$)');
+        document.body.className = document.body.className.replace(reg, ' ');
+    }
+
+    function toResult() {
+        if ($('#fuel').val().length == 0) {
+            alert('请输入百公里耗油数！');
+            return;
+        }
+        if ($('#fuel').val() <= 0) {
+            alert('请输入1-20之间的整数！');
+            return;
+        }
+        if ($('#fuel').val() > 20) {
+            alert('油耗太大啦，坦克车不能参加本次活动哦！请输入20以下的整数！');
+            return;
+        }
+        if ($('#day').val().length == 0) {
+            alert('请输入不开车天数！');
+            return;
+        }
+        if ($('#day').val() <= 0) {
+            alert('请输入1-365之间的整数！');
+            return;
+        }
+        if ($('#day').val() > 365) {
+            alert('对不起，穿越人士无法参与本次活动！请输入1-365之间的的整数！');
+            return;
+        }
+        if ($('#length').val().length == 0) {
+            alert('请输入每天行驶的里程！');
+            return;
+        }
+        if ($('#length').val() <= 0) {
+            alert('请输入1-365之间的整数！');
+            return;
+        }
+        if ($('#length').val() > 1000) {
+            alert('疲劳驾驶可不好哦！请输入1-365之间的整数！');
+            return;
+        }
+        sessionStorage.setItem('calculator_fuel', $('#fuel').val());
+        sessionStorage.setItem('calculator_day', $('#day').val());
+        sessionStorage.setItem('calculator_length', $('#length').val());
+        window.location.href = 'result.html';
+
+    }
+
+    function toDetail() {
+        $('.rule').css('display', 'block');
+        $('.content').css('display', 'none');
+    }
+
+    function closeDetail() {
+        $('.rule').css('display', 'none');
+        $('.content').css('display', 'block');
+    }
+
+    weixinShare({
+        shareUrl: config.shareRootUrl + '/weixinouter/basepage/pages/activity/activity_calculator/publicity.html',
+        shareTitle: '环保星级大比拼',
+        shareText: '我参加环保达人大比拼，赢得100个万金币，你也来试试吧！',
+        onlyWeixin: false,
+        isNeedRecord: true,
+        openId: openId,
+        activityId: '109',
+        typeTimeline: 'zhbx-3',
+        typeAppMessage: 'zhbx-4',
+        isGiveCoin: 'N'
+    });
+    //20161010 yugg 注掉 baiduCollection();
+</script>
+</html>

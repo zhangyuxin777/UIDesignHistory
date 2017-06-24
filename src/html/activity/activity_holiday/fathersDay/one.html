@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>第一题</title>
+    <link rel="stylesheet" href="css/common.css"/>
+    <link rel="stylesheet" href="css/question/base.css">
+    <link rel="stylesheet" href="css/question/one.css">
+</head>
+<body>
+<div class="qustion">
+    <a class="next" href="javascript:;"></a>
+    <ul>
+        <li>
+            <input type="radio" class="input_check" id="check1" name="score" value="1">
+            <label for="check1"></label>
+        </li>
+        <li>
+            <input type="radio" class="input_check" id="check2" name="score" value="2">
+            <label for="check2"></label>
+        </li>
+        <li>
+            <input type="radio" class="input_check" id="check3" name="score" value="3">
+            <label for="check3"></label>
+        </li>
+        <li>
+            <input type="radio" class="input_check" id="check4" name="score" value="4">
+            <label for="check4"></label>
+        </li>
+    </ul>
+</div>
+</body>
+</html>
+<script src="./js/common/jquery-1.7.2.min.js"></script>
+<script src="./js/common/rem.js"></script>
+<script src="js/common/base.js"></script>
+<script src='../../../../js/jweixin-1.0.0.js'></script>
+<script src='../../../../js/common.js'></script>
+<script>
+    window.onload = function () {
+        $('.next').on('click', function (e) {
+            //获取当前选项的分值
+            console.log(1);
+            var $score = $('input[name="score"]:checked').val();
+            var totles = $score;
+            //如果选择分值为真，即可跳转
+            if ($score) {
+                //页面跳转并且将分值传入下一题中
+                $('.next')[0].href = "./two.html?score=" + $score + "&totles=" + totles;
+            }
+        })
+    };
+    var openId = window.localStorage.getItem(config.openIdName);
+    weixinShare({
+        shareUrl: config.shareRootUrl + '/weixinouter/basepage/pages/activity/activity_holiday/fathersDay/index.html',
+        shareIcon: config.shareRootUrl + '/weixinouter/basepage/pages/activity/activity_holiday/fathersDay/img/share_icon' + Math.ceil(Math.random() * 3) + '.jpg',
+        shareText: '我的老爸是XXXX型。【老爸性格大测试】快来测测你真的了解你的老爸吗？',
+        isNeedRecord: true,
+        openId: openId,
+        activityId: '108',
+        typeTimeline: 'zhbx-3',
+        typeAppMessage: 'zhbx-4',
+        isGiveCoin: 'N'
+    });
+    closeActivity(config.activityEndTime.fathersDay);
+</script>

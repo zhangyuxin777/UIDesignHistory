@@ -1,0 +1,80 @@
+ul li {
+    font-size: .28rem;
+    height: 1.8rem;
+    width: 6.4rem;
+    background-color: #fff;
+    padding: 0 .20rem;
+    margin-bottom: .1rem; 
+    /* background:url(../images/jbx.png) no-repeat left bottom; */
+    position: relative;
+}
+ul li img {
+    width: 1.64rem;
+    height: 1.59rem;
+    display: block;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+}
+ul li .liRight {
+    height: 1.2rem;
+    display: inline-block;
+    float: left;
+    padding-left: 2.12rem;
+    margin-top: .3rem;
+}
+ul li .liRight h3 {
+    color: #242424;
+    display: block;
+    font-size: .28rem;
+    padding-bottom: .16rem;
+
+}
+ul li .liRight span {
+    color: #9f9f9f;
+    font-size: .20rem;
+    display: block;
+    line-height: .32rem;
+}
+ul li .liRight .price {
+    font-size: .3rem;
+    color: #f39800;
+    line-height: .42rem;
+}
+ul li .liRight .orange {
+    color: #f39800;
+}
+ul li .liRight i {
+    display: block;
+    color: #9f9f9f;
+    font-size: .20rem;
+    line-height: .32rem
+}
+ul li .liRight i em {
+    padding-left: .2rem;
+}
+ul li .liRight .detils {
+    width: .18rem;
+    height: .28rem;
+    background: url('../images/detiles.png') no-repeat center center;
+    background-size: .16rem .28rem;
+    position: absolute;
+    right: 0.2rem;
+    top: 50%;
+    margin-top: -0.09rem;
+}
+ul li .liRight button {
+    width: 1.22rem;
+    height: .48rem;
+    font-size: .22rem;
+    font-family: "microsoft yahei";
+    background-color: #d2d2d2;
+    border-radius: .1rem;
+    position: absolute;
+    color: #fff;
+    right: 0.2rem;
+    top: 50%;
+    word-spacing: .22rem;
+    margin-top: -.24rem;
+}

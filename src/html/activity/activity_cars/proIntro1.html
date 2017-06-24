@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="apple-touch-fullscreen" content="YES">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="viewport" content="width=640, user-scalable=no, target-densitydpi=device-dpi">
+    <title>多车之家</title>
+    <!--滑动动画样式-->
+    <link rel="stylesheet" href="../../../css/swiper.min.css">
+    <link rel="stylesheet" href="../../../css/animate.min.css">
+    <link rel="stylesheet" href="../../../css/css-cars.css">
+</head>
+<body>
+<div class="swiper-container">
+    <div class="swiper-wrapper">
+        <div class="swiper-slide" id="page0" style="overflow: hidden">
+            <div id="page0_div" class="height-co bkg-01">
+                <p class="font01 center ani" swiper-animate-effect="fadeIn" swiper-animate-duration="2s" swiper-animate-delay="0.5s">多车之家</p>
+                <p class="font01-1 bold center ani" swiper-animate-effect="fadeIn" swiper-animate-duration="2s" swiper-animate-delay="1.5s">配得上您身份的好车险</p>
+                <p class="font01-2 top-230 center">中华财险高端车险品牌</p>
+                <p class="font01-2 font01-3 center">为拥有多辆车家庭量身打造</p>
+            </div>
+            <div style="text-align:center;position: absolute;width:322px; left: 50%; margin-left:-161px; bottom:3%;font-size: 9px;color: white">
+                万联电子商务股份有限公司在法律允许的范围内对“多车之家”品牌拥有最终解释权
+            </div>
+        </div>
+        <div class="swiper-slide" id="page1" style="overflow: hidden">
+            <div id="page1_div" class="height-co bkg-11 ani" swiper-animate-effect="myact3" swiper-animate-duration="3s">
+                <div class="bg-text02">
+                    <p class="font02 bold center">颠覆传统开启保险2.0时代</p>
+                    <p class="font02-1 center">配备汽车主动安全系统</p>
+                    <p class="font02-1 center">从事故后理赔升级为主动防御事故发生</p>
+                    <p class="font02-1 center">您安全 我们安心</p>
+                </div>
+            </div>
+        </div>
+        <div class="swiper-slide" id="page2" style="overflow: hidden">
+            <div id="page2_div" class="height-co bkg-1" swiper-animate-effect="myact2" swiper-animate-duration="3s">
+                <p class="font1 center top-131">更智能的汽车主动安全系统</p>
+                <div class="font1-1 nbg-text1 ani" swiper-animate-effect="fadeInUp" swiper-animate-duration="3s"
+                     swiper-animate-delay="0.01s">雾天透视
+                </div>
+                <div class="font1-1 nbg-text1 ani" swiper-animate-effect="fadeInUp" swiper-animate-duration="3s"
+                     swiper-animate-delay="0.5s">道路预警
+                </div>
+                <div class="font1-1 nbg-text1 ani" swiper-animate-effect="fadeInUp" swiper-animate-duration="3s"
+                     swiper-animate-delay="1s">超强夜视
+                </div>
+                <div class="font1-1 nbg-text1 ani" swiper-animate-effect="fadeInUp" swiper-animate-duration="3s"
+                     swiper-animate-delay="1.5s">炫光屏蔽
+                </div>
+                <div class="font1-1 nbg-text1 ani" swiper-animate-effect="fadeInUp" swiper-animate-duration="3s"
+                     swiper-animate-delay="2s">碰瓷取证
+                </div>
+                <!--<p class="fw ani" swiper-animate-effect="fadeInUp" swiper-animate-duration="3s"-->
+                <!--swiper-animate-delay="2.5s" onclick="FW()">点击查看上门安装范围</p>-->
+
+            </div>
+        </div>
+        <div class="swiper-slide" id="page3" style="overflow: hidden">
+            <div id="page3_div" class="height-co bkg-31" swiper-animate-effect="myact3" swiper-animate-duration="3s">
+                <div class="bg-text03">
+                    <p class="font03 bold center">随时随地的安全保障</p>
+                    <p class="font03-1 center">高达1000万航空意外险</p>
+                    <p class="font03-1 center">超越以往的非凡体验</p>
+                    <p class="font03-1 center">全球紧急医疗服务</p>
+                    <p class="font03-1 center">即使异国他乡 保障伴您同行</p>
+                </div>
+                <img src="../../../images/cars/proIntro/earth.png" class="earth">
+                <!--&lt;!&ndash;闪光点&ndash;&gt;-->
+                <div class="ic3 ani" swiper-animate-effect="myact6" swiper-animate-duration="2s" swiper-animation-iteration-count="infinite"></div>
+                <div class="ic2 ani" swiper-animate-effect="myact5" swiper-animate-duration="2s" swiper-animation-iteration-count="infinite"></div>
+                <div class="ic1 ani" swiper-animate-effect="myact4" swiper-animate-duration="2s" swiper-animation-iteration-count="infinite"></div>
+                <!--结束-->
+                <div class="btn03" onclick="toCars()"><img src="../../../images/cars/proIntro/butt.png"></div>
+                <p class="font-qa1 center">商业险保费满2500元可享受上述所有服务( 湖北地区客户暂不享受航空意外险保障 )</p>
+                <!--<p class="font-qa2 center">湖北地区客户暂不享受航空意外险保障</p>-->
+                <div class="qa"><a href="#" onclick="QA()" style="font-size: 18px;">常见问题?</a></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--向上箭头-->
+<div class="u-arrow">
+    <img src="../../../images/cars/proIntro/up.png" width="100px">
+</div>
+<!--跳转到信息录入页-->
+<!--<div class="tocar"><a href="#" onclick="toCars()">点我参加</a></div>-->
+</body>
+</html>
+<script src="../../../js/common.js"></script>
+<script src="../../../js/jweixin-1.0.0.js"></script>
+<script src="../../../js/jquery-1.9.1.min.js"></script>
+<script src="../../../js/swiper.animate1.0.2.min.js"></script>
+<script src="../../../js/swiper-3.2.7.jquery.min.js"></script>
+
+<script>
+    var wh = $(window).height();
+    $('.swiper-container').css("height", wh);
+    $('.top-230').css("margin-top", wh*132/667);
+    closeProduct(103);
+    getOpenId();
+    var openId = window.localStorage.getItem(config.openIdName);
+    var isFocus = false;
+
+    if (openId != null && openId.length != 0) {   //已关注
+        GetData("User/1006", function (backData) {
+            isFocus = backData.data.flag;
+        }, {"openId": openId});
+    }
+    var index;  //页面索引
+    if (sessionStorage.a == 1) {
+        //        mySwiper.slideTo(3, 1000, false);//切换到最后一个slide，速度为1秒
+        index = 3;
+        $(".ic1").css("display","none");
+        $(".ic2").css("display","none");
+        $(".ic3").css("display","none");
+    } else {
+        index = 0;
+    }
+    $(function () {
+        var mySwiper = new Swiper('.swiper-container', {
+            direction: 'vertical',   //设置滑动方向
+            loop: false,  //按顺序滑动
+            effect: 'slide',   //切换效果--淡入
+            initialSlide: index,
+            preloadImages: false,   //异步加载图片
+            observer: true,    //监控
+            watchSlidesProgress: true,
+
+            onInit: function (swiper) { //Swiper2.x的初始化是onFirstInit
+                swiperAnimateCache(swiper); //隐藏动画元素
+                swiperAnimate(swiper); //初始化完成开始动画
+                $('#page0_div').css('visibility', 'visible');
+                $('#page1_div').css('visibility', 'visible');
+                $('#page2_div').css('visibility', 'visible');
+                $('#page3_div').css('visibility', 'visible');
+            },
+            onSlideChangeEnd: function (swiper) {
+                swiperAnimate(swiper); //每个slide切换结束时也运行当前slide动画
+                // alert(swiper.slides[3].progress);
+                if (swiper.slides[3].progress == 0) {
+                    $('.u-arrow').css("display", "none");
+                } else {
+                    $('.u-arrow').css("display", "block");
+                }
+                $('#page0_div').css('visibility', 'visible');
+                $('#page1_div').css('visibility', 'visible');
+                $('#page2_div').css('visibility', 'visible');
+                $('#page3_div').css('visibility', 'visible');
+
+            }
+        });
+        if(sessionStorage.a == 1){
+//            mySwiper.slideTo(3, 1000, false);//切换到最后一个slide，速度为1秒
+            //  index = 4;
+        }
+        baiduCollection();
+    });
+
+    weixinShare({
+        shareUrl: config.shareRootUrl + '/weixinouter/basepage/activity_cars/proIntro1.html',
+        shareIcon: config.shareRootUrl + '/weixinouter/basepage/images/cars/proIntro/share-icon.jpg',
+        shareText: '多车之家-中华财险高端车险品牌',
+        isNeedRecord: true,
+        openId: openId,
+        activityId: '103',
+        typeTimeline: 'zhbx-3',
+        typeAppMessage: 'zhbx-4',
+        isGiveCoin: 'Y'
+    });
+
+
+    function QA() {
+        sessionStorage.a = 1;
+        window.location.href = "QA.html";
+    }
+
+    function FW(){
+        sessionStorage.b = 2;
+        window.location.href = "FW.html";
+    }
+
+    function toCars() {
+        if(!isFocus){
+            showCodeDialog();
+        }else {
+            window.location.href = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=" + config.appIdValue + "&redirect_uri=" + config.shareRootUrl + "/weixinouter/basepage/activity_cars/inputInfo.html" +
+                    "&response_type=code&scope=snsapi_base&state=123&connect_redirect=1#wechat_redirect";
+        }
+
+    }
+</script>

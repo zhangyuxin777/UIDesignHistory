@@ -1,0 +1,1082 @@
+body{margin: 0;padding: 0;overflow: hidden;font-family: 'Microsoft YaHei', 'Arial', sans-serif}
+.bkg-01{
+    background: url("../images/cars/proIntro/bg01.jpg") no-repeat;
+    background-size: 100% 100%;
+    text-align: center;
+}
+.bkg-1{
+    background: url("../images/cars/proIntro/bg1.jpg") no-repeat;
+    background-size: 110% 115%;
+    -webkit-background-size: 110% 115%;
+}
+.bkg-11{
+    background: url("../images/cars/proIntro/bg02.jpg") no-repeat;
+    background-size: 100% 100%;
+}
+.bkg-31{
+    background: url("../images/cars/proIntro/bg03.jpg") no-repeat;
+    background-size: 100% 100%;
+}
+.bkg-4{
+    background: url("../images/cars/proIntro/bg4.jpg") no-repeat;
+    background-size: 100% 100%;
+}
+.bkg-5{
+    background-color: #ffffff;
+}
+.bg01-t1{
+    position: absolute;
+    width: 77%;
+    top: 25px;
+    left: 75px;
+}
+.bg01-t2{
+    margin: auto;
+    width: 555px;
+    height: 90px;
+    background: url("../images/cars/proIntro/bg01-t2.png") no-repeat;
+}
+.swiper-container {
+    position: relative;
+    width: 640px;
+    height: 1008px;
+    overflow: hidden;
+    margin: 0 auto;
+    background-color: black;
+}
+.ic1,.ic2,.ic3{
+    animation-iteration-count: infinite;
+    -webkit-animation-iteration-count: infinite;
+    /*animation-direction:alternate;*/
+    /*-webkit-animation-direction:alternate;*/
+}
+.code {
+    position: absolute;
+    bottom: 200px;
+    left: 100px;
+}
+.fw{
+    color: #ffffff;
+    font-size: 14px;
+    padding-left: 61%;
+}
+.earth{
+    position: absolute;
+    bottom: 215px;
+    left: 95px;
+}
+.pop-div{
+    width: 540px;
+    margin: 0 auto;
+    border: 3px solid #ffffff;
+    background: rgba(0,0,0,0.5);
+}
+.pop-img{
+    padding: 40px 0 40px 30px;
+}
+.tocar {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 130px;
+    height: 40px;
+    z-index: 9999999;
+}
+a{
+    text-decoration: none;
+    color: #ffffff;
+}
+.tocar a{font-size: 28px;}
+p{
+    margin-top: 0;
+    margin-bottom: 0;
+}
+.font0{
+    color: #ffffff;
+    font-size: 48px;
+    padding-bottom: 10px;
+    /*padding-left: 75px;*/
+}
+.font01{
+    position: relative;
+    color: #ffffff;
+    font-size: 92px;
+    padding-top: 165px;
+    padding-bottom: 10px;
+    line-height: 90px;
+    font-weight: 900;
+    -webkit-text-stroke: 2px #ffffff;
+    text-stroke: 2px #ffffff;
+}
+.font01-1{
+    position: relative;
+    color: #ffffff;
+    font-size: 26px;
+    line-height: 26px;
+}
+.font01-2{
+    color: #ffffff;
+    font-size: 26px;
+    padding-bottom: 3px;
+    padding-top: 3px;
+}
+.font02{
+    position: relative;
+    color: #ffffff;
+    font-size: 48px;
+    padding-top: 125px;
+    padding-bottom: 25px;
+    line-height: 48px;
+}
+.font02-1{
+    position: relative;
+    color: #ffffff;
+    font-size: 30px;
+    padding-bottom: 20px;
+    line-height: 30px;
+}
+.font03{
+    font-size: 48px;
+    color: #ffffff;
+    padding-top: 82px;
+    padding-bottom: 20px;
+}
+.font03-1{
+    font-size: 27px;
+    color: #ffffff;
+    padding-bottom: 20px;
+    line-height: 28px;
+}
+.font1{
+    font-size: 48px;
+    color: white;
+}
+.font1-1{
+    font-size: 38px;
+    color: white;
+}
+.font2{
+    font-size: 26px;
+    line-height: 30px;
+    color: white;
+}
+.font3{
+    font-size: 30px;
+    color: white;
+}
+.font3-1{
+    font-size: 32px;
+    color: white;
+}
+.font4{
+    font-size: 48px;
+    padding-top: 55px;
+    padding-bottom: 35px;
+    padding-left: 30px;
+    text-align: center;
+    color: #ffffff;
+}
+.font5{
+    margin: auto;
+    font-size: 32px;
+    line-height: 45px;
+    padding-left: 20px;
+    width: 75%;
+    text-align: center;
+    color: #ffffff;
+}
+.font6{
+    font-size: 20px;
+    line-height: 28px;
+    padding-left: 15px;
+    padding-right: 15px;
+    clear: both;
+}
+.font7{
+    font-size: 30px;
+    color: #ffffff;
+    /*padding-left: 30px;*/
+    padding-bottom: 25px;
+}
+.font7-1{
+    font-size: 26px;
+    color: #ffffff;
+    /*padding-left: 30px;*/
+    padding-bottom: 30px;
+}
+.font8 {
+    font-size: 18px;
+    color: #ffffff;
+}
+.btn03{
+    position: absolute;
+    bottom: 100px;
+    width: 72%;
+    height: 100px;
+    padding-left: 90px;
+}
+.font-qa1{
+    position: absolute;
+    font-size: 10px;
+    color: #ffffff;
+    bottom: 78px;
+    left: 22%;
+}
+.font-qa2{
+    position: absolute;
+    font-size: 10px;
+    color: #ffffff;
+    bottom: 78px;
+    right: 22%;
+}
+.p-font1{
+    font-size: 13px;
+    color: #ffffff;
+    margin-left: 55%;
+}
+.top-40-1{
+    padding-top: 40px;
+}
+.top-40{
+    padding-top: 80px;
+    padding-bottom: 5px;
+}
+.top-20{
+    padding-top: 20px;
+    padding-bottom: 10px;
+}
+.top-100{
+    padding-top: 100px;
+}
+.top-230{
+    margin-top: 35%;;
+}
+.center{
+    text-align: center;
+}
+.qus{
+    margin: 0;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+.red{
+    color: red;
+}
+.bold{
+    font-weight: bold;
+}
+.lt-55{
+    /*margin-left: 60px;*/
+    margin-top: 10px;
+    margin-bottom: 5px;
+}
+.lt-56{
+    /*padding-left: 5px;*/
+    margin-top: 30px;
+    padding-bottom: 35px;
+}
+.lt{
+    float: left;
+    width: 7%;
+}
+.lt1{
+    float: left;
+    width: 93%;
+}
+.btn{
+    position: absolute;
+    bottom: 70px;
+    left: 200px;
+}
+.qa{
+    position: absolute;
+    bottom: 24px;
+    left: 45%;
+    font-size: 16px;
+    color: #ffffff;
+}
+.font-qa{
+    font-size: 16px;
+    color: #ffffff;
+}
+.rt-65{
+    margin-right: 40px;
+}
+.rt-35{
+    margin-right: 30px;
+}
+.rt-83{
+    text-align: right;
+    padding-right: 83px;
+}
+.bg-text0{
+    background: url("../images/cars/proIntro/bg-text.png") no-repeat;
+    background-position-x: 230px;
+    background-position-y: 80px;
+}
+.bg-text{
+    background: url("../images/cars/proIntro/bg-text.png") no-repeat;
+    background-position-x: 70px;
+    background-position-y: 520px;
+    background-size: 503px 167px;
+}
+.bg-text1{
+    padding-top: 10px;
+    padding-bottom: 20px;
+    background: url("../images/cars/proIntro/bg-text.png") no-repeat;
+    background-position-x: 90px;
+    background-position-y: 420px;
+}
+.nbg-text1{
+    padding-left: 61%;
+    width: 100%;
+    height: 90px;
+    line-height: 90px;
+    margin-bottom: 35px;
+    background: url("../images/cars/proIntro/bg-text.png") no-repeat;
+    background-size: 463px;
+    background-position: 42%;
+    animation-timing-function: ease;
+    -webkit-animation-timing-function: ease;
+}
+.bg-text2{
+    background: url("../images/cars/proIntro/bg-text.png") no-repeat;
+    background-position-x: 100px;
+    background-position-y: 5px;
+}
+.bg-text02{
+    width: 100%;
+    height: 450px;
+    background: url("../images/cars/proIntro/bg-text.png") no-repeat;
+    background-position-x: -245px;
+    background-position-y: -50px;
+    background-size: 1140px 560px;
+    margin: auto;
+}
+.bg-text03{
+    width: 100%;
+    height: 450px;
+    background: url("../images/cars/proIntro/bg-text.png") no-repeat;
+    background-position-x: -160px;
+    background-position-y: -100px;
+    background-size: 960px 620px;
+    margin: auto;
+}
+.bg-text3{
+    margin-top: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background: url("../images/cars/proIntro/bg-text.png") no-repeat;
+    background-position-x: -50px;
+    background-position-y: -50px;
+    opacity: 0.5;
+}
+.width-10{
+    width: 30px;
+    text-align: center;
+    display: inline;
+    word-wrap: break-word;
+    word-break: normal;
+}
+.width-20{
+    width: 20px;
+    text-align: left;
+    padding-right: 20px;
+    font-size: 16px;
+    color: #ffffff;
+    line-height: 18px;
+    display: inline;
+    word-wrap: break-word;
+    word-break: normal;
+}
+.width-801{
+    padding-top: 40px;
+    width: 72%;
+    padding-left: 80px;
+}
+.lh{
+    line-height: 48px;
+}
+.ftr{float: right}
+.top-130{
+    padding-top: 20%;
+    padding-bottom: 30px;
+}
+.top-131{
+    padding-top: 20%;
+    padding-bottom: 45px;
+}
+.top-300{
+    padding-top: 470px;
+    /*padding-bottom: 30px;*/
+}
+.color-blu{
+    color: #007aff;
+}
+.bg-div{
+    /*width: 600px;*/
+    /*height: 100px;*/
+    background: url("../images/cars/proIntro/bg-text1.png") no-repeat;
+    background-size: 640px 1136px;
+    background-position: 0 -150px;
+
+}
+.u-arrow {
+    position: absolute;
+    bottom: 5px;
+    z-index: 150;
+    text-align: center;
+    margin-left: 50%;
+    left: -25px;
+}
+.car-img1{
+    position: absolute;
+    top: 238px;
+    left: 251.5px;
+}
+.car-img2{
+    padding-top: 570px;
+    /*padding-left: 53px;*/
+}
+.car-img3{
+    position: absolute;
+    top: 112px;
+    left: 131.5px;
+    /*left: 126px;*/
+}
+.car-img4{
+    position: absolute;
+    top: 35px;
+    left: 51.5px;
+    /*left: 48.5px;*/
+}
+.u-arrow img {
+    display: block;
+    width: 50px;
+    height: 36px;
+    -webkit-animation: start 2s infinite ease-in-out;
+    -moz-animation: start 2s infinite ease-in-out;
+    animation: start 2s infinite ease-in-out;
+}
+.ic1-1{
+    position: absolute;
+    bottom: 85px;
+    left: 60px;
+}
+
+.ic2-1{
+    position: absolute;
+    bottom: 145px;
+    right: 70px;
+}
+.height-co{
+    height: 100%;
+}
+
+
+
+@keyframes start {
+    0% {
+        padding-bottom: 5px;
+        opacity: 1;
+    }
+    90% {
+        padding-bottom: 15px;
+        opacity: 0;
+    }
+    100% {
+        padding-bottom: 5px;
+        opacity: 0;
+    }
+}
+
+@-webkit-keyframes start {
+    0% {
+        padding-bottom: 5px;
+        opacity: 1;
+    }
+    90% {
+        padding-bottom: 15px;
+        opacity: 0;
+    }
+    100% {
+        padding-bottom: 5px;
+        opacity: 0;
+    }
+}
+
+@-webkit-keyframes myact3 {
+    0% {
+        -webkit-background-size: 100% 100%;
+        background-size: 100% 100%;
+    }
+    100% {
+        -webkit-background-size: 105% 105%;
+        background-size: 105% 105%;
+    }
+}
+
+@keyframes myact3 {
+    0% {
+        -webkit-background-size: 100% 100%;
+        background-size: 100% 100%;
+    }
+    100% {
+        -webkit-background-size: 105% 105%;
+        background-size: 105% 105%;
+    }
+}
+
+.myact3 {
+    -webkit-animation-name: myact3;
+    animation-name: myact3;
+}
+
+@-webkit-keyframes rotateInl {
+    0% {
+        -webkit-transform-origin: center center;
+        transform-origin: center center;
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+        opacity: 0
+    }
+    100% {
+        -webkit-transform-origin: center center;
+        transform-origin: center center;
+        -webkit-transform: rotate(-360deg);
+        transform: rotate(-360deg);
+        opacity: 1
+    }
+}
+
+@keyframes rotateInl {
+    0% {
+        -webkit-transform-origin: center center;
+        -ms-transform-origin: center center;
+        transform-origin: center center;
+        -webkit-transform: rotate(0deg);
+        -ms-transform: rotate(0deg);
+        transform: rotate(0deg);
+        opacity: 0
+    }
+    100% {
+        -webkit-transform-origin: center center;
+        -ms-transform-origin: center center;
+        transform-origin: center center;
+        -webkit-transform: rotate(-360deg);
+        -ms-transform: rotate(-360deg);
+        transform: rotate(-360deg);
+        opacity: 1
+    }
+}
+
+.rotateInl {
+    -webkit-animation-name: rotateInl;
+    animation-name: rotateInl
+}
+@-webkit-keyframes myact2 {
+    0% {
+        -webkit-background-size: 110% 115%;
+        background-size: 110% 115%;
+    }
+    100% {
+        -webkit-background-size: 100% 105%;
+        background-size: 100% 105%;
+    }
+}
+
+@keyframes myact2 {
+    0% {
+        -webkit-background-size: 110% 115%;
+        background-size: 110% 115%;
+    }
+    100% {
+        -webkit-background-size: 100% 100%;
+        background-size: 100% 100%;
+    }
+}
+
+.myact2 {
+    -webkit-animation-name: myact2;
+    animation-name: myact2;
+}
+
+@-webkit-keyframes myact4 {
+    0% {
+        position: absolute;
+        bottom: 400px;
+        left: 155px;
+        width: 25px;
+        height: 25px;
+        border-radius: 50%;
+        background-color: #ffffff;
+    }
+    100% {
+        position: absolute;
+        bottom: 390px;
+        left: 145px;
+        width: 45px;
+        height: 45px;
+        border-radius: 50%;
+        background-color: #ffffff;
+        opacity: 0.1;
+    }
+}
+
+@keyframes myact4 {
+    0% {
+        position: absolute;
+        bottom: 400px;
+        left: 155px;
+        width: 25px;
+        height: 25px;
+        border-radius: 50%;
+        background-color: #ffffff;
+    }
+    100% {
+        position: absolute;
+        bottom: 390px;
+        left: 145px;
+        width: 45px;
+        height: 45px;
+        border-radius: 50%;
+        background-color: #ffffff;
+        opacity: 0.1;
+    }
+}
+
+.myact4 {
+    -webkit-animation-name: myact4;
+    animation-name: myact4;
+}
+.ic1{
+    position: absolute;
+    bottom: 400px;
+    left: 155px;
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    background-color: #ffffff;
+}
+.ic2{
+    position: absolute;
+    bottom: 492px;
+    right: 290px;
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    background-color: #ffffff;
+}
+@-webkit-keyframes myact5 {
+    0% {
+        position: absolute;
+        bottom: 492px;
+        right: 290px;
+        width: 25px;
+        height: 25px;
+        border-radius: 50%;
+        background-color: #ffffff;
+        opacity: 0.5;
+    }
+    100% {
+        position: absolute;
+        bottom: 482px;
+        right: 280px;
+        width: 45px;
+        height: 45px;
+        border-radius: 50%;
+        background-color: #ffffff;
+        opacity: 0.1;
+    }
+}
+
+@keyframes myact5 {
+    0% {
+        position: absolute;
+        bottom: 492px;
+        right: 290px;
+        width: 25px;
+        height: 25px;
+        border-radius: 50%;
+        background-color: #ffffff;
+        opacity: 0.5;
+    }
+    100% {
+        position: absolute;
+        bottom: 482px;
+        right: 280px;
+        width: 45px;
+        height: 45px;
+        border-radius: 50%;
+        background-color: #ffffff;
+        opacity: 0.1;
+    }
+}
+
+.myact5 {
+    -webkit-animation-name: myact5;
+    animation-name: myact5;
+}
+.ic3{
+    position: absolute;
+    bottom: 410px;
+    right: 228px;
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    background-color: #ffffff;
+}
+@-webkit-keyframes myact6 {
+    0% {
+        position: absolute;
+        bottom: 410px;
+        right: 228px;
+        width: 25px;
+        height: 25px;
+        border-radius: 50%;
+        background-color: #ffffff;
+        opacity: 0.9;
+    }
+    100% {
+        position: absolute;
+        bottom: 400px;
+        right: 218px;
+        width: 45px;
+        height: 45px;
+        border-radius: 50%;
+        background-color: #ffffff;
+        opacity: 0.1;
+    }
+
+}
+
+@keyframes myact6 {
+    0% {
+        position: absolute;
+        bottom: 410px;
+        right: 228px;
+        width: 25px;
+        height: 25px;
+        border-radius: 50%;
+        background-color: #ffffff;
+        opacity: 0.9;
+    }
+    100% {
+        position: absolute;
+        bottom: 400px;
+        right: 218px;
+        width: 45px;
+        height: 45px;
+        border-radius: 50%;
+        background-color: #ffffff;
+        opacity: 0.1;
+    }
+}
+
+.myact6 {
+    -webkit-animation-name: myact6;
+    animation-name: myact6;
+}
+
+/* 兼容iphone4/4s */
+@media (device-width: 320px )and (device-height: 480px) and (-webkit-min-device-pixel-ratio: 2 ) {
+    .top-300{
+        padding-top: 400px;
+    }
+    .top-131{
+        padding-top: 15%;
+        padding-bottom: 45px;
+    }
+    .font01{
+        -webkit-text-stroke: 1px #ffffff;
+        position: relative;
+        color: #ffffff;
+        font-size: 88px;
+        padding-top: 110px;
+        padding-bottom: 10px;
+        line-height: 88px;
+        font-weight: 900;
+    }
+    .top-230{
+        margin-top: 30%;
+    }
+    .fw{
+        position: absolute;
+        bottom: 8px;
+        color: #ffffff;
+        font-size: 14px;
+        padding-left: 61%;
+    }
+    .bg-text1{
+        /*padding-top: 10px;*/
+        padding-bottom: 20px;
+        background: url("../images/cars/proIntro/bg-text.png") no-repeat;
+        background-position-x: 90px;
+        background-position-y: 350px;
+    }
+    .car-img2{
+        padding-top: 520px;
+    }
+    .bg-text{
+        background: url("../images/cars/proIntro/bg-text.png") no-repeat;
+        background-position-x: 70px;
+        background-position-y: 470px;
+        background-size: 503px 167px;
+    }
+    .top-130 {
+        padding-top: 60px;
+        padding-bottom: 30px;
+    }
+    .bg-text0 {
+        background: url("../images/cars/proIntro/bg-text.png") no-repeat;
+        background-position-x: 230px;
+        background-position-y: 10px;
+    }
+    .btn03{
+        position: absolute;
+        bottom: 80px;
+        width: 72%;
+        height: 100px;
+        padding-left: 80px;
+    }
+    .font-qa1{
+        position: absolute;
+        font-size: 13px;
+        color: #ffffff;
+        bottom: 55px;
+        left: 20%;
+    }
+    .font-qa2{
+        position: absolute;
+        font-size: 12px;
+        color: #ffffff;
+        bottom: 45px;
+        left: 30%;
+    }
+    .qa{
+        position: absolute;
+        bottom: 14px;
+        left: 45%;
+        font-size: 16px;
+        color: #ffffff;
+    }
+    .earth {
+        position: absolute;
+        bottom: 175px;
+        left: 150px;
+        width: 50%;
+    }
+    @-webkit-keyframes myact4 {
+        0% {
+            position: absolute;
+            bottom: 320px;
+            left: 185px;
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            background-color: #ffffff;
+        }
+        100% {
+            position: absolute;
+            bottom: 310px;
+            left: 175px;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background-color: #ffffff;
+            opacity: 0.1;
+        }
+    }
+
+    @keyframes myact4 {
+        0% {
+            position: absolute;
+            bottom: 320px;
+            left: 185px;
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            background-color: #ffffff;
+        }
+        100% {
+            position: absolute;
+            bottom: 310px;
+            left: 175px;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background-color: #ffffff;
+            opacity: 0.1;
+        }
+    }
+
+    .myact4 {
+        -webkit-animation-name: myact4;
+        animation-name: myact4;
+    }
+    .ic1{
+        position: absolute;
+        bottom: 320px;
+        left: 185px;
+        width: 55px;
+        height: 55px;
+        border-radius: 50%;
+        background-color: #ffffff;
+    }
+    .ic2{
+        position: absolute;
+        bottom: 412px;
+        right: 290px;
+        width: 55px;
+        height: 55px;
+        border-radius: 50%;
+        background-color: #ffffff;
+    }
+    @-webkit-keyframes myact5 {
+        0% {
+            position: absolute;
+            bottom: 392px;
+            right: 290px;
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            background-color: #ffffff;
+        }
+        100% {
+            position: absolute;
+            bottom: 382px;
+            right: 280px;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background-color: #ffffff;
+            opacity: 0.1;
+        }
+    }
+
+    @keyframes myact5 {
+        0% {
+            position: absolute;
+            bottom: 392px;
+            right: 290px;
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            background-color: #ffffff;
+        }
+        100% {
+            position: absolute;
+            bottom: 382px;
+            right: 280px;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background-color: #ffffff;
+            opacity: 0.1;
+        }
+    }
+
+    .myact5 {
+        -webkit-animation-name: myact5;
+        animation-name: myact5;
+    }
+    .ic3{
+        position: absolute;
+        bottom: 320px;
+        right: 235px;
+        width: 55px;
+        height: 55px;
+        border-radius: 50%;
+        background-color: #ffffff;
+    }
+    @-webkit-keyframes myact6 {
+        0% {
+            position: absolute;
+            bottom: 320px;
+            right: 235px;
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            background-color: #ffffff;
+        }
+        100% {
+            position: absolute;
+            bottom: 310px;
+            right: 225px;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background-color: #ffffff;
+            opacity: 0.1;
+        }
+    }
+
+    @keyframes myact6 {
+        0% {
+            position: absolute;
+            bottom: 320px;
+            right: 235px;
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            background-color: #ffffff;
+        }
+        100% {
+            position: absolute;
+            bottom: 310px;
+            right: 225px;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background-color: #ffffff;
+            opacity: 0.1;
+        }
+    }
+
+    .myact6 {
+        -webkit-animation-name: myact6;
+        animation-name: myact6;
+    }
+}
+
+/* 兼容iphone5 */
+@media (device-width: 320px )and (device-height: 568px) and (-webkit-min-device-pixel-ratio: 2 ){
+    .font01-3{
+        bottom: 440px;position: absolute;left: 25%;
+    }
+}
+/*.swiper-slide-active .bkg-01 .fdi{*/
+    /*-webkit-animation: ani1 3s ease;*/
+    /*-moz-animation: ani1 3s ease;*/
+    /*animation: ani1 3s ease;*/
+/*}*/
+
+/*@-webkit-keyframes ani1 {*/
+    /*0% {*/
+        /*opacity: 0;*/
+        /*-webkit-transform: translateY(30px);*/
+        /*transform: translateY(30px)*/
+    /*}*/
+    /*100% {*/
+        /*opacity: 1;*/
+        /*-webkit-transform: translateY(0);*/
+        /*transform: translateY(0)*/
+    /*}*/
+/*}*/
+
+/*@keyframes ani1 {*/
+    /*0% {*/
+        /*opacity: 0;*/
+        /*-webkit-transform: translateY(30px);*/
+        /*-ms-transform: translateY(30px);*/
+        /*transform: translateY(30px)*/
+    /*}*/
+    /*100% {*/
+        /*opacity: 1;*/
+        /*-webkit-transform: translateY(0);*/
+        /*-ms-transform: translateY(0);*/
+        /*transform: translateY(0)*/
+    /*}*/
+/*}*/
+
+

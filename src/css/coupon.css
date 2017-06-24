@@ -1,0 +1,128 @@
+html {
+	width: 100%;
+	height: 100%;
+}
+.nocpbg {
+	width: 100%;
+	height: 100%;
+	background-color: #fff;
+}
+.nocp {
+	font-size: .26rem;
+	color: #9f9f9f;
+	position: relative;
+	top: 50%;
+	text-align: center;
+}
+/*tab*/
+.title {
+	width: 5.92rem;
+	height: .74rem;
+	margin: .20rem auto .29rem;
+	border: .02rem solid #e7e7e7;
+	border-radius: .05rem;
+}
+.title li {
+	float: left;
+	width: 33.3%;
+	height: .7rem;
+	text-align: center;
+	line-height: .7rem;
+	font-size: .26rem;
+	background-color: #fff;
+}
+.title li~li {
+	border-left: .02rem solid #e7e7e7;
+}
+
+.title li.choose {
+	color: #fff;
+	background-color: #f39800;
+}
+/*list*/
+.list {
+	margin: 0 auto;
+	display: none;
+	width: 5.88rem;
+}
+.module {
+  margin-top: .16rem;
+	position: relative;
+}
+.module .cpStyle {
+	float: left;
+}
+.module .cpStyle img{
+	display: inline-block;
+	width: 1.31rem;
+	height: 1.61rem;
+}
+.module .cpDetiles {
+	width: 4.43rem;
+	height: 1.61rem;
+	float: left;
+	background: url("../images/bg_04.png") no-repeat;
+	background-size: 4.43rem 1.61rem;
+}
+.module .cpDetiles h3 {
+	padding-top: .14rem;
+	font-size: .26rem;
+	line-height: .54rem;
+	width: 100%;
+	text-align: center;
+}
+.module .cpDetiles p {
+	font-size: .18rem;
+	color: #9f9f9f;
+	padding-left: 0.6rem;
+	width: 100%;
+
+}
+.module .cpDetiles span {
+	display: inline-block;
+	line-height: .34rem;
+	color: #606060;
+}
+.num {
+	display: inline-block;
+	font-size: .24rem;
+	width: .4rem;
+	height: .4rem;
+	text-align: center;
+	line-height: .45rem;
+	color: #fff;
+	position: absolute;
+	top: -0.8em;
+  right: -0.02rem;
+}
+.used .num,
+.outdated .num{
+	background-image: url("../images/num_used.png");
+	background-repeat: no-repeat;
+	background-position: center center;
+	-webkit-background-size: .31rem .31rem;
+	background-size: .31rem .31rem;
+}
+.use .num{
+	background-image: url("../images/num_use.png");
+	background-repeat: no-repeat;
+	background-position: center center;
+	-webkit-background-size: .31rem .31rem;
+	background-size: .31rem .31rem;
+}
+.status {
+	display: inline-block;
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	width: 1.51rem;
+	height: 1.20rem;
+}
+.used .status {
+	background: url("../images/used.png") no-repeat;
+	background-size: 1.51rem 1.2rem;
+}
+.outdated .status {
+	background: url("../images/outdated.png") no-repeat;
+	background-size: 1.51rem 1.2rem;
+}

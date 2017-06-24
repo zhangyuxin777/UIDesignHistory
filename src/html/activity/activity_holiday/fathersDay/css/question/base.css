@@ -1,0 +1,51 @@
+
+a {
+  width: 2.07rem;
+  height: 0.68rem;
+  position: absolute;
+  bottom: .19rem;
+  left: 0;
+  right: 0;
+  margin: auto;
+  z-index: 999;
+}
+ul {
+  width: 80%;
+  height: 2.15rem;
+  position: absolute;
+  top: 1.19rem;
+  left: .06rem;
+}
+ul li {
+  height: .6rem;
+}
+.input_check {
+  position: absolute;
+  width: .43rem;
+  height: .43rem;
+  visibility: hidden;
+}
+label {
+  display: block;
+  height: .43rem;
+  width: .43rem;
+  padding-right: 100%;
+  text-indent: -9999px;
+}
+ .input_check:checked+label {
+   background: url(../../img/check_06.png) top left no-repeat;
+   background-size: .43rem .43rem;
+}
+ .input_check+label {
+  background: url(../../img/check_03.png) top left no-repeat;  background-size: .43rem .43rem;
+  color: #999999;
+}
+.qustion {
+  width: 6.18rem;
+  height: 4.74rem;
+  position: absolute;
+  top:5.44rem;
+  left: 0;
+  right: 0;
+  margin: auto;
+}

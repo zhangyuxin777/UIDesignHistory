@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+    <title></title>
+    <style>
+
+
+        .btn_left {
+            width: 30%;
+            float: left;
+            margin-left: 15%;
+        }
+
+        .btn_right {
+            width: 30%;
+            float: right;
+            margin-right: 16%;
+        }
+
+        div, h1, h2, h3, h4, h5, p {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            padding: 0;
+            margin: 0;
+            height: 6.4rem;
+        }
+
+        .content-prize {
+            position: relative;
+            background: url("../../../images/activity/first/get_prize_success_bg.png") no-repeat;
+            background-size: 6.4rem 10.1rem;
+            width: 6.4rem;
+            height: 10.1rem;
+        }
+
+        .result {
+            position: absolute;
+            margin-top: 2.1rem;
+            margin-left: 2.2rem;
+        }
+        .r_text1{
+            width: 2.78rem;
+            height: 0.95rem;
+        }
+        .r_text2{
+            width: 2.03rem;
+            height: 0.94rem;
+            margin-top: 2.15rem;
+            margin-left: 2.5rem;
+        }
+
+        .div_text {
+            position: absolute;
+            margin-left: 1rem;
+            margin-right: 1rem;
+            font-size: 0.24rem;
+            line-height: 0.3rem;
+            margin-top: 4.8rem;
+            color: rgb(251, 76, 15);
+        }
+
+        li {
+            padding: 0px;
+            margin: 0px;
+
+        }
+
+        #fullbg {
+            background-color: #000000;
+            left: 0;
+            opacity: 0.75;
+            position: absolute;
+            top: 0;
+            z-index: 3;
+            height: 100%;
+            width: 6.4rem;
+            display: none;
+        }
+
+        #dialog {
+            background: url("../../../images/bkg-share.png") no-repeat;
+            background-size: 100%;
+            min-height: 100%;
+            right: 25px;
+            position: fixed !important; /* 浮动对话框 */
+            position: absolute;
+            top: 10px;
+            width: 70%;
+            z-index: 5;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+<div class="content-prize">
+    <img id="result" class="result" src="../../../images/activity/first/get_prize_share.png">
+    <div class="div_text">
+        <div style=" padding-left:1em;text-indent: -1em">
+            1.立即分享该页面至微信朋友圈可获得“加油一百分”权益。活动期间，通过“万联金网”公众号投保车险的客户，可额外获得100元中石化加油卡。
+        </div>
+        <div style=" padding-left:1em;text-indent: -1em">2.该权益可与“疯抢油卡”权益同时享用。</div>
+        <div style=" padding-left:1em;text-indent: -1em">3.投保成功后，加油卡将于2月1日24:00前统一发放。用户可通过公众号底部菜单中“我”→“我的礼品卡”中查看。</div>
+    </div>
+    <div style="position:absolute;bottom:0.3rem; right: 0;left: 0">
+        <img class="btn_left" onclick="share()" src="../../../images/activity/first/get_prize_btn_share.png">
+        <img class="btn_right" onclick="buy()" src="../../../images/activity/first/get_prize_btn_do.png">
+    </div>
+    <div id="fullbg"></div>
+    <div id="dialog"></div>
+</div>
+</body>
+<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<script src="../../../js/jquery-1.9.1.min.js"></script>
+<script src="../../../js/common.js"></script>
+<script>
+    autoSize();
+    var type = getUrlParam("type");
+    if (type == "1") {
+        $("#result").attr("src", "../../../images/activity/first/get_prize_sucess_text.png");
+        $("#result").addClass('r_text1');
+        document.title = "领取成功"
+    } else if (type == "2") {
+        $("#result").attr("src", "../../../images/activity/first/get_prize_share.png");
+        $("#result").addClass('r_text2');
+        document.title = "分享"
+    } else if (type == "3") {
+        $("#result").html("抱歉!已领完.");
+    }
+
+    function share() {
+        showBg();
+    }
+
+    function buy() {
+        window.location.href = "http://e.cic.cn/wap/portal.do?url=sy-LPEMNbGMnGOB89aIeKQ==&linkId=";
+    }
+    //220.171.28.152:9080
+    //显示灰色 jQuery 遮罩层
+    function showBg() {
+        var bh = $("body").height();
+        var bw = $("body").width();
+        $("#fullbg").css({
+            display: "block"
+        });
+        $("#dialog").show();
+    }
+    //关闭灰色 jQuery 遮罩
+    function closeBg() {
+        $("#fullbg,#dialog").hide();
+    }
+
+</script>
+</html>

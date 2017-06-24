@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="apple-touch-fullscreen" content="YES">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta http-equiv="Expires" content="-1">
+    <meta http-equiv="pragram" content="no-cache">
+    <meta name="viewport" content="width=640, user-scalable=no, target-densitydpi=device-dpi">
+    <style>
+
+        html, body, p, div {
+            font-family: 'Microsoft YaHei', 'Hiragino Sans GB', Helvetica, Arial, 'Lucida Grande', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .bg {
+            background: url("../../../images/activity/img/extend01.png") no-repeat;
+            background-size: 100% 100%;
+            width: 640px;
+            height: 1008px;
+            overflow: hidden;
+            margin: 0 auto;
+        }
+
+        .detail_bg {
+            position: relative;
+            background: url("../../../images/activity/img/index04.png") no-repeat;
+            /*background-size: 100% 100%;*/
+            width: 558px;
+            height: 759px;
+            /*left: 50%;*/
+            /*margin-left: -279px;*/
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 40px;
+            margin-bottom: 0;
+            font-size: 20px;
+            color: #ffffff;
+            display: none;
+            z-index: 9;
+        }
+
+        .detail_btn {
+            width: 80px;
+            height: 80px;
+            float: right;
+        }
+
+        .get_btn {
+            position: absolute;
+            width: 300px;
+            height: 90px;
+            left: 50%;
+            margin-left: -150px;
+            bottom: 50px;
+            z-index: 8;
+        }
+
+        a {
+            -webkit-tap-highlight-color: transparent;
+            text-decoration: none;
+            outline: none;
+        }
+
+        .text_style {
+            padding-left: 1em;
+            text-indent: -1em;
+            line-height: 36px
+        }
+
+        .text {
+            position: absolute;
+            color: #ffffff;
+            font-size: 26px;
+            line-height: 50px;
+            margin-left: 56px;
+            margin-right: 56px;
+            width: 528px;
+            bottom: 150px;
+            z-index: 8;
+        }
+
+        .code {
+            position: relative;
+            width: 434px;
+            height: 476px;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 25%;
+            display: none;
+            z-index: 9;
+        }
+    </style>
+    <title>温暖回家路</title>
+
+    <script src="../../../js/common.js"></script>
+    <script>
+        var _hmt = _hmt || [];
+        (function () {
+            var hm = document.createElement("script");
+            hm.src = "//hm.baidu.com/hm.js?" + config.collectRootValue;
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+</head>
+<body>
+<div class="bg">
+    <div onclick="showDetail()">
+        <img class="detail_btn" src="../../../images/activity/img/extend02.png">
+    </div>
+
+    <div style="clear: both"></div>
+    <div class="detail_bg">
+        <div style="width: 80px;margin:10px;height: 80px ;float: right" onclick="closeDetail()"></div>
+        <div style="margin: 0;padding: 40px">
+            <p>活动时间：</p>
+            <p style="margin-top: 23px">2016年1月19日至2016年2月22日</p>
+            <p style="margin-top: 60px">活动说明：</p>
+            <p style="margin-top: 23px;line-height: 36px">
+                活动期间所有用户均可通过“万联金网”公众号领取四十万安心保障（7天）并参与“温暖回家路”活动，安心保障限量发放一百万份。</p>
+            <p style="margin-top: 60px">活动须知：</p>
+            <p style="margin-top: 23px;line-height: 36px;padding-left: 1em;text-indent: -1em;">
+                1.免费领取的安心保障为中华联合财产保险股份有限公司个人公共交通意外伤害保险。</p>
+            <p class="text_style">2.安心保障仅限18-65周岁的自然人领取。</p>
+            <p class="text_style">3.每个身份证号、手机号码、微信号限领一次。</p>
+            <p class="text_style">4.免费领取产品的电子保单号将于次日统一发送至预留的手机，请注意查收。</p>
+            <p class="text_style">5.在法律允许的范围内，万联电子商务股份有限公司对本次活动拥有最终解释权。</p>
+        </div>
+    </div>
+    <div class='text'>
+        <p>您的好友<span id='name'></span>已成为<span id='visits'></span>温暖回家路的用户，现在邀请您一起温暖回家路，领取四十万安心保障。</p>
+    </div>
+    <div class="code">
+        <img src="../../../images/activity/img/qrcode_dialog.png">
+        <div style="position: absolute; width: 70px;height: 70px;top: 5px;right: 5px" onclick="closeDialog()"></div>
+    </div>
+    <img class="get_btn" src="../../../images/activity/img/extend05.png" onclick="showDialog()">
+
+
+</div>
+
+</body>
+<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<script src="../../../js/jquery-1.9.1.min.js"></script>
+<script type="text/javascript">
+//    closeActivity(config.activityEndTime.goHome);
+    $('.bg').css("height", $(window).height());
+    var detail = $('.detail_bg');
+    var dialog = $('.code');
+    var text = $('.text');
+    var visits = 10056;
+    function showDetail() {
+        detail.css("display", "block");
+        text.css("display", "none");
+        dialog.css("display", "none");
+    }
+    function closeDetail() {
+        detail.css("display", "none");
+        text.css("display", "block");
+        dialog.css("display", "none");
+    }
+    function showDialog() {
+        closeDetail();
+        dialog.css("display", "block");
+    }
+    function closeDialog() {
+        dialog.css("display", "none");
+    }
+    var serialNo = getUrlParam("serialNo");
+    var openId = window.localStorage.getItem(config.openIdName);
+
+    GetData("Transfer/1015", function (backData) {
+        var data = backData.data;
+        visits = data.visits;
+        $('#visits').append("第" + visits + "位");
+    }, {});
+
+    GetAsyncData("weixinbase/1043", function (backdata) {
+        var data = backdata;
+        // alert("(c)"+data.code+"(t)"+data.timestamp+"(n)"+data.nonceStr+"(s)"+data.signature)
+        wx.config({
+            debug: false,
+            appId: config.appIdValue,   // wx0017a3384b9df4f0
+            timestamp: data.timestamp,
+            nonceStr: data.nonceStr,
+            signature: data.signature,
+            jsApiList: [
+                'checkJsApi',
+                'onMenuShareTimeline',
+                'onMenuShareAppMessage',
+                'hideMenuItems',
+                'showMenuItems',
+                'hideAllNonBaseMenuItem'
+            ]
+        });
+    }, {"url": window.location.href.split('#')[0]});
+
+    wx.ready(function () {
+
+        /*wx.checkJsApi({
+         jsApiList: [
+         'onMenuShareTimeline'
+         ]
+         });*/
+        wx.hideMenuItems({
+            menuList: [
+                'menuItem:share:qq'
+            ]
+        });
+        wx.onMenuShareAppMessage({
+            title: '万联金网',
+            desc: '辛苦了一年的游子，回家吧！我领取到了第' + visits + '份安全回家保障。传递爱心，免费领取四十万安心回家保障！', // 分享描述
+            link: config.shareRootUrl + '/weixinouter/basepage/yinxiao/extend.html?serialNo=' + serialNo,
+            imgUrl: config.shareRootUrl + '/weixinouter/basepage/img/share.png',
+            type: '', // 分享类型,music、video或link，不填默认为link
+            dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
+            success: function () {
+                // 用户确认分享后执行的回调函数
+                GetData("Reward/1008", function (json) {
+                    //alert("1008 code:" + json.code);
+                }, {"openId": openId, "type": "zhbx-4"});
+            },
+            cancel: function () {
+                // 用户取消分享后执行的回调函数
+            },
+            complete: function () {
+                //closeBg();
+            }
+
+        });
+        wx.onMenuShareTimeline({
+            title: '辛苦了一年的游子，回家吧！我领取到了第' + visits + '份安全回家保障。传递爱心，免费领取四十万安心回家保障！',
+            link: config.shareRootUrl + '/weixinouter/basepage/yinxiao/extend.html?serialNo=' + serialNo,
+            imgUrl: config.shareRootUrl + '/weixinouter/basepage/img/share.png',
+            success: function () {
+                // 用户确认分享后执行的回调函数
+                GetData("Reward/1008", function (json) {
+                    //alert("1008 code:" + json.code);
+                }, {"openId": openId, "type": "zhbx-3"});
+            },
+            cancel: function () {
+                // 用户取消分享后执行的回调函数
+            },
+            complete: function () {
+                // closeBg();
+            }
+        });
+        wx.error(function (res) {
+            alert('wx.error: ' + JSON.stringify(res));
+        });
+    });
+
+</script>
+</html>

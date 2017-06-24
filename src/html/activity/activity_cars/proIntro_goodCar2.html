@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+    <!--缓存强制清理-->
+    <!--<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"/>-->
+    <!--<meta http-equiv="Pragma" content="no-cache"/>-->
+    <!--<meta http-equiv="Expires" content="0"/>-->
+    <style>
+
+        html, body, p, div {
+            font-family: 'Microsoft YaHei', 'Hiragino Sans GB', Helvetica, Arial, 'Lucida Grande', sans-serif;
+            margin: 0;
+            padding: 0;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            width: 3.2rem;
+            margin: 0 auto;
+        }
+
+        .bg {
+            background: url("../../../images/cars/goodCar2Bg.jpg") no-repeat;
+            background-size: 100% 100%;
+            width: 3.2rem;
+            height: 5.04rem;
+        }
+
+        a {
+            -webkit-tap-highlight-color: transparent;
+            text-decoration: none;
+            outline: none;
+        }
+
+        .get-btn {
+            position: absolute;
+            left: 50%;
+            margin-left: -0.65rem;
+            top: 4.35rem;
+            z-index: 8;
+            width: 1.3rem;
+            height: 0.37rem;
+            opacity: 0;
+        }
+
+        .text {
+            font-size: 0.15rem;
+            position: absolute;
+            width: 3.2rem;
+            text-align: center;
+            bottom: 1.0rem;
+            line-height: 0.3rem;
+            z-index: 1;
+        }
+
+        .text-red {
+            color: #e60012;
+        }
+
+        #fullbg {
+            background-color: #000000;
+            left: 0;
+            opacity: 0.75;
+            position: absolute;
+            top: 0;
+            z-index: 9;
+            filter: alpha(opacity=75);
+            -moz-opacity: 0.75;
+            -khtml-opacity: 0.75;
+        }
+
+        #dialog {
+            background: url("../../../images/bkg-share.png") no-repeat;
+            background-size: 100%;
+            min-height: 100%;
+            right: 25px;
+            position: fixed !important; /* 浮动对话框 */
+            position: absolute;
+            top: 10px;
+            width: 70%;
+            z-index: 9;
+            display: none;
+        }
+
+        .hide {
+            display: none;
+        }
+
+    </style>
+    <title>中华好车</title>
+
+</head>
+<body class="hide">
+<div class="bg">
+    <div class="get-btn" onclick="showDialog()"></div>
+    <div style="position: absolute;top: 4.7rem;width: 100%">
+        <div style="text-align:center;margin-left: auto;margin-right: auto;font-size: 0.06rem;color: white">
+            新疆、西藏、青海、宁夏、贵州、海南、大连暂不支持购买
+        </div>
+    </div>
+</div>
+<div style="position: absolute;bottom: 0;background: url('../../../images/cars/goodCar2Bottom.jpg');background-size: 100% 100%;width: 3.2rem;height: 0.93rem;z-index: -1;"></div>
+</body>
+<script src="../../../js/common.js"></script>
+<script src="../../../js/jweixin-1.0.0.js"></script>
+<script src="../../../js/jquery-1.9.1.min.js"></script>
+
+<script type="text/javascript">
+    closeProduct(110);
+    autoWidth();
+    var fontSize = $('html').css('font-size').substr(0, $('html').css('font-size').length - 2);
+    var minHeight = getBgHeight();
+    $('body').css("height", minHeight);
+    var type = getUrlParam("type");
+    if(type != null){
+        var openId = getUrlParam("openId");
+    }else{
+        getOpenId();   //获取openid
+        openId = window.localStorage.getItem(config.openIdName);
+    }
+    var isFocus = false;
+    $(function () {
+        if (openId != null && openId.length != 0) {
+            GetAsyncData("../../rest/User/1006", function (backData) {
+                isFocus = backData.data.flag;
+            }, {"openId": openId});
+        } else {
+        }
+        baiduCollection();
+    });
+
+    weixinShare({
+        shareUrl: config.shareRootUrl + '/weixinouter/basepage/pages/activity/activity_cars/proIntro_goodCar2.html',
+        shareIcon: config.shareRootUrl + '/weixinouter/basepage/images/cars/proIntro_goodCar/share-icon.jpg',
+        shareText: '中华好车-中华财险高端车险品牌',
+        isNeedRecord: true,
+        openId: openId,
+        activityId: '110',
+        typeTimeline: 'zhbx-3',
+        typeAppMessage: 'zhbx-4',
+        isGiveCoin: 'Y'
+    });
+
+    function showDialog() {
+        if (isFocus) {
+            window.location.href = config.activity.goodCar2Url + "&linkId=1100" + openId;
+        } else {
+            showCodeDialog();
+        }
+    }
+</script>
+</html>

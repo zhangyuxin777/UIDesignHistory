@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <title>温暖回家路</title>
+    <link href="../../../css/date-picker.css" rel="stylesheet" type="text/css">
+    <style>
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+            -webkit-appearance: none !important;
+            margin: 0;
+        }
+
+        input[type="number"] {
+            -moz-appearance: textfield;
+        }
+
+        body {
+            font-family: 'Microsoft YaHei', 'Hiragino Sans GB', Helvetica, Arial, 'Lucida Grande', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f6f4f4;
+        }
+
+        ol, ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            border-bottom: 1px solid #d4d4d4;
+            background-color: #ffffff;
+        }
+
+        a {
+            text-decoration: none;
+            outline: none;
+            color: #515151;
+        }
+
+        a:hover {
+            text-decoration: none;
+        }
+
+        .page1 {
+            width: 100%;
+            margin: 0 auto;
+            color: #515151;
+        }
+
+        .col-20 {
+            width: 19.9%;
+            float: left;
+        }
+
+        .col-40 {
+            width: 39.9%;
+            float: left;
+        }
+
+        .col-60 {
+            width: 59.9%;
+            float: left;
+        }
+
+        input {
+            border: 0 none;
+            font-size: 0.12rem;
+            outline: none;
+        }
+
+        .tk {
+            color: #016FEB;
+        }
+
+        .text {
+            padding: 0 0.19rem;
+            font-size: 0.1rem;
+        }
+
+        .enter_btn {
+            height: 0.5rem;
+            line-height: 0.5rem;
+            background-color: rgb(251, 76, 15);
+            color: #ffffff;
+            text-align: center;
+            font-size: 0.175rem;
+            border-radius: 0.05rem;
+            border-style: hidden;
+            outline: none;
+            margin: 0 0.19rem;
+        }
+
+        li {
+            margin-left: 0.1rem;
+            padding-left: 0.1rem;
+            list-style-type: none;
+            height: 0.45rem;
+            line-height: 0.45rem;
+            font-size: 0.12rem;
+            border-bottom: 1px solid #d4d4d4;
+            clear: both;
+        }
+
+        .banner {
+            background: url("../../../images/activity/img/tblr_banner.png") no-repeat;
+            background-size: 100% 100%;
+            min-height: 1.2rem;
+        }
+
+        .get_code_btn {
+            width: 0.8rem;
+            text-align: center;
+            color: #ffffff;
+            border-radius: 0.03rem;
+            font-size: 0.1rem;
+            background-color: rgb(251, 76, 15);
+            border-style: hidden;
+            outline: none;
+            margin-right: 15px;
+            padding: 0.07rem;
+        }
+
+        .icon {
+            width: 0.15rem;
+            height: 0.15rem;
+            float: right;
+            margin-top: 0.14rem;
+            margin-right: 0.15rem;
+            background: url("../../../images/activity/img/right.png") no-repeat;
+            background-size: contain;
+        }
+
+    </style>
+
+    <script src="../../../js/common.js"></script>
+    <script>
+        var _hmt = _hmt || [];
+        (function () {
+            var hm = document.createElement("script");
+            hm.src = "//hm.baidu.com/hm.js?" + config.collectRootValue;
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+
+</head>
+<body>
+<div class="page1" style="overflow: hidden">
+    <div class="banner">
+        <a style=" -webkit-tap-highlight-color: transparent;webkit-touch-callout: none;-webkit-user-select: none;"
+           href="detail.html">
+            <div style="float: right; width: 40px;height: 40px;"></div>
+        </a>
+
+    </div>
+
+    <ul>
+        <li onclick="saveData()"><a href="tbrule.html" style="width: 100%;height: 100%;display: block;">
+            <div class="col-20">产品详情</div>
+            <i class="icon"></i></a>
+        </li>
+        <li>
+            <div class="col-20">姓名</div>
+            <div class="col-60" id="name_div">
+
+            </div>
+        </li>
+        <li>
+            <div class="col-20">身份证号</div>
+            <div class="col-60" id="identifyNumber_div">
+
+            </div>
+        </li>
+        <li>
+            <div class="col-20">起保日期</div>
+            <div class="col-40" id="date_div">
+            </div>
+            <div class="col-40" style="margin-left: -15px;text-align: right">保障7天</div>
+        </li>
+        <li>
+            <div class="col-20">手机号</div>
+            <div class="col-60" id="mobile_div">
+
+            </div>
+        </li>
+        <li style="margin-bottom: -1px;">
+            <div class="col-20">验证码</div>
+            <div class="col-40" id="sendActiveCode_div">
+
+            </div>
+            <div class="col-40" style="text-align: right">
+                <button id="get_code" class="get_code_btn" onclick="sendCode(this);return false;">获取验证码</button>
+            </div>
+        </li>
+    </ul>
+
+    <p class="text">我已认真阅读同意<a href="bxtk.html"><span class="tk" onclick="saveData()">《保险条款》</span></a>和
+
+        <a href="gaozhi.html"><span class="tk" onclick="saveData()">《重要告知》</span></a>，了解并接受包括有关责任条款、承保地域限制等约定。
+    </p>
+
+    <div class="enter_btn" onclick="commit()">
+        确认
+    </div>
+</div>
+</body>
+<script src="../../../js/jquery-1.9.1.min.js"></script>
+<script src="../../../js/date-picker.js" type="text/javascript"></script>
+<script src="../../../js/tb-time.js" type="text/javascript"></script>
+<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<script src="../../../js/spinner.js"></script>
+<script type="text/javascript">
+//    if (!closeActivity(config.activityEndTime.goHome))
+        autoWidth();
+    //初始化起保日期
+    var today = new Date();
+    var tomorrow = new Date();
+    var tomorrow_milliseconds = today.getTime() + 1000 * 60 * 60 * 24 * 1;
+    tomorrow.setTime(tomorrow_milliseconds); //注意，这行是关键代码
+
+    var info_name = localStorage.getItem("info_name");
+    var info_identifyNumber = localStorage.getItem("info_identifyNumber");
+    var info_insurance_start = localStorage.getItem("info_insurance_start");
+    var info_mobile = localStorage.getItem("info_mobile");
+    var info_sendActiveCode = localStorage.getItem("info_sendActiveCode");
+
+    if (info_name == null) {
+        info_name = "";
+    }
+    if (info_identifyNumber == null) {
+        info_identifyNumber = "";
+    }
+    if (info_insurance_start == null) {
+        info_insurance_start = "";
+    }
+    if (info_mobile == null) {
+        info_mobile = "";
+    }
+    if (info_sendActiveCode == null) {
+        info_sendActiveCode = "";
+    }
+
+    var dateStr = "<input style='margin-left: 4px' type='text' value='" + info_insurance_start + "' id='insurance_start' placeholder='" + tomorrow.format("yyyy-MM-dd") + "'>";
+    var nameStr = "<input type='text' id='name' value='" + info_name + "' placeholder='请输入姓名'>";
+    var identifyNumberStr = " <input type='text' value='" + info_identifyNumber + "' id='identifyNumber' placeholder='请输入身份证号'>";
+    var mobileStr = "<input type='number' value='" + info_mobile + "' maxlength='11' id='mobile' value='' placeholder='请输入手机号'>";
+    var sendActiveCodeStr = "<input type='number'  value='" + info_sendActiveCode + "' id='sendActiveCode' placeholder='请输入验证码'>";
+    $("#date_div").append(dateStr);
+    $("#name_div").append(nameStr);
+    $("#identifyNumber_div").append(identifyNumberStr);
+    $("#mobile_div").append(mobileStr);
+    $("#sendActiveCode_div").append(sendActiveCodeStr);
+
+//    initDateRange();
+    var openId = window.localStorage.getItem(config.openIdName);
+    GetAsyncData("weixinbase/1043", function (backdata) {
+        var data = backdata;
+        // alert("(c)"+data.code+"(t)"+data.timestamp+"(n)"+data.nonceStr+"(s)"+data.signature)
+        wx.config({
+            debug: false,
+            appId: config.appIdValue,   // wx0017a3384b9df4f0
+            timestamp: data.timestamp,
+            nonceStr: data.nonceStr,
+            signature: data.signature,
+            jsApiList: [
+                'checkJsApi',
+                'hideMenuItems',
+                'showMenuItems',
+                'hideAllNonBaseMenuItem'
+            ]
+        });
+    }, {"url": window.location.href.split('#')[0]});
+    wx.ready(function () {
+
+        /*wx.checkJsApi({
+         jsApiList: [
+         'onMenuShareTimeline'
+         ]
+         });*/
+        wx.hideMenuItems({
+            menuList: [
+                'menuItem:share:qq',
+                'menuItem:share:appMessage',
+                'menuItem:share:timeline'
+            ]
+        });
+        wx.error(function (res) {
+            alert('wx.error: ' + JSON.stringify(res));
+        });
+    });
+
+    var isShowLoadDialog = false;
+
+    function saveData() {
+        //alert($("#name").val());
+        localStorage.setItem("info_name", $("#name").val());
+        localStorage.setItem("info_identifyNumber", $("#identifyNumber").val());
+        localStorage.setItem("info_insurance_start", $("#insurance_start").val());
+        localStorage.setItem("info_mobile", $("#mobile").val());
+        localStorage.setItem("info_sendActiveCode", $("#sendActiveCode").val());
+    }
+
+    var uuid = "";
+    var clock;
+    //获取验证码
+    function sendCode(btn) {
+        if (isShowLoadDialog) {
+            return;
+        }
+        var mobile = $.trim($("#mobile").val());
+        if (mobile == "" || mobile.length == 0) {
+            alert("请输入手机号");
+            return;
+        }
+        var nums = 60;
+        btn.innerHTML = nums + ' 秒';
+        $("#get_code").attr("disabled", true);
+        $("#get_code").css("background-color", "#dddddd");
+        clock = setInterval(function () {
+            nums--;
+            if (nums > 0) {
+                btn.innerHTML = nums + ' 秒';
+
+            } else {
+                clearInterval(clock);
+                btn.innerHTML = '获取验证码';
+                $("#get_code").attr("disabled", false);
+                $("#get_code").css("background-color", "rgb(251, 76, 15)");
+                nums = 60;
+            }
+        }, 1000);
+
+        GetAsyncData("Transfer/1011", function (backdata) {
+            var data = backdata.data;
+            //alert("sendCode uuid:" + data.uuid);
+            uuid = data.uuid;
+            console.log(uuid);
+        }, {"mobile": mobile});
+    }
+
+
+    function commit() {
+        var name = $.trim($("#name").val());
+        var number = $.trim($("#identifyNumber").val());
+        var time = $.trim($("#insurance_start").val());
+        var mobile = $.trim($("#mobile").val());
+        var code = $.trim($("#sendActiveCode").val());
+
+        window.location.href = "tbsuccess.html?serialNo=1";
+
+//        if (name == "" || name.length == 0) {
+//            alert("请输入姓名");
+//            return;
+//        }
+//        if (number == "" || number.length == 0) {
+//            alert("请输入身份证号");
+//            return;
+//        } else if (!IdCardValidate($("#identifyNumber").val())) {
+//            alert('身份证号不正确！');
+//            $("#identifyNumber").focus();
+//            return false;
+//        }
+//        if (time == "" || time.length == 0) {
+//            time = $("#insurance_start").attr("placeholder");
+//            if (time == "" || time.length == 0) {
+//                alert("请输入起保日期");
+//                return;
+//            }
+//        }
+//        if (mobile == "" || mobile.length == 0) {
+//            alert("请输入手机号");
+//            return;
+//        } else if (!$("#mobile").val().match(/^(0|86|17951)?(13[0-9]|15[012356789]|17[678]|18[0-9]|14[57])[0-9]{8}$/)) {
+//            alert("手机号输入有误！");
+//            $("#mobile").focus();
+//            return false;
+//        }
+//        if (code == "" || code.length == 0) {
+//            alert("请输入验证码");
+//            return;
+//        }
+//        if (uuid == "" || uuid.length == 0) {
+//            alert("请先获取验证码");
+//            return;
+//        }
+//        if ($.trim(code)) {
+//            showCenterSpinner();
+//            GetAsyncData("Transfer/1012", function (backdata) {
+//                var data = backdata.data;
+//                if (data.resultCode != "0000") {
+//                    hideCenterSpinner();
+//                    alert("验证码不正确，请重新获取！");
+//                } else {
+//                    GetAsyncData("Transfer/1013", function (backdata) {
+//                        console.log(JSON.stringify(backdata));
+//                        if (backdata.data.resultcode == "0001") {
+//                            alert(backdata.msg);
+//                            hideCenterSpinner();
+//                        } else if (backdata.code == 0 && backdata.data.resultcode == "0002") {
+//                            alert("您已经领取过了，将温暖送给更多人吧。");
+//                            window.location.href = "tbsuccess.html?serialNo=1";
+//                        } else {
+//                            var data = backdata.data;
+//                            window.location.href = "tbsuccess.html?serialNo=" + data.serialno;
+//                            //alert(data.serialno);
+//                        }
+//                    }, {
+//                        "openid": openId,
+//                        "productcode": "2014080001",
+//                        "combocode": "012015011801",
+//                        "insuredname": name,
+//                        "identifynumber": number,
+//                        "insuranceStart": time,
+//                        "mobile": mobile
+//                    });
+//                }
+//            }, {"checkCode": code, "uuid": uuid});
+//        }
+    }
+</script>
+</html>

@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport'
+          content='width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui'>
+    <meta name='apple-mobile-web-app-capable' content='yes'>
+    <meta name='apple-mobile-web-app-status-bar-style' content='black'>
+    <title>中华好车</title>
+    <!--滑动动画样式-->
+    <link rel="stylesheet" href="../../../css/swiper.min.css">
+    <style>
+        body {
+            width: 3.2rem;
+            margin: 0 auto;
+            padding: 0;
+            overflow: hidden;
+            font-family: 'Microsoft YaHei', 'Arial', sans-serif;
+        }
+
+        .height-co {
+            height: 100%;
+        }
+
+        .u-arrow {
+            position: absolute;
+            bottom: 0.07rem;
+            z-index: 150;
+            float: left;
+            text-align: center;
+            margin-left: 50%;
+            left: -0.125rem;
+        }
+
+        .u-arrow img {
+            display: none;
+        }
+
+        .float-left {
+            float: left;
+        }
+
+        .over-hide {
+            overflow: hidden;
+        }
+
+        .hide {
+            display: none;
+        }
+
+        .swiper-slide-active .u-arrow img {
+            display: block;
+            width: 0.25rem;
+            height: 0.18rem;
+            -webkit-animation: start 2s infinite ease-in-out;
+            -moz-animation: start 2s infinite ease-in-out;
+            animation: start 2s infinite ease-in-out;
+        }
+
+        @keyframes start {
+            0% {
+                padding-bottom: 5px;
+                opacity: 0.5;
+            }
+            5% {
+                opacity: 1;
+            }
+            70% {
+                padding-bottom: 15px;
+                opacity: 0;
+            }
+            100% {
+                padding-bottom: 5px;
+                opacity: 0;
+            }
+        }
+
+        @-webkit-keyframes start {
+            0% {
+                padding-bottom: 5px;
+                opacity: 0.5;
+            }
+            5% {
+                opacity: 1;
+            }
+            70% {
+                padding-bottom: 15px;
+                opacity: 0;
+            }
+            100% {
+                padding-bottom: 5px;
+                opacity: 0;
+            }
+        }
+
+        .clear {
+            clear: both;
+        }
+
+        .code {
+            position: absolute;
+            top: 1.25rem;
+            left: 50%;
+            margin-left: -1.08rem;
+        }
+
+        .close-code {
+            position: absolute;
+            width: 0.36rem;
+            height: 0.36rem;
+            top: 0;
+            right: 0
+        }
+
+        .sss {
+            position: absolute;
+            color: white;
+            bottom: 0.03rem;
+            font-size: 0.075rem;
+            text-align: center;
+            width: 100%;
+        }
+
+        .step-0 {
+
+        }
+
+        .step-0 .page0-bg {
+            background: url("../../../images/cars/proIntro_goodCar/page0_bg.jpg") no-repeat;
+            background-size: 100% 100%;
+        }
+
+        .step-0 header {
+            color: #d20000;
+            padding-top: 0.40rem;
+            margin-left: 0.15rem;
+
+        }
+
+        .step-0 h1 {
+            margin: 0;
+            font-size: 0.3rem;
+            font-weight: 800;
+        }
+
+        .step-0 h2 {
+            margin-top: 0.05rem;
+            font-size: 0.15rem;
+        }
+
+        .step-0 .page0_content {
+            opacity: 0;
+            position: relative;
+            height: 3.5rem;
+            width: 1.48rem;
+            left: 50%;
+            right: 0.15rem;
+            margin-top: -0.45rem;
+        }
+
+        .step-0.swiper-slide-active .page0_content {
+            opacity: 1;
+            -webkit-transition: opacity 1s ease-in-out 0.5s;
+        }
+
+        .step-0 section {
+            margin-left: 0.15rem;
+            font-size: 0.1rem;
+            line-height: 0.18rem;
+        }
+
+        .step-0 .section-div {
+            position: relative;
+            margin-top: -0.5rem;
+        }
+
+        .step-0 .btn-div {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .step-0 .go-button {
+            float: left;
+            margin-top: -0.1rem;
+            margin-left: 1.2rem;
+            width: 0.435rem;
+            height: 0.445rem;
+            background: url("../../../images/cars/proIntro_goodCar/but.png");
+            background-size: 100% 100%;
+            opacity: 0;
+        }
+
+        .step-0 .show-btn {
+            opacity: 1;
+            -webkit-transition: opacity 1s ease-in-out 0.5s;
+        }
+
+        .step-1 {
+
+        }
+
+        .step-1 header {
+            color: white;
+            text-align: center;
+            padding-top: 0.35rem;
+
+        }
+
+        .step-1 h1 {
+            margin: 0 0 0.075rem 0;
+            font-size: 0.25rem;
+        }
+
+        .step-1 h2 {
+            margin-top: 0.025rem;
+            margin-bottom: 0;
+            font-size: 0.13rem;
+        }
+
+        .step-1 .page1-bg {
+            background: url("../../../images/cars/proIntro_goodCar/page1_bg.jpg") no-repeat;
+            background-size: 100% 100%;
+        }
+
+        .step-1 .page1_content {
+            position: relative;
+            margin-top: 0.25rem;
+            left: 50%;
+            margin-left: -1.6rem;
+            height: 3.175rem;
+            width: 3.2rem;
+        }
+
+        .step-2 {
+
+        }
+
+        .step-2 .page2-bg {
+            background: url("../../../images/cars/proIntro_goodCar/page2_bg.jpg") no-repeat;
+            background-size: 100% 100%;
+        }
+
+        .step-2 .page2_content {
+            position: relative;
+            margin-top: 0.15rem;
+            left: 50%;
+            margin-left: -1.495rem;
+            height: 2.58rem;
+            width: 2.89rem;
+
+        }
+
+        .step-2 header {
+            color: white;
+            text-align: center;
+            padding-top: 0.45rem;
+
+        }
+
+        .step-2 h1 {
+            margin: 0;
+            font-size: 0.205rem;
+            font-weight: 700;
+        }
+
+        .step-2 h2 {
+            margin-top: 0.10rem;
+            font-size: 0.135rem;
+        }
+
+        .step-3 {
+
+        }
+
+        .step-3 .page3-bg {
+            background: url("../../../images/cars/proIntro_goodCar/page3_bg.jpg") no-repeat;
+            background-size: 100% 100%;
+        }
+
+        .step-3 header {
+            color: #0020ab;
+            padding-top: 0.35rem;
+            margin-left: 0.3rem;
+        }
+
+        .step-3 header img {
+            float: left;
+            margin: 0.04rem 0.03rem 0 0;
+            width: 0.105rem;
+            height: 0.095rem;
+        }
+
+        .step-3 h1 {
+            margin: 0 0 0.15rem 0.108rem;
+            font-size: 0.28rem;
+        }
+
+        .step-3 h2 {
+            margin-top: 0.05rem;
+            margin-bottom: 0.025rem;
+            font-size: 0.135rem;
+            font-weight: 300;
+        }
+
+        .step-3 .page3_content {
+            position: relative;
+            margin-top: 0.15rem;
+            margin-left: 0.46rem;
+            height: 0.37rem;
+            width: 1.34rem;
+            background: url("../../../images/cars/proIntro_goodCar/but_1.png");
+            background-size: 100% 100%;
+
+        }
+
+        .step-3 footer {
+            position: absolute;
+            bottom: 0.05rem;
+            color: white;
+            text-align: center;
+            width: 100%;
+            font-size: 0.08rem;
+        }
+
+        /* 兼容iphone4/4s */
+        @media (device-width: 320px )and (device-height: 480px) and (-webkit-min-device-pixel-ratio: 2 ) {
+
+            .step-0 header {
+                color: #d20000;
+                padding-top: 0.2rem;
+                margin-left: 0.15rem;
+
+            }
+
+            .step-0 .section-div {
+                position: relative;
+                margin-top: -0.7rem;
+            }
+
+            .step-0 .go-button {
+                float: left;
+                margin-top: -0.1rem;
+                margin-left: 1.3rem;
+                width: 0.435rem;
+                height: 0.445rem;
+                background: url("../../../images/cars/proIntro_goodCar/but.png");
+                background-size: 100% 100%;
+            }
+
+            .step-1 .page1_content {
+                position: relative;
+                margin-top: 0.1rem;
+                left: 50%;
+                margin-left: -1.587rem;
+                width: 3.20rem;
+                height: 3.175rem;
+            }
+
+            .step-2 {
+
+            }
+
+            .step-2 .page2_content {
+                position: relative;
+                margin-top: 0.05rem;
+                left: 50%;
+                margin-left: -1.495rem;
+                height: 2.56rem;
+                width: 2.89rem;
+
+            }
+
+            .step-2 header {
+                color: white;
+                text-align: center;
+                padding-top: 0.44rem;
+
+            }
+
+            .step-2 h1 {
+                margin: 0;
+                font-size: 0.2rem;
+            }
+
+            .step-2 h2 {
+                margin-top: 0.135rem;
+                font-size: 0.135rem;
+            }
+
+        }
+
+    </style>
+</head>
+<body class="hide">
+<div class="swiper-container">
+    <div class="swiper-wrapper">
+        <div class="step-0 swiper-slide" id="page0" style="overflow: hidden">
+            <div id="page0_div" class="height-co page0-bg">
+                <header>
+                    <h1>中华好车</h1>
+                    <h2>中华财险高端车险品牌</h2>
+                </header>
+
+                <img src="../../../images/cars/proIntro_goodCar/page0_1.png" id="page0_content" class="page0_content"/>
+
+                <div class="clear"></div>
+                <div class="section-div">
+                    <section>
+                        <p>
+                            开着几十万的好车<br/>
+                            真的在乎几张洗车券？<br/>
+                            中华好车带给你不一样的车险体验
+                        </p>
+                    </section>
+                    <div class="btn-div">
+                        <div id="go-button" class="go-button" onclick="toCars(0)"></div>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+
+
+                <footer class="u-arrow">
+                    <img src="../../../images/cars/proIntro_goodCar/up.png">
+                </footer>
+            </div>
+        </div>
+        <div class="swiper-slide step-1" id="page1" style="overflow: hidden">
+            <div id="page1_div" class="height-co page1-bg">
+                <header>
+                    <h1>尊享全球紧急医疗服务</h1>
+
+                    <h2>出国语言不通，行李证件丢失怎么办？</h2>
+
+                    <h2>身体不适无法就医怎么办？</h2>
+                </header>
+
+                <img src="../../../images/cars/proIntro_goodCar/page1_1.png" id="page1_content" class="page1_content"/>
+
+                <div class="clear"></div>
+                <footer class="u-arrow">
+                    <img src="../../../images/cars/proIntro/up.png">
+                </footer>
+                <div class="sss">
+                    <span onclick="toSSS()">
+                        点击查看全部全球紧急医疗服务内容
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div class="swiper-slide step-2" id="page2" style="overflow: hidden">
+            <div id="page2_div" class="height-co page2-bg">
+
+                <header>
+                    <h1>更智能的汽车主动安全系统</h1>
+
+                    <h2>买保险，不就是买安全吗？</h2>
+                </header>
+
+                <img src="../../../images/cars/proIntro_goodCar/page2_1.png" id="page2_content" class="page2_content"/>
+
+                <footer class="u-arrow">
+                    <img src="../../../images/cars/proIntro/up.png">
+                </footer>
+
+            </div>
+        </div>
+        <div class="swiper-slide step-3" id="page3" style="overflow: hidden">
+            <div id="page3_div" class="height-co page3-bg">
+                <header>
+                    <h1>六大理赔承诺</h1>
+
+                    <div>
+                        <img src="../../../images/cars/proIntro_goodCar/page3_1.png"/>
+
+                        <h2>服务热线全年无休</h2>
+
+                        <div class="clear"></div>
+                    </div>
+                    <div>
+                        <img style="" src="../../../images/cars/proIntro_goodCar/page3_1.png"/>
+
+                        <h2>主城区报案30分钟内到场</h2>
+
+                        <div class="clear"></div>
+                    </div>
+                    <div>
+                        <img src="../../../images/cars/proIntro_goodCar/page3_1.png"/>
+
+                        <h2>千元以下非人伤案件现场赔付</h2>
+
+                        <div class="clear"></div>
+                    </div>
+                    <div>
+                        <img src="../../../images/cars/proIntro_goodCar/page3_1.png"/>
+
+                        <h2>万元以下非人伤案件即时赔付</h2>
+
+                        <div class="clear"></div>
+                    </div>
+                    <div>
+                        <img src="../../../images/cars/proIntro_goodCar/page3_1.png"/>
+
+                        <h2>一般投诉案件，48小时处理完毕</h2>
+
+                        <div class="clear"></div>
+                    </div>
+                    <div>
+                        <img src="../../../images/cars/proIntro_goodCar/page3_1.png"/>
+
+                        <h2>客户索赔资料，“一袋式”免费上门安装</h2>
+
+                        <div class="clear"></div>
+                    </div>
+
+                </header>
+                <div onclick="toCars(1)" id="page3_content" class="page3_content"></div>
+                <footer>
+                    商业险保费3500以上即可享受中华好车服务内容
+                </footer>
+
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
+<script src="../../../js/common.js"></script>
+<script src="../../../js/jweixin-1.0.0.js"></script>
+<script src="../../../js/jquery-1.9.1.min.js"></script>
+<script src="../../../js/my-swiper.js"></script>
+
+<script>
+    autoWidth();
+    var wh = $(window).height();
+    $('.swiper-container').css("height", wh);
+    $('.swiper-slide').css("height", wh);
+    $('body').removeClass('hide');
+    getOpenId();
+    var openId = window.localStorage.getItem(config.openIdName);
+    var dialog = $('.code');
+    var isFocus = false;
+    closeProduct(104);
+    $(function () {
+
+        if (sessionStorage.page1 == 1) {
+            index = 1;
+            sessionStorage.page1 = 0;
+        } else if (sessionStorage.page3 == 1) {
+            index = 3;
+            sessionStorage.page3 = 0;
+        }
+        else {
+            index = 0;
+        }
+        var mySwiper = new Swiper('.swiper-container', {
+            direction: 'vertical',   //设置滑动方向
+            loop: false,  //按顺序滑动
+            effect: 'slide',   //切换效果--淡入
+            initialSlide: index,
+            preloadImages: false,   //异步加载图片
+            observer: true,    //监控
+            watchSlidesProgress: true
+        });
+
+        if (openId != null && openId.length != 0) {   //已关注
+            GetData("User/1006", function (backData) {
+                isFocus = backData.data.flag;
+                $('.go-button').addClass('show-btn');
+            }, {"openId": openId});
+        } else {
+            $('.go-button').addClass('show-btn');
+        }
+        clock = setInterval(function () {
+            $(".step-0 .page0_content").css("opacity", "1");
+            clearInterval(clock);
+        }, 1500);
+
+        weixinShare({
+            shareUrl: config.shareRootUrl + '/weixinouter/basepage/activity_cars/proIntro_goodCar.html',
+            shareIcon: config.shareRootUrl + '/weixinouter/basepage/images/cars/proIntro_goodCar/share-icon.jpg',
+            shareText: '中华好车-中华财险高端车险品牌',
+            isNeedRecord: true,
+            openId: openId,
+            activityId: '104',
+            typeTimeline: 'zhbx-3',
+            typeAppMessage: 'zhbx-4',
+            isGiveCoin: 'Y'
+        });
+
+        baiduCollection();
+    });
+
+    function toSSS() {
+        sessionStorage.page1 = 1;
+        sessionStorage.page3 = 0;
+        window.location.href = "sss.html";
+    }
+
+    function toCars(isPage3) {
+        if (!isFocus) {
+            showCodeDialog();
+        } else {
+            sessionStorage.page3 = isPage3;
+            sessionStorage.page1 = 0;
+            window.location.href = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=" + config.appIdValue + "&redirect_uri=" + config.shareRootUrl + "/weixinouter/basepage/activity_cars/inputInfo_goodCar.html" +
+                    "&response_type=code&scope=snsapi_base&state=123&connect_redirect=1#wechat_redirect";
+        }
+
+    }
+</script>

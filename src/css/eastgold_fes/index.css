@@ -1,0 +1,99 @@
+@charset "utf-8";
+.main{
+	overflow: hidden;
+	position: relative;
+	
+}
+.content1{
+	width: 6.4rem;
+	height: 11.36rem;
+	background: url(/weixinouter/basepage/images/eastgold_fes/bg1.jpg) no-repeat left center;
+	background-size: 6.4rem 11.36rem;
+}
+.content2{
+	width: 6.4rem;
+	height: 11.36rem;
+	background: url(/weixinouter/basepage/images/eastgold_fes/bg2.jpg) no-repeat left center;
+	background-size: 6.4rem 11.35rem;
+	margin-top: -.02rem;
+}
+.content3{
+	width: 6.4rem;
+	height: 7.7rem;
+	background: url(/weixinouter/basepage/images/eastgold_fes/bg3.jpg) no-repeat left center;
+	background-size: 6.4rem 7.7rem;
+	margin-top: -.02rem;
+}
+.dxzq,.wljw, .dfh{
+	display: block;
+	width: 2rem;
+	height: 2rem;
+	position: absolute;
+	z-index: 300;
+}
+.dxzq{
+	left: 0;top: 7.8rem;
+}
+.wljw{
+	width: 2.3rem;
+	height: 1.5rem;
+	left: 2.1rem;
+	top: 8.5rem;
+}
+.dfh{
+	left: 4.5rem;
+	top: 7.8rem;
+}
+.wljw2, .dxzq2, .dfh2{
+	display: block;
+	width: 2.8rem;
+	height:.75rem;
+	position: absolute;
+	left: 1.8rem;
+	background: url(/weixinouter/basepage/images/eastgold_fes/jiantou.gif) no-repeat 2rem center;
+	background-size: .55rem .28rem;
+}
+.wljw2{
+	top: 12.6rem;
+}
+.dxzq2{
+	top: 18.83rem;
+}
+.dfh2{
+	top: 25.08rem;
+}
+/*闪烁*/
+.shan{
+	height: 30.40rem;
+	width: 6.40rem;
+	position: absolute;
+	top: 0;
+	left: 0;
+	background: url(/weixinouter/basepage/images/eastgold_fes/shan2.png) no-repeat left top;
+	background-size: 6.4rem 30.4rem;
+	animation: twinkling 2s infinite;
+	-webkit-animation: twinkling 2s infinite;
+	
+}
+@keyframes twinkling{ 
+0%{ 
+opacity: 0; 
+} 
+50%{
+	opacity: 1; 
+}
+100%{ 
+opacity: 0; 
+}
+@-webkit-keyframes twinkling{ 
+0%{ 
+opacity: 0; 
+} 
+50%{
+	opacity: 1; 
+}
+100%{ 
+opacity: 0; 
+}
+
+

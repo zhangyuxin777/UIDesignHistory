@@ -1,0 +1,17 @@
+body {
+  background: url("../../img/four.jpg") no-repeat top left;
+ background-size: 6.4rem 10.38rem;
+}
+.transpond {
+  width: 6.4rem;
+  height: 10.38rem;
+  background-image: url("../../img/share_02.png");
+  background-repeat: no-repeat;
+  background-color: rgba(0,0,0,.8);
+  background-size: 100% 100%;
+  position: absolute;
+  top:0;
+  left:0;
+  z-index: 999;
+  display: none;
+}

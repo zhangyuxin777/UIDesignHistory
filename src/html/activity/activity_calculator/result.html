@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+    <!--缓存强制清理-->
+    <!--<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"/>-->
+    <!--<meta http-equiv="Pragma" content="no-cache"/>-->
+    <!--<meta http-equiv="Expires" content="0"/>-->
+    <style>
+
+        html, body, p, div {
+            font-family: 'Microsoft YaHei', 'Hiragino Sans GB', Helvetica, Arial, 'Lucida Grande', sans-serif;
+            margin: 0;
+            padding: 0;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            width: 3.2rem;
+            margin: 0 auto;
+        }
+
+        .bg {
+            background: url("../../../images/activity/app_calculator/bg2.jpg") no-repeat;
+            background-size: 100% 100%;
+            width: 100%;
+        }
+
+        a {
+            -webkit-tap-highlight-color: transparent;
+            text-decoration: none;
+            outline: none;
+        }
+
+        .hide {
+            display: none;
+        }
+
+        .content {
+            position: absolute;
+            width: 2.79rem;
+            height: 3.74rem;
+            background-size: 100% 100%;
+            margin-left: 0.205rem;
+            margin-top: 0.5rem;
+        }
+
+        .bg-img {
+            width: 2.79rem;
+            height: 3.74rem;
+            background-size: 100% 100%;
+            text-align: center;
+        }
+
+        .logo {
+            position: absolute;
+            width: 0.79rem;
+            height: 0.295rem;
+            margin-top: 0.05rem;
+            margin-left: 0.1rem;
+        }
+
+        input {
+            position: absolute;
+            width: 1.35rem;
+            height: 0.4rem;
+            left: 0.3rem;
+            background: transparent;
+            outline: none;
+            padding: 0 0.15rem;
+            text-align: center;
+            font-size: 0.2rem;
+            color: #fff;
+            border: 0 none;
+        }
+
+        .get-btn {
+            position: absolute;
+            width: 0.5rem;
+            height: 0.5rem;
+            bottom: 0.01rem;
+            right: 0.25rem;
+        }
+
+        .text {
+            text-shadow: 1px 1px 2px #3a230a;
+            color: white;
+            font-size: 0.16rem;
+            position: absolute;
+            top: 1.2rem;
+            width: 100%;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        #lotteryContainer {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            left: 50%;
+            margin-left: -0.875rem;
+            top: 2rem;
+        }
+
+        .star {
+            position: absolute;
+            background: url("../../../images/activity/app_calculator/star.png") no-repeat;
+            background-size: 100% auto;
+        }
+
+        .star1 {
+            top: 0.75rem;
+            left: 0.4rem;
+            width: 0.4rem;
+            height: 0.4rem;
+            background-position: 100% -0.4rem;
+            -moz-transform: rotate(-20deg);
+            -webkit-transform: rotate(-20deg);
+        }
+
+        .star2 {
+            top: 0.62rem;
+            left: 0.745rem;
+            width: 0.45rem;
+            height: 0.45rem;
+            background-position: 100% -0.45rem;
+            -moz-transform: rotate(-10deg);
+            -webkit-transform: rotate(-10deg);
+        }
+
+        .star3 {
+            top: 0.55rem;
+            left: 1.145rem;
+            width: 0.5rem;
+            height: 0.5rem;
+            background-position: 100% -0.5rem;
+        }
+
+        .star4 {
+            top: 0.62rem;
+            right: 0.745rem;
+            width: 0.45rem;
+            height: 0.45rem;
+            -moz-transform: rotate(10deg);
+            -webkit-transform: rotate(10deg);
+            background-position: 100% -0.45rem;
+        }
+
+        .star5 {
+            top: 0.75rem;
+            right: 0.4rem;
+            width: 0.4rem;
+            height: 0.4rem;
+            background-position: 100% -0.4rem;
+            -moz-transform: rotate(20deg);
+            -webkit-transform: rotate(20deg);
+        }
+
+        /*.light-star3 {*/
+        /*top: 0.45rem;*/
+        /*left: 1.045rem;*/
+        /*width: 0.7rem;*/
+        /*height: 0.7rem;*/
+        /*opacity: 0;*/
+        /*}*/
+
+        /*.light-3 {*/
+        /*width: 0.5rem;*/
+        /*height: 0.5rem;*/
+        /*left: 1.145rem;*/
+        /*top: 0.55rem;*/
+        /*opacity: 1;*/
+        /*-webkit-transition: width 1s ease-in-out 0.5s, height 1s ease-in-out 0.5s, left 1s ease-in-out 0.5s, top 1s ease-in-out 0.5s, opacity 1s ease-in-out 0.5s;*/
+        /*transition: width 1s ease-in-out 0.5s, height 1s ease-in-out 0.5s, left 1s ease-in-out 0.5s, top 1s ease-in-out 0.5s, opacity 1s ease-in-out 0.5s;*/
+
+        /*}*/
+        .light-star1 {
+            top: 0.75rem;
+            left: 0.4rem;
+            width: 0.4rem;
+            height: 0.4rem;
+            -moz-transform: rotate(-20deg);
+            -webkit-transform: rotate(-20deg);
+            opacity: 0;
+        }
+
+        .light-star2 {
+            top: 0.62rem;
+            left: 0.745rem;
+            width: 0.45rem;
+            height: 0.45rem;
+            -moz-transform: rotate(-10deg);
+            -webkit-transform: rotate(-10deg);
+            opacity: 0;
+        }
+
+        .light-star3 {
+            top: 0.55rem;
+            left: 1.145rem;
+            width: 0.5rem;
+            height: 0.5rem;
+            opacity: 0;
+        }
+
+        .light-star4 {
+            top: 0.62rem;
+            right: 0.745rem;
+            width: 0.45rem;
+            height: 0.45rem;
+            -moz-transform: rotate(10deg);
+            -webkit-transform: rotate(10deg);
+            opacity: 0;
+        }
+
+        .light-star5 {
+            top: 0.75rem;
+            right: 0.4rem;
+            width: 0.4rem;
+            height: 0.4rem;
+            -moz-transform: rotate(20deg);
+            -webkit-transform: rotate(20deg);
+            opacity: 0;
+        }
+
+        .light-1 {
+            opacity: 1;
+            -webkit-transition: opacity 0.5s ease-in-out 1s;
+            transition: opacity 0.5s ease-in-out 1s;
+        }
+
+        .light-2 {
+            opacity: 1;
+            -webkit-transition: opacity 0.5s ease-in-out 1.4s;
+            transition: opacity 0.5s ease-in-out 1.4s;
+        }
+
+        .light-3 {
+            opacity: 1;
+            -webkit-transition: opacity 0.5s ease-in-out 1.8s;
+            transition: opacity 0.5s ease-in-out 1.8s;
+        }
+
+        .light-4 {
+            opacity: 1;
+            -webkit-transition: opacity 0.5s ease-in-out 2.2s;
+            transition: opacity 0.5s ease-in-out 2.2s;
+        }
+
+        .light-5 {
+            opacity: 1;
+            -webkit-transition: opacity 0.5s ease-in-out 2.6s;
+            transition: opacity 0.5s ease-in-out 2.6s;
+        }
+
+    </style>
+    <link rel="stylesheet" href="../../../css/common-view.css">
+
+    <title>环保星级大比拼</title>
+
+</head>
+<body class="hide">
+
+<div class="bg">
+    <img src="../../../images/wanlin_logo_h.png" class="logo">
+    <div class="content">
+        <img src="../../../images/activity/app_calculator/reward.png" class="bg-img"/>
+        <div class="star star1"></div>
+        <div class="star light-star1"></div>
+        <div class="star star2"></div>
+        <div class="star light-star2"></div>
+        <div class="star star3 "></div>
+        <div class="star light-star3"></div>
+        <div class="star star4"></div>
+        <div class="star light-star4"></div>
+        <div class="star star5"></div>
+        <div class="star light-star5"></div>
+
+        <div class="text">
+            <div>我每年减少碳排放<span id="carbon">100</span>kg</div>
+            <div>相当于种植<span id="tree">5</span>棵树</div>
+            <div>超越全国<span id="percent">70％</span>车主</div>
+        </div>
+        <div id="lotteryContainer"></div>
+        <input type="tel" oninput="onlyNumber.integer(this)" id="mobile" style="bottom:0.05rem" maxlength="11"
+               placeholder="请输入手机号"/>
+        <div class="get-btn" onclick="getReward()"></div>
+    </div>
+</div>
+</body>
+<script src="../../../js/common.js"></script>
+<script src="../../../js/common-view.js"></script>
+<script src="../../../js/jweixin-1.0.0.js"></script>
+<script src="../../../js/jquery-1.9.1.min.js"></script>
+<script src="../../../js/lottery.js"></script>
+
+<script type="text/javascript">
+    closeProduct(109);
+    autoWidth();
+    var fontSize = $('html').css('font-size').substr(0, $('html').css('font-size').length - 2);
+    var minHeight = getBgHeight();
+    $('.bg').css("height", minHeight);
+    var carbon = 0;
+    try {
+        var fuel = sessionStorage.getItem('calculator_fuel');
+        var day = sessionStorage.getItem('calculator_day');
+        var length = sessionStorage.getItem('calculator_length');
+        carbon = Math.ceil(fuel / 100 * 2.7 * day * length);
+        var tree = Math.ceil(carbon / 1830 * 80);
+        var level = 3;
+        var rewardText = '20枚万金币/万金币可兑换各种豪华礼包';
+        var percent = '70%';
+        var count = 20;
+        var levelText = '三';
+        var rewardLevel = '3';
+        $('.light-star1').addClass('light-1');
+        $('.light-star2').addClass('light-2');
+        $('.light-star3').addClass('light-3');
+        if (carbon > 100 && carbon < 500) {
+            $('.light-star4').addClass('light-4');
+            level = 4;
+            rewardText = '50枚万金币/万金币可兑换各种豪华礼包';
+            percent = '80%';
+            count = 50;
+            levelText = '四';
+            rewardLevel = '2';
+        } else if (carbon > 500) {
+            $('.light-star4').addClass('light-4');
+            $('.light-star5').addClass('light-5');
+            level = 5;
+            rewardText = '100枚万金币/万金币可兑换各种豪华礼包';
+            percent = '90%';
+            count = 100;
+            levelText = '五';
+            rewardLevel = '1';
+        }
+        $('#carbon').text(carbon);
+        $('#tree').text(tree);
+        $('#percent').text(percent);
+        console.log(carbon);
+    }
+    catch (e) {
+    }
+    var lotteryWidth = fontSize / 100 * 180;
+    var lotteryHeight = fontSize / 100 * 70;
+    var completePercent = 0;
+    window.onload = function () {
+        var lottery = new Lottery('lotteryContainer', '#696868', 'color', lotteryWidth, lotteryHeight, function callBack(percent) {
+            completePercent = percent;
+        });
+        //        lottery.init('http://www.baidu.com/img/bdlogo.gif', 'image');
+        lottery.init(rewardText, 'text', true, '请 刮 奖');
+    };
+    getOpenId();
+    var openId = window.localStorage.getItem(config.openIdName);
+    var isShare = 'N';
+    function getReward() {
+        if (completePercent < 40) {
+            alert('请先刮奖');
+            return;
+        }
+        if ($('#mobile').val().length == 0) {
+            alert('请填写手机号');
+            return;
+        }
+        if (!$('#mobile').val().match(/^(0|86|17951)?(13[0-9]|15[0-9]|17[0-9]|18[0-9]|14[0-9])[0-9]{8}$/)) {
+            alert('请填写正确手机号');
+            return false;
+        }
+//        sessionStorage.setItem('calculator_mobile', $('#mobile').val());
+//        sessionStorage.setItem('calculator_count', count);
+//        sessionStorage.setItem('calculator_carbon', carbon);
+//        window.location.href = 'downloadApp.html';
+        GetAsyncData("Product/1091", function (backdata) {
+            if (backdata.code == '0') {
+                if (backdata.errCode != '0') {
+                    alert(backdata.errMsg);
+                } else {
+                    if (isShare == 'Y') {
+                        count = count * 2;
+                    }
+                    sessionStorage.setItem('calculator_mobile', $('#mobile').val());
+                    sessionStorage.setItem('calculator_count', count);
+                    sessionStorage.setItem('calculator_carbon', carbon);
+                    window.location.href = 'downloadApp.html';
+                }
+            }
+        }, {'phoneNumber': $('#mobile').val(), 'openId': openId, 'isShare': isShare, 'rewardLevel': rewardLevel});
+
+    }
+    weixinShare({
+        shareUrl: config.shareRootUrl + '/weixinouter/basepage/pages/activity/activity_calculator/share.html?carbon=' + carbon,
+        shareTitle:'环保星级大比拼',
+        shareText: '我的环保星级是' + levelText + '星，快来测试一下你的环保星级吧！',
+        onlyWeixin: false,
+        isNeedRecord: true,
+        openId: openId,
+        activityId: '109',
+        typeTimeline: 'zhbx-3',
+        typeAppMessage: 'zhbx-4',
+        isGiveCoin: 'N'
+    }, function () {
+        isShare = 'Y';
+    });
+   // baiduCollection();
+</script>
+</html>

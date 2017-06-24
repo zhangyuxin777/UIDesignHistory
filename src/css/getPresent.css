@@ -1,0 +1,120 @@
+  html,body {
+    height: 100%;
+    width: 100%;
+  }
+body {
+  font-size: .26rem;
+  background-color: #f3f5f5;
+}
+.writeStep {
+  background-color: #fff;
+}
+.writeStep img{
+  width: 6.4rem;
+  height: 1.04rem;
+  display: block;
+}
+.wirteInTop{
+  height: .76rem;
+  width: 6.40rem;
+  line-height: .76rem;
+  text-indent: .46rem;
+  background:url(../image/fillwrite.png) no-repeat;
+  background-size: .28rem .31rem;
+  background-position: .2rem .2rem;
+  font-size: .24rem;
+  color: #d7000f;
+  font-weight: 100;
+}
+.writeTit {
+  height: .74rem;
+  line-height: .74rem;
+}
+.writeTit h3 {
+  font-size: .28rem;
+  float: left;
+  padding-left: .26rem;
+}
+.q_detil ul {
+  background-color: #fff;
+}
+.prensnt {
+  padding: 0.26rem .34rem .34rem .26rem;
+}
+.q_detil ul li .title {
+  display: inline-block;
+  height: .58rem;
+  width: 1.28rem;
+  line-height: .58rem;
+  vertical-align: top;
+
+}
+.q_detil ul li .detils {
+  display: inline-block;
+  width: 4.4rem;
+  line-height: .58rem;
+}
+.q_detil ul li .commit{
+  padding-top: .16rem;
+  line-height: .36rem;
+  color: #f39800;
+}
+.q_detil ul li .p_msg {
+  width: 1.4rem;
+}
+.people .detils {
+  padding-left: .35rem;
+}
+.people {
+  border-top: .02rem solid #ebeeee;
+}
+.people li {
+  position: relative;
+  height: .74rem;
+  line-height: .74rem;
+  padding: 0 .34rem 0 .26rem;
+  border-bottom: .02rem solid #ebeeee;
+}
+.q_detil .people li span {
+  height: .74rem;
+  line-height: .74rem;
+}
+.q_detil .writeTit span {
+  color: #9f9f9f;
+  font-size: .2rem;
+}
+.choose {
+    width: .18rem;
+    height: .28rem;
+    background: url('../images/detiles.png') no-repeat center center;
+    background-size: .16rem .28rem;
+    position: absolute;
+    right: 0.34rem;
+    top: 50%;
+    margin-top: -0.09rem;
+  }
+
+  .container {
+      min-height: 100%; //设置盒子高度为100%
+      margin-bottom: -.9rem;
+      padding-bottom: .9rem;
+      -webkit-box-sizing: border-box;
+      box-sizing: border-box;
+    }
+  .footer {
+      height: .9rem;
+      margin-top: -.9rem;
+      //background-color: #f29800;
+    }
+  .footer a {
+    display:block;
+    width: 100%;
+    height: .9rem;
+    color: #fff;
+    font-size: .3rem;
+    line-height: .9rem;
+    text-align: center;
+    word-spacing: .3rem;
+    background-color: #f29800;
+  }
+

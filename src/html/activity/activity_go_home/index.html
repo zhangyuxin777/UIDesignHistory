@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="apple-touch-fullscreen" content="YES">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta http-equiv="Expires" content="-1">
+    <meta http-equiv="pragram" content="no-cache">
+    <meta name="viewport" content="width=640, user-scalable=no, target-densitydpi=device-dpi">
+    <style>
+
+        html, body, p, div {
+            font-family: 'Microsoft YaHei', 'Hiragino Sans GB', Helvetica, Arial, 'Lucida Grande', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .bg {
+            background: url("../../../images/activity/img/index01.png") no-repeat;
+            background-size: 100% 100%;
+            width: 640px;
+            height: 1008px;
+            margin: 0 auto;
+            overflow: hidden;
+        }
+
+        .detail_bg {
+            position: relative;
+            /*position: absolute;*/
+            background: url("../../../images/activity/img/index04.png") no-repeat;
+            /*background-size: 100% 100%;*/
+            width: 558px;
+            height: 759px;
+            /*left: 50%;*/
+            /*margin-left: -279px;*/
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 40px;
+            margin-bottom: 0;
+            font-size: 20px;
+            color: #ffffff;
+            display: none;
+            z-index: 9;
+        }
+
+        .detail_btn {
+            margin: 5px 5px;
+            width: 80px;
+            height: 80px;
+            float: right;
+            z-index: -1;
+        }
+
+        .get_btn {
+            position: absolute;
+            width: 300px;
+            height: 90px;
+            left: 50%;
+            margin-left: -150px;
+            bottom: 50px;
+            z-index: 8;
+        }
+
+        a {
+            -webkit-tap-highlight-color: transparent;
+            text-decoration: none;
+            outline: none;
+        }
+
+        .text_style {
+            padding-left: 1em;
+            text-indent: -1em;
+            line-height: 36px
+        }
+    </style>
+    <title>温暖回家路</title>
+
+</head>
+<body>
+<div class="bg">
+    <div onclick="detail()">
+        <img class="detail_btn" src="../../../images/activity/img/index02.png">
+    </div>
+
+    <div style="clear: both"></div>
+    <div class="detail_bg">
+        <div style="width: 80px;margin:10px;height: 80px ;float: right" onclick="closeDetail()"></div>
+        <div style="margin: 0;padding: 40px">
+            <p>活动时间：</p>
+            <p style="margin-top: 23px">2016年1月19日至2016年2月22日</p>
+            <p style="margin-top: 60px">活动说明：</p>
+            <p style="margin-top: 23px;line-height: 36px">
+                活动期间所有用户均可通过“万联金网”公众号领取四十万安心保障（7天）并参与“温暖回家路”活动，安心保障限量发放一百万份。</p>
+            <p style="margin-top: 60px">活动须知：</p>
+            <p style="margin-top: 23px;line-height: 36px;padding-left: 1em;text-indent: -1em;">
+                1.免费领取的安心保障为中华联合财产保险股份有限公司个人公共交通意外伤害保险。</p>
+            <p class="text_style">2.安心保障仅限18-65周岁的自然人领取。</p>
+            <p class="text_style">3.每个身份证号、手机号码、微信号限领一次。</p>
+            <p class="text_style">4.免费领取产品的电子保单号将于次日统一发送至预留的手机，请注意查收。</p>
+            <p class="text_style">5.在法律允许的范围内，万联电子商务股份有限公司对本次活动拥有最终解释权。</p>
+        </div>
+    </div>
+    <a href="#">
+        <img id="getcard" class="get_btn" src="../../../images/activity/img/extend05.png">
+    </a>
+
+</div>
+
+</body>
+
+<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<script src="../../../js/jquery-1.9.1.min.js"></script>
+<script src="../../../js/common.js"></script>
+<script type="text/javascript">
+    $('.bg').css("height", $(window).height());
+//    closeActivity(config.activityEndTime.goHome);
+
+    var openId = window.localStorage.getItem(config.openIdName);
+    if (openId == null || openId == "undefined") {
+        getOpenId();
+        openId = window.localStorage.getItem(config.openIdName);
+    }
+    GetAsyncData("weixinbase/1043", function (backdata) {
+        var data = backdata;
+        // alert("(c)"+data.code+"(t)"+data.timestamp+"(n)"+data.nonceStr+"(s)"+data.signature)
+        wx.config({
+            debug: false,
+            appId: config.appIdValue,   // wx0017a3384b9df4f0
+            timestamp: data.timestamp,
+            nonceStr: data.nonceStr,
+            signature: data.signature,
+            jsApiList: [
+                'checkJsApi',
+                'onMenuShareTimeline',
+                'onMenuShareAppMessage',
+                'hideMenuItems',
+                'showMenuItems',
+                'hideAllNonBaseMenuItem'
+            ]
+        });
+    }, {"url": window.location.href.split('#')[0]});
+
+    wx.ready(function () {
+
+        /*wx.checkJsApi({
+         jsApiList: [
+         'onMenuShareTimeline'
+         ]
+         });*/
+        wx.hideMenuItems({
+            menuList: [
+                'menuItem:share:qq'
+            ]
+        });
+//        wx.showMenuItems({
+//            menuList: [
+//                'menuItem:profile',
+//                'menuItem:refresh'
+//            ]
+//        });
+        wx.onMenuShareAppMessage({
+            title: '万联金网',
+            desc: '过年了，放下手机陪陪父母，四十万安全回家保障金温暖每条回家路。',
+            link: config.shareRootUrl + '/weixinouter/basepage/new_year2016/go_home.html?type=1000',
+            imgUrl: config.shareRootUrl + '/weixinouter/basepage/img/new_year2016/go_home_share.png',
+            type: '', // 分享类型,music、video或link，不填默认为link
+            dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
+            success: function () {
+                // 用户确认分享后执行的回调函数
+                GetData("Reward/1008", function (json) {
+                    //alert("1008 code:" + json.code);
+                }, {"openId": openId, "type": "zhbx--1000"});
+            },
+            cancel: function () {
+                // 用户取消分享后执行的回调函数
+            },
+            complete: function () {
+                //closeBg();
+            }
+
+        });
+        wx.onMenuShareTimeline({
+            title: '过年了，放下手机陪陪父母，四十万安全回家保障金温暖每条回家路。',
+            link: config.shareRootUrl + '/weixinouter/basepage/new_year2016/go_home.html?type=1000',
+            imgUrl: config.shareRootUrl + '/weixinouter/basepage/img/new_year2016/go_home_share.png',
+            success: function () {
+                // 用户确认分享后执行的回调函数
+                GetData("Reward/1008", function (json) {
+                    //alert("1008 code:" + json.code);
+                }, {"openId": openId, "type": "zhbx-1000"});
+            },
+            cancel: function () {
+                // 用户取消分享后执行的回调函数
+            },
+            complete: function () {
+                // closeBg();
+            }
+        });
+
+        wx.error(function (res) {
+            alert('wx.error: ' + JSON.stringify(res));
+        });
+    });
+    $("#getcard").click(function () {
+        window.location.href = "tblr.html";
+    });
+    function detail() {
+        var target = $('.detail_bg');
+        target.css("display", "block");
+    }
+    function closeDetail() {
+        var target = $('.detail_bg');
+        target.css("display", "none");
+    }
+    localStorage.removeItem("info_name");//清除info_name的值
+    localStorage.removeItem("info_identifyNumber");//清除info_identifyNumber的值
+    localStorage.removeItem("info_insurance_start");//清除info_insurance_start的值
+    localStorage.removeItem("info_mobile");//清除info_mobile的值
+    localStorage.removeItem("info_sendActiveCode");//清除info_sendActiveCode的值
+</script>
+</html>

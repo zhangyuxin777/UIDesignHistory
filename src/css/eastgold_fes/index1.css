@@ -1,0 +1,69 @@
+
+body{
+	background:#ff6840;
+}
+#head{
+	width:6.4rem;
+	height:2.6rem;
+	background:url(../../images/eastgold_fes/banner_02.jpg) no-repeat;
+	background-size:100%;
+}
+
+#bg{
+	width:6.4rem;
+	height:14.71rem;
+	background:url(../../images/eastgold_fes/bg.jpg) no-repeat;
+	background-size:100%;
+	
+}
+
+.box{
+	position: relative;
+}
+
+.box:nth-of-type(2){
+	top:3.7rem;
+}
+.box:nth-of-type(3){
+	top:7.4rem;
+}
+.box:nth-of-type(4){
+	top:11.1rem;
+}
+.box img{
+	position: absolute;
+	width:5.5rem;
+	height:3.37rem;
+	left:0.64rem;
+	top:0.21rem;
+}
+.box a{
+	display: inline-block;
+	position:absolute;
+	right:0.4rem;
+	top:2.44rem;
+	height:0.6rem;
+	width:1.36rem;
+}
+#footer{
+	width:6.4rem;
+	height:6.86rem;
+	background:url(../../images/eastgold_fes/foot.jpg) no-repeat;
+	background-size:100%;
+}
+
+#footer a{
+	display: inline-block;
+	width:2.28rem;
+	height:0.8rem;
+}
+#footer .coin{
+	margin-top:2.22rem;
+	margin-left:0.7rem;
+	float:left;
+}
+#footer .change{
+	float:right;
+	margin-top: 5.2rem;
+	margin-right:0.45rem;
+}

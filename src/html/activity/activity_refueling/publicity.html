@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+    <!--缓存强制清理-->
+    <!--<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"/>-->
+    <!--<meta http-equiv="Pragma" content="no-cache"/>-->
+    <!--<meta http-equiv="Expires" content="0"/>-->
+    <style>
+
+        html, body, p, div {
+            font-family: 'Microsoft YaHei', 'Hiragino Sans GB', Helvetica, Arial, 'Lucida Grande', sans-serif;
+            margin: 0;
+            padding: 0;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            width: 3.2rem;
+            margin: 0 auto;
+        }
+
+        .bg {
+            background: url("../../../images/activity/refueling/bg.jpg") no-repeat;
+            background-size: 100% 100%;
+        }
+
+        a {
+            -webkit-tap-highlight-color: transparent;
+            text-decoration: none;
+            outline: none;
+        }
+
+        .get-btn {
+            position: absolute;
+            left: 50%;
+            margin-left: -1.36rem;
+            bottom: 0.35rem;
+            z-index: 8;
+            width: 2.72rem;
+            height: 0.515rem;
+            opacity: 0;
+        }
+
+        .show-btn {
+            opacity: 1;
+            -webkit-transition: opacity 0.5s ease-in-out;
+        }
+
+        .text {
+            font-size: 0.15rem;
+            position: absolute;
+            width: 3.2rem;
+            text-align: center;
+            bottom: 1.0rem;
+            line-height: 0.3rem;
+            z-index: 1;
+        }
+
+        .text-red {
+            color: #e60012;
+        }
+
+        #fullbg {
+            background-color: #000000;
+            left: 0;
+            opacity: 0.75;
+            position: absolute;
+            top: 0;
+            z-index: 9;
+            filter: alpha(opacity=75);
+            -moz-opacity: 0.75;
+            -khtml-opacity: 0.75;
+        }
+
+        #dialog {
+            background: url("../../../images/bkg-share.png") no-repeat;
+            background-size: 100%;
+            min-height: 100%;
+            right: 25px;
+            position: fixed !important; /* 浮动对话框 */
+            position: absolute;
+            top: 10px;
+            width: 70%;
+            z-index: 9;
+            display: none;
+        }
+
+        .hide {
+            display: none;
+        }
+
+        /* 兼容iphone4/4s */
+        @media (device-width: 320px )and (device-height: 480px) and (-webkit-min-device-pixel-ratio: 2 ) {
+            .text {
+                font-size: 0.15rem;
+                font-weight: 500;
+                position: absolute;
+                width: 100%;
+                text-align: center;
+                bottom: 0.7rem;
+                line-height: 0.25rem;
+                z-index: 1;
+            }
+
+            .get-btn {
+                bottom: 0.35rem;
+            }
+
+        }
+
+    </style>
+    <title>为爱加油</title>
+
+</head>
+<body class="hide">
+<div class="bg">
+    <a style=" -webkit-tap-highlight-color: transparent;webkit-touch-callout: none;-webkit-user-select: none;"
+       href="rule.html">
+        <div style="float: right; width: 0.45rem;height: 0.45rem;"></div>
+    </a>
+    <img class="get-btn" src="../../../images/activity/refueling/button.png" onclick="showDialog()">
+    <div style="position:absolute; bottom: 0.18rem; font-size: 0.1rem;text-align: center;width: 3.2rem">
+        点击右上角“活动详情”了解活动规则
+    </div>
+</div>
+<div id="fullbg"></div>
+<div id="dialog" onclick="closeBg()"></div>
+</body>
+<script src="../../../js/common.js"></script>
+<script src="../../../js/jweixin-1.0.0.js"></script>
+<script src="../../../js/jquery-1.9.1.min.js"></script>
+
+<script type="text/javascript">
+    closeProduct(106);
+    autoWidth();
+    var fontSize = $('html').css('font-size').substr(0, $('html').css('font-size').length - 2);
+    var minHeight = getBgHeight();
+    $('.bg').css("height", minHeight);
+    getOpenId();
+    var openId = window.localStorage.getItem(config.openIdName);
+    var isFocus = false;
+    var index = getUrlParam('index');
+    if (index == 1) {
+        showBg();
+    }
+    $(function () {
+        if (openId != null && openId.length != 0) {
+            GetAsyncData("../../rest/User/1006", function (backData) {
+                isFocus = backData.data.flag;
+                $('.get-btn').addClass('show-btn');
+            }, {"openId": openId});
+        } else {
+            $('.get-btn').addClass('show-btn');
+        }
+        baiduCollection();
+    });
+
+    weixinShare({
+        shareUrl: config.shareRootUrl + '/weixinouter/basepage/pages/activity/activity_refueling/publicity.html',
+        shareIcon: config.shareRootUrl + '/weixinouter/basepage/images/refueling/share_icon.jpg',
+        shareText: '您有700元加油卡未领取',
+        isNeedRecord: true,
+        openId: openId,
+        activityId: '106',
+        typeTimeline: 'zhbx-3',
+        typeAppMessage: 'zhbx-4',
+        isGiveCoin: 'Y'
+    });
+
+    function showBg() {
+        var bh = $("body").height();
+        var bw = $("body").width();
+        $("#fullbg").css({
+            height: bh,
+            width: bw,
+            display: "block"
+        });
+        $("#dialog").show();
+    }
+    function closeBg() {
+        $("#fullbg,#dialog").hide();
+    }
+
+    function showDialog() {
+        if (isFocus) {
+            window.location.href = config.activity.refuelingUrl + "&linkId=1060" + openId;
+        } else {
+            showCodeDialog();
+        }
+    }
+</script>
+</html>

@@ -1,0 +1,25 @@
+
+.input_check {
+  position: absolute;
+  width: 43px;
+  height: 43px;
+  visibility: hidden;
+}
+label {
+  display: inline-block;
+  height: 43px;
+  width: 43px;
+  padding-left: 20px;
+  cursor: pointer;
+
+}
+ .input_check:checked+label {
+   background: url(../img/check_08.png) top left no-repeat;
+   background-size: 43px 43px;
+}
+ .input_check+label {
+  background: url(../img/check_03.png) top left no-repeat;
+  background-size: 43px 43px;
+  color: #999999;
+}
+

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+    <link rel="stylesheet" href="../../../css/common.css">
+    <script src="../../../js/jquery-1.9.1.min.js"></script>
+    <title>疯抢</title>
+    <style>
+        .list {
+            margin-top: 0.05rem;
+        }
+
+        body {
+            width: 6.4rem;
+            margin: 0 auto;
+        }
+
+        li {
+            width: 6.4rem;
+        }
+        img{
+            width: 6.4rem;
+            height: 3rem;
+        }
+    </style>
+</head>
+<body>
+<ul>
+    <li class="list" style="margin-top: 0"><a href="#" onclick="getPrize()">
+        <img src="../../../images/activity/first/fq-pic1.png"></a>
+    </li>
+    <li class="list"><a href="#" onclick="getPrizeSeccess()">
+        <img src="../../../images/activity/first/fq-pic2.png"></a>
+    </li>
+    <li class="list"><a href="#" onclick="buy()">
+        <img src="../../../images/activity/first/fq-pic3.png"></a>
+    </li>
+</ul>
+</body>
+<script src="../../../js/common.js"></script>
+<script>
+
+    autoSize();
+
+    function getPrize() {
+        window.location.href = "getPrize.html?type=1";
+
+    }
+    function getPrizeSeccess() {
+        window.location.href = "getPrizeSeccess.html?type=2";
+    }
+
+    function buy() {
+        window.location.href = "http://e.cic.cn/wap/portal.do?url=sy-LPEMNbGMnGOB89aIeKQ==&linkId=" + openId;
+    }
+
+</script>
+</html>

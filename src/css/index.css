@@ -1,0 +1,224 @@
+@charset "utf-8";
+.header img{
+	display: block;
+	width: 6.4rem;
+}
+.luckyDrow{
+	width: 6.4rem;
+	height: 5.75rem;
+}
+/*center*/
+.center{
+	margin-top: -.01rem;
+	width: 6.4rem;
+	height: 6.8rem;
+	background: url(../images/center.png) no-repeat;
+	background-size: 6.4rem 1.58rem;
+}
+.center a{
+	display: block;
+	float: left;
+	width: 1.28rem;
+	height: 1.51rem;
+	margin:  1.35rem 0 .32rem .26rem;
+}
+.center a img{
+	display: block;
+	width: 1.28rem;
+	height: 1.51rem;
+}
+.center p{
+	width: 6.4rem;
+	font-size: .3rem;
+	color: #fe4a27;
+	text-align: center;
+	background: url(../images/redLine.png) center no-repeat;
+	background-size: 6.4rem;
+	overflow: hidden;
+	margin-bottom: .4rem;
+}
+/*.center ul{
+	width: 6.4rem;
+	padding: ;
+}*/
+.center ul li{
+	width: 5.4rem;
+	height: .4rem;
+	margin-left: .8rem;
+	font-size: .24rem;
+	color: #6a4502;
+}
+.center ul li i{
+	display: block;
+	float: left;
+	width: 2rem;
+}
+.center ul li span{
+	display: block;
+	float: left;
+}
+
+/*bottom*/
+.bottom{
+	position: relative;
+	width: 6.4rem;
+	background-color: #ffb404;
+	padding: .3rem 0 .8rem;
+	font-size: .24rem;
+	color: #6a4502;;
+}
+.bottom .yellowLine{
+	width: 6.4rem;
+}
+.list_lh{ height:400px; overflow:hidden;}
+.bottom ul{
+	padding: .4rem .52rem 0;
+	
+}
+.bottom ul li{
+	line-height: .44rem;
+}
+.bottom .hudiejie{
+	position: absolute;
+	left: 1.96rem;
+	top: -.8rem;
+	width: 2.48rem;
+	height: .88rem;
+}
+
+
+
+/*mask*/
+.alertBg{
+	display: none;
+	position: fixed;
+	top: 0;bottom: 0;
+	width: 100%;
+	background-color: rgba(0,0,0,0.65);
+	z-index: 100;
+}
+/*万金币不足*/
+.LackOfGold{
+	display: none;
+	overflow: hidden;
+}
+.LackOfGold, .goOn, .winning, .changefail,.changesuccess{
+	width: 5.2rem;
+	padding: .55rem .25rem;
+	margin: 1.6rem .6rem 0 .6rem;
+	background-color: #fff2c5;
+	border-radius: .1rem;
+	
+}
+.LackOfGold p, .goOn p, .winning p, .Spree p, .changefail p,  .changesuccess p{
+	color: #632205;
+	font-size: .26rem;
+	width: 4.7rem;
+	line-height: .5rem;
+}
+.LackOfGold .enter, .winning .enter, .Spree .enter, .changefail .enter, .changesuccess .enter{
+	display: block;
+	background-color: #ff960e;
+	width: 3.5rem;
+	height: .7rem;
+	line-height: .7rem;
+	color: #fff;
+	border-radius: .07rem;
+	text-align: center;
+	margin: .4rem auto 0;
+	border-bottom: 5px solid #ff6c00;
+	
+}
+
+/*万金币不足*/
+.goOn{
+	display: none;
+	overflow: hidden;
+	z-index: 9999;
+}
+.goOn span{
+	display: block;
+	float: left;
+	background-color: #ff960e;
+	width: 1.7rem;
+	height: .7rem;
+	line-height: .7rem;
+	color: #fff;
+	border-radius: .07rem;
+	text-align: center;
+	margin-top: .43rem;
+	margin-left: .43rem;
+	border-bottom: 5px solid #ff6c00;
+}
+
+/*中奖*/
+.winning{
+	display: none;
+	position: relative;
+	z-index: 200;
+}
+.winning p span{
+	font-size: .28rem;
+	color: #ad321a;
+}
+.winning img{
+	position: absolute;
+	left: -.1rem;
+	top: -.8rem;
+	width: 5.4rem;
+	height: .99rem;
+}
+
+.maquee{
+	overflow: hidden;
+}
+
+/*大礼包*/
+.Spree{
+	z-index: 200;
+	display: none;
+	position: relative;
+	width: 5.2rem;
+	padding: .55rem .25rem;
+	margin: 3rem .6rem 0 .6rem;
+	background-color: #fff2c5;
+	border-radius: .1rem;
+}
+.Spree p span{
+	font-size: .28rem;
+	color: #ad321a;
+}
+.Spree img{
+	position: absolute;
+	left: -.1rem;
+	top: -2rem;
+	width: 5.4rem;
+	height: 2.19rem;
+}
+
+/*分享*/
+.share{
+	display: none;
+	height: 100%;
+	width: 100%;
+	background: url(../images/share.png) no-repeat left 1.08rem rgba(0,0,0,0.65);
+	background-size: 6.4rem;
+	position: relative;
+	z-index: 200;
+}
+.share .btn{
+	width: 2.4rem;
+	height: .74rem;
+	position: absolute;
+	left: 2.15rem;
+	top: 5.3rem;
+}
+
+.changesuccess{
+	display: none;
+	overflow: hidden;
+}
+.changefail{
+	display: none;
+	overflow: hidden;
+}

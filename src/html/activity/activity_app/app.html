@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>绿驾</title>
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"/>
+    <link rel="stylesheet" type="text/css" href="css/swiper.min.css"/>
+    <link rel="stylesheet" type="text/css" href="css/animate.min.css"/>
+    <link rel="stylesheet" type="text/css" href="css/common.css"/>
+    <style type="text/css">
+        html, body {
+            height: 100%;
+            width: 100%;
+        }
+
+        .swiper-container {
+            height: 100%;
+
+        }
+
+        .swiper-wrapper {
+            position: absolute;
+            height: 100%;
+            width: 100%;
+        }
+
+        .swiper-slide {
+            position: relative;
+            height: 100% !important;
+            width: 100%;
+            color: #fff;
+
+        }
+
+        .abs {
+            position: absolute;
+        }
+
+        .slide1 {
+            height: 100% !important;
+            background: url(img/1.jpg);
+            background-size: 100% 100%;
+        }
+
+        .slide1 img {
+            left: 19.5%;
+            top: 12.5%;
+            width: 70%;
+        }
+
+        .slide2 {
+            background: url(img/2.jpg) no-repeat;
+            height: 100% !important;
+            background-size: 100% 100%;
+        }
+
+        .slide2 img {
+            left: 0;
+            top: 29.1%;
+            width: 100%;
+        }
+
+        .slide3 {
+            background: url(img/3.jpg) no-repeat;
+            height: 100% !important;
+            background-size: 100% 100%;
+        }
+
+        .slide3 .slide3-1 {
+            left: 7%;
+            top: 80%;
+            width: 15%;
+        }
+
+        .slide3 .slide3-2 {
+            left: 31.2%;
+            top: 80%;
+            width: 15%;
+        }
+
+        .slide3 .slide3-3 {
+            left: 55.1%;
+            top: 80%;
+            width: 15%;
+        }
+
+        .slide3 .slide3-4 {
+            left: 80%;
+            top: 80%;
+            width: 15%;
+        }
+
+        .slide4 {
+            background: url(img/4.jpg) no-repeat;
+            height: 100% !important;
+            background-size: 100% 100%;
+        }
+
+        .slide4 img {
+            width: 12%;
+        }
+
+        .slide4-1 {
+            left: 15.4%;
+            top: 16.7%;
+        }
+
+        .slide4-2 {
+            left: 45.2%;
+            top: 13.6%;
+
+        }
+
+        .slide4-3 {
+            left: 75%;
+            top: 16.7%;
+        }
+
+        .slide4-4 {
+            left: 81%;
+            top: 38.2%;
+        }
+
+        .slide4 .slide4-5 {
+            left: 61%;
+            top: 46.4%;
+            width: 7%;
+        }
+
+        .slide4-6 {
+            left: 32.1%;
+            top: 46.4%;
+        }
+
+        .slide4-7 {
+            left: 10.3%;
+            top: 38.2%;
+        }
+
+        .slide5 {
+            /*background: url(img/5.jpg) no-repeat;*/
+            /*height: 100% !important;*/
+            /*background-size: 100% 100%;*/
+        }
+
+        .slide5 .slide5-1 {
+            left: 13.8%;
+            top: 11.8%;
+            width: 15%;
+            animation: img5-1 3s infinite;
+        }
+
+        @keyframes img5-1 {
+            0% {
+                top: 11.8%;
+            }
+            50% {
+                top: 10%;
+            }
+            100% {
+                top: 11.8%;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="swiper-container">
+    <div class="swiper-wrapper">
+        <div class="swiper-slide slide1">
+            <div class="swiper-slide abs">
+                <img src="img/1-1.png" class="ani abs slide1-1" swiper-animate-effect="fadeIn"
+                     swiper-animate-duration="0.5s" swiper-animate-delay="0.3s"/>
+            </div>
+        </div>
+        <div class="swiper-slide slide2">
+            <img src="img/2-2.png" class="ani abs slide2-1" swiper-animate-effect="fadeIn"
+                 swiper-animate-duration="0.5s" swiper-animate-delay="0.3s"/>
+        </div>
+        <div class="swiper-slide slide3">
+            <img src="img/3-1.png" class="ani abs slide3-1" swiper-animate-effect="fadeIn"
+                 swiper-animate-duration="0.5s" swiper-animate-delay="0.3s"/>
+            <img src="img/3-2.png" class="ani abs slide3-2" swiper-animate-effect="fadeIn"
+                 swiper-animate-duration="0.5s" swiper-animate-delay="0.6s"/>
+            <img src="img/3-3.png" class="ani abs slide3-3" swiper-animate-effect="fadeIn"
+                 swiper-animate-duration="0.5s" swiper-animate-delay="0.9s"/>
+            <img src="img/3-4.png" class="ani abs slide3-4" swiper-animate-effect="fadeIn"
+                 swiper-animate-duration="0.5s" swiper-animate-delay="1.2s"/>
+        </div>
+        <div class="swiper-slide slide4">
+            <img class="ani abs slide4-1" swiper-animate-effect="fadeIn" swiper-animate-duration="0.5s"
+                 swiper-animate-delay="0.3s" src="img/4-1.png"/>
+            <img class="ani abs slide4-2" swiper-animate-effect="fadeIn" swiper-animate-duration="0.5s"
+                 swiper-animate-delay="0.6s" src="img/4-2.png"/>
+            <img class="ani abs slide4-3" swiper-animate-effect="fadeIn" swiper-animate-duration="0.5s"
+                 swiper-animate-delay="0.3s" src="img/4-3.png"/>
+            <img class="ani abs slide4-4" swiper-animate-effect="fadeIn" swiper-animate-duration="0.5s"
+                 swiper-animate-delay="0.6s" src="img/4-4.png"/>
+            <img class="ani abs slide4-5" swiper-animate-effect="fadeIn" swiper-animate-duration="0.5s"
+                 swiper-animate-delay="0.9s" src="img/4-5.png"/>
+            <img class="ani abs slide4-6" swiper-animate-effect="fadeIn" swiper-animate-duration="0.5s"
+                 swiper-animate-delay="1.2s" src="img/4-6.png"/>
+            <img class="ani abs slide4-7" swiper-animate-effect="fadeIn" swiper-animate-duration="0.5s"
+                 swiper-animate-delay="0.9s" src="img/4-7.png"/>
+        </div>
+        <div class="swiper-slide slide5">
+            <img class="abs ani slide5-1" src="img/5-1.png"/>
+            <img src="img/5.jpg" style="width: 100%;height: 100%"/>
+        </div>
+    </div>
+</div>
+</body>
+<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<script src="../../../js/common.js"></script>
+<script src="js/swiper.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="js/swiper.animate1.0.2.min.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+
+    var mySwiper = new Swiper('.swiper-container', {
+        direction: 'vertical',
+        loop: false,
+        //speed:'750',
+
+        onInit: function (swiper) { //Swiper2.x的初始化是onFirstInit
+            swiperAnimateCache(swiper); //隐藏动画元素
+            swiperAnimate(swiper); //初始化完成开始动画
+        },
+        onSlideChangeEnd: function (swiper) {
+            swiperAnimate(swiper); //每个slide切换结束时也运行当前slide动画
+        }
+    });
+
+    $(".slide5-1").animate({top: "100px"}, function () {
+        $(this).animate({top: "130px"})
+    });
+    weixinShare({
+        shareUrl: config.shareRootUrl + '/weixinouter/basepage/pages/activity/activity_app/app.html',
+        shareTitle: '绿驾',
+        shareIcon: config.shareRootUrl + '/weixinouter/basepage/images/app_logo.jpg',
+        shareText: '做公益一样有福利！快来领取你的绿色出行奖励吧！',
+        isNeedRecord: false
+    });
+
+    baiduCollection();
+</script>
+</html>

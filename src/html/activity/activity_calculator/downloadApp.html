@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no"/>
+
+    <!--缓存强制清理-->
+    <!--<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"/>-->
+    <!--<meta http-equiv="Pragma" content="no-cache"/>-->
+    <!--<meta http-equiv="Expires" content="0"/>-->
+    <style>
+
+        html, body, p, div {
+            font-family: 'Microsoft YaHei', 'Hiragino Sans GB', Helvetica, Arial, 'Lucida Grande', sans-serif;
+            margin: 0;
+            padding: 0;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            width: 3.2rem;
+            margin: 0 auto;
+        }
+
+        .bg {
+            background: url("../../../images/activity/app_calculator/bg2.jpg") no-repeat;
+            background-size: 100% 100%;
+            width: 100%;
+        }
+
+        a {
+            -webkit-tap-highlight-color: transparent;
+            text-decoration: none;
+            outline: none;
+        }
+
+        .hide {
+            display: none;
+        }
+
+        .content {
+            position: absolute;
+            width: 2.685rem;
+            height: 3.39rem;
+            background-size: 100% 100%;
+            margin-left: 0.2575rem;
+            margin-top: 0.65rem;
+        }
+
+        .bg-img {
+            width: 2.685rem;
+            height: 3.39rem;
+            background-size: 100% 100%;
+            text-align: center;
+        }
+
+        .logo {
+            position: absolute;
+            width: 0.79rem;
+            height: 0.295rem;
+            margin-top: 0.05rem;
+            margin-left: 0.1rem;
+        }
+
+        input {
+            position: absolute;
+            width: 1.35rem;
+            height: 0.4rem;
+            left: 0.3rem;
+            background: transparent;
+            outline: none;
+            padding: 0 0.15rem;
+            text-align: center;
+            font-size: 0.2rem;
+            color: #fff;
+            border: 0 none;
+        }
+
+        .get-btn {
+            position: absolute;
+            width: 2rem;
+            height: 0.45rem;
+            bottom: 0.04rem;
+            left: 50%;
+            margin-left: -1.05rem;
+        }
+
+        .text {
+            text-shadow: 1px 1px 2px #3a230a;
+            color: white;
+            font-size: 0.16rem;
+            position: absolute;
+            top: 1.05rem;
+            /*left: 0.5rem;*/
+            text-align: center;
+            width: 100%;
+            font-weight: bold;
+        }
+
+        .count {
+            position: absolute;
+            font-size: 0.24rem;
+            top: 0.69rem;
+            right: 0.6rem;
+            color: #D99718;
+        }
+        @media (device-width: 320px ) and (device-height: 568px) and (-webkit-min-device-pixel-ratio: 2 ) {
+            /* 兼容iphone5 */
+            .count {
+                position: absolute;
+                font-size: 0.24rem;
+                top: 0.65rem;
+                right: 0.6rem;
+                color: #D99718;
+            }
+        }
+
+        @media (device-width: 375px ) and (device-height: 667px) and (-webkit-min-device-pixel-ratio: 2 ) {
+            /* 兼容iphone6 */
+            .count {
+                position: absolute;
+                font-size: 0.24rem;
+                top: 0.65rem;
+                right: 0.6rem;
+                color: #D99718;
+            }
+        }
+
+        @media (device-width: 414px ) and (device-height: 736px) and (-webkit-min-device-pixel-ratio: 2 ) {
+            /* 兼容iphone6 Plus */
+            .count {
+                position: absolute;
+                font-size: 0.24rem;
+                top: 0.65rem;
+                right: 0.6rem;
+                color: #D99718;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="../../../css/common-view.css">
+
+    <title>环保星级大比拼</title>
+
+</head>
+<body class="hide">
+
+<div class="bg">
+    <img src="../../../images/wanlin_logo_h.png" class="logo">
+    <div class="content">
+        <img src="../../../images/activity/app_calculator/get-bg.png" class="bg-img"/>
+        <div class="count"><span id="count">100</span><span>枚</span></div>
+        <div class="text">
+            <div>万金币已经放入您的账户中</div>
+            <div>快使用<span id="mobile"></span></div>
+            <div>登录绿驾app领取吧!</div>
+            <div style="margin-top: 0.2rem">还有多种绿色出行奖励等你拿!</div>
+            <div >→_→</div>
+        </div>
+        <div class="get-btn" onclick="toDown()"></div>
+    </div>
+</div>
+</body>
+<script src="../../../js/common.js"></script>
+<script src="../../../js/common-view.js"></script>
+<script src="../../../js/jweixin-1.0.0.js"></script>
+<script src="../../../js/jquery-1.9.1.min.js"></script>
+
+<script type="text/javascript">
+    closeProduct(109);
+    autoWidth();
+    var fontSize = $('html').css('font-size').substr(0, $('html').css('font-size').length - 2);
+    var minHeight = getBgHeight();
+    $('.bg').css("height", minHeight);
+
+    $('#count').text(sessionStorage.getItem('calculator_count'));
+    $('#mobile').text(sessionStorage.getItem('calculator_mobile'));
+    var carbon = sessionStorage.getItem('calculator_carbon');
+    var levelText = '三';
+    if (carbon > 100 && carbon < 500) {
+        levelText = '四';
+    } else if (carbon > 500) {
+        levelText = '五';
+    }
+    getOpenId();
+    var openId = window.localStorage.getItem(config.openIdName);
+
+    function toDown() {
+        var ua = navigator.userAgent.toLowerCase();
+        if (/iphone|ipad|ipod/.test(ua)) {
+            window.location.href = "http://appurl.cc/130999";
+        } else if (/android/.test(ua)) {
+            window.location.href = "http://a.app.qq.com/o/simple.jsp?pkgname=com.wanlianjin.zswl";
+        }
+    }
+    weixinShare({
+        shareUrl: config.shareRootUrl + '/weixinouter/basepage/pages/activity/activity_calculator/share.html?carbon=' + carbon,
+        shareTitle:'环保星级大比拼',
+        shareText: '我的环保星级是' + levelText + '星，快来测试一下你的环保星级吧！',
+        onlyWeixin: false,
+        isNeedRecord: true,
+        openId: openId,
+        activityId: '109',
+        typeTimeline: 'zhbx-3',
+        typeAppMessage: 'zhbx-4',
+        isGiveCoin: 'N'
+    });
+    //baiduCollection();
+</script>
+</html>

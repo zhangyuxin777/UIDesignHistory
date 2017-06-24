@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>测试问题</title>
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/choose.css">
+    <link rel="stylesheet" href="css/question.css">
+</head>
+<body>
+<div class="main">
+    <ul>
+        <li>
+            <img src="img/question_1.png" alt="">
+            <div class="choose">
+                <input type="radio" class="input_check" id="checked1" name="score1" value="yes">
+                <label for="checked1"></label><i class="yes"></i>
+                <input type="radio" class="input_check" id="checked2" name="score1" value="no">
+                <label for="checked2"></label><i class="no"></i>
+            </div>
+        </li>
+        <li>
+            <img src="img/question_2.png" alt="">
+            <div class="choose">
+                <input type="radio" class="input_check" id="checked3" name="score2" value="yes">
+                <label for="checked3"></label><i class="yes"></i>
+                <input type="radio" class="input_check" id="checked4" name="score2" value="no">
+                <label for="checked4"></label><i class="no"></i>
+            </div>
+        </li>
+        <li>
+            <img src="img/question_3.png" alt="">
+            <div class="choose">
+                <input type="radio" class="input_check" id="checked5" name="score3" value="yes">
+                <label for="checked5"></label><i class="yes"></i>
+                <input type="radio" class="input_check" id="checked6" name="score3" value="no">
+                <label for="checked6"></label><i class="no"></i>
+            </div>
+        </li>
+        <li>
+            <img src="img/question_4.png" alt="">
+            <div class="choose">
+                <input type="radio" class="input_check" id="checked7" name="score4" value="yes">
+                <label for="checked7"></label><i class="yes"></i>
+                <input type="radio" class="input_check" id="checked8" name="score4" value="no">
+                <label for="checked8"></label><i class="no"></i>
+            </div>
+        </li>
+        <li>
+            <img src="img/question_5.png" alt="">
+            <div class="choose">
+                <input type="radio" class="input_check" id="checked9" name="score5" value="yes">
+                <label for="checked9"></label><i class="yes"></i>
+                <input type="radio" class="input_check" id="checked10" name="score5" value="no">
+                <label for="checked10"></label><i class="no"></i>
+            </div>
+        </li>
+        <li>
+            <img src="img/question_6.png" alt="">
+            <div class="choose">
+                <input type="radio" class="input_check" id="checked11" name="score6" value="yes">
+                <label for="checked11"></label><i class="yes"></i>
+                <input type="radio" class="input_check" id="checked12" name="score6" value="no">
+                <label for="checked12"></label><i class="no"></i>
+            </div>
+        </li>
+        <li>
+            <img src="img/question_7.png" alt="">
+            <div class="choose">
+                <input type="radio" class="input_check" id="checked13" name="score7" value="yes">
+                <label for="checked13"></label><i class="yes"></i>
+                <input type="radio" class="input_check" id="checked14" name="score7" value="no">
+                <label for="checked14"></label><i class="no"></i>
+            </div>
+        </li>
+        <li>
+            <img src="img/question_8.png" alt="">
+            <div class="choose">
+                <input type="radio" class="input_check" id="checked15" name="score8" value="yes">
+                <label for="checked15"></label><i class="yes"></i>
+                <input type="radio" class="input_check" id="checked16" name="score8" value="no">
+                <label for="checked16"></label><i class="no"></i>
+            </div>
+        </li>
+    </ul>
+    <div class="footer">
+        <a></a>
+    </div>
+</div>
+<!--µ¯³ö²ã-->
+<div id="fade" class="black_overlay"></div>
+<div class="pro_rule_detil">
+    <span class="close"></span>
+    <div class="pro_rule_cont">
+
+    </div>
+</div>
+
+</body>
+</html>
+<script src="js/common/jquery-1.7.2.min.js"></script>
+<script src="js/common/zoom.js"></script>
+<script src="../../../js/jweixin-1.0.0.js"></script>
+<script src="../../../js/common.js"></script>
+<script>
+    closeProduct(112);
+    $(function () {
+        $(".footer > a").click(function () {
+            var $yes = 0, $no = 0;
+            $(".input_check:checked").each(function (i, ele) {
+                if ($(ele).val() == "yes") {
+                    $yes++
+                } else if ($(ele).val() == "no") {
+                    $no++
+                }
+            });
+            if ($yes + $no !== 8) {
+                ShowDiv('.pro_rule_detil', 'fade');
+            } else {
+                if ($yes >= 7) {
+                    $(".footer >a")[0].href = "answer.html?count=g4";
+                } else if ($yes >= 5) {
+                    $(".footer >a")[0].href = "answer.html?count=g3";
+                } else if ($yes >= 3) {
+                    $(".footer >a")[0].href = "answer.html?count=g2";
+                } else {
+                    $(".footer >a")[0].href = "answer.html?count=g1";
+                }
+            }
+            $('.close').click(function () {
+                CloseDiv('.pro_rule_detil', 'fade')
+            })
+        });
+        function ShowDiv(show_div, bg_div) {
+            $(show_div).css('display', 'block');
+            document.getElementById(bg_div).style.display = 'block';
+            var bgdiv = document.getElementById(bg_div);
+            bgdiv.style.width = document.body.scrollWidth;
+            $("#" + bg_div).height("1643px");
+            window.scrollTo(0, 0);
+        };
+        function CloseDiv(show_div, bg_div) {
+            $(show_div).css('display', 'none');
+            document.getElementById(bg_div).style.display = 'none';
+        };
+    })
+    var openId = window.localStorage.getItem(config.openIdName);
+    baiduCollection();
+    weixinShare({
+        shareUrl: config.shareRootUrl + '/weixinouter/basepage/pages/activity/activity_fatigueTest/index.html',
+//        shareIcon: config.shareRootUrl + '/weixinouter/basepage/images/refueling/share_icon.jpg',
+        shareText: '对抗亚健康、过劳shi的战斗值，你够吗？',
+        isNeedRecord: true,
+        onlyWeixin:false,
+        openId: openId,
+        activityId: '112',
+        typeTimeline: 'zhbx-3',
+        typeAppMessage: 'zhbx-4',
+        isGiveCoin: 'N'
+    });
+
+</script>
+

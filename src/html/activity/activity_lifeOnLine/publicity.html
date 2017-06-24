@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+    <!--缓存强制清理-->
+    <!--<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"/>-->
+    <!--<meta http-equiv="Pragma" content="no-cache"/>-->
+    <!--<meta http-equiv="Expires" content="0"/>-->
+    <style>
+
+        html, body, p, div {
+            font-family: 'Microsoft YaHei', 'Hiragino Sans GB', Helvetica, Arial, 'Lucida Grande', sans-serif;
+            margin: 0;
+            padding: 0;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            width: 3.2rem;
+            margin: 0 auto;
+        }
+
+        .bg {
+            background: url("../../../images/activity/lifeOnLine/bg.jpg") no-repeat;
+            background-size: 100% 100%;
+            width: 3.2rem;
+            height: 25.365rem;
+            position: relative;
+        }
+
+        a {
+            -webkit-tap-highlight-color: transparent;
+            text-decoration: none;
+            outline: none;
+        }
+
+        .hide {
+            display: none;
+        }
+
+        .href-div-top {
+            position: absolute;
+            /*background: #111;*/
+            width: 0.7rem;
+            height: 0.5rem;
+            margin-left: 0.45rem;
+            opacity: .6;
+        }
+
+        .href-div-bottom {
+            position: absolute;
+            /*background: #111;*/
+            width: 1rem;
+            height: 0.3rem;
+            margin-left: 1rem;
+            opacity: .8;
+        }
+
+    </style>
+    <title>爱健康 惠生活</title>
+
+</head>
+<body class="hide">
+<div class="bg">
+
+</div>
+<div class="href-div-top" style="top: 8.55rem;" onclick="toFreeRide()"></div>
+<div class="href-div-bottom" style="top: 11.42rem;" onclick="toFreeRide()"></div>
+
+<div class="href-div-top" style="top: 13.3rem;margin-left: 2rem" onclick="toDreadDisease100()"></div>
+<div class="href-div-bottom" style="top: 16.15rem;margin-left: 0.93rem" onclick="toDreadDisease100()"></div>
+
+<div class="href-div-top" style="top: 18rem;" onclick="toDDJR()"></div>
+<div class="href-div-bottom" style="top: 20.75rem;margin-left: 0.83rem" onclick="toDDJR()"></div>
+</body>
+<script src="../../../js/common.js"></script>
+<script src="../../../js/jweixin-1.0.0.js"></script>
+<script src="../../../js/jquery-1.9.1.min.js"></script>
+<script type="text/javascript">
+    closeProduct(111);
+    autoWidth();
+    getOpenId();
+    var openId = window.localStorage.getItem(config.openIdName);
+    var isFocus = false;
+    $(function () {
+        if (openId != null && openId.length != 0) {
+            GetAsyncData("../../rest/User/1006", function (backData) {
+                isFocus = backData.data.flag;
+            }, {"openId": openId});
+        } else {
+        }
+       //20161010 yugg 去掉统计  baiduCollection();
+    });
+    weixinShare({
+        shareUrl: config.shareRootUrl + '/weixinouter/basepage/pages/activity/activity_lifeOnLine/publicity.html',
+//        shareIcon: config.shareRootUrl + '/weixinouter/basepage/images/activity/lifeOnLine/share_icon.jpg',
+        shareTitle: '“爱健康 惠生活”限时优惠',
+        shareText: '在您拼搏于工作时给自己一份可靠的保障！给孩子一份贴心的呵护！',
+        shareTimelineText: '“爱健康 惠生活”限时优惠',
+        isNeedRecord: true,
+        openId: openId,
+        activityId: '111',
+        typeTimeline: 'zhbx-3',
+        typeAppMessage: 'zhbx-4',
+        isGiveCoin: 'N'
+    });
+
+    function toFreeRide() {
+        if (isFocus) {
+            window.location.href = '../../product/freeRide/trial.html';
+        } else {
+            showCodeDialog();
+        }
+
+    }
+    function toDreadDisease100() {
+        if (isFocus) {
+            window.location.href = '../../product/dreadDisease100/trial.html';
+        } else {
+            showCodeDialog();
+        }
+    }
+    function toDDJR() {
+        if (isFocus) {
+            window.location.href = '../../product/DDJR/trial.html';
+        } else {
+            showCodeDialog();
+        }
+    }
+
+</script>
+</html>

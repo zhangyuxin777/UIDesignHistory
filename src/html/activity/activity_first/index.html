@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+    <link rel="stylesheet" href="../../../css/common.css">
+    <link rel="stylesheet" href="../../../css/mine.css">
+
+    <title>万联金网</title>
+    <style>
+        .main {
+            background: url("../../../images/activity/first/main.png") no-repeat;
+            margin: auto;
+            background-size: 100%;
+            background-color: rgb(249, 77, 103);
+            max-width: 640px;
+        }
+
+    </style>
+</head>
+<body>
+<div class="main">
+    <div class="xq-div1">
+        <p class="xq-font1">活动细则:</p>
+        <p class="xq-font2">
+            活动期间,关注"万联金网"公众号即可领取"疯抢油卡"权益.2016年1月1日至2016年1月31日期间,拥有"疯抢油卡"权益的用户,在"万联金网"公众号下单投保中华车险,且总保费满2000元,可根据下表领取中石化加油卡.</p>
+    </div>
+    <div class="xq-div2"></div>
+    <div class="xq-div4">
+        <div class="xq-div3"></div>
+        <table>
+            <tr>
+                <td>车险保费</td>
+                <td>投保得油卡</td>
+            </tr>
+            <tr>
+                <td>满2000</td>
+                <td>400</td>
+            </tr>
+            <tr>
+                <td>满3000</td>
+                <td>600</td>
+            </tr>
+            <tr>
+                <td>满4000</td>
+                <td>800</td>
+            </tr>
+            <tr>
+                <td>满5000</td>
+                <td>1000</td>
+            </tr>
+            <tr>
+                <td>满6000</td>
+                <td>1200</td>
+            </tr>
+            <tr>
+                <td>满7000</td>
+                <td>1400</td>
+            </tr>
+            <tr>
+                <td>满8000</td>
+                <td>1600</td>
+            </tr>
+            <tr>
+                <td>满9000</td>
+                <td>1800</td>
+            </tr>
+            <tr>
+                <td>满10000</td>
+                <td>2000</td>
+            </tr>
+            <tr>
+                <td>满11000</td>
+                <td>2200</td>
+            </tr>
+            <tr>
+                <td>满12000</td>
+                <td>2400</td>
+            </tr>
+            <tr>
+                <td>满13000</td>
+                <td>2600</td>
+            </tr>
+            <tr>
+                <td>满14000</td>
+                <td>2800</td>
+            </tr>
+            <tr>
+                <td>满15000</td>
+                <td>3000</td>
+            </tr>
+        </table>
+    </div>
+    <p style="padding-left:7%;font-size:10px;color: rgb(27,27,27);padding-bottom:10px;margin-top:0;padding-top:0;">
+        交强险部分不参与优惠</p>
+    <div class="xq-div5">
+        <div class="xq-font4">
+            <p>参与方式:</p>
+            <p>1.长按或扫描下方二维码,关注"万联金网"公众号.</p>
+            <p>2.点击"疯抢油卡"或回复"油卡"领取权益.</p>
+            <p>3.通过"万联金网"公众号底部"疯抢"按钮投保车险即可获得加油卡.</p>
+            <p>4.加油卡将于2月1日24:00前统一发放.用户可通过公众号底部菜单中"我"->"我的礼品卡"中查看.</p>
+        </div>
+        <div class="erwei"><img src="../../../images/erwei.png" width="100%"></div>
+        <p class="xq-font5" style="clear: both;padding-top: 5px;padding-bottom: 5px;">本次活动最终解释权归万联电子商务股份有限公司所有</p>
+    </div>
+
+
+</div>
+</body>
+<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<script src="../../../js/jquery-1.9.1.min.js"></script>
+<script src="../../../js/common.js"></script>
+<script>
+
+//    var date = new Date();
+//    var month = date.getMonth() + 1;
+//    if (month >= config.activityEndTime.firstActivity) {
+//        $(".main").remove();
+//        $('body').css("height", $(window).height());
+//        var htmlStr = "<div id='#no_card_div' style='height: 100% ;text-align: center; background: #ffffff'>" +
+//                "<img style='width: 100%;padding-top: 100px' src='../../../images/activity/first/activity_close.png'>" +
+//                " </div>";
+//        $("body").append(htmlStr);
+//    }
+
+    GetData("weixinbase/1043", function (backdata) {
+        var data = backdata;
+        //alert("(c)"+data.code+"(t)"+data.timestamp+"(n)"+data.nonceStr+"(s)"+data.signature)
+        wx.config({
+            debug: false,
+            appId: config.appIdValue,  //wx0017a3384b9df4f0
+            timestamp: data.timestamp,
+            nonceStr: data.nonceStr,
+            signature: data.signature,
+            jsApiList: [
+                'checkJsApi',
+                'onMenuShareTimeline',
+                'onMenuShareAppMessage',
+                'onMenuShareQQ',
+                'onMenuShareWeibo',
+                'onMenuShareQZone'
+            ]
+        });
+    }, {"url": window.location.href.split('#')[0]});
+
+    wx.ready(function () {
+        /*wx.checkJsApi({
+         jsApiList:[
+         'onMenuShareTimeline'
+         ]
+         })*/
+        wx.onMenuShareAppMessage({
+            title: '万联金网',
+            desc: '我正在参加#百万油卡任性发#，买车险最高送3000元加油卡，全年仅此一次，错过等明年！',
+            link: config.shareRootUrl + '/weixinouter/basepage/pages/index.html',  //weixin
+            imgUrl: config.shareRootUrl + '/weixinouter/basepage/images/share-icon.png',
+            type: '', // 分享类型,music、video或link，不填默认为link
+            dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
+            success: function () {
+                // 用户确认分享后执行的回调函数
+                // alert("确认分享");
+                /*GetData("Reward/1008", function (json) {
+                 //alert("1008 code:" + json.code);
+                 }, {"openId": openId, "type": "2"});*/
+            },
+            cancel: function () {
+                // 用户取消分享后执行的回调函数
+            }
+
+        });
+        wx.onMenuShareTimeline({
+            title: '我正在参加#百万油卡任性发#，买车险最高送3000元加油卡，全年仅此一次，错过等明年！',
+            link: config.shareRootUrl + '/weixinouter/basepage/pages/index.html',  //weixin
+            imgUrl: config.shareRootUrl + '/weixinouter/basepage/images/share-icon.png',
+            success: function () {
+                // 用户确认分享后执行的回调函数
+                //alert("确认分享");
+                /* GetData("Reward/1008", function (json) {
+                 //alert("1008 code:" + json.code);
+                 }, {"openId": openId, "type": "2"});*/
+            },
+            cancel: function () {
+                // 用户取消分享后执行的回调函数
+            }
+
+        });
+        wx.onMenuShareQQ({
+            title: '万联金网',
+            desc: '我正在参加#百万油卡任性发#，买车险最高送3000元加油卡，全年仅此一次，错过等明年！', // 分享描述
+            link: config.shareRootUrl + '/weixinouter/basepage/pages/index.html',  //weixin
+            imgUrl: config.shareRootUrl + '/weixinouter/basepage/images/share-icon.png',
+            success: function () {
+                // 用户确认分享后执行的回调函数
+                //alert("确认分享");
+                /* GetData("Reward/1008", function (json) {
+                 //alert("1008 code:" + json.code);
+                 }, {"openId": openId, "type": "2"});*/
+            },
+            cancel: function () {
+                // 用户取消分享后执行的回调函数
+            }
+        });
+
+        wx.onMenuShareQZone({
+            title: '万联金网',
+            desc: '我正在参加#百万油卡任性发#，买车险最高送3000元加油卡，全年仅此一次，错过等明年！', // 分享描述
+            link: config.shareRootUrl + '/weixinouter/basepage/pages/index.html',  //weixin
+            imgUrl: config.shareRootUrl + '/weixinouter/basepage/images/share-icon.png',
+            success: function () {
+                // 用户确认分享后执行的回调函数
+                //alert("确认分享");
+                /* GetData("Reward/1008", function (json) {
+                 //alert("1008 code:" + json.code);
+                 }, {"openId": openId, "type": "2"}); */
+            },
+            cancel: function () {
+                // 用户取消分享后执行的回调函数
+            }
+        });
+
+        wx.error(function (res) {
+            alert('wx.error: ' + JSON.stringify(res));
+        });
+
+
+    });
+</script>
+</html>

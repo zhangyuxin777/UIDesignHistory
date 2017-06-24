@@ -1,0 +1,1340 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport'
+          content='width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui'>
+    <meta name='apple-mobile-web-app-capable' content='yes'>
+    <meta name='apple-mobile-web-app-status-bar-style' content='black'>
+
+    <title>多车之家</title>
+    <style>
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+            -webkit-appearance: none !important;
+            margin: 0;
+        }
+
+        input[type='number'] {
+            -moz-appearance: textfield;
+        }
+
+        body {
+            font-family: 'Microsoft YaHei', 'Hiragino Sans GB', Helvetica, Arial, 'Lucida Grande', sans-serif;
+            width: 3.2rem;
+            margin: 0 auto;
+            padding: 0;
+            background-color: #f6f4f4;
+        }
+
+        ol, ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            border-bottom: 1px solid #d4d4d4;
+            border-top: 1px solid #d4d4d4;
+            background-color: #ffffff;
+        }
+
+        a {
+            text-decoration: none;
+            outline: none;
+            color: #515151;
+        }
+
+        a:hover {
+            text-decoration: none;
+        }
+
+        .col-20 {
+            width: 19.9%;
+            float: left;
+        }
+
+        input {
+            border: 0 none;
+            font-size: 0.12rem;
+            outline: none;
+            color: #888;
+        }
+
+        .text_width {
+            width: 14.9%;
+            float: left;
+        }
+
+        .text_plate_width {
+            padding-left: 0.1rem;
+            width: 14.9%;
+            float: left;
+        }
+
+        .input_plate_width {
+            width: 29.9%;
+            float: left;
+        }
+
+        .input_info_width {
+            width: 52.9%;
+            float: left;
+        }
+
+        ul#ul_info.info_complete input {
+            color: #FB4C0F;
+            background-color: white;
+        }
+
+        .info_complete {
+            /*color: #FB4C0F;*/
+            /*background-color: white;*/
+        }
+
+        .li_info {
+            padding-left: 0.05rem;
+            margin-left: 0.05rem;
+            list-style-type: none;
+            height: 0.45rem;
+            line-height: 0.45rem;
+            font-size: 0.12rem;
+            border-bottom: 1px solid #d4d4d4;
+            clear: both;
+        }
+
+        .li_plate {
+            list-style-type: none;
+            height: 0.57rem;
+            line-height: 0.45rem;
+            font-size: 0.12rem;
+            border-bottom: 1px solid #d4d4d4;
+            clear: both;
+        }
+
+        li.no_line {
+            border: 0 solid #d4d4d4;
+        }
+
+        .clear {
+            clear: both;
+        }
+
+        .enter_btn {
+            height: 0.5rem;
+            line-height: 0.5rem;
+            background-color: rgb(251, 76, 15);
+            color: #ffffff;
+            text-align: center;
+            font-size: 0.175rem;
+            border-radius: 0.05rem;
+            border-style: hidden;
+            outline: none;
+            margin: 0 0.19rem;
+            margin-top: 0.2rem;
+        }
+
+        .add_btn {
+            height: 0.25rem;
+            width: 0.25rem;
+            background: url("../../../images/cars/add.png");
+            background-size: 0.25rem 0.25rem;
+            margin-top: 0.05rem;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .delete_btn {
+            height: 0.25rem;
+            width: 0.25rem;
+            background: url("../../../images/cars/delete.png");
+            background-size: 0.25rem 0.25rem;
+            margin-top: 0.05rem;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .car_info_div {
+            width: 100%;
+            height: 0.45rem;
+        }
+
+        .new_car_div {
+            width: 39.9%;
+            float: left;
+            margin-left: 20%;
+            border-top: 1px solid #d4d4d4;
+        }
+
+        .new_car {
+            width: 0.5rem;
+            margin-left: 6px;
+        }
+
+        .new_car img {
+            float: right;
+            padding-top: 0.125rem;
+            width: 0.2rem;
+            height: 0.2rem;
+            clear: both;
+        }
+
+        .insure_div {
+            width: 30.9%;
+            float: left;
+            text-align: right;
+        }
+
+        .insure_complete {
+            float: right;
+            margin-right: 15px;
+            width: 0.7rem;
+            text-align: center;
+            color: #FB4C0F;
+        }
+
+        .insure_btn {
+            width: 0.8rem;
+            text-align: center;
+            color: #ffffff;
+            border-radius: 0.03rem;
+            background-color: #FB4C0F;
+            font-size: 0.1rem;
+            border-style: hidden;
+            outline: none;
+            margin-right: 15px;
+            padding-top: 0.07rem;
+            padding-bottom: 0.07rem;
+        }
+
+        .disable {
+            background-color: #ccc;
+        }
+
+        input.disable {
+            background-color: #fff;
+        }
+
+        .is_insure_line {
+        }
+
+        form {
+            display: none;
+        }
+
+        .hide {
+            display: none;
+        }
+
+        label:focus {
+            background-color: #fff;
+        }
+
+        .line_div {
+            width: 100%;
+            height: 0.1rem;
+            background-color: #f6f4f4;
+            border-bottom: 1px solid #d4d4d4;
+        }
+
+        input.plate_width {
+            width: 100%;
+        }
+
+        #ul_plate {
+            border-top: 0 solid #d4d4d4;
+        }
+
+        #saveSuccessHint {
+            position: absolute;
+            top: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .toast {
+            position: relative;
+            font-size: 0.14rem;
+            color: white;
+            border-radius: 0.04rem;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 45%;
+            width: 1.0rem;
+            height: 0.4rem;
+            background-color: #FB4C0F;
+        }
+
+        .toast_text {
+            text-align: center;
+            padding-top: 0.11rem;
+        }
+
+        @keyframes toast_hide {
+            0% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 0;
+            }
+        }
+
+        @-webkit-keyframes toast_hide /* Safari 和 Chrome */
+        {
+            0% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 0;
+            }
+        }
+
+        .animaite_toast_hide {
+            animation: toast_hide 2.1s;
+            -webkit-animation: toast_hide 2.1s; /* Safari 和 Chrome */
+        }
+
+        @media (device-width: 320px ) and (device-height: 568px) and (-webkit-min-device-pixel-ratio: 2 ) {
+            /* 兼容iphone5 */
+            ol, ul {
+                list-style: none;
+                padding: 0;
+                margin: 0;
+                border-bottom: 0.5px solid #d4d4d4;
+                border-top: 0.5px solid #d4d4d4;
+                background-color: #ffffff;
+            }
+
+            .li_info {
+                list-style-type: none;
+                height: 0.45rem;
+                line-height: 0.45rem;
+                font-size: 0.12rem;
+                border-bottom: 0.5px solid #d4d4d4;
+                clear: both;
+            }
+
+            .li_plate {
+                list-style-type: none;
+                height: 0.57rem;
+                line-height: 0.45rem;
+                font-size: 0.12rem;
+                border-bottom: 0.5px solid #d4d4d4;
+                clear: both;
+            }
+
+            .new_car_div {
+                width: 39.9%;
+                float: left;
+                margin-left: 20%;
+                border-top: 0.5px solid #d4d4d4;
+            }
+
+            .line_div {
+                width: 100%;
+                height: 0.1rem;
+                background-color: #f6f4f4;
+                border-bottom: 0.5px solid #d4d4d4;
+            }
+        }
+
+        @media (device-width: 375px ) and (device-height: 667px) and (-webkit-min-device-pixel-ratio: 2 ) {
+            /* 兼容iphone6 */
+            ol, ul {
+                list-style: none;
+                padding: 0;
+                margin: 0;
+                border-bottom: 0.5px solid #d4d4d4;
+                border-top: 0.5px solid #d4d4d4;
+                background-color: #ffffff;
+            }
+
+            .li_info {
+                list-style-type: none;
+                height: 0.45rem;
+                line-height: 0.45rem;
+                font-size: 0.12rem;
+                border-bottom: 0.5px solid #d4d4d4;
+                clear: both;
+            }
+
+            .li_plate {
+                list-style-type: none;
+                height: 0.57rem;
+                line-height: 0.45rem;
+                font-size: 0.12rem;
+                border-bottom: 0.5px solid #d4d4d4;
+                clear: both;
+            }
+
+            .new_car_div {
+                width: 39.9%;
+                float: left;
+                margin-left: 20%;
+                border-top: 0.5px solid #d4d4d4;
+            }
+
+            .line_div {
+                width: 100%;
+                height: 0.1rem;
+                background-color: #f6f4f4;
+                border-bottom: 0.5px solid #d4d4d4;
+            }
+        }
+
+        @media (device-width: 414px ) and (device-height: 736px) and (-webkit-min-device-pixel-ratio: 2 ) {
+            /* 兼容iphone6 Plus */
+            ol, ul {
+                list-style: none;
+                padding: 0;
+                margin: 0;
+                border-bottom: 0.5px solid #d4d4d4;
+                border-top: 0.5px solid #d4d4d4;
+                background-color: #ffffff;
+            }
+
+            .li_info {
+                list-style-type: none;
+                height: 0.45rem;
+                line-height: 0.45rem;
+                font-size: 0.12rem;
+                border-bottom: 0.5px solid #d4d4d4;
+                clear: both;
+            }
+
+            .li_plate {
+                list-style-type: none;
+                height: 0.57rem;
+                line-height: 0.45rem;
+                font-size: 0.12rem;
+                border-bottom: 0.5px solid #d4d4d4;
+                clear: both;
+            }
+
+            .new_car_div {
+                width: 39.9%;
+                float: left;
+                margin-left: 20%;
+                border-top: 0.5px solid #d4d4d4;
+            }
+
+            .line_div {
+                width: 100%;
+                height: 0.1rem;
+                background-color: #f6f4f4;
+                border-bottom: 0.5px solid #d4d4d4;
+            }
+        }
+
+        .hint_text {
+            height: 0.3rem;
+            font-size: 0.10rem;
+            color: #FB4C0F;
+            text-indent: 0.1rem;
+            /*padding-left:0.1rem ;*/
+        }
+
+        .insureDia {
+            position: absolute;
+            top: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .insureDiaBG {
+            position: absolute;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: gray;
+            opacity: 0.8;
+        }
+
+        .ulDialog {
+            position: relative;
+            font-size: 0.14rem;
+            border-radius: 0.04rem;
+            margin-right: auto;
+            margin-top: 35%;
+            width: 2.3rem;
+            float: left;
+            left: 50%;
+            margin-left: -1.15rem;
+            background-color: white;
+        }
+
+        .dialog_line_left {
+            float: left;
+            width: 50%;
+            height: 1px;
+            background: -webkit-gradient(linear, 100% 100%, 0 0, from(#FB4C0F), to(#fff));
+        }
+
+        .dialog_line_right {
+            float: right;
+            width: 50%;
+            height: 1px;
+            background: -webkit-gradient(linear, 0 0, 100% 100%, from(#FB4C0F), to(#fff));
+        }
+
+        .red {
+            color: #FB4C0F;
+        }
+
+        .dialog-btn-enter {
+            position: relative;
+            background-color: #FB4C0F;
+            float: left;
+            color: white;
+            height: 0.27rem;
+            line-height: 0.27rem;
+            width: 0.8rem;
+            border-radius: 0.5rem;
+            text-align: center;
+            margin-left: 0.2rem;
+        }
+
+        .dialog-btn-cancel {
+            position: relative;
+            float: right;
+            background-color: #ccc;
+            color: white;
+            height: 0.27rem;
+            line-height: 0.27rem;
+            width: 0.8rem;
+            border-radius: 0.5rem;
+            text-align: center;
+            margin-right: 0.2rem;
+            margin-bottom: 0.1rem;
+        }
+
+        .dialog-title {
+            text-align: center;
+            margin: 0.1rem;
+        }
+
+        .dialog-li-div {
+            width: 1.3rem;
+            padding: 0 0.4rem;
+            margin-top: 0.05rem;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .dialog-li-plate {
+            float: left;
+            text-align: center;
+            height: 0.3rem;
+            line-height: 0.3rem;
+        }
+
+        .dialog-check-img {
+            vertical-align: middle;
+            float: right;
+            width: 0.2rem;
+            height: 0.2rem;
+            margin-top: 0.05rem;
+        }
+
+        .dialog-check-text {
+            vertical-align: middle;
+            float: right;
+            height: 0.2rem;
+            margin-top: 0.05rem;
+        }
+
+        .dialog-btn-div {
+            margin-top: 0.1rem;
+        }
+    </style>
+</head>
+<body class="hide">
+<ul id="ul_info" style="  margin-top: 0.1rem">
+    <li class='li_info'>
+        <div class='text_width'>姓&emsp;名</div>
+        <div class='input_info_width' id='name_div'>
+            <input type='text' id='name' oninput="judge(this)" name='name' placeholder='请输入姓名'></div>
+    </li>
+    <li class='li_info'>
+        <div class='text_width'>手机号</div>
+        <div class='input_info_width' id='mobile_div'>
+            <input type='number' name='mobile' oninput="judge(this)" maxlength='11' onblur="inputBlur(this)" id='mobile'placeholder='请输入手机号'>
+        </div>
+        <div class='insure_div' style='text-align: right'>
+            <button id='get_code' class='insure_btn disable' onblur="inputBlur(this)"
+                    onclick='sendCode(this);return false;'>
+                获取验证码
+            </button>
+        </div>
+    </li>
+    <li class='li_info no_line' id="checkCode">
+        <div class='text_width'>验证码</div>
+        <div class='input_info_width' id='sendActiveCode_div'>
+            <input type='number' id='sendActiveCode' oninput="judge(this)" placeholder='请输入验证码'></div>
+    </li>
+</ul>
+<ul id="ul_plate">
+</ul>
+<div class="clear"></div>
+<div class='add_btn' onclick="switchThree(this)"></div>
+
+<div class='enter_btn disable' onclick='showDialog()'>投保</div>
+<div style="text-align:center;margin-left: auto;margin-right: auto;margin-top: 0.1rem; font-size: 0.09rem;color: darkgrey"><span
+        style="color: #FB4C0F">*</span>以上车险须为同一投保人，且投保人与车主为同一家庭成员
+</div>
+<div style="text-align:center;margin-left: auto;margin-right: auto;font-size: 0.09rem;color: darkgrey"><span
+        style="color: #FB4C0F">*</span>新疆、西藏、青海、宁夏、贵州、海南等六省暂不支持购买
+</div>
+
+<div id="statement"
+     style="text-align:center;position: absolute;width:222px; left: 50%; margin-left:-111px; bottom:1%;font-size: 6px;color: darkgrey">
+    万联电子商务股份有限公司在法律允许的范围内对“多车之家”品牌拥有最终解释权
+</div>
+
+<div id='insureDia' class='insureDia hide'>
+    <div id='insureDiaBG' class='insureDiaBG' onclick='hideDialog()'></div>
+    <div class='ulDialog' style="">
+        <div class="red dialog-title">请选择投保车辆</div>
+        <div class='dialog_line_left'></div>
+        <div class='dialog_line_right'></div>
+        <div style="height: 0.05rem"></div>
+        <div id="dialog-li-div0" class="dialog-li-div hide" onclick="checkDialog(this)" myCheck="false">
+            <div id="dialogPlateNumber0" class="dialog-li-plate">黑A12345</div>
+            <img id="dialog-check-img0" class="dialog-check-img" src="../../../images/cars/unchecked.png">
+            <div id="dialog-check-text0" class="red dialog-check-text hide">已投保</div>
+            <div class="clear"></div>
+        </div>
+        <div id="dialog-li-div1" class="dialog-li-div hide" onclick="checkDialog(this)" myCheck="false">
+            <div id="dialogPlateNumber1" class="dialog-li-plate">黑A12345</div>
+            <img id="dialog-check-img1" class="dialog-check-img" src="../../../images/cars/unchecked.png">
+            <div id="dialog-check-text1" class="red dialog-check-text hide">已投保</div>
+            <div class="clear"></div>
+        </div>
+        <div id="dialog-li-div2" class="dialog-li-div hide" onclick="checkDialog(this)" myCheck="false">
+            <div id="dialogPlateNumber2" class="dialog-li-plate">黑A12345</div>
+            <img id="dialog-check-img2" class="dialog-check-img" src="../../../images/cars/unchecked.png">
+            <div id="dialog-check-text2" class="red dialog-check-text hide">已投保</div>
+            <div class="clear"></div>
+        </div>
+
+        <div class="dialog-btn-div">
+            <div id="dialogEnterBtn" onclick="submitForm(this)" class="dialog-btn-enter">确认</div>
+            <div onclick="hideDialog()" class="dialog-btn-cancel">取消</div>
+        </div>
+        <div class="clear"></div>
+    </div>
+</div>
+
+
+<form id='infoForm' action='http://220.171.28.152:9080/wap/portal.do?url=w-1kenrhR6Mipg5b7P/3dg==' method='post'></form>
+<div id='saveSuccessHint' class="hide">
+    <div class="toast">
+        <div class="toast_text">
+            保存成功
+        </div>
+    </div>
+</div>
+</body>
+<script src='../../../js/common.js'></script>
+<script src='../../../js/jquery-1.9.1.min.js'></script>
+<script src='../../../js/jweixin-1.0.0.js'></script>
+<script src='../../../js/spinner.js'></script>
+
+<script type='text/javascript'>
+    closeProduct(103);
+    autoWidth();
+    var normalHeight = $(window).height();
+
+    $(window).resize(function () {
+        if (($(window).height() + 50) < normalHeight) {
+            $("#statement").addClass('hide');
+        } else {
+            $("#statement").removeClass('hide');
+        }
+    });
+    $('#infoForm').attr('action', config.activity.carsUrl);//表单提交地址
+
+    var myData = undefined;
+    var isCheckMobile = false;
+    var isInsured = false;
+    var carCount = 1;
+    var uuid = "";
+    var clock;
+    var line_index = 0;
+    var insuredCount = 0;
+    $("#sendActiveCode").val('');
+    function addLine(index, isSuccess) {
+        var li_plate;
+        if (isSuccess) {
+            li_plate = " <li class='li_info' id='li_plate" + index + "'><div class='car_info_div'>" +
+                    "<div class='text_width'>车牌号</div><div class='input_plate_width' id='plate_div'>" +
+                    "<input class='plate_width info_complete' type='text' value='' maxlength='7' id='plateNumber" + index + "' disabled='disabled' onblur='inputBlur(this)'oninput='judge(this)' placeholder=''></div>" +
+                    "<div id='new_car_div" + index + "' class='col-20'><div style='padding-left: 0.05rem' class='new_car clear'>" +
+                    "<label  id='new_car_label" + index + "'>新车<img src='../../../images/cars/unchecked.png'><input disabled='disabled' style='display: none' type='checkbox' onchange='checkNewCar(this)'id='isNewCar" + index + "'></label>" +
+                    "</div></div><div class='insure_complete '>已投保</div><div class='insure_div '>" +
+                    "<button myIndex='" + index + "' id='insure" + index + "' class='insure_btn disable is_insure_line hide' disabled='disabled'onclick='submitForm(this)'>投保</button>" +
+                    "</div></div></li>";
+            $('ul#ul_info').append(li_plate);
+            return;
+        } else {
+            li_plate = " <li class='li_plate' id='li_plate" + index + "'><div id='div_l" + index + "' class='line_div'></div><div class='car_info_div'>" +
+                    "<div class='text_plate_width'>车牌号</div><div class='input_plate_width' id='plate_div'>" +
+                    "<input class='plate_width' type='text' value='' maxlength='7' id='plateNumber" + index + "' onblur='inputBlur(this)'oninput='judge(this)' placeholder='请输入车牌号'></div>" +
+                    "<div id='new_car_div" + index + "' class='col-20'style='float: right;'><div class='new_car clear'  style='float: right; margin-right: 30px'>" +
+                    "<label>新车<img src='../../../images/cars/unchecked.png'><input style='display: none' type='checkbox' onchange='checkNewCar(this)'id='isNewCar" + index + "'></label>" +
+                    "</div></div><div class='insure_complete hide'>已投保</div><div class='insure_div hide'>" +
+                    "<button myIndex='" + index + "' id='insure" + index + "' class='insure_btn disable is_insure_line' disabled='disabled'onclick='showDialog(this)'>投保</button>" +
+                    "</div></div></li>";
+            $('ul#ul_plate').append(li_plate);
+
+        }
+    }
+    //        var test = {
+    //            'code': '0',
+    //            'data': [{
+    //                "name": "2323",
+    //                "phoneNumber": "18842662126",
+    //                "platelist": [
+    //                    {"informationId": "32", "isNew": "", "isSuccess": "1", "plateNumber": "", "premium": "950"},
+    //                    {"informationId": "29", "isNew": "", "isSuccess": "1", "plateNumber": "", "premium": "3835.76"},
+    //                    {"informationId": "30", "isNew": "0", "isSuccess": "0", "plateNumber": "344", "premium": "0"}]
+    //            }], 'msg': '请求成功', 'page': 1, 'records': 1, 'total': 3
+    //        };
+    //        var myData = test.data[0];
+    getOpenId();
+    var openId = window.localStorage.getItem(config.openIdName);
+    var isFocus = false;
+    if (openId != null && openId.length != 0) {
+        GetData("User/1006", function (backData) {
+            isFocus = backData.data.flag;
+        }, {"openId": openId});
+    }
+
+    function checkDialog(btn) {
+        var index = $(btn).attr('id').substring($(btn).attr('id').length - 1, $(btn).attr('id').length);
+
+        if ($(btn).attr('myCheck') == 'false') {
+            $("#dialog-check-img" + index).attr('src', '../../../images/cars/checked.png');
+            $("#dialogEnterBtn").attr('myTag', index);
+            $(btn).attr('myCheck', 'true');
+            for (var i = 0; i < 3; i++) {
+                if (i != index) {
+                    $("#dialog-check-img" + i).attr('src', '../../../images/cars/unchecked.png');
+                    $("#dialog-li-div" + i).attr('myCheck', 'false');
+                }
+            }
+        } else {
+            $("#dialog-check-img" + index).attr('src', '../../../images/cars/unchecked.png');
+            $(btn).attr('myCheck', 'false');
+            $("#dialogEnterBtn").removeAttr('myTag');
+        }
+    }
+
+    weixinShare({
+        shareUrl: config.shareRootUrl + '/weixinouter/basepage/activity_cars/proIntro1.html',
+        shareIcon: config.shareRootUrl + '/weixinouter/basepage/images/cars/proIntro/share-icon.jpg',
+        shareText: '中华保险-多车之家',
+        isNeedRecord: true,
+        openId: openId,
+        activityId: '103',
+        typeTimeline: 'zhbx-3',
+        typeAppMessage: 'zhbx-4',
+        isGiveCoin: 'Y'
+    });
+
+    function hideDialog() {
+//        $('#insureDia').html('');
+        $('#insureDia').css('height', 0);
+        $('#insureDia').addClass('hide');
+        $('#dialogEnterBtn').removeAttr('myTag');
+    }
+
+    function showDialog() {
+        if (!isFocus) {
+            showCodeDialog();
+            return;
+        }
+        var name = $.trim($('#name').val());
+        var mobile = $.trim($('#mobile').val());
+        var code = $.trim($("#sendActiveCode").val());
+        if (name.length == 0) {
+            alert('请输入姓名');
+            return;
+        }
+        if (!mobile.match(/^(0|86|17951)?(13[0-9]|15[012356789]|17[678]|18[0-9]|14[57])[0-9]{8}$/)) {
+            alert('手机号输入有误！');
+            return;
+        }
+        var enableCount = 0;
+        for (var index = 0; index < 3; index++) {
+            var plateNumber = $.trim($('#plateNumber' + index).val());
+            var isNewCar = $('#isNewCar' + index).attr("checked") == "checked" ? 1 : 0;
+            if (isNewCar == 1) {
+                plateNumber = "";
+                enableCount++;
+            } else if (plateNumber.length != 0) {
+                if (!plateNumber.match(/^[\u4e00-\u9fa5]{1}[A-Z_a-z]{1}[A-Z_a-z_0-9]{5}$/)) {
+//                    alert('车牌号输入有误！');
+                    return;
+                } else {
+                    enableCount++;
+                }
+                if (!plateCheck(plateNumber.substring(0, 1))) {
+//                    alert('车所在省不在投保范围！');
+                    return;
+                }
+            }
+        }
+        if (!isCheckMobile) {
+            if (uuid.length == 0) {
+                alert("请获取验证码");
+                return;
+            }
+            if (code.length == 0) {
+                alert("请输入验证码");
+                return;
+            }
+        }
+
+        if (enableCount < 2) {
+            alert("请至少填写两辆车信息");
+            return;
+        }
+
+        for (var j = 0; j < 3; j++) {
+            $('#dialog-li-div' + j).attr('myCheck', 'false');
+            $('#dialog-check-img' + j).attr('src', '../../../images/cars/unchecked.png');
+        }
+        var hasCheck = false;
+        for (var i = 0; i < 3; i++) {
+            plateNumber = $.trim($('#plateNumber' + i).val());
+            isNewCar = $('#isNewCar' + i).attr("checked") == "checked" ? 1 : 0;
+
+            if (myData == undefined || i >= myData.platelist.length) {
+                $('#dialog-check-text' + i).addClass('hide');
+                $('#dialog-check-img' + i).removeClass('hide');
+            } else {
+                if (myData.platelist[i].isSuccess == "1") {
+                    $('#dialog-check-text' + i).removeClass('hide');
+                    $('#dialog-check-img' + i).addClass('hide');
+                } else {
+                    $('#dialog-check-text' + i).addClass('hide');
+                    $('#dialog-check-img' + i).removeClass('hide');
+                }
+            }
+            if (isNewCar == 1) {
+                $('#dialogPlateNumber' + i).text('新车');
+                $('#dialog-li-div' + i).removeClass('hide');
+                if (myData == undefined || myData.platelist[i].isSuccess != "1") {
+                    if (!hasCheck) {
+                        checkDialog($('#dialog-li-div' + i));
+                        $('#dialogEnterBtn').attr('myTag', i);
+                        hasCheck = true;
+                    }
+                }
+            }
+            else if (plateNumber.length != 0) {
+                $('#dialogPlateNumber' + i).text(plateNumber);
+                $('#dialog-li-div' + i).removeClass('hide');
+                if (myData == undefined || myData.platelist[i].isSuccess != "1") {
+                    if (!hasCheck) {
+                        checkDialog($('#dialog-li-div' + i));
+                        $('#dialogEnterBtn').attr('myTag', i);
+                        hasCheck = true;
+                    }
+                }
+            } else {
+                $('#dialog-li-div' + i).addClass('hide');
+            }
+        }
+        $('#insureDia').removeClass('hide');
+        $('#insureDia').css('height', "100%");
+
+    }
+
+    function init() {
+        addLine(0, false);
+        addLine(1, false);
+        addLine(2, false);
+        $("#insure0").addClass('is_insure_line');
+        $("#insure1").addClass('is_insure_line');
+        $("#insure2").addClass('is_insure_line');
+        $("li:last").addClass('no_line hide');
+        $("li:last").prev().addClass('no_line');
+//        if (!$('#mobile').val().match(/^(0|86|17951)?(13[0-9]|15[012356789]|17[678]|18[0-9]|14[57])[0-9]{8}$/)) {
+//            $("#get_code").addClass("disable");
+//        } else {
+//            $("#get_code").removeClass("disable");
+//        }
+    }
+
+    init();
+
+    GetAsyncData("Cars/1023", function (backdata) {
+//    backdata = {
+//        'code': '0',
+//        'data': [{
+//            "name": "2323",
+//            "phoneNumber": "18842662126",
+//            "platelist": [
+//                {"informationId": "32", "isNew": "0", "isSuccess": "0", "plateNumber": "辽B28888"},
+//                {"informationId": "29", "isNew": "0", "isSuccess": "0", "plateNumber": "黑A12344"},
+//                {"informationId": "30", "isNew": "0", "isSuccess": "0", "plateNumber": ""}]
+//        }], 'msg': '请求成功', 'page': 1, 'records': 1, 'total': 3
+//    };
+        //alert(JSON.stringify(backdata.data));
+        myData = backdata.data[0];
+        if (myData == undefined) {
+        }
+        else {
+            $("li:last").remove();
+            $("li:last").remove();
+            $("li:last").remove();
+            line_index = 0;
+            var customerName = $("#name");
+            var mobile = $("#mobile");
+            var li_plate;
+            var plateNumber;
+            var isNewCheck;
+            customerName.val(myData.name);
+            mobile.val(myData.phoneNumber);
+
+            for (var i = 0; i < myData.platelist.length && i < 3; i++) {
+                var plate = myData.platelist[i];
+                if (plate.isSuccess == '1') {
+                    insuredCount++;
+                    if (!customerName.hasClass("info_complete")) {
+                        $("ul#ul_info").addClass("info_complete");
+                        customerName.attr('disabled', 'disabled');
+                        mobile.attr('disabled', 'disabled');
+                        $("#checkCode").addClass("hide");
+                        $("#get_code").addClass("hide");
+                        isCheckMobile = true;
+                    }
+                    addLine(i, true);
+                    li_plate = $("#li_plate" + i);
+                    plateNumber = $("#plateNumber" + i);
+                    isNewCheck = $("#isNewCar" + i);
+                    $("#insure" + i).attr('myIndex', myData.platelist[i].type);
+                    if (myData.platelist[i].isNew == '1') {
+                        plateNumber.val('*-*');
+                        isNewCheck.prev('img').attr('src', '../../../images/cars/checked.png');
+                        isNewCheck.attr("checked", "checked");
+                    } else {
+                        plateNumber.val(myData.platelist[i].plateNumber);
+                        $("#new_car_div" + i).addClass("hide");
+                    }
+                }
+            }
+            for (i = 0; i < 3; i++) {
+                if (i >= myData.platelist.length) {
+                    addLine(i, false);
+                    $("#insure" + i).addClass('is_insure_line');
+                    li_plate = $("#li_plate" + i);
+                    plateNumber = $("#plateNumber" + i);
+                    isNewCheck = $("#isNewCar" + i);
+                    $("#insure" + i).attr('myIndex', i);
+                } else {
+                    if (myData.platelist[i].isSuccess == '0') {
+                        addLine(i, false);
+                        $("#insure" + i).addClass('is_insure_line');
+                        li_plate = $("#li_plate" + i);
+                        plateNumber = $("#plateNumber" + i);
+                        isNewCheck = $("#isNewCar" + i);
+                        $("#insure" + i).attr('myIndex', myData.platelist[i].type);
+                        if (myData.platelist[i].isNew == '1') {
+                            $(isNewCheck).prev('img').attr('src', '../../../images/cars/checked.png');
+                            $(isNewCheck).attr('checked', "checked");
+                            $(plateNumber).attr("placeholder", "");
+                            $(plateNumber).attr("disabled", "disabled");
+                            $(plateNumber).addClass("disable");
+//                            $(plateNumber).addClass("hide");
+
+                        } else {
+                            plateNumber.val(myData.platelist[i].plateNumber);
+                        }
+                    }
+                }
+
+            }
+        }
+        if (insuredCount < 2) {
+            $("li:last").prev().addClass('no_line');
+            $("li.li_info:last").addClass('no_line');
+            $("li:last").addClass('no_line hide');
+        }
+        else if (insuredCount == 2) {
+            $("li:last").addClass('no_line');
+            $("ul#ul_plate").addClass("hide");
+            $("li.li_info:last").addClass('no_line');
+            $("li:last").addClass('no_line hide');
+        }
+        else if (insuredCount == 3) {
+            $(".add_btn").css('display', 'none');
+            $(".enter_btn").css('display', 'none');
+            $("li:last").addClass('no_line');
+            $("ul#ul_plate").addClass("hide");
+        }
+
+        if (insuredCount == 0) {
+            $("#li_plate0").css("height", "0.77rem");
+            $("#div_l0").addClass("hint_text");
+            $("#div_l0").text("至少填写两辆车信息方可投保");
+        }
+        judge();
+    }, {"openId": openId, "activityId": "103"});
+
+    function judge() {
+        var name = $.trim($('#name').val());
+        var mobile = $.trim($('#mobile').val());
+        var code = $.trim($("#sendActiveCode").val());
+        var enable = true;
+        if (name == '' || name.length == 0) {
+            enable &= false;
+        } else {
+            enable &= true;
+        }
+        if (!mobile.match(/^(0|86|17951)?(13[0-9]|15[012356789]|17[678]|18[0-9]|14[57])[0-9]{8}$/)) {
+            enable &= false;
+            $("#get_code").addClass("disable");
+        } else {
+            enable &= true;
+            $("#get_code").removeClass("disable");
+        }
+        if (!isCheckMobile) {
+            if (code == '' || code.length == 0) {
+                enable &= false;
+            } else {
+                enable &= true;
+            }
+        }
+        var enableCount = 0;
+        for (var i = 0; i < 3; i++) {
+            var plateNumber = $.trim($('#plateNumber' + i).val());
+            var isNewCar = $('#isNewCar' + i).attr("checked") == "checked" ? 1 : 0;
+            if (isNewCar == 1) {
+                enableCount++;
+            } else if (plateNumber.length != 0 && plateNumber.match(/^[\u4e00-\u9fa5]{1}[A-Z_a-z]{1}[A-Z_a-z_0-9]{5}$/)) {
+                enableCount++;
+            }
+        }
+        for (i = 0; i < 3; i++) {
+            if (enableCount >= 2 && enable) {
+                plateNumber = $.trim($('#plateNumber' + i).val());
+                isNewCar = $('#isNewCar' + i).attr("checked") == "checked" ? 1 : 0;
+                if (plateNumber.length != 0 || isNewCar == '1') {
+                    $("#insure" + i).removeClass('disable');
+                    $("#insure" + i).removeAttr('disabled');
+                } else {
+                    $("#insure" + i).addClass('disable');
+                    $("#insure" + i).attr('disabled', 'disabled');
+                }
+                $('.enter_btn').removeClass('disable');
+                $('.enter_btn').removeAttr('disabled');
+            } else {
+                $("#insure" + i).addClass('disable');
+                $("#insure" + i).attr('disabled', 'disabled');
+
+                $('.enter_btn').addClass('disable');
+                $('.enter_btn').attr('disabled', 'disabled');
+            }
+        }
+    }
+
+    function sendCode(btn) {
+        var mobile = $.trim($("#mobile").val());
+        if (mobile == "" || mobile.length == 0) {
+            alert("请输入手机号");
+            return;
+        } else if (!mobile.match(/^(0|86|17951)?(13[0-9]|15[012356789]|17[678]|18[0-9]|14[57])[0-9]{8}$/)) {
+            alert('手机号输入有误！');
+            return;
+        }
+        var nums = 60;
+        btn.innerHTML = nums + ' 秒';
+        $("#get_code").attr("disabled", true);
+        $("#get_code").css("background-color", "#ccc");
+        clock = setInterval(function () {
+            nums--;
+            if (nums > 0) {
+                btn.innerHTML = nums + ' 秒';
+
+            } else {
+                clearInterval(clock);
+                btn.innerHTML = '获取验证码';
+                $("#get_code").attr("disabled", false);
+                $("#get_code").css("background-color", "rgb(251, 76, 15)");
+                nums = 60;
+            }
+        }, 1000);
+
+        GetAsyncData("Transfer/1011", function (backdata) {
+            var data = backdata.data;
+            //alert("sendCode uuid:" + data.uuid);
+            uuid = data.uuid;
+            console.log(uuid);
+        }, {"mobile": mobile});
+    }
+
+    function submitForm(enterBtn) {
+        if (typeof($(enterBtn).attr("myTag")) == "undefined") {
+            return;
+        }
+        var index = $(enterBtn).attr('myTag');
+        var type = index;
+        var name = $.trim($('#name').val());
+        var mobile = $.trim($('#mobile').val());
+        var plateNumber = $.trim($('#plateNumber' + index).val());
+        var isNewCar = $('#isNewCar' + index).attr("checked") == "checked" ? 1 : 0;
+        var code = $.trim($("#sendActiveCode").val());
+        if (name.length == 0) {
+            alert('请输入姓名');
+            return;
+        }
+        if (!mobile.match(/^(0|86|17951)?(13[0-9]|15[012356789]|17[678]|18[0-9]|14[57])[0-9]{8}$/)) {
+            alert('手机号输入有误！');
+            return;
+        }
+        if (isNewCar == 1) {
+            plateNumber = "";
+        } else {
+            if (!plateNumber.match(/^[\u4e00-\u9fa5]{1}[A-Z_a-z]{1}[A-Z_a-z_0-9]{5}$/)) {
+                alert('车牌号输入有误！');
+                return;
+            }
+            if (!plateCheck(plateNumber.substring(0, 1))) {
+                alert('车所在省不在投保范围！');
+                return;
+            }
+        }
+
+        if (!isCheckMobile) {
+            if (uuid.length == 0) {
+                alert("请获取验证码");
+                return;
+            }
+            if (code.length == 0) {
+                alert("请输入验证码");
+                return;
+            } else {
+                showCenterSpinner();
+                GetAsyncData("Transfer/1012", function (backdata) {
+                    hideCenterSpinner();
+                    var data = backdata.data;
+                    console.log("checkCode:" + data.resultCode);
+                    if (data.resultCode != "0000") {
+                        alert("验证码不正确，请重新获取！");
+                    } else {
+                        isCheckMobile = true;
+                        save();
+                        if (isNewCar == 1) {
+                            plateNumber = "*-*";
+                        }
+                        var form = $('#infoForm');
+                        var htmlStr = "<input type='text' value='" + name + "' name='vehicleOwnerName'/>"
+                                + "<input type='number' value='" + mobile + "' name='vehicleOwnerMobile'/>"
+                                + "<input type='text' value='" + plateNumber + "' name='licensePlateNo'/>"
+                                + "<input type='text' value='" + "103" + type + openId + "' name='linkId'/>";
+                        //alert("车牌：" + plateNumber);
+                        form.append(htmlStr);
+                        form.submit();
+                    }
+                }, {"checkCode": code, "uuid": uuid});
+            }
+        } else {
+            save();
+            if (isNewCar == 1) {
+                plateNumber = "*-*";
+            }
+            var form = $('#infoForm');
+            var htmlStr = "<input type='text' value='" + name + "' name='vehicleOwnerName'/>"
+                    + "<input type='number' value='" + mobile + "' name='vehicleOwnerMobile'/>"
+                    + "<input type='text' value='" + plateNumber + "' name='licensePlateNo'/>"
+                    + "<input type='text' value='" + "103" + type + openId + "' name='linkId'/>";
+//            alert("车牌：" + plateNumber);
+            form.append(htmlStr);
+            form.submit();
+        }
+    }
+
+    function plateCheck(text) {
+        var cars = new Array('辽', '京', '冀', '晋', '蒙', '吉', '黑', '苏', '浙', '皖', '闽', '鲁', '豫', '鄂', '桂', '川', '云', '陕', '甘', '新', '津', '沪', '湘', '粤', '渝');
+        for (var i = 0; i < cars.length; i++) {
+            if (text == cars[i]) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    function checkNewCar(ck) {
+        var index = $(ck).attr('id').substring($(ck).attr('id').length - 1, $(ck).attr('id').length);
+        var plateNumber = $.trim($('#plateNumber' + index).val());
+        if ($(ck).attr('checked') == "checked") {
+            $(ck).prev('img').attr('src', '../../../images/cars/unchecked.png');
+            $(ck).removeAttr('checked');
+            $('#plateNumber' + index).removeAttr("disabled");
+            $('#plateNumber' + index).removeClass("disable");
+            $('#plateNumber' + index).attr("disable");
+            $('#plateNumber' + index).attr("placeholder", "请输入车牌号");
+        } else {
+            $(ck).prev('img').attr('src', '../../../images/cars/checked.png');
+            $(ck).attr('checked', "checked");
+            $('#plateNumber' + index).attr("placeholder", "");
+            $('#plateNumber' + index).attr("disabled", "disabled");
+            $('#plateNumber' + index).addClass("disable");
+            $('#plateNumber' + index).val("");
+        }
+        judge();
+    }
+
+    function switchThree(btn) {
+
+        if (insuredCount == 2) {
+            if ($("ul#ul_plate").hasClass("hide")) {
+                $("ul#ul_plate").removeClass("hide");
+            } else {
+                $("ul#ul_plate").addClass("hide");
+            }
+        } else if (insuredCount == 3) {
+            $("ul#ul_plate").addClass("no_line");
+        }
+
+        if ($("li:last").hasClass('hide')) {
+            $($("li:last")).removeClass('hide');
+            $("li:last").prev().removeClass('no_line');
+            $(btn).removeClass('add_btn');
+            $(btn).addClass('delete_btn');
+        } else {
+            $($("li:last")).addClass('hide');
+            $(btn).removeClass('delete_btn');
+            $("li:last").prev().addClass('no_line');
+            $(btn).addClass('add_btn');
+        }
+    }
+
+    function save() {
+
+        var name = $.trim($('#name').val());
+        var mobile = $.trim($('#mobile').val());
+        var plateNumber = new Array();
+        var isNewCar = new Array();
+
+
+        $('#plateNumber0').val($('#plateNumber0').val().toUpperCase());
+        $('#plateNumber1').val($('#plateNumber1').val().toUpperCase());
+        $('#plateNumber2').val($('#plateNumber2').val().toUpperCase());
+
+        plateNumber[0] = $.trim($('#plateNumber0').val());
+        plateNumber[1] = $.trim($('#plateNumber1').val());
+        plateNumber[2] = $.trim($('#plateNumber2').val());
+        isNewCar[0] = $('#isNewCar0').attr("checked") == "checked" ? 1 : 0;
+        isNewCar[1] = $('#isNewCar1').attr("checked") == "checked" ? 1 : 0;
+        isNewCar[2] = $('#isNewCar2').attr("checked") == "checked" ? 1 : 0;
+
+        var sData = {
+            "openId": "",
+            "activityId": "103",
+            "name": "",
+            "phoneNumber": "",
+            "platelist": [
+                {"informationId": "", "isNew": "", "plateNumber": "", "type": "0"},
+                {"informationId": "", "isNew": "", "plateNumber": "", "type": "1"},
+                {"informationId": "", "isNew": "", "plateNumber": "", "type": "2"}]
+        };
+        if (myData == undefined) {
+            myData = sData;
+        }
+        if (name.length != 0 || mobile.length != 0
+                || (plateNumber[1].length != 0 || isNewCar[1] == "1")
+                || (plateNumber[2].length != 0 || isNewCar[2] == "1")
+                || (plateNumber[0].length != 0 || isNewCar[0] == "1")) {
+
+            sData.openId = openId;
+            sData.activityId = "103";
+            sData.name = name;
+            sData.phoneNumber = mobile;
+            for (var i = 0; i < myData.platelist.length && i < 3; i++) {
+                sData.platelist[i].informationId = myData.platelist[i].informationId;
+                if (isNewCar[i] == 1) {
+                    sData.platelist[i].isNew = 1;
+                    sData.platelist[i].plateNumber = "*-*";
+                } else {
+                    if (plateNumber[i].length == 0) {
+                        sData.platelist[i].isNew = "";
+                        sData.platelist[i].plateNumber = "";
+                    } else {
+                        sData.platelist[i].isNew = 0;
+                        sData.platelist[i].plateNumber = plateNumber[i];
+                    }
+                }
+            }
+            $('.enter_btn').removeAttr('onclick');
+            showCenterSpinner();
+            GetAsyncData("Cars/1022", function (backdata) {
+//                alert("1022接口成功");
+                hideCenterSpinner();
+                $('#saveSuccessHint').removeClass('hide');
+                var clock = setInterval(function () {
+                    $('#saveSuccessHint').addClass('hide');
+                    $('.enter_btn').attr('onclick', 'save();');
+                    clearInterval(clock);
+                }, 2000);
+                $('#saveSuccessHint').addClass('animaite_toast_hide');
+            }, sData);
+        } else {
+            alert("您未输入任何信息");
+        }
+
+    }
+
+    function inputBlur(ipt) {
+        if ($(ipt).attr('id') == 'mobile') {
+            if ($(ipt).val().length != 0)
+                if (!$(ipt).val().match(/^(0|86|17951)?(13[0-9]|15[012356789]|17[678]|18[0-9]|14[57])[0-9]{8}$/)) {
+//                    alert('手机号输入有误！');
+                    //$(ipt).focus();
+                }
+        }
+        if ($(ipt).attr('id') == 'sendActiveCode') {
+            var code = $.trim($(ipt).val());
+            if (!isCheckMobile && uuid.length != 0 && code.length != 0) {
+                GetAsyncData("Transfer/1012", function (backdata) {
+                    var data = backdata.data;
+                    console.log("checkCode:" + data.resultCode);
+                    if (data.resultCode != "0000") {
+                        hideCenterSpinner();
+                        alert("验证码不正确，请重新获取！");
+                    } else {
+                        isCheckMobile = true;
+                    }
+                }, {"checkCode": code, "uuid": uuid});
+            }
+        }
+        if ($(ipt).attr('id') == 'plateNumber1' || $(ipt).attr('id') == 'plateNumber2' || $(ipt).attr('id') == 'plateNumber0') {
+
+            var index = $(ipt).attr('id').substring($(ipt).attr('id').length - 1, $(ipt).attr('id').length);
+            var isNewCar = $('#isNewCar' + index).attr("checked") == "checked" ? 1 : 0;
+            var plateNum = $.trim($(ipt).val());
+            if (plateNum.length == 7) {
+                plateNum = plateNum.toUpperCase();
+                $(ipt).val(plateNum);
+            }
+            if (isNewCar != 1 && $.trim($(ipt).val()).length != 0) {
+                if (!$.trim($(ipt).val()).match(/^[\u4e00-\u9fa5]{1}[A-Z_a-z]{1}[A-Z_a-z_0-9]{5}$/)) {
+                    alert('车牌号输入有误！');
+                    return;
+                }
+            }
+        }
+
+    }
+    autoWidth();
+    $('body').removeClass('hide');
+    baiduCollection();
+</script>
+
+</html>

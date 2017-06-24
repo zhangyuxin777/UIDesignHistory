@@ -1,0 +1,296 @@
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none !important;
+    margin: 0;
+}
+
+::-webkit-inner-spin-button {
+    visibility: hidden;
+}
+
+::-webkit-calendar-picker-indicator {
+    border: 1px solid #ccc;
+    border-radius: 2px;
+    box-shadow: inset 0 1px #fff, 0 1px #eee;
+    background-color: #eee;
+    background-image: -webkit-linear-gradient(top, #f0f0f0, #e6e6e6);
+    color: #666;
+}
+
+input[type='number'] {
+    -moz-appearance: textfield;
+    -webkit-appearance: none !important;
+}
+
+body {
+    font-family: 'Microsoft YaHei', 'Hiragino Sans GB', Helvetica, Arial, 'Lucida Grande', sans-serif;
+    width: 3.2rem;
+    margin: 0 auto;
+    padding: 0;
+    font-size: 0.12rem;
+    -webkit-tap-highlight-color: transparent;
+    background-color: #fff;
+    line-height: 0.135rem;
+}
+
+a {
+    text-decoration: none;
+    outline: none;
+    color: #515151;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+.col-left {
+    width: 25%;
+    float: left;
+    color: #606060;
+}
+
+.col-right {
+    width: 66%;
+    float: left;
+
+}
+
+.float-left {
+    float: left;
+}
+
+.down-icon {
+    float: right;
+    width: 0.12rem;
+    height: 0.12rem;
+    margin-top: 0.165rem;
+    margin-right: 0.12rem;
+}
+
+.down-icon-address {
+    float: right;
+    width: 0.1rem;
+    height: 0.1rem;
+    margin-top: 0.175rem;
+}
+
+.address-col-right {
+    width: 70%;
+}
+
+.address-width {
+    width: 95%;;
+}
+
+.line-div {
+    height: 0.45rem;
+    font-size: 0.12rem;
+    line-height: 0.45rem;
+    margin: 0 0 0 0.12rem;
+}
+
+.line {
+    height: 100%;
+    line-height: 0.45rem;
+}
+
+.line-height {
+    line-height: 0.45rem;
+}
+
+#insure-part, #beInsured-part, #beneficiary-part {
+    line-height: 0.35rem;
+}
+
+.t-a-right {
+    text-align: left;
+}
+
+input[type=color], input[type=date], input[type=datetime-local], input[type=datetime], input[type=email], input[type=month], input[type=number], input[type=password], input[type=search], input[type=tel], input[type=text] {
+    font-family: 'Microsoft YaHei', 'Hiragino Sans GB', Helvetica, Arial, 'Lucida Grande', sans-serif;
+    height: 0.25rem;
+    border: 0 none;
+    background-color: white;
+    outline: none;
+    margin: 0 0 0.025rem 0;
+    width: 100%;
+    -webkit-appearance: none;
+    font-size: 0.12rem;
+    padding: 0;
+    color: #404040;
+}
+
+input:focus {
+    outline: none;
+}
+
+input[type=date] {
+    width: 100%;
+    opacity: 0;
+}
+
+input#incomeNumber {
+    margin: 0.05rem 0;
+    width: 82%
+}
+
+.include {
+    position: relative;
+    height: 0.45rem;
+    border-radius: 2px;
+    outline: none;
+    background-color: white;
+    width: 100%;
+    line-height: 0.45rem;
+}
+
+.include.address {
+    width: 33%;
+    float: left;
+}
+
+.address-div {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+}
+
+.replace {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    float: right;
+    color: #404040;
+}
+
+.placeholder {
+    color: darkgrey;
+}
+
+select {
+    height: 0.25rem;
+    opacity: 0;
+    outline: none;
+    width: 100%;
+}
+
+select:focus {
+    outline: none;
+}
+
+label:focus {
+    background-color: #fff;
+}
+
+#income input {
+    width: 75%;
+    float: left;
+    margin: 0.05rem 0;
+}
+
+#income div {
+    width: 20%;
+    float: right;
+    text-align: right;
+}
+
+.choose-relation-self .insured-info,
+.choose-beneficiary-legal .beneficiary-info {
+    display: none;
+}
+
+.choose-relation-child .insured-info,
+.choose-beneficiary-appoint .beneficiary-info {
+    display: block;
+}
+
+.enter-btn {
+    height: 0.44rem;
+    line-height: 0.44rem;
+    background-color: #F39A0F;
+    color: #ffffff;
+    text-align: center;
+    font-size: 0.16rem;
+    border-radius: 0.04rem;
+    width: 2.96rem;
+    margin: auto;
+}
+
+.title {
+    background-color: rgba(123,211,210,0.8);
+    padding: 0.05rem 0.05rem 0.05rem 0.12rem;
+    color: white;
+    opacity: 0.7;
+    font-size: 0.11rem;
+}
+
+.btn-div {
+    background-color: #f6f4f4;
+    width: 100%;
+    padding-top: 0.1rem;
+    padding-bottom: 0.02rem;
+}
+
+.margin-left-5 {
+    margin-left: 0.05rem;
+}
+
+.margin-top-10 {
+    margin-top: 0.1rem;
+}
+
+.no-border {
+    border: 0;
+}
+
+.clear {
+    clear: both;
+}
+
+.hide {
+    display: none;
+}
+
+.transparent {
+    opacity: 0;
+}
+
+.line-div-border:before {
+    content: '';
+    height: 1px;
+    width: 100%;
+    background-color: #d4d4d4;
+    display: block;
+    -webkit-transform-origin: 50% 100%;
+    transform-origin: 50% 100%;
+}
+
+.mui-content {
+    background-color: #fff;
+}
+.btn-div1 {
+    background-color: #f6f4f4;
+    width: 100%;
+    padding-bottom: 0.1rem;
+}
+.btn{
+    width: 40%;
+    margin: auto;
+    text-align: center;
+}
+.del{color: #FB3450;}
+.add{color: #016FEB;}
+@media only screen and (-webkit-min-device-pixel-ratio: 3) {
+    .line-div-border:before {
+        -webkit-transform: scaleY(0.33);
+        transform: scaleY(0.33);
+    }
+}
+
+@media only screen and (-webkit-min-device-pixel-ratio: 2) {
+    .line-div-border:before {
+        -webkit-transform: scaleY(0.5);
+        transform: scaleY(0.5);
+    }
+}

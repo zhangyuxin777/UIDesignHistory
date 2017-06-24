@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="apple-touch-fullscreen" content="YES">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta http-equiv="Expires" content="-1">
+    <meta http-equiv="pragram" content="no-cache">
+    <meta name="viewport" content="width=640, user-scalable=no, target-densitydpi=device-dpi">
+    <title>温暖回家路</title>
+    <style>
+        html, body, p, div {
+            font-family: 'Microsoft YaHei', 'Hiragino Sans GB', Helvetica, Arial, 'Lucida Grande', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .bg {
+            background: url("../../../images/activity/img/tb01.png") no-repeat;
+            background-size: 100% 100%;
+            width: 640px;
+            height: 1008px;
+            overflow: hidden;
+            margin: 0 auto;
+        }
+
+        .font {
+            font-family: 'Microsoft YaHei', 'Arial', sans-serif;
+            font-size: 38px;
+            text-shadow: #666 1px 1px;
+            font-weight: 700;
+            line-height: 60px;
+            color: #ffffff;
+        }
+
+        .center {
+            margin-top: 220px;
+            text-align: center;
+        }
+
+        .btn1 {
+            float: left;
+            position: absolute;
+            left: 64px;
+            bottom: 72px;
+            width: 227px;
+            height: 81px;
+        }
+
+        .btn2 {
+            float: left;
+            position: absolute;
+            right: 64px;
+            bottom: 72px;
+            width: 227px;
+            height: 81px;
+        }
+
+        img {
+            width: 100%;
+            display: block;
+        }
+
+        #fullbg {
+            background-color: #000000;
+            left: 0;
+            opacity: 0.75;
+            position: absolute;
+            top: 0;
+            z-index: 3;
+            filter: alpha(opacity=75);
+            -moz-opacity: 0.75;
+            -khtml-opacity: 0.75;
+        }
+
+        #dialog {
+            background: url("../../../images/bkg-share.png") no-repeat;
+            background-size: 100%;
+            min-height: 100%;
+            right: 25px;
+            position: fixed !important; /* 浮动对话框 */
+            position: absolute;
+            top: 10px;
+            width: 70%;
+            z-index: 5;
+            display: none;
+        }
+    </style>
+
+    <script src="../../../js/common.js"></script>
+    <script>
+        var _hmt = _hmt || [];
+        (function () {
+            var hm = document.createElement("script");
+            hm.src = "//hm.baidu.com/hm.js?" + config.collectRootValue;
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+</head>
+<body>
+<div class="bg">
+    <div class="center font">您已领取<br>四十万安心保障<br>成为第<span id="visit">10006</span>位<br>温暖回家路的用户</div>
+    <div class="btn1" onclick="showBg()"><img src="../../../images/activity/img/tb02.png" alt="share"></div>
+    <div class="btn2" onclick="showBg()"><img src="../../../images/activity/img/tb03.png" alt="share"></div>
+</div>
+<div id="fullbg"></div>
+<div id="dialog"></div>
+</body>
+<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<script src="../../../js/jquery-1.9.1.min.js"></script>
+<script type="text/javascript">
+    $('.bg').css("height", $(window).height());
+    var openId = window.localStorage.getItem(config.openIdName);
+    var serialNo = getUrlParam("serialNo");
+    var visits = 10056;
+    GetAsyncData("weixinbase/1043", function (backdata) {
+        var data = backdata;
+        // alert("(c)"+data.code+"(t)"+data.timestamp+"(n)"+data.nonceStr+"(s)"+data.signature)
+        wx.config({
+            debug: false,
+            appId: config.appIdValue,   // wx0017a3384b9df4f0
+            timestamp: data.timestamp,
+            nonceStr: data.nonceStr,
+            signature: data.signature,
+            jsApiList: [
+                'checkJsApi',
+                'onMenuShareTimeline',
+                'onMenuShareAppMessage',
+                'hideMenuItems',
+                'showMenuItems',
+                'hideAllNonBaseMenuItem'
+            ]
+        });
+    }, {"url": window.location.href.split('#')[0]});
+    wx.ready(function () {
+        /*wx.checkJsApi({
+         jsApiList: [
+         'onMenuShareTimeline'
+         ]
+         });*/
+        wx.hideMenuItems({
+            menuList: [
+                'menuItem:share:qq'
+            ]
+        });
+
+        wx.onMenuShareAppMessage({
+            title: '万联金网',
+            desc: '辛苦了一年的游子，回家吧！我领取到了第' + visits + '份安全回家保障。传递爱心，免费领取四十万安心回家保障！', // 分享描述
+            link: config.shareRootUrl + '/weixinouter/basepage/yinxiao/extend.html?serialNo=' + serialNo,
+            imgUrl: config.shareRootUrl + '/weixinouter/basepage/img/share.png',
+            type: '', // 分享类型,music、video或link，不填默认为link
+            dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
+            success: function () {
+                // 用户确认分享后执行的回调函数
+                GetData("Reward/1008", function (json) {
+                    //alert("1008 code:" + json.code);
+                }, {"openId": openId, "type": "zhbx-4"});
+            },
+            cancel: function () {
+                // 用户取消分享后执行的回调函数
+            },
+            complete: function () {
+                closeBg();
+            }
+
+        });
+        wx.onMenuShareTimeline({
+            title: '辛苦了一年的游子，回家吧！我领取到了第' + visits + '份安全回家保障。传递爱心，免费领取四十万安心回家保障！',
+            link: config.shareRootUrl + '/weixinouter/basepage/new_year2016/go_home.html?type=1000',
+            imgUrl: config.shareRootUrl + '/weixinouter/basepage/img/new_year2016/go_home_share.png',
+            success: function () {
+                // 用户确认分享后执行的回调函数
+                GetData("Reward/1008", function (json) {
+                    //alert("1008 code:" + json.code);
+                }, {"openId": openId, "type": "zhbx-1000"});
+            },
+            cancel: function () {
+                // 用户取消分享后执行的回调函数
+            },
+            complete: function () {
+                closeBg();
+            }
+        });
+
+        wx.error(function (res) {
+            alert('wx.error: ' + JSON.stringify(res));
+        });
+    });
+
+
+    GetData("Transfer/1015", function (backdata) {
+        var data = backdata.data;
+        visits = data.visits;
+        $("#visit").html(data.visits);
+
+    }, {});
+    //显示灰色 jQuery 遮罩层
+    function showBg() {
+        var bh = $("body").height();
+        var bw = $("body").width();
+        $("#fullbg").css({
+            height: bh,
+            width: bw,
+            display: "block"
+        });
+        $("#dialog").show();
+        window.location.href = "index.html";
+    }
+    //关闭灰色 jQuery 遮罩
+    function closeBg() {
+        $("#fullbg,#dialog").hide();
+    }
+</script>
+</html>

@@ -1,0 +1,38 @@
+@charset "utf-8";
+/* CSS Document */
+*{ margin:0px; padding:0px;/* Safari */}
+a{ text-decoration:none;color: #968687;-webkit-tap-highlight-color:rgba(0,0,0,0);}
+ul,ul li{ list-style:none;}
+html,body{font-size:.22rem; font-family:"microsoft yahei";}
+/*样式重置*/
+h1,h2,h3,h4,h5,h6 {
+	font-weight: normal;
+}
+table{border-collapse:collapse;border-spacing:0}
+fieldset,img{border:0; vertical-align: top}
+li{list-style:none}
+input,textarea,select{font-family:inherit;font-size:inherit;font-weight:inherit}
+button,input[type="submit"]{border:none;background:none;appearance:none;outline:none}
+input,textarea  {border:none;background:none;appearance:none;outline:none}
+a{touch-callout:none;text-decoration:none;}
+em, i,b{font-style:normal}
+textarea {resize:none}
+button::-moz-focus-inner,
+input::-moz-focus-inner,
+textarea::-moz-focus-inner{
+    border: 0;
+    padding: 0;
+
+}
+input[type="text"] {
+  appearance: none;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+}
+
+.noBoder{
+	border: none!important;
+}
+.dpn{
+	display: none;
+}

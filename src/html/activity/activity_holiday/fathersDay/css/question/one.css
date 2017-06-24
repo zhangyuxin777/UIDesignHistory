@@ -1,0 +1,8 @@
+body {
+  background: url("../../img/one.jpg") no-repeat top left;
+  background-size: 6.4rem 10.38rem;
+}
+div {
+  height: .98rem;
+  width: 100%;
+}
