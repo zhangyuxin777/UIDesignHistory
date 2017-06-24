@@ -416,7 +416,7 @@
                         </p>
                     </section>
                     <div class="btn-div">
-                        <div id="go-button" class="go-button" onclick="toCars(0)"></div>
+                        <div id="go-button" class="go-button"></div>
                     </div>
                     <div class="clear"></div>
                 </div>
@@ -538,11 +538,9 @@
     $('.swiper-container').css("height", wh);
     $('.swiper-slide').css("height", wh);
     $('body').removeClass('hide');
-    getOpenId();
     var openId = window.localStorage.getItem(config.openIdName);
     var dialog = $('.code');
     var isFocus = false;
-    closeProduct(104);
     $(function () {
 
         if (sessionStorage.page1 == 1) {
@@ -566,10 +564,6 @@
         });
 
         if (openId != null && openId.length != 0) {   //已关注
-            GetData("User/1006", function (backData) {
-                isFocus = backData.data.flag;
-                $('.go-button').addClass('show-btn');
-            }, {"openId": openId});
         } else {
             $('.go-button').addClass('show-btn');
         }
@@ -578,19 +572,6 @@
             clearInterval(clock);
         }, 1500);
 
-        weixinShare({
-            shareUrl: config.shareRootUrl + '/weixinouter/basepage/activity_cars/proIntro_goodCar.html',
-            shareIcon: config.shareRootUrl + '/weixinouter/basepage/images/cars/proIntro_goodCar/share-icon.jpg',
-            shareText: '中华好车-中华财险高端车险品牌',
-            isNeedRecord: true,
-            openId: openId,
-            activityId: '104',
-            typeTimeline: 'zhbx-3',
-            typeAppMessage: 'zhbx-4',
-            isGiveCoin: 'Y'
-        });
-
-        baiduCollection();
     });
 
     function toSSS() {

@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>我的礼品</title>
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta name="format-detection" content="telphone=no, email=no" />
+
+  <link rel="stylesheet" href="../css/common-coupon.css">
+  <link rel="stylesheet" href="../css/mypresent.css">
+</head>
+<body>
+
+  <ul>
+	<div id="list">
+	   <div id='no_card_div' style='position: absolute; width: 100%; margin-top:20px; text-align:center;background:#fff'>
+	                    <img style=' left: 50%' class='no_card_img' src='../images/personal_no_card.png'>
+	                    <div style='height: 20px'></div>
+	                    <p class='no_card'>暂无礼品</p>
+	                   </div>
+	</div>  
+  </ul>
+  <form id='infoForm' action='' method='post'></form>
+<script src="../js/common.js"></script>
+<script src="../js/jquery-1.9.1.min.js"></script>
+  <script src="../js/rem.js"></script>
+  <script type="text/javascript">
+  
+  var openId = window.localStorage.getItem(config.openIdName);
+  var page = 1;
+  var pageSize = 50;
+  var haveMore = false;
+
+  
+  function getImgPath() {
+	  return "http://static.wanlianjin.com";
+  }
+  
+  function maskDate(data) {
+	  if (data == null || data == "null" ||data.time == null || data.time == "null") {
+		  return "";
+	  }
+  
+	  return getTime(data);
+  }
+  
+  function getTime(nS){
+		if(null==nS){
+			return " 年-月-日";
+		}
+		var date = new Date(nS.time);
+	    var year = date.getFullYear();
+	    var month = date.getMonth()+1;
+	    var day = date.getDate();
+	    return year+"-"+month+"-"+day; 
+	    return newTime;
+	}
+  
+  function getFromChannel(channela) {
+	  if (channela == 'GIVE') {
+		  return "购买保险";
+	  }
+	  
+	  if (channela == 'BUY') {
+		  return "礼品商城";
+	  }
+	  
+	  if (channela == 'GIVE_INSURENCE') {
+		  return "赠险";
+	  }
+	  
+	  if (channela == 'LUCK_DRAW') {
+		  return "抽奖";
+	  }
+	  
+	  if (channela || channela == 'undefined') {
+		  return "未知";
+	  }
+  } 
+  
+function buildCardHtml(ida, namea, valuea, imagea, channela, datea) {
+	  var carda = '<a href="myPresent-detail.html?id=' + ida + '"><li>' +
+	  ' <img src="' + getImgPath() +imagea + '">' +
+	  '<div class="liRight">' +
+	  '<h3>' + namea + '</h3>' +
+	  ' <span class="price">金额：' + valuea + '元</span>' +
+	  '<i>来源：' + getFromChannel(channela) + ' <em>' + maskDate(datea) + '</em></i>' +
+	  '<i class="detils">' +
+	  '  </i>' +
+	  '</div>' +
+	  '</li></a>';
+	
+	return carda;
+}
+ function isday(date) {
+    var now = new Date;
+    var d = new Date(date);
+    if (now >= d) {
+       return true;
+    } 
+    return false;
+}
+  function buildInsurenceHtml(ida, namea, imagea, channela, datea,isActive,fromKey) {
+
+	  var insurencea =     '<a ><li>' +
+	  ' <img src="' + getImgPath() +imagea + '">' +
+	  ' <div class="liRight">' +
+	  '<h3>' + namea + '</h3>' +
+	  ' <span class="orange">10.28之后可激活</span>' +
+	  '<i>来源：' + getFromChannel(channela) + ' <em>' + maskDate(datea) + '</em></i>' ;
+ 	   //if(isday("2016-10-28 00:00:00")){
+	   if(isActive=='0'){ 
+		  insurencea+='<button onclick="goZenxian('+"'"+fromKey+"'"+','+"'"+ida+"'"+')"style="background-color:#ff7200">激  活</button>';
+	   }else{//onclick="goZenxian('+fromKey+','+ida+')"  
+		  insurencea+='<button >已领取</button>';
+	   } 
+	   //}else{  
+		//  insurencea+='<button >激  活</button>';
+	   // }   
+	  insurencea+='</div>' +
+	  '</li></a>';
+	  
+	  return insurencea;
+  }
+
+  function buildOfflineGiftHtml(ida, namea, imagea, channela, datea) {
+	  var offlinegifta = '<a href="myPresent-update.html?id=' + ida + '"><li>' +
+	  ' <img src="' + getImgPath() +imagea + '">' +
+	  '<div class="liRight">' +
+	  '<h3>' + namea + '</h3>' +
+	  '<span></span>' +
+	  '<i>来源：' + getFromChannel(channela) + ' <em>' + maskDate(datea) + '</em></i>' +
+	  '<i class="detils">' +
+	  ' </i>' +
+	  '</div>' +
+	  '</li></a>';
+	  
+	  return offlinegifta;
+  }
+  function goZenxian(thirdProId,proId){
+	  GetAsyncData("weixin_new/mall/getzx", function (backdata) {
+          var form = $('#infoForm');
+          $(form).attr('action', config.zengxianUrl);//表单提交地址
+          var htmlStr = "<input type='hidden' value='" + backdata.pid + "' name='pid'/>"
+                  + "<input type='hidden' value='" + backdata.v + "' name='v'/>";
+          form.append(htmlStr);
+          form.submit();
+	    },{"openId": openId, "thirdProId": thirdProId, "proId": proId} );
+  }
+  
+  GetAsyncData("weixin_new/mall/list_my_gifts", function (backdata) {
+
+      var json = backdata;
+
+      if (backdata != null && backdata.length > 0) {
+    	  $("#no_card_div").remove();
+      }
+      for (var i = 0; i < json.length; i++) {
+          var item = json[i];
+     
+          var htmlStr = '';
+                    
+          if (item.productType == 'PHONE_CARD' || item.productType == 'OIL_CARD' || item.productType == 'GIFT_CARD' ) {
+        	  htmlStr = htmlStr + buildCardHtml(item.id, item.productName, item.faceValue, item.productPic, item.exchangeWay, item.exchangeDate);
+          }
+          else if (item.productType == 'GIFT') {
+        	  htmlStr = htmlStr + buildOfflineGiftHtml(item.id, item.productName, item.productPic, item.exchangeWay, item.exchangeDate);
+          }
+          else if (item.productType == 'INSURANCE') {
+        	  htmlStr = htmlStr + buildInsurenceHtml(item.id, item.productName,  item.productPic, item.exchangeWay, item.exchangeDate,item.isActive,item.fromKey);
+          }
+          else {
+        	  htmlStr = htmlStr + buildInsurenceHtml(item.id, item.productName,  item.productPic, item.exchangeWay, item.exchangeDate);
+              console.log("Not here:" + item.productType);
+              
+          }
+          
+          $("#list").append(htmlStr);
+          
+      }
+      
+  }, {"openId": openId, "page": page, "pageSize": pageSize});
+  
+ /*  GetAsyncData("Reward/1010", function (backdata) {
+        console.log(JSON.stringify(backdata));
+        var data = backdata.data;
+        var count = 0;
+        if (data != null) {
+        	for (var j = 0; j < data.length; j++) {
+                count += data[j].number;
+            }
+        }
+        if (count == null || count == 0 || typeof (count) == "undefined" || count == "") {
+            
+        } else {
+        	$("#no_card_div").remove();
+            for (var i in data) {
+                if (data[i].type == "4" && data[i].number != "0") {
+                    $("#list").append('<div class="gc_list box-shadow_10">' +
+                            '<div class="img1"><img src="../images/cars/ysy.png" width="90%" height="90%"></div>' +
+                            '<div class="txt-cont">' +
+                            '<div class="t31">汽车主动安全系统<span class="t1-1">×' + data[i].number + '</span></div>' +
+                            '<div class="t2">我们会尽快联系您并安装</div>' +
+                            '</div>' +
+                            '<div class="txt-foot">'+
+                            '<span>'+ data[i].wayOfReward + '</span>'+
+                            '<span style="position: absolute;right: 70px;">'+ data[i].time_got +'</span>'+
+                            '</div>'+
+                            '</div>');
+                } else if (data[i].type == "5" && data[i].number != "0") {
+                    $("#list").append('<div class="gc_list box-shadow_10">' +
+                            '<div class="img1"><img src="../images/cars/sss.png" width="90%" height="90%"></div>' +
+                            '<div class="txt-cont">' +
+                            '<div class="t3">全球紧急医疗服务<span class="t1-1" onclick="sss()"><img src="../images/personal_ic_right.png" width="100%"></span></div>' +
+                            '<div class="t4">救援电话:<a href="tel:86 10 5166 7910"><span class="color-blu">86 10 5166 7910</span></a></div>' +
+                            '<div class="t5">有效期1年</div>'+
+                            '</div>' +
+                            '<div class="txt-foot">'+
+                            '<span>'+ data[i].wayOfReward + '</span>'+
+                            '<span style="position: absolute;right: 70px;">'+ data[i].time_got +'</span>'+
+                            '</div>'+
+                            '</div>');
+                }
+            }
+        }
+
+    }, {"openId": openId, "page": page, "pageSize": pageSize});
+
+    GetAsyncData("User/1004", function (backdata) {
+
+        var json = backdata;
+        var count = (json == null || json.data== null) ? 0 : json.data.length;
+        if (count == null || count == 0 || typeof (count) == "undefined" || count == "") {
+           
+        }
+        else {
+        	$("#no_card_div").remove();
+            if (count == pageSize) {
+                haveMore = true;
+                $("#load_more").css("display", "block");
+            } else {
+                haveMore = false;
+                $("#load_more").css("display", "none");
+            }
+            for (var i = 0; i < count; i++) {
+                var item = json.data[i];
+                var url = item.rewardUrl;
+                var money = item.rewardName.substr(0, 3);
+                var type = item.rewardName.substr(4, item.rewardName.length - 4);
+                var number = item.rewardContent;
+                var password = "00000000000000000000";
+                if (item.hasOwnProperty('passWord')) {
+                    password = item.passWord;
+                }
+                var dateStr = item.endTime;
+                var htmlStr = "<li class='gc_list box-shadow_10'><div><img class='img_logo' src='../images/gc_logo.jpg'>" +
+                        "<span class='card_text'>" + type + "</span><div class='money_count'></div></div>" +
+                        "<div style='padding-bottom: 15px;'><div class='card_number_password'><div class='card_number '><span>卡号：</span><span class='card_number_text'>" + number + "&nbsp;&nbsp;</span></div>" +
+                        "<div style='margin: 20px'><span>密码：</span><span class='card_number_text'>" + password + "</span></div></div>" +
+                        "<div><div class='card_money'>" + money + "<span style='font-size: 18px'>元</span></div><a href='http://m.sinopecsales.com/webmobile/html/webhome.jsp' class='info_left_a'>点击充值</a></div>"
+                        + " <p class='data'>有效日期：" + dateStr + "</p></div></li>";
+                $("#list").append(htmlStr);
+            }
+        }
+    }, {"openId": openId, "page": page, "pageSize": pageSize}); */
+  
+  </script>
+</body>
+</html>

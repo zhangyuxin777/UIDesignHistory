@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <meta name="format-detection" content="telephone=no" />
+    <title>常用联系人</title>
+
+    <style>
+        body{
+            margin: 0;
+            overflow-x: hidden;
+            font-size: 14px;
+            font-family: 'Microsoft YaHei', 'Arial', sans-serif;
+            color: #404040;
+            background-color: #f6f4f4;
+        }
+        .content{
+            background-color: #ffffff;
+            clear: both;
+        }
+        .lable-text{
+            font-size: 0.12rem;
+            height: 0.45rem;
+            line-height: 0.45rem;
+            margin-left: 0.12rem;
+        }
+        .line{
+            border-top: 1px solid #d4d4d4;
+        }
+        .hide{
+            display: none;
+        }
+        .title{
+            height: 0.2rem;
+            font-size: 0.11rem;
+            line-height: 0.2rem;
+            text-align: center;
+        }
+        .relative{
+            background-color: #f08300;
+            color: #ffffff;
+            border-radius: 0.05rem;
+            padding: 0.01rem 0.06rem;
+            margin-left: 0.1rem;
+            font-size: 0.1rem;
+        }
+        .down-icon {
+            position: absolute;
+            width: 0.12rem;
+            height: 0.12rem;
+            margin-top: 0.165rem;
+            right: 0.12rem;
+        }
+        .add{
+            font-size: 0.14rem;
+            text-align: center;
+            margin-top: 0.2rem;
+        }
+        .btn-img{
+            margin: auto;
+            text-align: center;
+            margin-top: 0.6rem;
+        }
+        .add-img{width: 1.2rem}
+        @media (device-width: 320px ) and (device-height: 568px) and (-webkit-min-device-pixel-ratio: 2 ) {
+            /* 兼容iphone5 */
+            .line{
+                border-top: 0.5px solid #d4d4d4;
+            }
+        }
+
+        @media (device-width: 375px ) and (device-height: 667px) and (-webkit-min-device-pixel-ratio: 2 ) {
+            /* 兼容iphone6 */
+            .line{
+                border-top: 0.5px solid #d4d4d4;
+            }
+        }
+
+        @media (device-width: 414px ) and (device-height: 736px) and (-webkit-min-device-pixel-ratio: 2 ) {
+            /* 兼容iphone6 Plus */
+            .line{
+                border-top: 0.5px solid #d4d4d4;
+            }
+        }
+    </style>
+</head>
+<body class="hide">
+<div class="title hide">共<span id="total" style="color: #f08300"></span>个联系人</div>
+<div class="content hide">
+    <!--<div class="lable-text" onclick="toInfo()">-->
+        <!--<span>红太狼</span><span class="relative">母亲</span>-->
+        <!--<img src="../../images/personal_ic_right.png" class="down-icon"/>-->
+    <!--</div>-->
+    <!--<div class="lable-text line">-->
+        <!--灰太狼<span class="relative">父亲</span>-->
+        <!--<img src="../../images/personal_ic_right.png" class="down-icon"/>-->
+    <!--</div>-->
+</div>
+<div class="btn-img" onclick="toAdd()"><img src="../../images/user/relationAdd.png" class="add-img"></div>
+<div class="add">添加常用联系人，即可一键快捷投保</div>
+</body>
+</html>
+<script src='../../js/jquery-1.9.1.min.js'></script>
+<script src="../../js/common.js"></script>
+<script src="../../js/user/relation.js"></script>
+<script>
+    autoWidth();
+    getOpenId();
+    var openId = window.localStorage.getItem(config.openIdName);
+    var data = {
+        type: "01",
+        isLook: "Y",
+        openId: openId
+    };
+    //生成列表
+    GetAsyncData("User/2031", function (backdata) {
+        var data = backdata.data;
+        if(data.length != 0){
+            $(".content").html("").removeClass("hide");
+            $(".title").removeClass("hide");
+            var cont=0;
+            var str = "";
+            for(var i in data){
+                for(var j in rlpt){
+                    if(rlpt[j].value == data[i].relation){
+                        var relative = rlpt[j].text;
+                    }
+                }
+
+                str += '<div class="lable-text line" rel='+ data[i].idCard +' onclick="toInfo(this)">'+
+                          '<span>'+ data[i].name+'</span><span class="relative">'+ relative +'</span>'+
+                          '<img src="../../images/personal_ic_right.png" class="down-icon"/>'+
+                        '</div>';
+                cont++;
+            }
+            $(".content").append(str);
+            $("#total").text(cont);
+            $(".lable-text").first().removeClass("line");
+        }
+    }, data);
+    function toInfo(idCard){
+        var id = $(idCard).attr("rel");
+        window.location.href = "contactInfo.html?id="+id;
+    }
+    function toAdd(){
+        window.location.href = "contactAdd.html";
+    }
+</script>

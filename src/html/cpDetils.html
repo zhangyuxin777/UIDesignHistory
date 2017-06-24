@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta name="format-detection" content="telphone=no, email=no" />
+  <title>我的优惠券</title>
+  <script src="../js/jquery-1.7.2.min.js"></script>
+  <script src="../js/rem.js"></script>
+  <link rel="stylesheet" href="../css/common-coupon.css">
+  <link rel="stylesheet" href="../css/cpDetils.css">
+</head>
+<body>
+</body>
+</html>
+<script src="../js/template-native.js"></script>
+<script type="text/temp" id="templ">
+  <div class="content">
+  <h3 class="title"><%=couponName%></h3>
+  <ul class="list">
+    <li><p>礼券金额<span class='color'><%=#actualAmount%></span></p></li>
+    <li><p>使用期限<span><%=timeLimit%></span></p></li>
+    <li><p>商业范围<span><%=useLimit%></span></p></li>
+    <li><p>使用范围<span><%=Canuse%></span></p></li>
+  </ul>
+  <p class="commts">
+    <%=#commits%>
+  </p>
+</div>
+</script>
+<script>
+function getTime(nS){
+	var date = new Date(nS.time);
+    var year = date.getFullYear();
+    var month = date.getMonth()+1;
+    var day = date.getDate();
+    return year+"-"+month+"-"+day; 
+    return newTime;
+}
+  $(function () {
+   var data=[];
+    var id = GetQueryString('id');
+    $.ajax({
+        async: false,
+        url:'../../rest/Coupon/1026',
+        type: 'POST',
+        data: JSON.stringify({"couponId": id}),
+        contentType: "application/json",
+        dataType: 'json',
+        success: function (backData) {
+        	data.push(backData);
+        	if(data[0].status!=2){
+        		data[0].actualAmount="(投保后确实)";
+        	}
+        	data[0].color="#e7560e";
+        	data[0].Canuse="保费满送（详情如下）";
+        	data[0].timeLimit=getTime(data[0].startDate)+"到"+getTime(data[0].endDate);
+        	if(data[0].couponName.indexOf("加油")>=0){
+	        	data[0].useLimit="仅限车险使用";
+	        	}else if(data[0].couponName.indexOf("我买")>0){
+	        		data[0].useLimit="除车险外的其他保险投保享有";	
+	        	}
+        	if(data[0].couponName.indexOf("加油")>=0){
+        		data[0].commits="注:</br>商业险保费满1000元送250元；商业险保费满2000元送500元；</br>商业险保费满3000元送750元；商业险保费满4000元送1000元；</br>商业险保费满5000元送1250元；以此类推，上不封顶</br>（商业保费每增加1000，增加250）</br>湖北、新疆、四川、大连等四个地区不享有此礼券的优惠。";	
+        	}else if(data[0].couponName.indexOf("我买")>0){
+        		data[0].commits="备注：单张订单首期保费满200元，赠送50元中粮我买卡</br>单张订单首期保费满1000元，赠送350元中粮我买卡；</br>单张订单首期保费满2000元，赠送700元中粮我买卡；</br>"
+        		                +"单张订单首期保费满3000元，赠送1050元中粮我买卡；</br>单张订单首期保费满4000元，赠送1400元中粮我买卡；</br>单张订单首期保费满5000元，赠送1750元中粮我买卡；</br>"
+                                +"单张订单首期保费满6000元，赠送2100元中粮我买卡；</br>以此类推，上不封顶（首期保费每增加1000，增加350元中粮我买卡）购买具有犹豫期的寿险产品，犹豫期过后礼品会自动发放到礼品账户";	
+        	}
+            
+        },
+        error: function (x, y, z) {
+        	/*  closeloading(); */ 
+            return false;
+        }
+    });			
+    for(var i = 0;i<data.length;i++){
+      var str ='';
+      if(data[i].id==id){
+        str = template('templ',data[i]);
+        $('body').html(str);
+      }
+    }
+    function GetQueryString(name)
+    {
+      var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+      var r = window.location.search.substr(1).match(reg);
+      if(r!=null)return  unescape(r[2]); return null;
+    }
+
+  })
+</script>

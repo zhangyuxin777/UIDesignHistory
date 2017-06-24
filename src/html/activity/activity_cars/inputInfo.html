@@ -561,7 +561,8 @@
     <li class='li_info'>
         <div class='text_width'>手机号</div>
         <div class='input_info_width' id='mobile_div'>
-            <input type='number' name='mobile' oninput="judge(this)" maxlength='11' onblur="inputBlur(this)" id='mobile'placeholder='请输入手机号'>
+            <input type='number' name='mobile' oninput="judge(this)" maxlength='11' onblur="inputBlur(this)" id='mobile'
+                   placeholder='请输入手机号'>
         </div>
         <div class='insure_div' style='text-align: right'>
             <button id='get_code' class='insure_btn disable' onblur="inputBlur(this)"
@@ -581,12 +582,13 @@
 <div class="clear"></div>
 <div class='add_btn' onclick="switchThree(this)"></div>
 
-<div class='enter_btn disable' onclick='showDialog()'>投保</div>
-<div style="text-align:center;margin-left: auto;margin-right: auto;margin-top: 0.1rem; font-size: 0.09rem;color: darkgrey"><span
-        style="color: #FB4C0F">*</span>以上车险须为同一投保人，且投保人与车主为同一家庭成员
+<div class='enter_btn' onclick='showDialog()'>投保</div>
+<div
+    style="text-align:center;margin-left: auto;margin-right: auto;margin-top: 0.1rem; font-size: 0.09rem;color: darkgrey"><span
+    style="color: #FB4C0F">*</span>以上车险须为同一投保人，且投保人与车主为同一家庭成员
 </div>
 <div style="text-align:center;margin-left: auto;margin-right: auto;font-size: 0.09rem;color: darkgrey"><span
-        style="color: #FB4C0F">*</span>新疆、西藏、青海、宁夏、贵州、海南等六省暂不支持购买
+    style="color: #FB4C0F">*</span>新疆、西藏、青海、宁夏、贵州、海南等六省暂不支持购买
 </div>
 
 <div id="statement"
@@ -644,7 +646,6 @@
 <script src='../../../js/spinner.js'></script>
 
 <script type='text/javascript'>
-    closeProduct(103);
     autoWidth();
     var normalHeight = $(window).height();
 
@@ -670,24 +671,24 @@
         var li_plate;
         if (isSuccess) {
             li_plate = " <li class='li_info' id='li_plate" + index + "'><div class='car_info_div'>" +
-                    "<div class='text_width'>车牌号</div><div class='input_plate_width' id='plate_div'>" +
-                    "<input class='plate_width info_complete' type='text' value='' maxlength='7' id='plateNumber" + index + "' disabled='disabled' onblur='inputBlur(this)'oninput='judge(this)' placeholder=''></div>" +
-                    "<div id='new_car_div" + index + "' class='col-20'><div style='padding-left: 0.05rem' class='new_car clear'>" +
-                    "<label  id='new_car_label" + index + "'>新车<img src='../../../images/cars/unchecked.png'><input disabled='disabled' style='display: none' type='checkbox' onchange='checkNewCar(this)'id='isNewCar" + index + "'></label>" +
-                    "</div></div><div class='insure_complete '>已投保</div><div class='insure_div '>" +
-                    "<button myIndex='" + index + "' id='insure" + index + "' class='insure_btn disable is_insure_line hide' disabled='disabled'onclick='submitForm(this)'>投保</button>" +
-                    "</div></div></li>";
+                "<div class='text_width'>车牌号</div><div class='input_plate_width' id='plate_div'>" +
+                "<input class='plate_width info_complete' type='text' value='' maxlength='7' id='plateNumber" + index + "' disabled='disabled' onblur='inputBlur(this)'oninput='judge(this)' placeholder=''></div>" +
+                "<div id='new_car_div" + index + "' class='col-20'><div style='padding-left: 0.05rem' class='new_car clear'>" +
+                "<label  id='new_car_label" + index + "'>新车<img src='../../../images/cars/unchecked.png'><input disabled='disabled' style='display: none' type='checkbox' onchange='checkNewCar(this)'id='isNewCar" + index + "'></label>" +
+                "</div></div><div class='insure_complete '>已投保</div><div class='insure_div '>" +
+                "<button myIndex='" + index + "' id='insure" + index + "' class='insure_btn disable is_insure_line hide' disabled='disabled'onclick='submitForm(this)'>投保</button>" +
+                "</div></div></li>";
             $('ul#ul_info').append(li_plate);
             return;
         } else {
             li_plate = " <li class='li_plate' id='li_plate" + index + "'><div id='div_l" + index + "' class='line_div'></div><div class='car_info_div'>" +
-                    "<div class='text_plate_width'>车牌号</div><div class='input_plate_width' id='plate_div'>" +
-                    "<input class='plate_width' type='text' value='' maxlength='7' id='plateNumber" + index + "' onblur='inputBlur(this)'oninput='judge(this)' placeholder='请输入车牌号'></div>" +
-                    "<div id='new_car_div" + index + "' class='col-20'style='float: right;'><div class='new_car clear'  style='float: right; margin-right: 30px'>" +
-                    "<label>新车<img src='../../../images/cars/unchecked.png'><input style='display: none' type='checkbox' onchange='checkNewCar(this)'id='isNewCar" + index + "'></label>" +
-                    "</div></div><div class='insure_complete hide'>已投保</div><div class='insure_div hide'>" +
-                    "<button myIndex='" + index + "' id='insure" + index + "' class='insure_btn disable is_insure_line' disabled='disabled'onclick='showDialog(this)'>投保</button>" +
-                    "</div></div></li>";
+                "<div class='text_plate_width'>车牌号</div><div class='input_plate_width' id='plate_div'>" +
+                "<input class='plate_width' type='text' value='' maxlength='7' id='plateNumber" + index + "' onblur='inputBlur(this)'oninput='judge(this)' placeholder='请输入车牌号'></div>" +
+                "<div id='new_car_div" + index + "' class='col-20'style='float: right;'><div class='new_car clear'  style='float: right; margin-right: 30px'>" +
+                "<label>新车<img src='../../../images/cars/unchecked.png'><input style='display: none' type='checkbox' onchange='checkNewCar(this)'id='isNewCar" + index + "'></label>" +
+                "</div></div><div class='insure_complete hide'>已投保</div><div class='insure_div hide'>" +
+                "<button myIndex='" + index + "' id='insure" + index + "' class='insure_btn disable is_insure_line' disabled='disabled'onclick='showDialog(this)'>投保</button>" +
+                "</div></div></li>";
             $('ul#ul_plate').append(li_plate);
 
         }
@@ -704,13 +705,9 @@
     //            }], 'msg': '请求成功', 'page': 1, 'records': 1, 'total': 3
     //        };
     //        var myData = test.data[0];
-    getOpenId();
     var openId = window.localStorage.getItem(config.openIdName);
     var isFocus = false;
     if (openId != null && openId.length != 0) {
-        GetData("User/1006", function (backData) {
-            isFocus = backData.data.flag;
-        }, {"openId": openId});
     }
 
     function checkDialog(btn) {
@@ -733,17 +730,6 @@
         }
     }
 
-    weixinShare({
-        shareUrl: config.shareRootUrl + '/weixinouter/basepage/activity_cars/proIntro1.html',
-        shareIcon: config.shareRootUrl + '/weixinouter/basepage/images/cars/proIntro/share-icon.jpg',
-        shareText: '中华保险-多车之家',
-        isNeedRecord: true,
-        openId: openId,
-        activityId: '103',
-        typeTimeline: 'zhbx-3',
-        typeAppMessage: 'zhbx-4',
-        isGiveCoin: 'Y'
-    });
 
     function hideDialog() {
 //        $('#insureDia').html('');
@@ -753,10 +739,6 @@
     }
 
     function showDialog() {
-        if (!isFocus) {
-            showCodeDialog();
-            return;
-        }
         var name = $.trim($('#name').val());
         var mobile = $.trim($('#mobile').val());
         var code = $.trim($("#sendActiveCode").val());
@@ -873,119 +855,6 @@
 
     init();
 
-    GetAsyncData("Cars/1023", function (backdata) {
-//    backdata = {
-//        'code': '0',
-//        'data': [{
-//            "name": "2323",
-//            "phoneNumber": "18842662126",
-//            "platelist": [
-//                {"informationId": "32", "isNew": "0", "isSuccess": "0", "plateNumber": "辽B28888"},
-//                {"informationId": "29", "isNew": "0", "isSuccess": "0", "plateNumber": "黑A12344"},
-//                {"informationId": "30", "isNew": "0", "isSuccess": "0", "plateNumber": ""}]
-//        }], 'msg': '请求成功', 'page': 1, 'records': 1, 'total': 3
-//    };
-        //alert(JSON.stringify(backdata.data));
-        myData = backdata.data[0];
-        if (myData == undefined) {
-        }
-        else {
-            $("li:last").remove();
-            $("li:last").remove();
-            $("li:last").remove();
-            line_index = 0;
-            var customerName = $("#name");
-            var mobile = $("#mobile");
-            var li_plate;
-            var plateNumber;
-            var isNewCheck;
-            customerName.val(myData.name);
-            mobile.val(myData.phoneNumber);
-
-            for (var i = 0; i < myData.platelist.length && i < 3; i++) {
-                var plate = myData.platelist[i];
-                if (plate.isSuccess == '1') {
-                    insuredCount++;
-                    if (!customerName.hasClass("info_complete")) {
-                        $("ul#ul_info").addClass("info_complete");
-                        customerName.attr('disabled', 'disabled');
-                        mobile.attr('disabled', 'disabled');
-                        $("#checkCode").addClass("hide");
-                        $("#get_code").addClass("hide");
-                        isCheckMobile = true;
-                    }
-                    addLine(i, true);
-                    li_plate = $("#li_plate" + i);
-                    plateNumber = $("#plateNumber" + i);
-                    isNewCheck = $("#isNewCar" + i);
-                    $("#insure" + i).attr('myIndex', myData.platelist[i].type);
-                    if (myData.platelist[i].isNew == '1') {
-                        plateNumber.val('*-*');
-                        isNewCheck.prev('img').attr('src', '../../../images/cars/checked.png');
-                        isNewCheck.attr("checked", "checked");
-                    } else {
-                        plateNumber.val(myData.platelist[i].plateNumber);
-                        $("#new_car_div" + i).addClass("hide");
-                    }
-                }
-            }
-            for (i = 0; i < 3; i++) {
-                if (i >= myData.platelist.length) {
-                    addLine(i, false);
-                    $("#insure" + i).addClass('is_insure_line');
-                    li_plate = $("#li_plate" + i);
-                    plateNumber = $("#plateNumber" + i);
-                    isNewCheck = $("#isNewCar" + i);
-                    $("#insure" + i).attr('myIndex', i);
-                } else {
-                    if (myData.platelist[i].isSuccess == '0') {
-                        addLine(i, false);
-                        $("#insure" + i).addClass('is_insure_line');
-                        li_plate = $("#li_plate" + i);
-                        plateNumber = $("#plateNumber" + i);
-                        isNewCheck = $("#isNewCar" + i);
-                        $("#insure" + i).attr('myIndex', myData.platelist[i].type);
-                        if (myData.platelist[i].isNew == '1') {
-                            $(isNewCheck).prev('img').attr('src', '../../../images/cars/checked.png');
-                            $(isNewCheck).attr('checked', "checked");
-                            $(plateNumber).attr("placeholder", "");
-                            $(plateNumber).attr("disabled", "disabled");
-                            $(plateNumber).addClass("disable");
-//                            $(plateNumber).addClass("hide");
-
-                        } else {
-                            plateNumber.val(myData.platelist[i].plateNumber);
-                        }
-                    }
-                }
-
-            }
-        }
-        if (insuredCount < 2) {
-            $("li:last").prev().addClass('no_line');
-            $("li.li_info:last").addClass('no_line');
-            $("li:last").addClass('no_line hide');
-        }
-        else if (insuredCount == 2) {
-            $("li:last").addClass('no_line');
-            $("ul#ul_plate").addClass("hide");
-            $("li.li_info:last").addClass('no_line');
-            $("li:last").addClass('no_line hide');
-        }
-        else if (insuredCount == 3) {
-            $(".add_btn").css('display', 'none');
-            $(".enter_btn").css('display', 'none');
-            $("li:last").addClass('no_line');
-            $("ul#ul_plate").addClass("hide");
-        }
-
-        if (insuredCount == 0) {
-            $("#li_plate0").css("height", "0.77rem");
-            $("#div_l0").addClass("hint_text");
-            $("#div_l0").text("至少填写两辆车信息方可投保");
-        }
-        judge();
-    }, {"openId": openId, "activityId": "103"});
 
     function judge() {
         var name = $.trim($('#name').val());
@@ -1121,28 +990,6 @@
                 return;
             } else {
                 showCenterSpinner();
-                GetAsyncData("Transfer/1012", function (backdata) {
-                    hideCenterSpinner();
-                    var data = backdata.data;
-                    console.log("checkCode:" + data.resultCode);
-                    if (data.resultCode != "0000") {
-                        alert("验证码不正确，请重新获取！");
-                    } else {
-                        isCheckMobile = true;
-                        save();
-                        if (isNewCar == 1) {
-                            plateNumber = "*-*";
-                        }
-                        var form = $('#infoForm');
-                        var htmlStr = "<input type='text' value='" + name + "' name='vehicleOwnerName'/>"
-                                + "<input type='number' value='" + mobile + "' name='vehicleOwnerMobile'/>"
-                                + "<input type='text' value='" + plateNumber + "' name='licensePlateNo'/>"
-                                + "<input type='text' value='" + "103" + type + openId + "' name='linkId'/>";
-                        //alert("车牌：" + plateNumber);
-                        form.append(htmlStr);
-                        form.submit();
-                    }
-                }, {"checkCode": code, "uuid": uuid});
             }
         } else {
             save();
@@ -1151,9 +998,9 @@
             }
             var form = $('#infoForm');
             var htmlStr = "<input type='text' value='" + name + "' name='vehicleOwnerName'/>"
-                    + "<input type='number' value='" + mobile + "' name='vehicleOwnerMobile'/>"
-                    + "<input type='text' value='" + plateNumber + "' name='licensePlateNo'/>"
-                    + "<input type='text' value='" + "103" + type + openId + "' name='linkId'/>";
+                + "<input type='number' value='" + mobile + "' name='vehicleOwnerMobile'/>"
+                + "<input type='text' value='" + plateNumber + "' name='licensePlateNo'/>"
+                + "<input type='text' value='" + "103" + type + openId + "' name='linkId'/>";
 //            alert("车牌：" + plateNumber);
             form.append(htmlStr);
             form.submit();
@@ -1249,9 +1096,9 @@
             myData = sData;
         }
         if (name.length != 0 || mobile.length != 0
-                || (plateNumber[1].length != 0 || isNewCar[1] == "1")
-                || (plateNumber[2].length != 0 || isNewCar[2] == "1")
-                || (plateNumber[0].length != 0 || isNewCar[0] == "1")) {
+            || (plateNumber[1].length != 0 || isNewCar[1] == "1")
+            || (plateNumber[2].length != 0 || isNewCar[2] == "1")
+            || (plateNumber[0].length != 0 || isNewCar[0] == "1")) {
 
             sData.openId = openId;
             sData.activityId = "103";
@@ -1334,7 +1181,6 @@
     }
     autoWidth();
     $('body').removeClass('hide');
-    baiduCollection();
 </script>
 
 </html>

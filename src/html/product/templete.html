@@ -1,0 +1,77 @@
+<div class="line-div line-div-border">
+    <div class="col-left line t-a-right">受益顺序</div>
+    <div class="col-right line">
+        <div class="include">
+            <div class="replace" rel="1">第一受益顺序</div>
+        </div>
+    </div>
+</div>
+<div class="clear"></div>
+<div class="line-div line-div-border">
+    <div class="col-left line t-a-right">与被保人关系</div>
+    <div class="col-right line">
+        <div class="include">
+            <div class="replace relationship" rel="01">配偶</div>
+        </div>
+    </div>
+    <img src="../../../images/personal_ic_right.png" class="down-icon"/>
+    <div class="clear"></div>
+</div>
+<div class="line-div line-div-border">
+    <div class="col-left line t-a-right">姓<span class="transparent">一一</span>名</div>
+    <div class="col-right line">
+        <input class="name-inheritor" maxlength="36" type="text" placeholder="请务必以身份证件为准正确填写"
+               onblur="checkInputActualTime(this)"/>
+    </div>
+</div>
+<div class="clear"></div>
+<div class="line-div line-div-border">
+    <div class="col-left line t-a-right">证件类型</div>
+    <div class="col-right line">
+        <div class="include">
+            <div class="replace cardType" rel="0">身份证</div>
+        </div>
+    </div>
+    <img src="../../../images/personal_ic_right.png" class="down-icon"/>
+    <div class="clear"></div>
+</div>
+<div class="line-div line-div-border">
+    <div class="col-left line t-a-right">证件号码</div>
+    <div class="col-right line">
+        <input class="identify-inherit" type="text" oninput="addInfoByIDCard1(this)"
+               onblur="checkInputActualTime1(this)"
+               maxlength="20"/>
+    </div>
+</div>
+<div class="clear"></div>
+<div class="line-div line-div-border">
+    <div class="col-left line t-a-right">性<span class="transparent">一一</span>别</div>
+    <div class="col-right line">
+        <div class="include">
+            <div class="replace gender-inherit" rel="" style="pointer-events: none;"></div>
+        </div>
+    </div>
+</div>
+<div class="clear"></div>
+<div class="line-div line-div-border">
+    <div class="col-left line t-a-right">出生日期</div>
+    <div class="col-right line">
+        <div class="include">
+            <div class="replace birth-inherit" rel="" style="pointer-events: none;"></div>
+        </div>
+    </div>
+</div>
+<div class="clear"></div>
+<div class="line-div line-div-border">
+    <div class="col-left line t-a-right">受益比例</div>
+    <div class="col-right line">
+        <input class="irate" onkeyup="this.value=this.value.replace(/[^\d]/g,'')" onblur="checkInputActualTime1(this)" type="number" placeholder="1-100(所有受益比例之和应等于100)"/>
+    </div>
+    <div style="position: absolute;right: 0.2rem;color: #404040">%</div>
+</div>
+<div class="btn-div1">
+    <div class="btn">
+        <div class="del" id="del" onclick="delInherit(this)">删除</div>
+    </div>
+</div>
+

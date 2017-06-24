@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <title>注册万联金网</title>
+    <style>
+        body {
+            font-family: 'Microsoft YaHei', 'Hiragino Sans GB', Helvetica, Arial, 'Lucida Grande', sans-serif;
+            width: 3.2rem;
+            margin: 0 auto;
+            padding: 0;
+            background: #f6f4f4;
+            font-size: 0.12rem;
+            -webkit-tap-highlight-color: transparent;
+        }
+        input {
+            height: 0.25rem;
+            border: 0 none;
+            background-color: white;
+            outline: none;
+            margin: 0 0 0.025rem 0;
+            width: 100%;
+            -webkit-appearance: none;
+            font-size: 0.12rem;
+            padding: 0;
+            color: #404040;
+        }
+        input[type='number'] {
+            -moz-appearance: textfield;
+            -webkit-appearance: none !important;
+        }
+        input:focus {
+            outline: none;
+        }
+
+        input[type=date] {
+            width: 100%;
+            opacity: 0;
+        }
+        .line-div {
+            height: 0.45rem;
+            border-bottom: 1px solid #f0f0f0;
+            font-size: 0.12rem;
+            line-height: 0.45rem;
+            margin: 0 0 0 0.12rem;
+        }
+        .col-left {
+            width: 22%;
+            float: left;
+            color: #606060;
+        }
+        .line {
+            height: 100%;
+            color: #404040;
+        }
+        .t-a-right {
+            text-align: left;
+        }
+        .rule-line {
+            height: 0.45rem;
+            font-size: 0.1rem;
+        }
+        .rule-div {
+            float: left;
+            width: 2.72rem;
+            height: 100%;
+            line-height: 0.18rem;
+            margin-top: 0.075rem;
+            color: #606060;
+        }
+        .check, .uncheck {
+            float: left;
+            height: 100%;
+            padding-left: 0.12rem;
+            padding-right: 0.12rem;
+        }
+
+        .check .img {
+            background: url('../images/cars/checked.png');
+            background-size: 100% 100%;
+            width: 0.16rem;
+            height: 0.16rem;
+            margin-top: 0.09rem
+        }
+
+        .uncheck .img {
+            background: url('../images/cars/unchecked.png');
+            background-size: 100% 100%;
+            width: 0.16rem;
+            height: 0.16rem;
+            margin-top: 0.09rem;
+        }
+        .rule {
+            color: #016FEB;
+        }
+        .btn-div {
+            background-color: #f6f4f4;
+            width: 100%;
+            padding-top: 0.2rem;
+            padding-bottom: 0.02rem;
+        }
+        .enter_btn {
+            height: 0.49rem;
+            line-height: 0.49rem;
+            background-color: #F39A0F;
+            color: #ffffff;
+            text-align: center;
+            font-size: 0.175rem;
+            border-radius: 0.04rem;
+            width: 2.96rem;
+            margin: auto;
+        }
+        a {
+            text-decoration: none;
+            outline: none;
+            color: #515151;
+        }
+        .get_code_btn {
+            height: 0.25rem;
+            line-height: 0.25rem;
+            background-color: #F39A0F;
+            color: #ffffff;
+            text-align: center;
+            border-radius: 0.03rem;
+            width: 0.8rem;
+            float: right;
+            margin-top: 0.1rem;
+            font-size: 0.1rem;
+        }
+        .col-right {
+            width: 69%;
+            float: left;
+
+        }
+        @media (device-width: 320px ) and (device-height: 568px) and (-webkit-min-device-pixel-ratio: 2 ) {
+            /* 兼容iphone5 */
+            .line-div {
+                border-bottom: 0.5px solid #d4d4d4;
+            }
+        }
+        @media (device-width: 375px ) and (device-height: 667px) and (-webkit-min-device-pixel-ratio: 2 ) {
+            /* 兼容iphone6 */
+            .line-div {
+                border-bottom: 0.5px solid #d4d4d4;
+            }
+        }
+        @media (device-width: 414px ) and (device-height: 736px) and (-webkit-min-device-pixel-ratio: 2 ) {
+            /* 兼容iphone6 Plus */
+            .line-div {
+                border-bottom: 0.5px solid #d4d4d4;
+            }
+        }
+        .no-border {
+            border: 0;
+        }
+    </style>
+</head>
+<body>
+
+<div style="background: #fff">
+    <div class="line-div">
+        <div class="col-left line t-a-right">手机号</div>
+        <div class="line" id="mobile" style="float:left;width: 75%">
+            13037174865
+            <div class="get_code_btn"
+                 onclick='getCode(this)'>获取验证码
+            </div>
+        </div>
+    </div>
+
+    <div class="line-div no-border">
+        <div class="col-left line t-a-right">验证码</div>
+        <div class="col-right line">
+            <input id="code" type="text" placeholder="请输入验证码"/>
+        </div>
+    </div>
+</div>
+<div class="rule-line">
+    <div class="uncheck" onclick="checkRule(this)">
+        <div class="img"></div>
+    </div>
+    <div class="rule-div">
+        我已阅读并同意<a class="rule">《万联金网注册协议》</a>
+    </div>
+</div>
+<div class="btn-div">
+    <div class="enter_btn"
+         onclick='toLogin()'>立即注册
+    </div>
+</div>
+</body>
+</html>
+<script src="../js/jquery-1.9.1.min.js"></script>
+<script src="../js/common.js"></script>
+<script>
+    autoWidth();
+    var isRead = false;
+    var isGettingCode = false;
+    function checkRule(btn) {
+        $(btn).hasClass('check') ? $(btn).removeClass('check').addClass('uncheck') : $(btn).removeClass('uncheck').addClass('check');
+        if ($(btn).hasClass('check')) {
+            isRead = true;
+        } else {
+            isRead = false;
+        }
+    }
+    function getCode(btn){
+        console.log("send");
+        if (isGettingCode) {
+            return;
+        }
+        isGettingCode = true;
+        var second = 60;
+        btn.innerHTML = second + ' 秒';
+        $(btn).attr("disabled", true);
+        $(btn).css("background-color", "#dddddd");
+        clock = setInterval(function () {
+            second--;
+            if (second > 0) {
+                btn.innerHTML = second + ' 秒';
+
+            } else {
+                clearInterval(clock);
+                btn.innerHTML = '获取验证码';
+                $(btn).attr("disabled", false);
+                $(btn).css("background-color", "#F39A0F");
+                second = 60;
+                isGettingCode = false;
+            }
+        }, 1000);
+        GetAsyncData("Wljw/1051", function(data){
+            console.log(data.sendMessageFlag);
+
+        },{phoneNumber: "13037174865"});
+
+    }
+
+    function toLogin(){
+        var code = $("#code").val();
+        console.log(code);
+        if(isRead){
+            GetAsyncData("Wljw/1052", function(data){
+                console.log(data.verifyFlag);
+
+            },{phoneNumber: "13037174865",messageCode: code});
+        }else{
+            alert("请先阅读并同意条款")
+        }
+
+    }
+</script>

@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+    <title>投保结果</title>
+    <style>
+        ol, ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            background-color: #ffffff;
+        }
+
+        a {
+            text-decoration: none;
+            outline: none;
+            color: rgb(25%, 25%, 25%);
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        a:hover {
+            text-decoration: none;
+        }
+
+        div, h1, h2, h3, h4, h5, p {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Microsoft YaHei', 'Hiragino Sans GB', Helvetica, Arial, 'Lucida Grande', sans-serif;
+            width: 3.2rem;
+            margin: 0 auto;
+            font-size: .12rem;
+            background-color: #fff;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .hide {
+            display: none;
+        }
+
+        .clear {
+            clear: both;
+        }
+
+        .margin-t-20 {
+            margin-top: 0.2rem;
+        }
+
+        .pay-btn {
+            height: 0.35rem;
+            line-height: 0.35rem;
+            background-color: #00a8fa;
+            color: #ffffff;
+            text-align: center;
+            border-radius: 0.03rem;
+            width: 1.2rem;
+            font-size: 0.14rem;
+            margin: 0.3rem auto;
+        }
+
+        .leave-btn {
+            height: 0.35rem;
+            line-height: 0.35rem;
+            background-color: #dddddd;
+            color: #ffffff;
+            text-align: center;
+            border-radius: 0.03rem;
+            width: 0.9rem;
+            float: left;
+            font-size: 0.14rem;
+        }
+
+        .img-div {
+            float: left;
+            width: 33%;
+            text-align: right;
+        }
+
+        .img-div img {
+            width: 0.6rem;
+        }
+
+        .title-div {
+            float: left;
+            width: 65%;
+            text-align: left;
+            height: 100%;
+            line-height: 1rem;
+            color: #F39A0F;
+            font-size: 0.18rem;
+        }
+
+        .result-div {
+            line-height: 0.25rem;
+            font-size: 0.14rem;
+            margin-left: 0.5rem;
+            margin-right: 0.5rem;
+        }
+
+        .grey {
+            color: #606060;
+        }
+
+        .btn-div {
+            text-align: center;
+            width: 2.2rem;
+            margin: 0.5rem auto;
+        }
+
+        .font-size-10 {
+            font-size: 0.12rem;
+        }
+
+    </style>
+</head>
+<body class="hide">
+<div style="margin-top: 0.5rem">
+    <div class="img-div">
+        <img src="../../images/success_logo.jpg">
+    </div>
+    <div class="title-div">
+        <span>&nbsp;&nbsp;恭喜您，投保成功!</span>
+    </div>
+    <div class="clear"></div>
+</div>
+<div class="result-div">
+    <div>尊敬的用户<span id="name"></span>：</div>
+    <div class="grey font-size-10">您已成功投保&nbsp;<span id="insurance-name"></span>，</div>
+    <div class="grey font-size-10">保单号为&nbsp;<span id="insurance-number"></span>，</div>
+    <div class="grey font-size-10">保单生效时间为&nbsp;<span id="insurance-time"></span>，</div>
+    <div class="grey font-size-10">请注意查收电子保单及承保短信。</div>
+    <div class="grey font-size-10" style="margin-top: 0.1rem">您可在 个人中心-我的订单 查询您的保单详细信息。</div>
+</div>
+<div class="pay-btn" onclick="toPersonal()">进入个人中心</div>
+
+</body>
+<script src="../../js/jquery-1.9.1.min.js"></script>
+<script src='../../js/jweixin-1.0.0.js'></script>
+<script src="../../js/common.js"></script>
+<script type="text/javascript">
+    autoWidth();
+    //var openId = window.localStorage.getItem(config.openIdName);
+    var type = getUrlParam("type");
+    if(type != null){
+        $(".pay-btn").addClass("hide");
+    }
+    var insureInfo = JSON.parse(sessionStorage.getItem('insureInfo'));
+    var activityId = '';
+    try {
+        if (insureInfo.pay.policyId.length == 0) {
+            $('.result-div').html('');
+            $('.result-div').html("<div>尊敬的用户<span id='name'>" + insureInfo.pay.insuredName + "</span>：</div>" +
+                    " <div class='grey font-size-10'>" + insureInfo.pay.msg + "</div>");
+        }
+        $('#name').text(insureInfo.pay.insuredName);
+        $('#insurance-name').text(insureInfo.pay.productName);
+        $('#insurance-number').text(insureInfo.pay.policyId);
+        $('#insurance-time').text(insureInfo.pay.startDate);
+        activityId = insureInfo.order.ProductCode;
+    }
+    catch (e) {
+    }
+
+    weixinCloseShare();
+    baiduCollection();
+    insureInfo.pay.successOrderId = insureInfo.pay.policyNo;
+    sessionStorage.setItem('insureInfo', JSON.stringify(insureInfo));
+    function toPersonal() {
+        sessionStorage.removeItem('insureInfo');
+        sessionStorage.removeItem('mongdb');
+        sessionStorage.removeItem('policyNo');
+        sessionStorage.removeItem('biaoz');
+        window.location.href = "../personal.html";
+    }
+
+</script>
+</html>

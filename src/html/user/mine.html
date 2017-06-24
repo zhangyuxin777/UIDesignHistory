@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <meta name="format-detection" content="telephone=no" />
+    <title>完善个人信息</title>
+
+    <link rel="stylesheet" href="../../css/mui/mui.picker.min.css"/>
+    <link rel="stylesheet" href="../../css/mui/mui.min.css"/>
+    <style>
+        body{
+            margin: 0;
+            overflow-x: hidden;
+            font-size: 14px;
+            font-family: 'Microsoft YaHei', 'Arial', sans-serif;
+            color: #404040;
+            background-color: #f6f4f4;
+        }
+        .header-icon{
+            background-color: #ffffff;
+            height: 0.9rem;
+            margin: 0.1rem 0;
+        }
+        .content{
+            background-color: #ffffff;
+            clear: both;
+        }
+        .lable-text{
+            font-size: 0.12rem;
+            height: 0.45rem;
+            line-height: 0.45rem;
+            margin-left: 0.12rem;
+            clear: both;
+        }
+        .line{
+            border-top: 1px solid #d4d4d4;
+        }
+        input[type=color], input[type=date], input[type=datetime-local], input[type=datetime], input[type=email], input[type=month], input[type=number], input[type=password], input[type=search], input[type=tel], input[type=text] {
+            font-family: 'Microsoft YaHei', 'Hiragino Sans GB', Helvetica, Arial, 'Lucida Grande', sans-serif;
+            height: 0.25rem;
+            border: 0 none;
+            background-color: white;
+            outline: none;
+            margin: 0 0 0.025rem 0;
+            -webkit-appearance: none;
+            font-size: 0.12rem;
+            padding: 0;
+            color: #404040;
+            -webkit-tap-highlight-color: transparent;
+            width: 70%;
+        }
+        .kong{padding-left:0.24rem;}
+        .icon,.left{
+            float: left;
+        }
+        .icon{
+            margin: 0.12rem;
+            width: 0.7rem;
+            height: 0.7rem;
+            border-radius: 50%;
+        }
+        #wxName{
+            margin-top: 0.30rem;
+            font-size: 0.14rem;
+            width: 50%;
+        }
+        .disc{
+            margin-top: 0.03rem;
+            font-size: 0.12rem;
+            color: #f08300;
+        }
+        .star{
+            width: 0.07rem;
+            height: 0.07rem;
+            background: url(../../images/star.png) no-repeat;
+            background-size: 100%;
+            margin-left: 0.05rem;
+            position: absolute;
+            left: 0.6rem;
+            margin-top: 0.18rem;
+        }
+        .col-40{
+            width: 25%;
+            float: left;
+        }
+        .button{
+            height: 0.44rem;
+            line-height: 0.44rem;
+            background-color: #F39A0F;
+            color: #ffffff;
+            text-align: center;
+            font-size: 0.16rem;
+            border-radius: 0.04rem;
+            width: 90%;
+            margin: 0.2rem auto;
+        }
+        .arrow-down,.arrow-right{
+            width: 0.12rem;
+        }
+        .arrow-down{
+            position: absolute;
+            margin-top: 0.16rem;
+            left: 0.5rem;
+        }
+        .arrow-right{
+            /*position: absolute;*/
+            /*right: 0.15rem;*/
+            margin-top: 0.15rem;
+        }
+        .lable-sel{
+            width: 70%;
+            float: left;
+            height: 0.45rem;
+            font-size: 0.12rem;
+            color: #404040;
+        }
+        .col-30{
+            width: 33%;
+            float: left;
+        }
+        .hide{
+            display: none;
+        }
+        @media (device-width: 320px ) and (device-height: 568px) and (-webkit-min-device-pixel-ratio: 2 ) {
+            /* 兼容iphone5 */
+            .line{
+                border-top: 0.5px solid #d4d4d4;
+            }
+        }
+
+        @media (device-width: 375px ) and (device-height: 667px) and (-webkit-min-device-pixel-ratio: 2 ) {
+            /* 兼容iphone6 */
+            .line{
+                border-top: 0.5px solid #d4d4d4;
+            }
+        }
+
+        @media (device-width: 414px ) and (device-height: 736px) and (-webkit-min-device-pixel-ratio: 2 ) {
+            /* 兼容iphone6 Plus */
+            .line{
+                border-top: 0.5px solid #d4d4d4;
+            }
+        }
+    </style>
+</head>
+<body class="hide">
+<div class="header-icon">
+    <img class="icon" id="wxIcon" src="../../images/app_logo.jpg">
+    <div class="left" id="wxName">星星</div>
+    <div class="left hide disc">完善信息才能快速投保哦!</div>
+</div>
+
+<div class="content">
+    <div class="lable-text">
+        <div class="col-40">
+            姓<span class="kong"></span>名<span class="star"></span>
+        </div>
+        <input id="name" type="text" placeholder="请输入" onblur="checkInput(this)">
+    </div>
+    <div class="lable-text line">
+        <div class="col-40" id="card-raplace">
+            <span id="card" rel="0">身份证</span>
+            <img class="arrow-down" src="../../images/personal_ic_down.png">
+            <span class="star"></span>
+        </div>
+        <input id="cardNum" type="text" maxlength="20" placeholder="请输入" onblur="checkInput(this)">
+    </div>
+    <div class="lable-text line hz hide">
+        <div class="col-40">
+            性<span class="kong"></span>别<span class="star"></span>
+        </div>
+        <div class="lable-sel" id="sex"></div>
+        <img class="arrow-right" src="../../images/personal_ic_right.png">
+    </div>
+    <div class="lable-text line hz hide">
+        <div class="col-40">
+            出生日期<span class="star"></span>
+        </div>
+        <div class="lable-sel" id="birth"></div>
+        <img class="arrow-right" src="../../images/personal_ic_right.png">
+    </div>
+    <div class="lable-text line">
+        <div class="col-40">
+            手<span class="kong"></span>机<span class="star"></span>
+        </div>
+        <input type="tel" id="tel" maxlength="11" placeholder="请输入" onblur="checkInput(this)">
+    </div>
+    <div class="lable-text line">
+        <div class="col-40">
+            <span>邮<span class="kong"></span>箱</span>
+        </div>
+        <input type="text" id="email" placeholder="用于接收电子保单，请输入" onblur="checkInput(this)">
+    </div>
+    <div class="lable-text line">
+        <div class="col-40">
+            <span>居住地区</span>
+        </div>
+        <div class="lable-sel" id="areaReplace">
+            <div class="col-30">
+                <span id="pro">选择省</span>
+                <img class="arrow-right" src="../../images/personal_ic_down.png">
+            </div>
+            <div class="col-30">
+                <span id="city">选择市</span>
+                <img class="arrow-right" src="../../images/personal_ic_down.png">
+            </div>
+            <div class="col-30">
+                <span id="area">选择区</span>
+                <img class="arrow-right" src="../../images/personal_ic_down.png">
+            </div>
+        </div>
+
+    </div>
+    <div class="lable-text line">
+        <div class="col-40">
+            <span>详细地址</span>
+        </div>
+        <input type="text" id="addr" placeholder="请输入" maxlength="36" onblur="checkInput(this)">
+    </div>
+    <div class="lable-text line">
+        <div class="col-40">
+            <span>邮<span class="kong"></span>编</span>
+        </div>
+        <input type="tel" maxlength="6" onkeyup="this.value=this.value.replace(/[^\d]/g,'')" onblur="checkInput(this)" id="postcode" placeholder="请输入">
+    </div>
+</div>
+
+<div class="button" onclick="save()">保存</div>
+</body>
+</html>
+<script src='../../js/jquery-1.9.1.min.js'></script>
+<script src="../../js/mui/mui.min.js"></script>
+<script src="../../js/mui/mui.picker.min.js"></script>
+<script src="../../js/common.js"></script>
+<script src="../../js/identify.js"></script>
+<script src="../../js/city.data-3.js"></script>
+<script>
+    autoWidth();
+    getOpenId();
+    var openId = window.localStorage.getItem(config.openIdName);
+    //获取微信头像及昵称
+    GetAsyncData("User/1002", function (backdata) {
+        var json = backdata;
+        var code = json.code;
+        if (code == "0") {
+            var headImgUrl = json.data.headImgUrl;
+            var name = json.data.userName;
+            $("#wxIcon").attr("src", headImgUrl);
+            $("#wxName").text(name);
+        }
+    }, {"openId": openId});
+
+    var data = {
+        type: "00",
+        isLook: "Y",
+        openId: openId
+    };
+
+    submit();
+    function save(){
+        var name = $("#name").val();
+        var type = $("#card").attr("rel");
+        var cardNum = $("#cardNum").val();
+        var id = sessionStorage.getItem("id");
+        var tel = $("#tel").val();
+        var email = $("#email").val();
+        //var area = $("#area").text();
+        var province = $("#pro").attr("p");
+        var city = $("#city").attr("c");
+        var county = $("#area").attr("a");
+        var addr = $("#addr").val();
+        var postcode = $("#postcode").val();
+        if(type == 0){
+            var sex = genderByIDCard(cardNum);
+            var birth = birthdayByIDCard(cardNum);
+        }else{
+            sex = $("#sex").attr("rel");
+            birth = $("#birth").attr("rel");
+        }
+        data = {
+            type: "02",
+            isLook: "N",
+            openId: openId,
+            name: name,
+            cardType: type,
+            idCard: cardNum,
+            id: id,
+            sex: sex,
+            birthday: birth,
+            mobile: tel,
+            province: province,
+            city: city,
+            county: county,
+            addDetail: addr,
+            email: email,
+            relation: "00",
+            zipCode: postcode
+        };
+        if(valid()){
+            submit();
+        }
+
+    }
+
+    function valid(){
+        var v=0;
+        var name = $("#name").val();
+        var cardNum = $("#cardNum").val();
+        var mobile = $("#tel").val();
+        var sex = $("#sex").text();
+        var birth = $("#birth").text();
+        var type = $("#card").attr("rel");
+        var email = $("#email").val();
+        var addr = $("#addr").val();
+        var postcode = $("#postcode").val();
+        if(name == ""){
+            mui.alert("请填写姓名");
+            v=1;
+            return false;
+        }else{
+            if (!checkInput($('#name'))) {
+                v=1;
+                return false;
+            }
+
+        }
+        if(cardNum == ""){
+            mui.alert("请填写证件号");
+            v=1;
+            return false;
+        }else{
+            if (!checkInput($('#cardNum'))) {
+                v=1;
+                return false;
+            }
+
+        }
+        if(mobile == ""){
+            mui.alert("请填写手机号");
+            v=1;
+            return false;
+        }else{
+            if (!checkInput($('#tel'))) {
+                v=1;
+                return false;
+            }
+
+        }
+        if(email != "" && !checkInput($('#email'))){
+            v=1;
+            return false;
+        }
+        if(addr != "" && !checkInput($('#addr'))){
+            v=1;
+            return false;
+        }
+        if(postcode != "" && !checkInput($('#postcode'))){
+            v=1;
+            return false;
+        }
+        if(type != 0){
+            if(sex == ""){
+                mui.alert("请选择性别");
+                v=1;
+                return false;
+            }
+            if(birth == ""){
+                mui.alert("请选择出生日期");
+                v=1;
+                return false;
+            }
+        }
+        if(v==1){
+            return false;
+        }
+        return true;
+    }
+
+    function submit(){
+        //数据保存及修改
+        GetAsyncData("User/2031", function (backdata) {
+            var data = backdata.data;
+            if(data.length != 0){
+                setForm(data[0]);
+            }
+            if(backdata.type== "02"){
+                mui.alert("保存成功");
+            }
+        }, data);
+    }
+    function setForm(data){
+        $("#name").val(data.name);
+        $("#cardNum").val(data.idCard);
+        sessionStorage.setItem("id",data.id);
+        $("#tel").val(data.mobile);
+        $("#email").val(data.email);
+        $("#addr").val(data.addDetail);
+        $("#postcode").val(data.zipCode);
+        if(data.cardType == 0){
+            $("#card").text("身份证").attr("rel",data.cardType);
+        }else{
+            $("#card").text("护照").attr("rel",data.cardType);
+            $(".hz").removeClass("hide");
+            $("#sex").text(data.sex == "1" ? '女' : '男').attr("rel",data.sex);
+            $("#birth").text(data.birthday).attr("rel",data.birthday);
+        }
+        var tpro="",tcity="",tarea="";
+        if(data.province != ""){
+            for(var i in cityData3){
+                if(cityData3[i].value == data.province){    //省
+                    tpro = cityData3[i].text;
+                }
+                for(var j in cityData3[i].children){
+                    if(cityData3[i].children[j].value == data.city){    //市
+                        tcity = cityData3[i].children[j].text;
+                    }
+                    for(var k in cityData3[i].children[j].children){
+                        if(cityData3[i].children[j].children[k].value == data.county){    //区
+                            tarea = cityData3[i].children[j].children[k].text;
+                        }
+                    }
+                }
+            }
+        }
+        $("#pro").text(tpro).attr("p",data.province);
+        $("#city").text(tcity).attr("c",data.city);
+        $("#area").text(tarea).attr("a",data.county);
+    }
+
+    //实时校验数据
+    function checkInput(input) {
+        var id = $(input).attr('id');
+        var val = $(input).val();
+        if (val.length == 0) {
+            return false;
+        }
+        //姓名校验
+        if (id.indexOf('name') != -1) {
+            var val_replace = val.replace(/(^\s*)|(\s*$)/g, ""); //去掉首尾空格
+            if (!val.match(/^[0-9A-Z_a-z\u4e00-\u9faf\s•·.]+$/) || val_replace.length != val.length) {
+                mui.alert('姓名中包含特殊字符');
+                return false;
+            }
+            var lastChar = val.substr(val.length - 1, val.length);
+            var firstChar = val.substr(0, 1);
+            if (lastChar.match(/^[•·.]+$/) || firstChar.match(/^[•·.]+$/)) {
+                mui.alert('姓名中包含特殊字符');
+                return false;
+            }
+            if (lastChar.match(/^[\d]+$/) || firstChar.match(/^[\d]+$/)) {
+                mui.alert('姓名中包含数字');
+                return false;
+            }
+            var nameLength = 0;
+            for (var nl = 0; nl < val.length; nl++) {
+                if (val.substring(nl, nl + 1).match(/.*[\u4e00-\u9fa5]+.*$/)) {
+                    nameLength += 2;
+                } else {
+                    nameLength++;
+                }
+            }
+            if (nameLength < 2) {
+                mui.alert('姓名最小不能小于2个字符');
+                return false;
+            } else if (nameLength > 36) {
+                mui.alert('姓名最长不能超过36个字符');
+                return false;
+            }
+        }
+        //身份证校验
+        else if (id.indexOf('cardNum') != -1 && $("#card").attr("rel") == 0) {
+            if (val.length != 18 && val.length != 0) {
+                mui.alert('身份证号码位数不为18位');
+                return false;
+            }
+            if (!IdCardValidate(val)) {
+                mui.alert('请正确填写证件号码');
+                return false;
+            }
+
+        }
+        //护照校验
+        else if (id.indexOf('cardNum') != -1 && $("#card").attr("rel") == 3){
+            if (val.length <3 || val.length > 20) {
+                mui.alert('请正确填写证件号码');
+                return false;
+            }
+        }
+        //手机号校验
+        else if (id.indexOf('tel') != -1) {
+            if (!val.match(/^(0|86|17951)?(13[0-9]|15[0-9]|17[0-9]|18[0-9]|14[0-9])[0-9]{8}$/)) {
+                mui.alert('手机号码填写有误');
+                return false;
+            }
+        }
+        //地址校验
+        else if (id.indexOf('addr') != -1) {
+            if (!val.match(/.*[\u4e00-\u9fa5]+.*$/)) {
+                mui.alert('地址必须包含汉字');
+                return false;
+            }
+            var addressLength = 0;
+            var addList = new Array(val.length);
+            for (var i = 0; i < val.length; i++) {
+                addList[i] = val.substring(i, i + 1);
+                if (addList[i].match(/.*[\u4e00-\u9fa5]+.*$/)) {
+                    addressLength += 2;
+                } else {
+                    addressLength++;
+                }
+            }
+            if (addressLength < 20) {
+                mui.alert('地址填写内容过短，请填写具体地址');
+                return false;
+            }
+            var isRepeat = false;
+            for (i = 0; i < val.length && !isRepeat; i++) {
+                var last = -1;
+                for (var j = 0, count = 0; j < val.length; j++) {
+                    if (addList[i] === addList[j]) {
+                        if (last == -1) {
+                        } else {
+                            if (j == last + 1) {
+                                if (++count >= 4) {
+                                    isRepeat = true;
+                                    mui.alert('请正确填写地址');
+                                    return false;
+                                }
+                            } else {
+                                count = 0;
+                            }
+                        }
+                        last = j;
+                    }
+                }
+            }
+        }
+        //邮箱校验
+        else if (id.indexOf('email') != -1) {
+            if (!val.match(/^([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/)) {
+                mui.alert('电子邮箱填写错误，请重新确认');
+                return false;
+            }
+        }
+        //邮编校验
+        else if (id.indexOf('postcode') != -1){
+            if(!val.match(/^[1-9][0-9]{5}$/)){
+                mui.alert("请正确填写邮编");
+                return false;
+            }
+
+        }
+
+        return true;
+    }
+    (function ($, doc) {
+        $.init();
+        $.ready(function () {
+            //选择证件
+            var typePicker = new mui.PopPicker();
+            typePicker.setData([{
+                value: "0",
+                text: "身份证"
+            },{
+                value: "3",
+                text: "护照"
+            }]);
+            var tg = doc.getElementById("card");
+            var rg = doc.getElementById("card-raplace");
+            rg.addEventListener('tap', function (event) {
+                typePicker.show(function (items) {
+                    tg.setAttribute("rel", items[0].value);
+                    tg.innerText = items[0].text;
+                    if (tg.getAttribute("rel") == 3) {
+                        jQuery(".hz").removeClass("hide");
+                    }else {
+                        jQuery(".hz").addClass("hide");
+                    }
+                });
+            }, false);
+
+            //选择性别
+            var sexPicker = new mui.PopPicker();
+            sexPicker.setData([{
+                value: "0",
+                text: "男"
+            },{
+                value: "1",
+                text: "女"
+            }]);
+            var sex = doc.getElementById("sex");
+            sex.addEventListener('tap', function (event) {
+                sexPicker.show(function (items) {
+                    sex.setAttribute("rel", items[0].value);
+                    sex.innerText = items[0].text;
+                });
+            }, false);
+
+            //选择出生日期
+            var myDate = new Date();
+            var Year = myDate.getFullYear();
+            var beginYear = Year - 100;
+            var endYear = Year;
+            var optionsJson = {
+                "type":"date",
+                "beginYear":beginYear,
+                "endYear":endYear
+            };
+            var birthPicker = new mui.DtPicker(optionsJson);
+            var birth = doc.getElementById("birth");
+            birth.addEventListener('tap', function (event) {
+                birthPicker.show(function (rs) {
+                    birth.setAttribute("rel", rs.text);
+                    birth.innerText = rs.text;
+                });
+            }, false);
+
+            //选择地区-全国
+            var addressPicker = new $.PopPicker({layer: 3});
+            addressPicker.setData(cityData3);
+
+            var proButton = doc.getElementById('pro');
+            var cityButton = doc.getElementById('city');
+            var addrButton = doc.getElementById('area');
+            var area = doc.getElementById('areaReplace');
+            area.addEventListener('tap', function (event) {
+                addressPicker.show(function (items) {
+                    proButton.innerText = items[0].text;
+                    cityButton.innerText = items[1].text;
+                    addrButton.innerText = items[2].text;
+
+                    proButton.setAttribute("p", (items[0] || {}).value);
+                    cityButton.setAttribute("c", (items[1] || {}).value);
+                    addrButton.setAttribute("a", (items[2] || {}).value);
+                });
+
+            }, false);
+        });
+    })(mui, document);
+</script>

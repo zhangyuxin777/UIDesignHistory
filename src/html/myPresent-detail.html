@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>礼品领取</title>
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="../css/common-coupon.css"/>
+  <link rel="stylesheet" type="text/css" href="../css/getPresent.css"/>
+
+</head>
+<body>
+<div class="container">
+  <!-- 礼品信息 -->
+  <div class="q_detil">
+      <div class="writeTit">
+        <h3>礼品信息</h3>
+      </div>
+      <ul class="prensnt">
+        <li>
+          <span class="title">商品名称</span>
+          <span id="cardName" class="detils"></span>
+        </li>
+        <li>
+          <span class="title">供应商</span>
+          <span id="cardFromCompany" class="detils"></span>
+        </li>
+        <li>
+          <span class="title commit_title">备注</span>
+          <span class="detils commit">
+          </span>
+        </li>
+      </ul>
+  </div>
+    <div class="q_detil">
+      <div class="writeTit">
+        <h3>礼品卡信息</h3>
+        <span>
+        </span>
+      </div>
+      <ul class="people">
+        <li>
+          <span class="title">卡号</span>
+          <span class="detils">
+            <input id="cardNum" type="text" value="" readonly="true">
+          </span>
+        </li>
+        <li>
+          <span class="title">密码</span>
+          <span class="detils">
+            <input id="cardPwd" type="text" name="" value="" readonly="true">
+          </span>
+        </li>
+        <li>
+          <span class="title">有效期至</span>
+          <span class="detils">
+            <input id="cardExpiredDate" type="text" value="" readonly="true">
+          </span>
+        </li>
+      </ul>
+  </div>
+</div>
+  <div class="footer">
+   <!--  <a href="">确 认</a> -->
+  </div>
+  	<script src="../js/common.js"></script>
+	<script src="../js/jquery-1.9.1.min.js"></script>
+  	<script src="../js/rem.js"></script>
+  	<script type="text/javascript">
+  	GetAsyncData("weixin_new/mall/show_gift", function (backdata) {
+
+        var json = backdata;
+      
+        $("#cardName").text(json.productName);
+       	if('WL'==json.fromChannelId){
+       		$("#cardFromCompany").text("万联电商");
+       	}
+       	if(""==json.cardNum){
+       		$("#cardNum").val("待发放");
+       	}else{
+       		$("#cardNum").val(json.cardNum);
+       	}
+       if(""==json.cardPwd){
+    	   $("#cardPwd").val("待发放");
+       }else{
+        $("#cardPwd").val(json.cardPwd);
+       }
+        $("#cardExpiredDate").val(maskDate(json.endDate));
+                                
+    }, {"contentId": getUrlParam("id")});
+  	
+        function maskDate(data) {
+      	  if (data == null || data == "null" ||data.time == null || data.time == "null") {
+      		  return "";
+      	  }
+        
+      	  return getTime(data);
+        }
+        
+  	function getTime(nS){
+		if(null==nS){
+			return " 年-月-日";
+		}
+		var date = new Date(nS.time);
+	    var year = date.getFullYear();
+	    var month = date.getMonth()+1;
+	    var day = date.getDate();
+	    return year+"-"+month+"-"+day; 
+	    return newTime;
+	}
+  	</script>
+</body>
+</html>
+ 
+

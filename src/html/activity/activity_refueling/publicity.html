@@ -44,7 +44,6 @@
             z-index: 8;
             width: 2.72rem;
             height: 0.515rem;
-            opacity: 0;
         }
 
         .show-btn {
@@ -137,41 +136,16 @@
 <script src="../../../js/jquery-1.9.1.min.js"></script>
 
 <script type="text/javascript">
-    closeProduct(106);
     autoWidth();
     var fontSize = $('html').css('font-size').substr(0, $('html').css('font-size').length - 2);
     var minHeight = getBgHeight();
     $('.bg').css("height", minHeight);
-    getOpenId();
     var openId = window.localStorage.getItem(config.openIdName);
     var isFocus = false;
     var index = getUrlParam('index');
     if (index == 1) {
         showBg();
     }
-    $(function () {
-        if (openId != null && openId.length != 0) {
-            GetAsyncData("../../rest/User/1006", function (backData) {
-                isFocus = backData.data.flag;
-                $('.get-btn').addClass('show-btn');
-            }, {"openId": openId});
-        } else {
-            $('.get-btn').addClass('show-btn');
-        }
-        baiduCollection();
-    });
-
-    weixinShare({
-        shareUrl: config.shareRootUrl + '/weixinouter/basepage/pages/activity/activity_refueling/publicity.html',
-        shareIcon: config.shareRootUrl + '/weixinouter/basepage/images/refueling/share_icon.jpg',
-        shareText: '您有700元加油卡未领取',
-        isNeedRecord: true,
-        openId: openId,
-        activityId: '106',
-        typeTimeline: 'zhbx-3',
-        typeAppMessage: 'zhbx-4',
-        isGiveCoin: 'Y'
-    });
 
     function showBg() {
         var bh = $("body").height();
@@ -188,11 +162,7 @@
     }
 
     function showDialog() {
-        if (isFocus) {
-            window.location.href = config.activity.refuelingUrl + "&linkId=1060" + openId;
-        } else {
-            showCodeDialog();
-        }
+        window.location.href = config.activity.refuelingUrl + "&linkId=1060" + openId;
     }
 </script>
 </html>

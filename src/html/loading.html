@@ -1,0 +1,85 @@
+<html><head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+    <meta name="MobileOptimized" content="320">
+    <title>UC订阅号</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: #fff;
+            -webkit-text-size-adjust: 100%;
+            -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+        }
+        .ucload {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 140px;
+            height: 175px;
+            margin: -90px 0 0 -70px;
+            text-align: center;
+        }
+        .ucload .uclogo {
+            width: 103px;
+            height: 116px;
+        }
+        .ucload .ucloading {
+            width: 110px;
+            height: 4px;
+            margin: 25px auto 10px;
+            background: #ffe9ce;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        .ucload .ucloading span {
+            display: block;
+            width: 0;
+            height: 4px;
+            background: -webkit-gradient(linear, left top, right top, from(#ffec1c), color-stop(0.6, #ffec1c), to(#ffc307));
+        ;
+            border-radius: 4px;
+            -webkit-animation: ani-load 2s cubic-bezier(.02, .62, .78, .19) 1 both;
+        }
+        .ucload .uctxt {
+            font-size: 10px;
+            color: #2f2f2f;
+        }
+        @-webkit-keyframes ani-load {
+            0% {
+                width: 0;
+            }
+            100% {
+                width: 110px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+<div class="ucload" id="ucloadPage" style="height: 736px; display: none;">
+    <img src="data:image/png;base64,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" class="uclogo222" id="uclogo">
+    <div class="ucloading"><span></span></div>
+    <!--<div class="uctxt">正在打开页面,请稍等...</div>-->
+</div>
+<div>
+</div>
+
+<script type="text/javascript">
+    var timer = null,
+            platform = "wx",
+            btn = document.getElementById("uclogo"),
+            ua = window.navigator.userAgent.toLowerCase(),
+            loadDiv = document.getElementById("ucloadPage"),
+            bannerDiv = document.getElementById("gc");
+
+    loadDiv.style.cssText = "height:" + window.innerHeight + "px";
+    bannerDiv.style.display = "none";
+
+
+    // with(document) with(body) with(insertBefore(createElement("script"), firstChild)) setAttribute("exparams", "category=&userid=&aplus&yunid=&asid=AQAAAABHifpVVSIlWgAAAADogoXtsaZ3WQ==", id = "tb-beacon-aplus", src = (location > "https" ? "//s" : "//a") + ".tbcdn.cn/s/aplus_v2.js")
+</script>
+
+
+
+</body></html>

@@ -22,19 +22,4 @@
 <script type="text/javascript">
    // closeProduct(112);
     autoWidth();
-    getOpenId();
-    var openId = window.localStorage.getItem(config.openIdName);
-    baiduCollection();
-    weixinShare({
-        shareUrl: config.shareRootUrl + '/weixinouter/basepage/pages/activity/activity_fatigueTest/index.html',
-//        shareIcon: config.shareRootUrl + '/weixinouter/basepage/images/activity/lifeOnLine/share_icon.jpg',
-        shareText: '对抗亚健康、过劳shi的战斗值，你够吗？',
-        onlyWeixin:false,
-        isNeedRecord: true,
-        openId: openId,
-        activityId: '112',
-        typeTimeline: 'zhbx-3',
-        typeAppMessage: 'zhbx-4',
-        isGiveCoin: 'N'
-    });
 </script>

@@ -1,0 +1,1455 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport'
+          content='width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui'>
+    <meta name='apple-mobile-web-app-capable' content='yes'>
+    <meta name='apple-mobile-web-app-status-bar-style' content='black'>
+
+    <title>填写信息</title>
+    <link rel="stylesheet" href="../../../css/mui/mui.min.css">
+    <!--App自定义的css-->
+    <link rel="stylesheet" type="text/css" href="../../../css/mui/mui.picker.min.css"/>
+    <link rel="stylesheet" type="text/css" href="../../../css/product/product_input.css"/>
+</head>
+<body class="hide">
+<div class="mui-content">
+    <div id="content">
+        <div class="title">
+            投保人与被保人关系
+        </div>
+        <div id="relation-div">
+            <div class="line-div">
+                <div class="col-left line t-a-right">是投保人的</div>
+                <div class="col-right line">
+                    <div class="include">
+                        <div class="replace" id="relation_replace">本人</div>
+                    </div>
+                </div>
+                <img src="../../../images/personal_ic_right.png" class="down-icon"/>
+                <div class="clear"></div>
+            </div>
+        </div>
+        <div class="title">
+            投保人信息
+        </div>
+        <div id="insure-part">
+            <div class="line-div">
+                <div class="col-left line t-a-right">投保人姓名</div>
+                <div class="col-right line">
+                    <input id="name" type="text" maxlength="36" placeholder="请务必以身份证件为准正确填写"
+                           onblur="checkInputActualTime(this)"/>
+                </div>
+            </div>
+            <div class="clear"></div>
+            <div class="line-div line-div-border">
+                <div class="col-left line t-a-right">身份证号</div>
+                <div class="col-right line">
+                    <input id="identify" type="text" oninput="addInfoByIDCard(this);trialInfoHint(this)"
+                           onblur="checkInputActualTime(this)"
+                           maxlength="18"/>
+                </div>
+            </div>
+            <div class="clear"></div>
+            <div class="line-div line-div-border">
+                <div class="col-left line t-a-right">性<span class="transparent">一一</span>别</div>
+                <div class="col-right line">
+                    <div class="include">
+                        <div id="gender_replace" class="replace"></div>
+                    </div>
+                </div>
+                <!--<img src="../../../images/personal_ic_right.png" class="down-icon"/>-->
+            </div>
+            <div class="clear"></div>
+            <div class="line-div line-div-border">
+                <div class="col-left line t-a-right">出生日期</div>
+                <div class="col-right line">
+                    <div class="include">
+                        <div id="date_replace" class="replace"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="clear"></div>
+            <div class="line-div line-div-border">
+                <div class="col-left line t-a-right">手机号码</div>
+                <div class="col-right line">
+                    <input id="mobile" type="tel" placeholder="" maxlength="11" onblur="checkInputActualTime(this)"/>
+                </div>
+            </div>
+            <div class="clear"></div>
+            <div class="line-div line-div-border">
+                <div class="col-left line t-a-right">电子邮箱</div>
+                <div class="col-right line">
+                    <input type="email" id="email" placeholder="" onblur="checkInputActualTime(this)"/>
+                </div>
+            </div>
+            <div class="clear"></div>
+            <div class="line-div line-div-border">
+                <div class="col-left line t-a-right">联系地址</div>
+                <div class="col-right line address-col-right" id="address-select">
+                    <div class="include address">
+                        <div class="float-left address-width">
+                            <div>
+                                <img src="../../../images/personal_ic_down.png" class="down-icon-address"/>
+                            </div>
+                            <div class="address-div" id="address-div-pro">
+                                <div id="pro_replace" rel="" class="replace">选择省</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="include address">
+                        <div class="float-left address-width">
+                            <div>
+                                <img src="../../../images/personal_ic_down.png" class="down-icon-address"/>
+                            </div>
+                            <div class="address-div">
+                                <div id="city_replace" rel="" class="replace">选择市</div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="include address">
+                        <div class="float-left address-width">
+                            <div>
+                                <img src="../../../images/personal_ic_down.png" class="down-icon-address"/>
+                            </div>
+                            <div class="address-div">
+                                <div id="area_replace" rel="" class="replace">选择区</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="clear"></div>
+            <div class="line-div line-div-border">
+                <div class="col-left line t-a-right"></div>
+                <div class="col-right line">
+                    <input id="address" type="text" placeholder="街道名称、门牌号码" onblur="checkInputActualTime(this)"/>
+                </div>
+            </div>
+            <div class="clear"></div>
+            <div class="line-div line-div-border">
+                <div class="col-left line t-a-right">职业类型</div>
+                <div class="col-right line">
+                    <div class="include">
+                        <div id="job_replace" rel="" val="" class="replace placeholder" onclick="selectJob(this)">
+                            请选择职业类型
+                        </div>
+                    </div>
+                </div>
+                <img src="../../../images/personal_ic_right.png" class="down-icon"/>
+            </div>
+            <div class="clear"></div>
+            <div class="line-div line-div-border">
+                <div class="col-left line t-a-right">年收入</div>
+                <div id="income-text" class="col-right line line-height" style="overflow: hidden;width: 70%">
+                    <input id="incomeNumber" type="number" placeholder=""
+                           onkeyup="this.value=this.value.replace(/[^\d]/g,'')"/>
+                    <div style="float: right;margin:0 0.05rem 0 0;color: #404040">万元</div>
+                </div>
+            </div>
+            <div class="clear"></div>
+            <div class="line-div line-div-border">
+                <div class="col-left line t-a-right">收入来源</div>
+                <div class="col-right">
+                    <div class="include">
+                        <div id="income_source_replace" rel="" class="replace placeholder">请选择收入来源</div>
+                    </div>
+                </div>
+                <img src="../../../images/personal_ic_right.png" class="down-icon"/>
+            </div>
+            <div class="clear"></div>
+            <!--<div class="line-div line-div-border">-->
+                <!--<div class="col-left line t-a-right">投保地区</div>-->
+                <!--<div class="col-right line">-->
+                    <!--<div class="include">-->
+                        <!--<div class="replace">北京</div>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+        </div>
+        <div class="title hide" id="beInsured-title">
+            被保人信息
+        </div>
+        <div id="beInsured-part" class="choose-relation-self">
+            <div class="insured-info">
+                <div class="line-div">
+                    <div class="col-left line t-a-right">被保人姓名</div>
+                    <div class="col-right line">
+                        <input id="name-insured" maxlength="36" type="text" placeholder="请务必以身份证件为准正确填写"
+                               onblur="checkInputActualTime(this)"/>
+                    </div>
+                </div>
+                <div class="clear"></div>
+                <div class="line-div line-div-border">
+                    <div class="col-left line t-a-right">身份证号</div>
+                    <div class="col-right line">
+                        <input id="identify-insured" type="text" placeholder="" maxlength="18"
+                               oninput="addInfoByIDCard(this)" onblur="checkInputActualTime(this);trialInfoHint(this)"/>
+                    </div>
+                </div>
+                <div class="clear"></div>
+                <div class="line-div line-div-border">
+                    <div class="col-left line t-a-right">性<span class="transparent">一一</span>别</div>
+                    <div class="col-right line">
+                        <div class="include">
+                            <div id="gender_replace-insured" rel="" class="replace"></div>
+                        </div>
+                    </div>
+                    <!--<img src="../../../images/personal_ic_right.png" class="down-icon"/>-->
+                </div>
+                <div class="clear"></div>
+                <div class="line-div line-div-border">
+                    <div class="col-left line t-a-right">出生日期</div>
+                    <div class="col-right line">
+                        <div class="include">
+                            <div id="date_replace-insured" rel="" class="replace"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="clear"></div>
+                <div class="line-div line-div-border">
+                    <div class="col-left line t-a-right">常住地址</div>
+                    <div class="col-right line address-col-right" id="address-insure-select">
+                        <div class="include address">
+                            <div class="float-left address-width">
+                                <div>
+                                    <img src="../../../images/personal_ic_down.png" class="down-icon-address"/>
+                                </div>
+                                <div class="address-div" id="address-div-pro-insured">
+                                    <div id="pro_replace-insured" rel="" class="replace">选择省</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="include address">
+                            <div class="float-left address-width">
+                                <div>
+                                    <img src="../../../images/personal_ic_down.png" class="down-icon-address"/>
+                                </div>
+                                <div class="address-div">
+                                    <div id="city_replace-insured" rel="" class="replace">选择市</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="include address">
+                            <div class="float-left address-width">
+                                <div>
+                                    <img src="../../../images/personal_ic_down.png" class="down-icon-address"/>
+                                </div>
+                                <div class="address-div">
+                                    <div id="area_replace-insured" rel="" class="replace">选择区</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="clear"></div>
+                <div class="line-div line-div-border">
+                    <div class="col-left line t-a-right"></div>
+                    <div class="col-right line">
+                        <input id="address-insured" type="text" placeholder="街道名称、门牌号码"
+                               onblur="checkInputActualTime(this)"/>
+                    </div>
+                </div>
+                <div class="clear"></div>
+                <div class="line-div line-div-border">
+                    <div class="col-left line t-a-right">职业类型</div>
+                    <div class="col-right line">
+                        <div class="include">
+                            <div id="job_replace-insured" rel="" val="" class="replace placeholder">请选择职业类型</div>
+                        </div>
+                    </div>
+                    <img src="../../../images/personal_ic_right.png" class="down-icon"/>
+                </div>
+                <div class="clear"></div>
+            </div>
+            <div id="jump2"></div>
+        </div>
+        <div class="title">
+            身故保险金受益人信息
+        </div>
+        <div id="beneficiary-part" class="choose-beneficiary-legal">
+            <div class="line-div no-border">
+                <div class="col-left line t-a-right" style="width: 35%">身故保险金受益人</div>
+                <div class="col-right line" style="width: 55%">
+                    <div class="include">
+                        <div class="replace" rel="0" id="inheritor">法定继承人</div>
+                    </div>
+                </div>
+                <img src="../../../images/personal_ic_right.png" class="down-icon"/>
+                <div class="clear"></div>
+            </div>
+            <div class="inheri hide">
+                <div class="inherit" id="inherit1">
+                    <div class="line-div line-div-border">
+                        <div class="col-left line t-a-right">受益顺序</div>
+                        <div class="col-right line">
+                            <div class="include">
+                                <div class="replace" rel="1">第一受益顺序</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="clear"></div>
+                    <div class="line-div line-div-border">
+                        <div class="col-left line t-a-right">与被保人关系</div>
+                        <div class="col-right line">
+                            <div class="include">
+                                <div class="replace relationship" rel="01">配偶</div>
+                            </div>
+                        </div>
+                        <img src="../../../images/personal_ic_right.png" class="down-icon"/>
+                        <div class="clear"></div>
+                    </div>
+                    <div class="line-div line-div-border">
+                        <div class="col-left line t-a-right">姓<span class="transparent">一一</span>名</div>
+                        <div class="col-right line">
+                            <input class="name-inheritor" maxlength="36" type="text" placeholder="请务必以身份证件为准正确填写"
+                                   onblur="checkInputActualTime1(this)"/>
+                        </div>
+                    </div>
+                    <div class="clear"></div>
+                    <div class="line-div line-div-border">
+                        <div class="col-left line t-a-right">证件类型</div>
+                        <div class="col-right line">
+                            <div class="include">
+                                <div class="replace cardType" rel="0">身份证</div>
+                            </div>
+                        </div>
+                        <img src="../../../images/personal_ic_right.png" class="down-icon"/>
+                        <div class="clear"></div>
+                    </div>
+                    <div class="line-div line-div-border">
+                        <div class="col-left line t-a-right">证件号码</div>
+                        <div class="col-right line">
+                            <input class="identify-inherit" type="text" oninput="addInfoByIDCard1(this)"
+                                   onblur="checkInputActualTime1(this)"
+                                   maxlength="20"/>
+                        </div>
+                    </div>
+                    <div class="clear"></div>
+                    <div class="line-div line-div-border">
+                        <div class="col-left line t-a-right">性<span class="transparent">一一</span>别</div>
+                        <div class="col-right line">
+                            <div class="include">
+                                <div class="replace gender-inherit" rel="" style="pointer-events: none;"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="clear"></div>
+                    <div class="line-div line-div-border">
+                        <div class="col-left line t-a-right">出生日期</div>
+                        <div class="col-right line">
+                            <div class="include">
+                                <div class="replace birth-inherit" rel="" style="pointer-events: none;"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="clear"></div>
+                    <div class="line-div line-div-border">
+                        <div class="col-left line t-a-right">受益比例</div>
+                        <div class="col-right line">
+                            <input class="irate" value="100" onkeyup="this.value=this.value.replace(/[^\d]/g,'')" onblur="checkInputActualTime1(this)" type="number" placeholder="1-100(所有受益比例之和应等于100)"/>
+                        </div>
+                        <div style="position: absolute;right: 0.2rem;color: #404040">%</div>
+                    </div>
+                    <div class="btn-div1">
+                        <div class="btn">
+                            <div class="del hide" id="del" onclick="delInherit(this)">删除</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="btn-div1 hide">
+                <div class="btn">
+                    <div class="add" onclick="addInherit()">增加</div>
+                </div>
+            </div>
+        </div>
+        <div class="btn-div">
+            <div class="enter-btn" disable="false" onclick='checkInput(this)'>下一步</div>
+        </div>
+    </div>
+</div>
+</body>
+<script src="../../../js/mui/mui.min.js"></script>
+<script src="../../../js/mui/mui.picker.min.js"></script>
+<script src='../../../js/common.js'></script>
+<script src='../../../js/common-view.js'></script>
+<script src='../../../js/jquery-1.9.1.min.js'></script>
+<script src='../../../js/jweixin-1.0.0.js'></script>
+<script src='../../../js/identify.js'></script>
+<script src='../../../js/spinner.js'></script>
+<script src="../../../js/product/benefit.js"></script>
+<script src='../../../js/city.data-3.js'></script>
+<script type='text/javascript'>
+    var current = {
+        insured_relation: "00",
+        beneficiary_type: "0"
+    };
+    var jobList = {};
+    var insureInfo = {};
+    var openId = window.localStorage.getItem(config.openIdName);
+    var scrollTopPosition = 0;
+    autoWidth();
+    getData();
+
+    GetAsyncData("Product/1081", function (backdata) {
+        jobList = backdata;
+    });
+    fromNext();
+
+    fromOrder();
+    formInheri(); //返回数据赋值,订单赋值     受益人信息
+    weixinShare({
+        shareUrl: config.shareRootUrl + '/weixinouter/basepage/pages/product/dreadDisease100/trial.html',
+        shareIcon: '',
+        shareTitle: '中华健康宝重大疾病保险',
+        shareText: '市场首款100种疾病保障重疾险,全面守护,确诊即付',
+        isNeedRecord: true,
+        openId: openId,
+        activityId: 'F0016A',
+        typeTimeline: 'zhbx-3',
+        typeAppMessage: 'zhbx-4',
+        isGiveCoin: 'Y'
+    });
+
+    (function () {
+        var initHeight = $(window).height();
+        var initWidth = $(window).width();
+        var minHeight = initHeight - 100;
+        $(window).resize(function () {
+            if ($(window).width() == initWidth) {
+                if ($(window).height() > minHeight) {
+                    $('.mui-poppicker').css('display', 'block');
+                } else {
+                    $('.mui-poppicker').css('display', 'none');
+                }
+            } else {
+                if ($(window).height() > (initWidth - 100)) {
+                    $('.mui-poppicker').css('display', 'block');
+                } else {
+                    $('.mui-poppicker').css('display', 'none');
+                }
+            }
+        });
+    })(); //去除mui picker 安卓手机上键盘收缩的瞬间的显示问题
+
+    baiduCollection();
+
+    //选择投保人职业
+    function selectJob(input) {
+        listDialog.show(
+                [{
+                    PROFESSIONAL_NAME: '党政机关、事业单位工作人员',
+                    PROFESSIONAL_CODE: '1000000'
+                }, {
+                    PROFESSIONAL_NAME: '科研、金融、卫生、法律、教育从业人员',
+                    PROFESSIONAL_CODE: '0000000'
+                }, {
+                    PROFESSIONAL_NAME: '工程、文体、新闻、宗教从业人员',
+                    PROFESSIONAL_CODE: '2000000'
+                }, {
+                    PROFESSIONAL_NAME: '警务消防、治安、邮电、广告人员',
+                    PROFESSIONAL_CODE: '3000000'
+                }, {
+                    PROFESSIONAL_NAME: '商业、服务业人员',
+                    PROFESSIONAL_CODE: '4000000'
+                }, {
+                    PROFESSIONAL_NAME: '冶炼、生产、运输、搬运人员',
+                    PROFESSIONAL_CODE: '6000000'
+                }, {
+                    PROFESSIONAL_NAME: '农、林、牧、渔、水利业生产人员',
+                    PROFESSIONAL_CODE: '5000000'
+                }, {
+                    PROFESSIONAL_NAME: '特种兵、普通军人',
+                    PROFESSIONAL_CODE: '7000000'
+                }, {
+                    PROFESSIONAL_NAME: '无业人员、离退休、儿童',
+                    PROFESSIONAL_CODE: '8000000'
+                }], 'PROFESSIONAL_NAME', 'PROFESSIONAL_CODE', 'PROFESSIONAL_CATEGORY',
+                function (text, value, type) {
+                    $(input).text(text);
+                    $(input).removeClass('placeholder');
+                    $(input).attr('val', value);
+                    $(input).attr('rel', '1');
+                    if (value == '0000000') {
+                        $(input).attr('val', '2000000');
+                        $(input).attr('rel', '1');
+                    } else {
+                        var childList = jobList[value];
+                        var childShowList = new Array();
+                        for (var i = 0; i < childList.length; i++) {
+                            if (childList[i].PROFESSIONAL_CATEGORY == '5' || childList[i].PROFESSIONAL_CATEGORY == '6' || childList[i].PROFESSIONAL_CATEGORY == '-1') {
+                                childShowList.push(childList[i]);
+                            }
+                        }
+                        if (childShowList.length == 0) {
+                            return;
+                        }
+                        listDialog.show(childShowList, 'PROFESSIONAL_NAME', 'PROFESSIONAL_CODE', 'PROFESSIONAL_CATEGORY',
+                                function (text, value, type) {
+                                    $(input).text(text);
+                                    $(input).attr('val', value);
+                                    $(input).attr('rel', type);
+                                    $(input).removeClass('placeholder');
+                                }, "", '是否从事以下职业', '否', function () {
+                                    listDialog.hide();
+                                });
+                    }
+                }, '', '请选择职业类型');
+    }
+    //切换投被保人关系
+    function checkRelation(btn, rel) {
+        $(btn).parent().parent().parent().parent().removeClass().addClass(rel);
+        if (rel == 'choose-relation-self') {
+            $('#beInsured-title').addClass('hide');
+            $('#beInsured-part').removeClass('choose-relation-child').addClass('choose-relation-self');
+            current.insured_relation = "00";
+        } else {
+            $('#beInsured-title').removeClass('hide');
+            $('#beInsured-part').removeClass('choose-relation-self').addClass('choose-relation-child');
+
+            current.insured_relation = "05";
+        }
+        $('#pro_replace-insured').text($('#pro_replace').text()).attr('rel', $('#pro_replace').attr('rel'));
+        $('#city_replace-insured').text($('#city_replace').text()).attr('rel', $('#city_replace').attr('rel'));
+        $('#area_replace-insured').text($('#area_replace').text()).attr('rel', $('#area_replace').attr('rel'));
+        $('#address-insured').val($('#address').val());
+    }
+    //根据身份证显示性别和年龄
+    function addInfoByIDCard(input) {
+        var id = $(input).attr('id');
+        var extra = id.substr(8, id.length - 8);
+        var number = $(input).val();
+        var lastChar = number.substr(number.length - 1, number.length);
+        if (!lastChar.match(/^[0-9Xx]+$/)) {
+            $(input).val(number.substr(0, number.length - 1));
+        }
+        $('.enter-btn').css("background-color", "#F39A0F").attr('disable', 'false');
+        if (number != "" && number.length != 0 && IdCardValidate(number)) {
+            var gender = genderByIDCard(number);
+            $('#date_replace' + extra).text(birthdayByIDCard($(input).val()));
+            $('#gender_replace' + extra).text(gender == "1" ? '女' : '男').attr("rel", gender);
+            $('#gender' + extra).removeClass().addClass(gender == 1 ? 'gender-woman' : 'gender-man');
+        }
+    }
+    //实时校验数据
+    function checkInputActualTime(input) {
+        var id = $(input).attr('id');
+        var val = $(input).val();
+        if (val.length == 0) {
+            return false;
+        }
+        //姓名校验
+        if (id.indexOf('name') != -1) {
+            var val_replace = val.replace(/(^\s*)|(\s*$)/g, ""); //去掉首尾空格
+//            var val_replace = val.replace(/(^\s*)|(\s*$)/g, "").replace(/\s+/g, " "); //去掉首尾空格 多个空格变为一个
+//            $(input).val(val);
+            if (!val.match(/^[0-9A-Z_a-z\u4e00-\u9faf\s•·.]+$/) || val_replace.length != val.length) {
+                mui.alert('姓名中包含特殊字符');
+                return false;
+            }
+            var lastChar = val.substr(val.length - 1, val.length);
+            var firstChar = val.substr(0, 1);
+            if (lastChar.match(/^[•·.]+$/) || firstChar.match(/^[•·.]+$/)) {
+                mui.alert('姓名中包含特殊字符');
+                return false;
+            }
+            var nameLength = 0;
+            for (var nl = 0; nl < val.length; nl++) {
+                if (val.substring(nl, nl + 1).match(/.*[\u4e00-\u9fa5]+.*$/)) {
+                    nameLength += 2;
+                } else {
+                    nameLength++;
+                }
+            }
+            if (nameLength < 2) {
+                mui.alert('姓名最小不能小于2个字符');
+                return false;
+            } else if (nameLength > 36) {
+                mui.alert('姓名最长不能超过36个字符');
+                return false;
+            }
+        }
+        //身份证校验
+        else if (id.indexOf('identify') != -1) {
+            if (val.length != 18 && val.length != 0) {
+                mui.alert('身份证号码位数不为18位');
+                return;
+            }
+            if (!IdCardValidate(val)) {
+                mui.alert('请正确填写证件号码');
+                return false;
+            }
+            if (id == 'identify') {
+                if (ageByIDCard(val) < 18) {
+                    mui.alert('您的年龄不符合投保要求,投保人年龄必须大于等于18周岁');
+                    return false;
+                }
+                if (current.insured_relation == "00" && ageByIDCard(val) > 55) {
+                    mui.alert('被保人年龄需小于等于55周岁');
+                    return false;
+                }
+                if (current.insured_relation == "00") {
+                    return limitJudge(ageByIDCard(val), insureInfo.order.DutyAmnt);
+                }
+            }
+            else if (id == 'identify-insured' && current.insured_relation == "05") {
+                if (ageByIDCard(val) > 17) {
+                    mui.alert('您不能为成年子女投保，请更换被保险人');
+                    return false;
+                }
+                var arr1 = birthdayByIDCard(val).split('-');
+                var d1 = new Date(arr1[0], arr1[1] - 1, arr1[2]);
+                if (((new Date().getTime() - d1.getTime()) / (1000 * 3600 * 24)) < 30) {
+                    mui.alert('您不能为出生未满30天的子女投保，请更换被保险人');
+                    return false;
+                }
+                return limitJudge(ageByIDCard(val), insureInfo.order.DutyAmnt);
+            }
+        }
+        //手机号校验
+        else if (id.indexOf('mobile') != -1) {
+            if (!val.match(/^(0|86|17951)?(13[0-9]|15[0-9]|17[0-9]|18[0-9]|14[0-9])[0-9]{8}$/)) {
+                mui.alert('手机号码填写有误');
+                return false;
+            }
+        }
+        //地址校验
+        else if (id.indexOf('address') != -1) {
+            if (!val.match(/.*[\u4e00-\u9fa5]+.*$/)) {
+                mui.alert('地址必须包含汉字');
+                return false;
+            }
+            var addressLength = 0;
+            var addList = new Array(val.length);
+            for (var i = 0; i < val.length; i++) {
+                addList[i] = val.substring(i, i + 1);
+                if (addList[i].match(/.*[\u4e00-\u9fa5]+.*$/)) {
+                    addressLength += 2;
+                } else {
+                    addressLength++;
+                }
+            }
+            if (addressLength < 20) {
+                mui.alert('地址填写内容过短，请填写具体地址');
+                return false;
+            }
+            var isRepeat = false;
+            for (i = 0; i < val.length && !isRepeat; i++) {
+                var last = -1;
+                for (var j = 0, count = 0; j < val.length; j++) {
+                    if (addList[i] === addList[j]) {
+                        if (last == -1) {
+                        } else {
+                            if (j == last + 1) {
+                                if (++count >= 4) {
+                                    isRepeat = true;
+                                    mui.alert('请正确填写地址');
+                                    return false;
+                                }
+                            } else {
+                                count = 0;
+                            }
+                        }
+                        last = j;
+                    }
+                }
+            }
+        }
+        //邮箱校验
+        else if (id.indexOf('email') != -1) {
+            if (!val.match(/^([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/)) {
+                mui.alert('电子邮箱填写错误，请重新确认');
+                return false;
+            }
+        }
+        return true;
+    }
+    //下一步 校验数据
+    function checkInput(btn) {
+        if ($(btn).attr('disable') == 'true') {
+            return false;
+        }
+        if (trim($('#name').val()).length == 0) {
+            mui.alert('请填写投保人姓名');
+            return false;
+        } else {
+            if (!checkInputActualTime($('#name'))) {
+                return false;
+            }
+        }
+        if (trim($('#identify').val()).length == 0) {
+            mui.alert('请填写证件号码');
+            return false;
+        } else {
+            if (!checkInputActualTime($('#identify'))) {
+                return false;
+            }
+        }
+        if (trim($('#mobile').val()).length == 0) {
+            mui.alert('请填写手机号码');
+            return false;
+        } else {
+            if (!checkInputActualTime($('#mobile'))) {
+                return false;
+            }
+        }
+        if (trim($('#email').val()).length == 0) {
+            mui.alert('请填写电子邮箱');
+            return false;
+        } else {
+            if (!checkInputActualTime($('#email'))) {
+                return false;
+            }
+        }
+        if ($('#pro_replace').attr('rel').length == 0) {
+            mui.alert('请填写常住省份');
+            return false;
+        }
+        if ($('#city_replace').attr('rel').length == 0) {
+            mui.alert('请填写常住城市');
+            return false;
+        }
+        if ($('#area_replace').attr('rel').length == 0) {
+            mui.alert('请填写区（县）');
+            return false;
+        }
+        if (trim($('#address').val()).length == 0) {
+            mui.alert('请填写具体地址');
+            return false;
+        } else {
+            if (!checkInputActualTime($('#address'))) {
+                return false;
+            }
+        }
+        if ($('#job_replace').attr('val').length == 0) {
+            mui.alert('请选择职业类型');
+            return false;
+        }
+        if (trim($('#incomeNumber').val()).length == 0) {
+            mui.alert('请填写年收入');
+            return false;
+        }
+        if ($('#income_source_replace').attr('rel').length == 0) {
+            mui.alert('请选择收入来源');
+            return false;
+        }
+        if (current.insured_relation == "05") {
+            if (trim($('#name-insured').val()).length == 0) {
+                mui.alert('请填写被保人姓名');
+                return false;
+            } else {
+                if (!checkInputActualTime($('#name-insured'))) {
+                    return false;
+                }
+            }
+            if (trim($('#identify-insured').val()).length == 0) {
+                mui.alert('请填写被保人证件号码');
+                return false;
+            } else {
+                if (!checkInputActualTime($('#identify-insured'))) {
+                    return false;
+                }
+            }
+
+            if ($('#pro_replace-insured').attr('rel').length == 0) {
+                mui.alert('请填写常住省份');
+                return false;
+            }
+            if ($('#city_replace-insured').attr('rel').length == 0) {
+                mui.alert('请填写常住城市');
+                return false;
+            }
+            if ($('#area_replace-insured').attr('rel').length == 0) {
+                mui.alert('请填写区（县）');
+                return false;
+            }
+            if (trim($('#address-insured').val()).length == 0) {
+                mui.alert('请填写被保人详细地址');
+                return false;
+            } else {
+                if (!checkInputActualTime($('#address-insured'))) {
+                    return false;
+                }
+            }
+            if ($('#job_replace-insured').attr('val').length == 0) {
+                mui.alert('请选择被保人职业类型');
+                return false;
+            }
+        }
+        var total1 = 0;
+        var a = 0;
+        // var total2=0;
+        if($("#inheritor").attr("rel") == 1){  //指定受益人
+            var idC = $("#identify").val();
+            $(".inherit").each(function(){
+                var name = $(this).find(".name-inheritor").val();
+                var idCard = $(this).find(".identify-inherit").val();
+                var type = $(this).find(".cardType").attr("rel");
+                var gender = $(this).find(".gender-inherit").attr("rel");
+                var birth = $(this).find(".birth-inherit").attr("rel");
+                // var rate = $(this).find(".ihr").attr("rel");
+                var irate = $(this).find(".irate").val();
+                if(name == ""){
+                    mui.alert("请填写受益人姓名");
+                    a = 1;
+                    return false;
+                }
+                if(idCard == ""){
+                    mui.alert("请填写受益人证件号码");
+                    a = 1;
+                    return false;
+                }
+                if(type == 0){
+                    if (!IdCardValidate(idCard)) {
+                        mui.alert('请正确填写证件号码');
+                        a = 1;
+                        return false;
+                    }else if(idC == idCard && $("#relation_replace").text() == "本人"){
+                        mui.alert('受益人身份证号不能与投保人相同(当投保人与被保人为同一人时)');
+                        a = 1;
+                        return false;
+                    }
+                }else{
+                    if (idCard.length <3 || idCard.length > 20) {
+                        mui.alert('请正确填写证件号码');
+                        a = 1;
+                        return false;
+                    }
+                }
+                if(gender == ""){
+                    mui.alert("请选择受益人性别");
+                    return false;
+                }
+                if(birth == ""){
+                    mui.alert("请选择受益人出生日期");
+                    return false;
+                }
+                if(irate == ""){
+                    mui.alert("请填写受益人受益比例");
+                    a = 1;
+                    return false;
+                }else {
+                    if(irate < 1 || irate > 100){
+                        mui.alert("受益比例范围为1-100,请正确填写");
+                        a = 1;
+                        return false;
+                    }
+                    total1 += parseInt(irate);
+                }
+            });
+            if(a!= 1) {
+                if (total1 != 100) {
+                    mui.alert('所有受益人受益比例之和应等于100%');
+                    return false;
+                }
+            }
+        }
+        saveData();
+        if(a!= 1){
+            window.location.href = 'inform.html';
+        }
+    }
+    var num = 0;
+    //保存数据
+    function saveData() {
+        var bety = $("#inheritor").attr("rel");
+        var benifList = [];      //受益人信息
+        if(bety != 0){
+            $(".inherit").each(function(){
+                var beneficiaryOrder = "1";    //受益顺序
+                var beneficiaryType = bety;   //受益人类型
+                var binterestPercent = $(this).find(".irate").val();   //受益份额,总体不能超100%
+                var beneficiaryName = $(this).find(".name-inheritor").val();   //受益人姓名
+                var beneficiarySex = $(this).find(".gender-inherit").attr("rel");   //受益人性别
+                var beneficiaryBirthday = $(this).find(".birth-inherit").attr("rel");   //受益人生日
+                var beneficiaryIDType = $(this).find(".cardType").attr("rel");   //受益人证件类型
+                var beneficiaryIDNo = $(this).find(".identify-inherit").val();   //受益人证件号码
+                var brelationToInsured = $(this).find(".relationship").attr("rel");   //受益人与被保人关系
+
+                var cc = {beneficiaryOrder: beneficiaryOrder,beneficiaryType: beneficiaryType,binterestPercent: binterestPercent,
+                    beneficiaryName: beneficiaryName,beneficiarySex:beneficiarySex,beneficiaryBirthday:beneficiaryBirthday,
+                    beneficiaryIDType:beneficiaryIDType,beneficiaryIDNo:beneficiaryIDNo,brelationToInsured:brelationToInsured
+                };
+
+                benifList.push(cc);
+                num++;
+            });
+        }
+        if (insureInfo == null || insureInfo == undefined)
+            insureInfo = {};
+        if (insureInfo.policyholder == null)
+            insureInfo.policyholder = {};
+        if (insureInfo.insured == null)
+            insureInfo.insured = {};
+        if (insureInfo.pay == null)
+            insureInfo.pay = {};
+        insureInfo.policyholder.name = $('#name').val();
+        insureInfo.policyholder.identifyNumber = $('#identify').val();
+        insureInfo.policyholder.Sex = $('#gender_replace').attr('rel');
+        insureInfo.policyholder.Birthday = $('#date_replace').text();
+        insureInfo.policyholder.age = ageByIDCard(insureInfo.policyholder.identifyNumber);
+        insureInfo.policyholder.mobile = $('#mobile').val();
+        insureInfo.policyholder.email = $('#email').val();
+        insureInfo.policyholder.pro = $('#pro_replace').attr('rel');
+        insureInfo.policyholder.city = $('#city_replace').attr('rel');
+        insureInfo.policyholder.area = $('#area_replace').attr('rel');
+        insureInfo.policyholder.address = $('#address').val();
+        insureInfo.policyholder.job = $('#job_replace').attr('val');
+        insureInfo.policyholder.TprofessionName = $('#job_replace').text();
+        insureInfo.policyholder.TProfessionClass = $('#job_replace').attr('rel');   //
+        if (!isNaN($('#incomeNumber').val()))
+            insureInfo.policyholder.income = ($('#incomeNumber').val()).toString();
+        else {
+            insureInfo.policyholder.income = "";
+        }
+
+        insureInfo.policyholder.incomeWaySalary = "0";
+        insureInfo.policyholder.incomeWayPrivate = "0";
+        insureInfo.policyholder.incomeWayInvestment = "0";
+        insureInfo.policyholder.incomeWayOther = "0";
+
+        if ($('#income_source_replace').attr('rel') == 1) {
+            insureInfo.policyholder.incomeWaySalary = "1";
+        } else if ($('#income_source_replace').attr('rel') == 2) {
+            insureInfo.policyholder.incomeWayPrivate = "1";
+        } else if ($('#income_source_replace').attr('rel') == 3) {
+            insureInfo.policyholder.incomeWayInvestment = "1";
+        } else if ($('#income_source_replace').attr('rel') == 4) {
+            insureInfo.policyholder.incomeWayOther = "1";
+        }
+
+        insureInfo.policyholder.identifyType = "0";
+        insureInfo.policyholder.nationality = 'CHN';
+        insureInfo.policyholder.language = 'zh';
+
+        insureInfo.insured.identifyType = "0";
+        insureInfo.insured.nationality = 'CHN';
+        insureInfo.insured.language = 'zh';
+
+        insureInfo.insuredRelation = current.insured_relation;
+        //insureInfo.beneficiaryType = current.beneficiary_type;
+        insureInfo.beneficiaryType = bety;  //受益人类型
+        insureInfo.ifAutomaticRenewal = "1";
+        insureInfo.beneficiaryDto = benifList;
+        insureInfo.bnfNum = num;
+
+        if (insureInfo.insuredRelation == '00') {
+            insureInfo.insured.name = insureInfo.policyholder.name;
+            insureInfo.insured.identifyNumber = insureInfo.policyholder.identifyNumber;
+            insureInfo.insured.Sex = insureInfo.policyholder.Sex;
+            insureInfo.insured.Birthday = insureInfo.policyholder.Birthday;
+            insureInfo.insured.age = insureInfo.policyholder.age;
+            insureInfo.insured.pro = insureInfo.policyholder.pro;
+            insureInfo.insured.city = insureInfo.policyholder.city;
+            insureInfo.insured.area = insureInfo.policyholder.area;
+            insureInfo.insured.address = insureInfo.policyholder.address;
+            insureInfo.insured.job = insureInfo.policyholder.job;
+            insureInfo.insured.BprofessionName = insureInfo.policyholder.TprofessionName;
+            insureInfo.insured.BProfessionClass = insureInfo.policyholder.TProfessionClass;
+            insureInfo.insured.mobile = insureInfo.policyholder.mobile;
+
+            insureInfo.insured.threeYearAveIncome = insureInfo.policyholder.income; //被保人收入
+            insureInfo.insured.incomeWaySalary = insureInfo.policyholder.incomeWaySalary; //收入来源
+            insureInfo.insured.incomeWayPrivate = insureInfo.policyholder.incomeWayPrivate;
+            insureInfo.insured.incomeWayInvestment = insureInfo.policyholder.incomeWayInvestment;
+            insureInfo.insured.incomeWayOther = insureInfo.policyholder.incomeWayOther;
+
+        } else {
+            insureInfo.insured.threeYearAveIncome = "";//被保人收入
+
+            insureInfo.insured.incomeWaySalary = "";//收入来源
+            insureInfo.insured.incomeWayPrivate = "";
+            insureInfo.insured.incomeWayInvestment = "";
+            insureInfo.insured.incomeWayOther = "";
+
+            insureInfo.insured.name = $('#name-insured').val();
+            insureInfo.insured.identifyNumber = $('#identify-insured').val();
+            insureInfo.insured.Sex = $('#gender_replace-insured').attr('rel');
+            insureInfo.insured.Birthday = $('#date_replace-insured').text();
+            insureInfo.insured.age = ageByIDCard(insureInfo.insured.identifyNumber);
+            insureInfo.insured.pro = $('#pro_replace-insured').attr('rel');
+            insureInfo.insured.city = $('#city_replace-insured').attr('rel');
+            insureInfo.insured.area = $('#area_replace-insured').attr('rel');
+            insureInfo.insured.address = $('#address-insured').val();
+            insureInfo.insured.job = $('#job_replace-insured').attr('val');
+            insureInfo.insured.BprofessionName = $('#job_replace-insured').text();
+            insureInfo.insured.BProfessionClass = '1';   //
+            insureInfo.insured.mobile = "";
+        }
+
+        sessionStorage.setItem('insureInfo', JSON.stringify(insureInfo));
+        //清理再买一单的数据 防止下一页返回的时候被再次赋值
+        try {
+            var orderDetail = JSON.parse(sessionStorage.getItem('orderDetail'));
+            orderDetail.policyholder = null;
+            sessionStorage.setItem('orderDetail', JSON.stringify(orderDetail));
+        } catch (e) {
+        }
+    }
+    //从缓存读取数据
+    function getData() {
+        insureInfo = JSON.parse(sessionStorage.getItem('insureInfo'));
+        //log.print('getData', sessionStorage.getItem('insureInfo'));
+        if (insureInfo != null && insureInfo.insured != null) {
+            $('#gender_replace-insured').text(insureInfo.insured.Sex == '1' ? '女' : '男');
+            $('#gender_replace-insured').attr('rel', insureInfo.insured.Sex);
+            $('#date_replace-insured').text(insureInfo.insured.Birthday);
+        }
+    }
+    // 被保人身份证与试算不通提示
+    function trialInfoHint(input) {
+        var id = $(input).attr('id');
+        var val = $(input).val();
+
+        if (!IdCardValidate(val)) {
+            return false;
+        }
+        if (id == 'identify') {
+            if (ageByIDCard(val) < 18) {
+                return false;
+            }
+            if (current.insured_relation == "00" && ageByIDCard(val) > 55) {
+                return false;
+            }
+        }
+        else if (id == 'identify-insured' && current.insured_relation == "05") {
+            if (ageByIDCard(val) > 17) {
+                return false;
+            }
+            var arr1 = birthdayByIDCard(val).split('-');
+            var d1 = new Date(arr1[0], arr1[1] - 1, arr1[2]);
+            if (((new Date().getTime() - d1.getTime()) / (1000 * 3600 * 24)) < 31) {
+                return false;
+            }
+        }
+
+        //上方为其他不符合的情况的判断  存在则退出
+        var age = '0';
+        var amount = '0';
+        if (id == 'identify' && current.insured_relation == "00") {
+            try {
+                if (birthdayByIDCard(val) != insureInfo.insured.Birthday || genderByIDCard(val) != insureInfo.insured.Sex) {
+                    age = ageByIDCard(val);
+                    amount = insureInfo.order.DutyAmnt;
+                    if ((age >= 51 && age <= 55 && amount > 100000) || (age >= 46 && age <= 50 && amount > 200000)
+                            || (age >= 41 && age <= 45 && amount > 400000) || (age >= 18 && age <= 40 && amount > 500000)
+                            || (age > 0 && age <= 17 && amount > 300000)) {
+                        return false;
+                    }
+                    mui.alert('身份证信息中的生日/性别信息与之前所填信息不一致,最终保费请以核保结果为准!');
+                    return true;
+                }
+            }
+            catch (e) {
+            }
+        }
+        else if (id == 'identify-insured' && current.insured_relation == "05") {
+            try {
+                if (birthdayByIDCard(val) != insureInfo.insured.Birthday || genderByIDCard(val) != insureInfo.insured.Sex) {
+                    age = ageByIDCard(val);
+                    amount = insureInfo.order.DutyAmnt;
+                    if ((age >= 51 && age <= 55 && amount > 100000) || (age >= 46 && age <= 50 && amount > 200000)
+                            || (age >= 41 && age <= 45 && amount > 400000) || (age >= 18 && age <= 40 && amount > 500000)
+                            || (age > 0 && age <= 17 && amount > 300000)) {
+                        return false;
+                    }
+                    mui.alert('身份证信息中的生日/性别信息与之前所填信息不一致,最终保费请以核保结果为准!');
+                    return true;
+                }
+            }
+            catch (e) {
+            }
+        }
+    }
+    //显示数据  从下页返回时
+    function fromNext() {
+        if (insureInfo != null && insureInfo.insured != null && insureInfo.policyholder != null) {
+            //setAddress(insureInfo.policyholder.city, insureInfo.policyholder.area, false);
+            var province = insureInfo.policyholder.pro;
+            var city = insureInfo.policyholder.city;
+            var area = insureInfo.policyholder.area;
+            setAddress("#pro_replace","#city_replace","#area_replace",province,city, area);
+            $('#name').val(insureInfo.policyholder.name);
+            $('#identify').val(insureInfo.policyholder.identifyNumber);
+            $('#gender_replace').text(insureInfo.policyholder.Sex == '1' ? '女' : '男').attr('rel', insureInfo.policyholder.Sex);
+            $('#date_replace').text(insureInfo.policyholder.Birthday);
+            $('#mobile').val(insureInfo.policyholder.mobile);
+            $('#email').val(insureInfo.policyholder.email);
+            $('#incomeNumber').val(parseFloat(insureInfo.policyholder.income));
+            $('#address').val(insureInfo.policyholder.address);
+            $('#job_replace').attr('val', insureInfo.policyholder.job);
+            $('#job_replace').text(insureInfo.policyholder.TprofessionName).removeClass('placeholder');
+            $('#job_replace').attr('rel', insureInfo.policyholder.TProfessionClass);   //
+            if (insureInfo.policyholder.incomeWaySalary == "1") {
+                $('#income_source_replace').text("工资").attr('rel', '1').removeClass('placeholder');
+            } else if (insureInfo.policyholder.incomeWayPrivate == "1") {
+                $('#income_source_replace').text("私营").attr('rel', '2').removeClass('placeholder');
+            } else if (insureInfo.policyholder.incomeWayInvestment == "1") {
+                $('#income_source_replace').text("投资").attr('rel', '3').removeClass('placeholder');
+            } else if (insureInfo.policyholder.incomeWayOther == "1") {
+                $('#income_source_replace').text("其他").attr('rel', '4').removeClass('placeholder');
+            }
+
+            if (insureInfo.insuredRelation == "05") {
+                checkRelation("#relation", "choose-relation-child");
+                $("#relation_replace").text("子女").attr('rel', 'choose-relation-child');
+                $('#name-insured').val(insureInfo.insured.name);
+                $('#identify-insured').val(insureInfo.insured.identifyNumber);
+                $('#gender_replace-insured').text(insureInfo.insured.Sex == '1' ? '女' : '男').attr('rel', insureInfo.insured.Sex);
+                $('#date_replace-insured').text(insureInfo.insured.Birthday);
+                $('#job_replace-insured').attr('val', insureInfo.insured.job).removeClass('placeholder');
+                $('#job_replace-insured').text(insureInfo.insured.BprofessionName);
+                $('#job_replace-insured').attr('rel', insureInfo.insured.BProfessionClass);   //
+                $('#address-insured').val(insureInfo.insured.address);
+               // setAddress(insureInfo.insured.city, insureInfo.insured.area, true);
+                var bprovince = insureInfo.insured.pro;
+                var bcity = insureInfo.insured.city;
+                var barea = insureInfo.insured.area;
+                setAddress("#pro_replace-insured","#city_replace-insured","#area_replace-insured",bprovince,bcity, barea);
+                $('#address-insured').val(insureInfo.insured.address);
+            }
+
+        }
+    }
+    //显示数据 从订单跳转过来
+    function fromOrder() {
+        var orderDetail = JSON.parse(sessionStorage.getItem('orderDetail'));
+        if (orderDetail != null && orderDetail.insured != null && orderDetail.policyholder != null) {
+            if (insureInfo.policyholder == null)
+                insureInfo.policyholder = {};
+            if (insureInfo.insured == null)
+                insureInfo.insured = {};
+            if (insureInfo.pay == null)
+                insureInfo.pay = {};
+
+            //setAddress(orderDetail.policyholder.city, orderDetail.policyholder.area, false);
+            var province = orderDetail.policyholder.pro;
+            var city = orderDetail.policyholder.city;
+            var area = orderDetail.policyholder.area;
+            setAddress("#pro_replace","#city_replace","#area_replace",province,city, area);
+            $('#name').val(orderDetail.policyholder.name);
+            $('#identify').val(orderDetail.policyholder.identifyNumber);
+            $('#gender_replace').text(orderDetail.policyholder.Sex == '1' ? '女' : '男').attr('rel', orderDetail.policyholder.Sex);
+            $('#date_replace').text(orderDetail.policyholder.Birthday);
+            $('#mobile').val(orderDetail.policyholder.mobile);
+            $('#email').val(orderDetail.policyholder.email);
+            $('#incomeNumber').val(parseFloat(orderDetail.policyholder.income));
+            $('#address').val(orderDetail.policyholder.address);
+            $('#job_replace').attr('val', orderDetail.policyholder.job);
+            $('#job_replace').text(orderDetail.policyholder.TprofessionName).removeClass('placeholder');
+            $('#job_replace').attr('rel', orderDetail.policyholder.TProfessionClass);   //
+            if (orderDetail.policyholder.incomeWaySalary == "1") {
+                $('#income_source_replace').text("工资").attr('rel', '1').removeClass('placeholder');
+            } else if (orderDetail.policyholder.incomeWayPrivate == "1") {
+                $('#income_source_replace').text("私营").attr('rel', '2').removeClass('placeholder');
+            } else if (orderDetail.policyholder.incomeWayInvestment == "1") {
+                $('#income_source_replace').text("投资").attr('rel', '3').removeClass('placeholder');
+            } else if (orderDetail.policyholder.incomeWayOther == "1") {
+                $('#income_source_replace').text("其他").attr('rel', '4').removeClass('placeholder');
+            }
+            insureInfo.policyholder.job = orderDetail.policyholder.job;
+            insureInfo.policyholder.TProfessionClass = orderDetail.policyholder.TProfessionClass;
+            insureInfo.policyholder.TprofessionName = orderDetail.policyholder.TprofessionName;
+            insureInfo.ifAutomaticRenewal = orderDetail.ifAutomaticRenewal;
+            insureInfo.insuredRelation = orderDetail.insuredRelation;
+
+            if (orderDetail.insuredRelation == "05") {
+                checkRelation("#relation", "choose-relation-child");
+                $("#relation_replace").text("子女").attr('rel', 'choose-relation-child');
+                $('#name-insured').val(orderDetail.insured.name);
+                $('#identify-insured').val(orderDetail.insured.identifyNumber);
+                $('#gender_replace-insured').text(orderDetail.insured.Sex == '1' ? '女' : '男').attr('rel', orderDetail.insured.Sex);
+                $('#date_replace-insured').text(orderDetail.insured.Birthday);
+                insureInfo.insured.mobile = orderDetail.insured.mobile;
+                insureInfo.insured.email = orderDetail.insured.email;
+//                insureInfo.insured.threeYearAveIncome = orderDetail.insured.threeYearAveIncome;
+
+                insureInfo.insured.job = orderDetail.insured.job;
+                insureInfo.insured.TProfessionClass = orderDetail.insured.TProfessionClass;
+                insureInfo.insured.TprofessionName = orderDetail.insured.TprofessionName;
+                $('#job_replace-insured').attr('val', orderDetail.insured.job).removeClass('placeholder');
+                $('#job_replace-insured').text(orderDetail.insured.BprofessionName);
+                $('#job_replace-insured').attr('rel', orderDetail.insured.BProfessionClass);   //
+                //setAddress(orderDetail.insured.city, orderDetail.insured.area, true);
+                var bprovince = orderDetail.insured.pro;
+                var bcity = orderDetail.insured.city;
+                var barea = orderDetail.insured.area;
+                setAddress("#pro_replace-insured","#city_replace-insured","#area_replace-insured",bprovince,bcity, barea);
+                $('#address-insured').val(orderDetail.insured.address);
+            }
+        }
+    }
+
+    function limitJudge(age, amount) {
+        if ((age >= 51 && age <= 55 && amount > 100000) || (age >= 46 && age <= 50 && amount > 200000)
+                || (age >= 41 && age <= 45 && amount > 400000) || (age >= 18 && age <= 40 && amount > 500000)
+                || (age >= 0 && age <= 17 && amount > 300000)) {
+            $('.enter-btn').css("background-color", "#dddddd").attr('disable', 'true');
+            mui.alert('身份证信息中的生日/性别信息与之前所填信息不一致，无法投保，请返回重新试算！');
+            return false;
+        } else {
+            $('.enter-btn').css("background-color", "#F39A0F").attr('disable', 'false');
+            return true;
+        }
+    }
+
+</script>
+<script>
+    (function ($, doc) {
+        $.init();
+        $.ready(function () {
+            var addressPicker = new $.PopPicker({layer: 3});
+            addressPicker.setData(cityData3);
+            var addressButton = doc.getElementById('address-select');
+            var pro = doc.getElementById('pro_replace');
+            var city = doc.getElementById('city_replace');
+            var area = doc.getElementById('area_replace');
+            var stra = "";
+            addressButton.addEventListener('tap', function (event) {
+                addressPicker.show(function (items) {
+                    pro.innerText = (items[0] || {}).text.substr(0,5);
+                    city.innerText = (items[1] || {}).text.substr(0,5);
+                    area.innerText = (items[2] || {}).text.substr(0,5);
+
+                    pro.setAttribute("rel", (items[0] || {}).value);
+                    city.setAttribute("rel", (items[1] || {}).value);
+                    area.setAttribute("rel", (items[2] || {}).value);
+                    stra = items[0].text + items[1].text + items[2].text;
+                });
+
+                visitsNum(stra);
+            }, false);
+
+            var addressInsurePicker = new $.PopPicker({layer: 3});
+            addressInsurePicker.setData(cityData3);
+            var addressInsureButton = doc.getElementById('address-insure-select');
+            var pro1 = doc.getElementById('pro_replace-insured');
+            var city1 = doc.getElementById('city_replace-insured');
+            var area1 = doc.getElementById('area_replace-insured');
+            addressInsureButton.addEventListener('tap', function (event) {
+                addressInsurePicker.show(function (items) {
+                    pro1.innerText = (items[0] || {}).text.substr(0,5);
+                    city1.innerText = (items[1] || {}).text.substr(0,5);
+                    area1.innerText = (items[2] || {}).text.substr(0,5);
+
+                    pro1.setAttribute("rel", (items[0] || {}).value);
+                    city1.setAttribute("rel", (items[1] || {}).value);
+                    area1.setAttribute("rel", (items[2] || {}).value);
+                });
+                var addr1 =  pro1.innerText + city1.innerText + area1.innerText;
+                visitsNum(addr1);
+            }, false);
+
+            var incomeList = [{
+                value: '1',
+                text: '工资'
+            }, {
+                value: '2',
+                text: '私营'
+            }, {
+                value: '3',
+                text: '投资'
+            }, {
+                value: '4',
+                text: '其他'
+            }];
+            var incomePicker = new $.PopPicker({layer: 1});
+            incomePicker.setData(incomeList);
+            var incomeSource = doc.getElementById('income_source_replace');
+            incomeSource.addEventListener('tap', function (event) {
+                incomePicker.show(function (items) {
+                    incomeSource.innerText = (items[0] || {}).text;
+                    incomeSource.setAttribute("rel", (items[0] || {}).value);
+                    incomeSource.style.color = '#404040';
+
+                });
+            }, false);
+            var childJobList = [{
+                value: '8010103',
+                text: '学龄前儿童'
+            }, {
+                value: '2090114',
+                text: '一般学生'
+            }];
+            var jobPicker = new $.PopPicker({layer: 1});
+            jobPicker.setData(childJobList);
+            var childJob = doc.getElementById('job_replace-insured');
+            childJob.addEventListener('tap', function (event) {
+                jobPicker.show(function (items) {
+                    childJob.innerText = (items[0] || {}).text;
+                    childJob.setAttribute("val", (items[0] || {}).value);
+                    childJob.style.color = '#404040';
+
+                });
+            }, false);
+
+            var relationList = [{
+                value: 'choose-relation-self',
+                text: '本人'
+            }, {
+                value: 'choose-relation-child',
+                text: '子女'
+            }];
+            var relationPicker = new $.PopPicker({layer: 1});
+            relationPicker.setData(relationList);
+            var relation = doc.getElementById('relation_replace');
+            relation.addEventListener('tap', function (event) {
+                relationPicker.show(function (items) {
+                    if ((items[0] || {}).value == 'choose-relation-self') {
+                        doc.getElementById('beInsured-title').className = 'hide';
+                        doc.getElementById('relation-div').className = 'choose-relation-self';
+                        doc.getElementById('beInsured-part').className = 'choose-relation-self';
+                        current.insured_relation = "00";
+                    } else {
+                        doc.getElementById('beInsured-title').className = 'title';
+                        doc.getElementById('relation-div').className = 'choose-relation-child';
+                        doc.getElementById('beInsured-part').className = 'choose-relation-child';
+                        current.insured_relation = "05";
+                        addInfoByIDCard(doc.getElementById('identify-insured'));
+                    }
+                    doc.getElementById('pro_replace-insured').innerText = doc.getElementById('pro_replace').innerText;
+                    doc.getElementById('city_replace-insured').innerText = doc.getElementById('city_replace').innerText;
+                    doc.getElementById('area_replace-insured').innerText = doc.getElementById('area_replace').innerText;
+                    doc.getElementById('address-insured').value = doc.getElementById('address').value;
+                    doc.getElementById('pro_replace-insured').setAttribute('rel', doc.getElementById('pro_replace').getAttribute('rel'));
+                    doc.getElementById('city_replace-insured').setAttribute('rel', doc.getElementById('city_replace').getAttribute('rel'));
+                    doc.getElementById('area_replace-insured').setAttribute('rel', doc.getElementById('area_replace').getAttribute('rel'));
+
+                    relation.innerText = (items[0] || {}).text;
+                    relation.setAttribute("rel", (items[0] || {}).value);
+                    relation.style.color = '#404040';
+                });
+            }, false);
+
+            //选择受益人
+            var goldPicker = new $.PopPicker();
+            var getGold = doc.getElementById('inheritor');
+            goldPicker.setData([{
+                value: "0",
+                text: "法定继承人"
+            },{
+                value: "1",
+                text: "指定受益人"
+            }]);
+            getGold.addEventListener('tap', function(event) {
+                goldPicker.show(function(items) {
+                    getGold.setAttribute("rel", items[0].value);
+                    getGold.innerText = items[0].text;
+                    //返回 false 可以阻止选择框的关闭
+                    //return false;
+                    showInheri();
+                });
+            }, false);
+        });
+    })(mui, document);
+
+    //选择受益人关系
+    mui("body").on('tap','.relationship',function(e){
+        var rltpPicker = new mui.PopPicker();
+        rltpPicker.setData([{
+            value: "01",
+            text: "配偶"
+        },{
+            value: "03",
+            text: "父亲"
+        },{
+            value: "04",
+            text: "母亲"
+        },{
+            value: "05",
+            text: "子女"
+        }]);
+        var tg = this;
+        rltpPicker.show(function(items) {
+            tg.setAttribute("rel", items[0].value);
+            tg.innerText = items[0].text;
+
+        });
+
+    });
+    //选择证件类型
+    mui("body").on('tap','.cardType',function(e){
+        var typePicker = new mui.PopPicker();
+        typePicker.setData([{
+            value: "0",
+            text: "身份证"
+        },{
+            value: "3",
+            text: "护照"
+        }]);
+        var tg = this;
+        typePicker.show(function(items) {
+            tg.setAttribute("rel", items[0].value);
+            tg.innerText = items[0].text;
+            if(jQuery(tg).attr("rel") == 0){
+                jQuery(tg).parents(".inherit").find(".gender-inherit").css("pointer-events","none");
+                jQuery(tg).parents(".inherit").find(".birth-inherit").css("pointer-events","none");
+            }else{
+                jQuery(tg).parents(".inherit").find(".gender-inherit").css("pointer-events","auto");
+                jQuery(tg).parents(".inherit").find(".birth-inherit").css("pointer-events","auto");
+            }
+            jQuery(tg).parents(".inherit").find(".identify-inherit").val("");
+        });
+
+    });
+    //选择性别
+    mui("body").on('tap','.gender-inherit',function(e){
+        var genderPicker = new mui.PopPicker();
+        genderPicker.setData([{
+            value: "0",
+            text: "男"
+        },{
+            value: "1",
+            text: "女"
+        }]);
+        var tg = this;
+        genderPicker.show(function(items) {
+            tg.setAttribute("rel", items[0].value);
+            tg.innerText = items[0].text;
+
+        });
+
+    });
+    //受益人出生日期选择
+    mui("body").on('tap','.birth-inherit',function(e){
+        var myDate = new Date();
+        var Year = myDate.getFullYear();
+        var beginYear = Year - 100;
+        var endYear = Year;
+        var optionsJson = {
+            "type":"date",
+            "beginYear":beginYear,
+            "endYear":endYear
+        };
+
+        var birthPicker = new mui.DtPicker(optionsJson);
+        var tg = this;
+        birthPicker.show(function(rs) {
+            tg.setAttribute("rel", rs.text);
+            tg.innerText = rs.text;
+
+        });
+
+    });
+    //判断是否为指定受益人
+    function showInheri(){
+        var val = $("#inheritor").attr("rel");
+        if(val == "0"){
+            $(".inheri").addClass("hide");
+            $(".btn-div1").addClass("hide");
+        }else{
+            $(".inheri").removeClass("hide");
+            $(".btn-div1").removeClass("hide");
+        }
+    }
+    //统计访问量
+    function  visitsNum(address){
+        GetAsyncData("Wljw/1054", function (backdata) {
+
+        },{openId: openId,address: address, productCode: "F0016A"});
+    }
+</script>
+</html>

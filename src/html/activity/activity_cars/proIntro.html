@@ -101,16 +101,7 @@
     var wh = $(window).height();
     $('.swiper-container').css("height", wh);
     $('.top-230').css("margin-top", wh*132/667);
-    closeProduct(103);
-    getOpenId();
-    var openId = window.localStorage.getItem(config.openIdName);
-    var isFocus = false;
 
-    if (openId != null && openId.length != 0) {   //已关注
-        GetData("User/1006", function (backData) {
-            isFocus = backData.data.flag;
-        }, {"openId": openId});
-    }
     var index;  //页面索引
     if (sessionStorage.a == 1) {
         //        mySwiper.slideTo(3, 1000, false);//切换到最后一个slide，速度为1秒
@@ -159,18 +150,6 @@
 //            mySwiper.slideTo(3, 1000, false);//切换到最后一个slide，速度为1秒
             //  index = 4;
         }
-        baiduCollection();
-    });
-    weixinShare({
-        shareUrl: config.shareRootUrl + '/weixinouter/basepage/activity_cars/proIntro1.html',
-        shareIcon: config.shareRootUrl + '/weixinouter/basepage/images/cars/proIntro/share-icon.jpg',
-        shareText: '多车之家-中华财险高端车险品牌',
-        isNeedRecord: true,
-        openId: openId,
-        activityId: '103',
-        typeTimeline: 'zhbx-3',
-        typeAppMessage: 'zhbx-4',
-        isGiveCoin: 'Y'
     });
 
 
@@ -185,12 +164,6 @@
     }
 
     function toCars() {
-        if(!isFocus){
-            showCodeDialog();
-        }else {
-            window.location.href = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=" + config.appIdValue + "&redirect_uri=" + config.shareRootUrl + "/weixinouter/basepage/activity_cars/inputInfo.html" +
-                    "&response_type=code&scope=snsapi_base&state=123&connect_redirect=1#wechat_redirect";
-        }
-
+        window.location.href = "inputInfo.html";
     }
 </script>

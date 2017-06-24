@@ -1,0 +1,1325 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport'
+          content='width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui'>
+    <meta name='apple-mobile-web-app-capable' content='yes'>
+    <meta name='apple-mobile-web-app-status-bar-style' content='black'>
+    <meta name="format-detection" content="telephone=no"/>
+
+    <title>确认并支付</title>
+    <link rel="stylesheet" href="../../css/mui/mui.min.css">
+    <link rel="stylesheet" href="../../css/mui/mui.picker.min.css"/>
+    <style>
+
+
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+            -webkit-appearance: none !important;
+            margin: 0;
+        }
+
+        ::-webkit-inner-spin-button {
+            visibility: hidden;
+        }
+
+        ::-webkit-calendar-picker-indicator {
+            border: 1px solid #ccc;
+            border-radius: 2px;
+            box-shadow: inset 0 1px #fff, 0 1px #eee;
+            background-color: #eee;
+            background-image: -webkit-linear-gradient(top, #f0f0f0, #e6e6e6);
+            color: #666;
+        }
+
+        input[type='number'] {
+            -moz-appearance: textfield;
+            -webkit-appearance: none !important;
+        }
+
+        body {
+            font-family: 'Microsoft YaHei', 'Hiragino Sans GB', Helvetica, Arial, 'Lucida Grande', sans-serif;
+            width: 3.2rem;
+            margin: 0 auto;
+            padding: 0;
+            font-size: 0.12rem;
+            -webkit-tap-highlight-color: transparent;
+            background-color: #f6f4f4;
+            color: #404040;
+        }
+
+        /*ol, ul {*/
+            /*list-style: none;*/
+            /*padding: 0;*/
+            /*margin: 0;*/
+            /*background-color: #ffffff;*/
+        /*}*/
+
+        a {
+            text-decoration: none;
+            outline: none;
+            color: #515151;
+        }
+
+        .rule-href {
+            text-decoration: none;
+            outline: none;
+            color: #00a8fa;
+        }
+
+        div {
+            margin: 0;
+            padding: 0;
+        }
+
+        a:hover {
+            text-decoration: none;
+        }
+
+        input[type=color], input[type=date], input[type=datetime-local], input[type=datetime], input[type=email], input[type=month], input[type=number], input[type=password], input[type=search], input[type=tel], input[type=text] {
+            font-family: 'Microsoft YaHei', 'Hiragino Sans GB', Helvetica, Arial, 'Lucida Grande', sans-serif;
+            height: 0.25rem;
+            border: 0 none;
+            background-color: white;
+            outline: none;
+            margin: 0 0 0.025rem 0;
+            width: 60%;
+            -webkit-appearance: none;
+            font-size: 0.12rem;
+            padding: 0;
+        }
+
+        .enter_btn {
+            height: 0.49rem;
+            line-height: 0.49rem;
+            background-color: #F39A0F;
+            color: #ffffff;
+            text-align: center;
+            font-size: 0.175rem;
+            border-radius: 0.04rem;
+            width: 2.96rem;
+            margin: auto;
+        }
+
+        .divider {
+            height: 1px;
+            width: 100%;
+            border-bottom: 1px solid #f1f1f1;
+        }
+
+        .border-b {
+            border-bottom: 1px solid #f1f1f1;
+        }
+
+        .border-t {
+            border-top: 1px solid #f1f1f1;
+        }
+
+        .no-border {
+            border: 0;
+        }
+
+        .clearfix:after {
+            clear: both;
+        }
+
+        .clear {
+            clear: both;
+        }
+
+        .hide {
+            display: none;
+        }
+
+        .detail-div {
+            width: 100%;
+            height: 0.82rem;
+            background-color: #fff;
+            color: #606060;
+        }
+
+        .info-div {
+            float: left;
+            margin-left: 0.12rem;
+            margin-top: 0.05rem;
+        }
+
+        .down-icon {
+            float: right;
+            width: 0.12rem;
+            height: 0.12rem;
+            margin-top: 0.36rem;
+            margin-right: 0.12rem;
+        }
+
+        .detail-icon {
+            position: absolute;
+            float: right;
+            width: 0.12rem;
+            height: 0.12rem;
+            margin-top: 0.36rem;
+            right: 0.12rem;
+        }
+
+        .divider-div {
+            width: 100%;
+            height: 0.05rem;
+            background-color: #f6f4f4;
+        }
+
+        .bank-div {
+            width: 100%;
+            background-color: #fff;
+        }
+
+        .btn-div {
+            width: 100%;
+            padding-top: 0.1rem;
+            padding-bottom: 0.02rem;
+        }
+
+        .col-left {
+            width: 22%;
+            float: left;
+            color: #606060;
+        }
+
+        .col-right {
+            width: 69%;
+            float: left;
+
+        }
+        .col-left1 {
+            width: 30%;
+            float: left;
+            color: #606060;
+        }
+
+        .col-right1 {
+            width: 65%;
+            float: left;
+
+        }
+        .black {
+            color: #404040;
+        }
+
+        .line-div {
+            height: 0.45rem;
+            font-size: 0.12rem;
+            line-height: 0.45rem;
+            margin: 0 0 0 0.12rem;
+            background-color: #fff;
+        }
+
+        .line {
+            height: 100%;
+            line-height: 0.45rem;
+        }
+
+        .t-a-right {
+            text-align: left;
+        }
+
+        .bg-white {
+            background-color: #fff;
+        }
+
+        .order-message {
+            margin-top: 0.02rem;
+            font-size: 0.1rem;
+            line-height: 0.16rem;
+        }
+
+        .header {
+            position: relative;
+            width: 3.2rem;
+            z-index: 0
+        }
+
+        .footer {
+            position: relative;
+        }
+
+        .money {
+            color: #F39A0F;
+            font-size: 0.16rem;
+            font-weight: bold;
+        }
+
+        .list-show #bank-list {
+            position: relative;
+            z-index: 0;
+            background-color: #fafafa;
+            height: 335px;
+            border-bottom: 1px solid #f1f1f1;
+            -webkit-transition: height 0.5s ease-in-out, border 0s ease-in-out 0.5s;
+            overflow: hidden;
+        }
+
+        .list-hide #bank-list {
+            position: relative;
+            z-index: 0;
+            background-color: #fafafa;
+            height: 0;
+            border: 0;
+            -webkit-transition: height 0.7s ease-in-out, border 0s ease-in-out 0.7s;
+            overflow: hidden;
+        }
+
+        .list-show #check-bank {
+            border-bottom: 0;
+        }
+
+        .list-hide #check-bank {
+            border-bottom: 1px solid #f1f1f1;
+            -webkit-transition: border-bottom 0s ease-in-out 0.7s;
+        }
+
+        .bank-list-every-line {
+            padding-top: 5px;
+            padding-bottom: 5px;
+        }
+
+        .bank-click-div-1, .bank-click-div-2, .bank-click-div-3,
+        .bank-click-div-4, .bank-click-div-5, .bank-click-div-6,
+        .bank-click-div-7, .bank-click-div-8, .bank-click-div-9,
+        .bank-click-div-10, .bank-click-div-11,
+        .bank-click-div-12, .bank-click-div-13,
+        .bank-click-div-14, .bank-click-div-15, .bank-click-div-16,
+        .bank-click-div-17 {
+            position: relative;
+            height: 100%;
+            width: 60px;
+            border: 1px solid #fafafa;
+            left: 50%;
+            margin-left: -30px;
+        }
+
+        .bank-check-1 .bank-click-div-1, .bank-check-2 .bank-click-div-2, .bank-check-3 .bank-click-div-3,
+        .bank-check-4 .bank-click-div-4, .bank-check-5 .bank-click-div-5, .bank-check-6 .bank-click-div-6,
+        .bank-check-7 .bank-click-div-7, .bank-check-8 .bank-click-div-8, .bank-check-9 .bank-click-div-9,
+        .bank-check-10 .bank-click-div-10, .bank-check-11 .bank-click-div-11,
+        .bank-check-12 .bank-click-div-12, .bank-check-13 .bank-click-div-13,
+        .bank-check-14 .bank-click-div-14, .bank-check-15 .bank-click-div-15, .bank-check-16 .bank-click-div-16,
+        .bank-check-17 .bank-click-div-17 {
+            /*height: 100%;*/
+            /*width: 0.6rem;*/
+            border: 1px solid #F39A0F;
+            border-radius: 0.04rem;
+            background-color: #fff;
+            /*margin-left: 0.2333rem;*/
+        }
+
+        .bank-logo-div {
+            float: left;
+            width: 25%;
+            /*border-bottom: 1px solid #ddd;*/
+        }
+
+        .bank-logo {
+            position: relative;
+            left: 50%;
+            margin-left: -18px;
+            width: 36px;
+            height: 36px;
+            background: url('../../images/bank-logo.png') no-repeat top left;
+            background-size: 36px 720px;
+        }
+
+        #bank-icbc {
+            background-position: 0 0;
+        }
+
+        #bank-ccb {
+            background-position: 0 -38px;
+        }
+
+        #bank-abc {
+            background-position: 0 -111px;
+        }
+
+        #bank-boc {
+            background-position: 0 -218px;
+        }
+
+        #bank-bcm {
+            background-position: 0 -148px;
+        }
+
+        #bank-cmb {
+            background-position: 0 -74px;
+        }
+
+        #bank-gdb {
+            background-position: 0 -184px;
+        }
+
+        #bank-cmbc {
+
+            background-position: 0 -260px;
+        }
+
+        #bank-hb {
+            background-position: 0 -298px;
+        }
+
+        #bank-citic {
+            background-position: 0 -337px;
+
+        }
+
+        #bank-guangzhou {
+            background-position: 0 -381px;
+
+        }
+
+        #bank-beijing {
+            background-position: 0 -425px;
+
+        }
+
+        #bank-ceb {
+            background-position: 0 -510px;
+        }
+
+        #bank-cib {
+            background-position: 0 -545px;
+        }
+
+        #bank-spdb {
+            background-position: 0 -581px;
+        }
+
+        #bank-pab {
+            background-position: 0 -615px;
+        }
+
+        #bank-psbc {
+            background-position: 0 -467px;
+
+        }
+
+        .insurance-name {
+            font-size: 0.14rem;
+            font-weight: bolder;
+        }
+
+        .overflow-hidden {
+            overflow: hidden;
+        }
+
+        .bank-text {
+            width: 100%;
+            text-align: center;
+            font-size: 14px;
+        }
+
+        .down-icon {
+            float: right;
+            width: 0.12rem;
+            height: 0.12rem;
+            margin-top: 0.165rem;
+            margin-right: 0.12rem;
+        }
+
+        .get_code_btn {
+            height: 0.25rem;
+            line-height: 0.25rem;
+            background-color: #F39A0F;
+            color: #ffffff;
+            text-align: center;
+            border-radius: 0.03rem;
+            width: 0.8rem;
+            float: right;
+            margin-top: 0.1rem;
+            font-size: 0.1rem;
+        }
+
+        .rule {
+            color: #016FEB;
+        }
+
+        .check, .uncheck {
+            float: left;
+            height: 100%;
+            padding-left: 0.12rem;
+            padding-right: 0.12rem;
+        }
+
+        .check .img {
+            background: url('../../images/cars/checked.png');
+            background-size: 100% 100%;
+            width: 0.16rem;
+            height: 0.16rem;
+            margin-top: 0.09rem
+        }
+
+        .uncheck .img {
+            background: url('../../images/cars/unchecked.png');
+            background-size: 100% 100%;
+            width: 0.16rem;
+            height: 0.16rem;
+            margin-top: 0.09rem;
+        }
+
+        .rule-line {
+            height: 0.45rem;
+            font-size: 0.1rem;
+        }
+
+        .rule-div {
+            float: left;
+            width: 2.72rem;
+            height: 100%;
+            line-height: 0.18rem;
+            margin-top: 0.075rem;
+            color: #606060;
+        }
+        .arrow-down,.arrow-right{
+            width: 0.12rem;
+        }
+        .arrow-down{
+            position: absolute;
+            margin-top: 0.16rem;
+            left: 0.5rem;
+        }
+        .arrow-right{
+            /*position: absolute;*/
+            /*right: 0.15rem;*/
+            margin-top: 0.15rem;
+        }
+        .col-30{
+            width: 50%;
+            float: left;
+        }
+        @media (device-width: 375px ) and (device-height: 667px) and (-webkit-min-device-pixel-ratio: 2 ) {
+            /* 兼容iphone6  */
+            .border-b {
+                border-bottom: 0.5px solid #d4d4d4;
+            }
+
+            .border-t {
+                border-top: 0.5px solid #d4d4d4;
+            }
+
+            .list-hide #check-bank {
+                border-bottom: 0.5px solid #d4d4d4;
+            }
+
+            .list-show #bank-list {
+                border-bottom: 0.5px solid #d4d4d4;
+            }
+
+            .order-message {
+                margin-top: 0.02rem;
+                font-size: 0.1rem;
+                line-height: 0.16rem;
+            }
+
+        }
+
+        .placeholder {
+            color: darkgrey;
+        }
+
+    </style>
+</head>
+<body class="hide list-hide">
+<div id="header" class="header">
+    <div class="detail-div" onclick="toOrderDetail()">
+        <img src="../../images/personal_ic_right.png" class="detail-icon"/>
+        <div class="info-div">
+            <div class="black insurance-name" id="insurance-name"></div>
+            <div class="order-message">被保险人:&nbsp;<span id="insured_name"></span></div>
+            <div class="order-message">保障期限:&nbsp;<span id="insuranceStartPeriod"></span>零时至<span
+                    id="insuranceEndPeriod"></span>零时
+            </div>
+            <div class="order-message">缴费频率:&nbsp;<span id="insure_type"></span></div>
+        </div>
+        <div class="clear"></div>
+    </div>
+    <div class="divider-div"></div>
+    <div class="bg-white">
+        <div class="line-div">
+            <div class="col-left line t-a-right">应付金额</div>
+            <div class="line" style="margin-left: -0.05rem;float: left;width: 40%"><span class="money">￥</span>
+                <span class="money" id="money"></span>
+            </div>
+            <div class="type" style="float: right;margin-right: 0.12rem;color: #606060">
+                <div style="background: url('../../images/zeng.png'); background-size: 100% 100%; margin-top:0.115rem;width: 0.2rem;height: 0.2rem;float: left"></div>
+                <span>&nbsp;</span><span style="color:#fb3450" id="coinCount"></span><span
+                    style="color:#fb3450">枚</span>万金币
+            </div>
+        </div>
+    </div>
+    <div class="divider-div"></div>
+    <div class="bank-div">
+        <div class="line-div border-b">
+            <div class="col-left line t-a-right">支付方式</div>
+            <div class="col-right line black">
+                银联支付
+            </div>
+        </div>
+        <div id="check-bank" class="line-div border-b" onclick="toggleBankList()">
+            <div class="col-left line t-a-right">选择银行</div>
+            <div class="col-right line black placeholder" id="bank-name">请选择投保人的银行卡信息</div>
+            <img src="../../images/personal_ic_right.png" class="down-icon"/>
+        </div>
+
+    </div>
+</div>
+<div id="bank-list" val="" class="">
+    <div class="bank-list-every-line">
+        <div class="bank-logo-div">
+            <div class="bank-click-div-1" onclick="checkBank(this)" rel="0101" val="102">
+                <div class="bank-logo" id="bank-icbc"></div>
+                <div class="bank-text">工商银行</div>
+            </div>
+        </div>
+        <div class="bank-logo-div">
+            <div class="bank-click-div-2" onclick="checkBank(this)" rel="0301" val="105">
+                <div class="bank-logo" id="bank-ccb"></div>
+                <div class="bank-text">建设银行</div>
+            </div>
+        </div>
+        <div class="bank-logo-div">
+            <div class="bank-click-div-3" onclick="checkBank(this)" rel="0201" val="103">
+                <div class="bank-logo" id="bank-abc"></div>
+                <div class="bank-text">农业银行</div>
+            </div>
+        </div>
+        <div class="bank-logo-div">
+            <div class="bank-click-div-4" onclick="checkBank(this)" rel="0401" val="104">
+                <div class="bank-logo" id="bank-boc"></div>
+                <div class="bank-text">中国银行</div>
+            </div>
+        </div>
+        <div class="clear"></div>
+    </div>
+    <div class="bank-list-every-line">
+
+        <div class="bank-logo-div">
+            <div class="bank-click-div-5" onclick="checkBank(this)" rel="1701" val="301">
+                <div class="bank-logo" id="bank-bcm"></div>
+                <div class="bank-text">交通银行</div>
+            </div>
+        </div>
+        <div class="bank-logo-div">
+            <div class="bank-click-div-6" onclick="checkBank(this)" rel="0601" val="308">
+                <div class="bank-logo" id="bank-cmb"></div>
+                <div class="bank-text">招商银行</div>
+            </div>
+        </div>
+        <div class="bank-logo-div">
+            <div class="bank-click-div-7" onclick="checkBank(this)" rel="0901" val="306">
+                <div class="bank-logo" id="bank-gdb"></div>
+                <div class="bank-text">广发银行</div>
+            </div>
+        </div>
+        <div class="bank-logo-div">
+            <div class="bank-click-div-8" onclick="checkBank(this)" rel="1001" val="305">
+                <div class="bank-logo" id="bank-cmbc"></div>
+                <div class="bank-text">民生银行</div>
+            </div>
+        </div>
+        <div class="clear"></div>
+    </div>
+    <div class="bank-list-every-line">
+
+        <div class="bank-logo-div">
+            <div class="bank-click-div-9" onclick="checkBank(this)" rel="2101" val="304">
+                <div class="bank-logo" id="bank-hb"></div>
+                <div class="bank-text">华夏银行</div>
+            </div>
+        </div>
+        <div class="bank-logo-div">
+            <div class="bank-click-div-10" onclick="checkBank(this)" rel="2201" val="302">
+                <div class="bank-logo" id="bank-citic"></div>
+                <div class="bank-text">中信银行</div>
+            </div>
+        </div>
+        <div class="bank-logo-div">
+            <div class="bank-click-div-11" onclick="checkBank(this)" rel="1401" val="04135810">
+                <div class="bank-logo" id="bank-guangzhou"></div>
+                <div class="bank-text">广州银行</div>
+            </div>
+        </div>
+        <div class="bank-logo-div">
+            <div class="bank-click-div-12" onclick="checkBank(this)" rel="1501" val="04031000">
+                <div class="bank-logo" id="bank-beijing"></div>
+                <div class="bank-text">北京银行</div>
+            </div>
+        </div>
+        <div class="clear"></div>
+    </div>
+    <div class="bank-list-every-line">
+
+        <div class="bank-logo-div">
+            <div class="bank-click-div-14" onclick="checkBank(this)" rel="0801" val="303">
+                <div class="bank-logo" id="bank-ceb"></div>
+                <div class="bank-text">光大银行</div>
+            </div>
+        </div>
+        <div class="bank-logo-div">
+            <div class="bank-click-div-15" onclick="checkBank(this)" rel="0701" val="309">
+                <div class="bank-logo" id="bank-cib"></div>
+                <div class="bank-text">兴业银行</div>
+            </div>
+        </div>
+        <div class="bank-logo-div">
+            <div class="bank-click-div-16" onclick="checkBank(this)" rel="1601" val="310">
+                <div class="bank-logo" id="bank-spdb"></div>
+                <div class="bank-text">浦发银行</div>
+            </div>
+        </div>
+        <div class="bank-logo-div">
+            <div class="bank-click-div-17" onclick="checkBank(this)" rel="1201" val="307">
+                <div class="bank-logo" id="bank-pab"></div>
+                <div class="bank-text">平安银行</div>
+            </div>
+        </div>
+        <div class="clear"></div>
+    </div>
+    <div class="bank-list-every-line">
+        <div class="bank-logo-div">
+            <div class="bank-click-div-13" onclick="checkBank(this)" rel="0501" val="403">
+                <div class="bank-logo" id="bank-psbc"></div>
+                <div class="bank-text">邮政储蓄</div>
+            </div>
+        </div>
+
+        <div class="clear"></div>
+    </div>
+</div>
+<div id="footer" class="footer">
+    <div class="bg-white">
+        <!--新增开户行所在地-->
+        <div class="line-div border-b bankAd">
+            <div class="col-left1 line t-a-right">开户行所在地</div>
+            <div class="col-right1 line">
+                <div class="col-30" id="proR">
+                    <span id="pro" rel="110000">北京市</span>
+                    <img class="arrow-right" src="../../images/personal_ic_down.png">
+                </div>
+                <div class="col-30"  id="cityR">
+                    <span id="city" rel="110000">北京市</span>
+                    <img class="arrow-right" src="../../images/personal_ic_down.png">
+                </div>
+            </div>
+        </div>
+        <!--结束-->
+        <div class="line-div">
+            <div class="col-left line t-a-right">银行卡号</div>
+            <div class="col-right line">
+                <input id="cardNo" type="number" placeholder="请输入借记卡号"/>
+            </div>
+        </div>
+    </div>
+    <div class="divider-div"></div>
+    <div class="bg-white">
+        <div class="line-div border-b">
+            <div class="col-left line t-a-right">手机号</div>
+            <div class="line" style="float:left;width: 75%">
+                <!--<input type="number" id="mobile-number">-->
+                <span id="mobile-number"></span>
+                <div class="get_code_btn"
+                     onclick='getCode(this)'>获取验证码
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="bg-white">
+        <div class="line-div no-border">
+            <div class="col-left line t-a-right">验证码</div>
+            <div class="col-right line">
+                <input id="code" type="number" placeholder="请输入验证码"/>
+            </div>
+        </div>
+    </div>
+    <div class="rule-line">
+        <div class="uncheck" onclick="checkRule(this)">
+            <div class="img"></div>
+        </div>
+        <div class="rule-div">
+            我已阅读并同意<span onclick="toRule('payAuthorization.html')" class="rule-href">《保费自动转账及领款授权声明》</span></div>
+    </div>
+    <div class="btn-div">
+        <div class="enter_btn"
+             onclick='checkInput()'>立即支付
+        </div>
+    </div>
+</div>
+
+
+</body>
+<script src="../../js/mui/mui.min.js"></script>
+<script src="../../js/mui/mui.picker.min.js"></script>
+<script src='../../js/common.js'></script>
+<script src='../../js/jquery-1.9.1.min.js'></script>
+<script src='../../js/jweixin-1.0.0.js'></script>
+<script src='../../js/spinner.js'></script>
+<script src="../../js/city.data.js"></script>
+<script type='text/javascript'>
+    var insureInfo = JSON.parse(sessionStorage.getItem("insureInfo"));
+    var isGettingCode = false;
+    var isCheckedCode = false;
+    var isRead = false;
+    var isPaying = false;
+    var type = getUrlParam("type");
+    if(type != null){
+        var openId = getUrlParam("openId");
+        $(".type").addClass("hide");
+    }else{
+        openId = window.localStorage.getItem(config.openIdName);
+    }
+    var isInActivity = true;
+    var proCode = '', cityCode = '';
+    var proList = [], cityList = [];
+    autoWidth();
+    //    $('#bank-list').css('height', $(window).height() - $('#header').height() - $('#footer').height());
+
+    getData();
+
+    var isFromOrder = sessionStorage.getItem('fromOrder');
+    var policyNo = '';
+    var mongdbId = '';
+    var premium = '';
+    var ProductCode = '';
+    var identifyNumber = '';
+    if (isFromOrder == '1') {
+        policyNo = sessionStorage.getItem('policyNo');
+        mongdbId = sessionStorage.getItem('mongdb');
+        premium = sessionStorage.getItem('price');
+    } else {
+        try {
+            if(insureInfo.order.ProductCode == "F0015C"){    //好宝宝不需要填写开户行
+                $(".bankAd").addClass("hide");
+            }
+            ProductCode = insureInfo.order.ProductCode;
+            identifyNumber = insureInfo.policyholder.identifyNumber;
+            policyNo = insureInfo.pay.policyNo;
+            mongdbId = insureInfo.pay.mongdbId;
+            premium = insureInfo.pay.premium;
+        } catch (e) {
+        }
+    }
+    var orderRequest = {
+        "openId": openId,
+        "businessCode": "",
+        "policyNo": policyNo,
+        "mongdbId": mongdbId,
+        "page": 0,
+        "pageSize": 1
+    };
+    var payInfo = null;
+    if (isFromOrder == '1') {//从订单过来支付
+        showCenterSpinner();
+        GetAsyncData("User/1005", function (backdata) {
+            hideCenterSpinner();
+            if(backdata.ocDetailMap.allList[0].productCode == "F0015C"){    //好宝宝不需要填写开户行
+                $(".bankAd").addClass("hide");
+            }
+            ProductCode = backdata.ocDetailMap.allList[0].productCode;
+            identifyNumber = backdata.ocDetailMap.allList[0].certfCode;
+            try {
+                payInfo =
+                {
+                    "openId": openId,
+                    "benefitPeriod": backdata.ocDetailMap.allList[0].benefitPeriod,     //缴费期间
+                    "productCode": backdata.ocDetailMap.allList[0].productCode,       //产品代码
+                    "OrderId": policyNo,     //订单号
+                    "PaymentType": "3",     //缴费方式
+                    "CardHolder": backdata.ocDetailMap.allList[0].contactsName,      //持卡人姓名
+                    "CardBookType": "01",       //卡折类型
+                    "CardBookCode": backdata.ocDetailMap.allList[0].cardBookCode,     //卡号
+                    "BankCode": backdata.ocDetailMap.allList[0].bankCode,           //银行编码
+                    "BankName": backdata.ocDetailMap.allList[0].bankName,               //银行名称
+                    "Money": premium,                     //支付保费
+                    "CertificateType": backdata.ocDetailMap.allList[0].certfCls,             //持卡人证件类型
+                    "CertificateCode": backdata.ocDetailMap.allList[0].certfCode ,
+                    "payEndYear":backdata.ocDetailMap.allList[0].payEndYear//持卡人证件号
+                };
+                $("#bank-list").attr("val", backdata.ocDetailMap.allList[0].bankCode);
+                $('#money').text(premium);
+                $('#insurance-name').text(backdata.ocDetailMap.allList[0].productName);
+                $('#insuranceStartPeriod').text(backdata.ocDetailMap.allList[0].insuranceStartPeriod.split(' ')[0]);
+                $('#insuranceEndPeriod').text(backdata.ocDetailMap.allList[0].insuranceEndPeriod.split(' ')[0]);
+                $('#insured_name').text(backdata.ocDetailMap.insuredList[0].insuredName);
+                coinRule(backdata.ocDetailMap.allList[0].productCode, premium, backdata.ocDetailMap.allList[0].payEndYear);
+                //$('#coinCount').text(coinRule(backdata.ocDetailMap.allList[0].productCode, premium, backdata.ocDetailMap.allList[0].benefitPeriod));
+                $('#bank-list').attr('val', backdata.ocDetailMap.allList[0].bankCode);
+//                $('#bank-name').text(backdata.ocDetailMap.allList[0].bankName);
+//                $('#cardNo').val(backdata.ocDetailMap.allList[0].cardBookCode);
+                $('#mobile-number').text(backdata.ocDetailMap.allList[0].mobilePhone);
+//                if (backdata.ocDetailMap.allList[0].productCode == 'F0015C') {
+//                    $('#insure-statement').click(function () {
+//                        toRule('DDJR/doc/insureRule.html')
+//                    });
+//                } else if (backdata.ocDetailMap.allList[0].productCode == 'F0016A') {
+//                    $('#insure-statement').click(function () {
+//                        toRule('dreadDisease100/doc/insureRule.html')
+//                    });
+//                } else if (backdata.ocDetailMap.allList[0].productCode == 'C0016A') {
+//                    $('#insure-statement').click(function () {
+//                        toRule('freeRide/doc/insureRule.html')
+//                    });
+//                }
+                if (backdata.ocDetailMap.allList[0].paymentMode == "0") {
+                    $("#insure_type").text("趸交");
+                } else if (backdata.ocDetailMap.allList[0].paymentMode == "12") {
+                    $("#insure_type").text("年交");
+                }
+            } catch (e) {
+            }
+//            var data = backdata.ocDetailMap.allList[0];
+//            if(data.productCode != "F0015C" && data.province != ""){
+//                setArea("#pro","#city",data.province,data.city);
+//            }
+
+            sessionStorage.setItem('insureInfo', JSON.stringify(insureInfo));
+            //log.print('1005', JSON.stringify(backdata));
+        }, orderRequest);
+    } else {            //核保后过来支付
+        GetAsyncData("User/1005", function (backdata) {
+            $('#insuranceStartPeriod').text(backdata.ocDetailMap.allList[0].insuranceStartPeriod.split(' ')[0]);
+            $('#insuranceEndPeriod').text(backdata.ocDetailMap.allList[0].insuranceEndPeriod.split(' ')[0]);
+            $('#insure_type').text(backdata.ocDetailMap.allList[0].paymentMode);
+
+            if (backdata.ocDetailMap.allList[0].paymentMode == "0") {
+                $("#insure_type").text("趸交");
+            } else if (backdata.ocDetailMap.allList[0].paymentMode == "12") {
+                $("#insure_type").text("年交");
+            }
+            sessionStorage.setItem('insureInfo', JSON.stringify(insureInfo));
+            //log.print('1005', JSON.stringify(backdata));
+        }, orderRequest);
+        try {
+            $('#money').text(insureInfo.pay.premium);
+            $('#insurance-name').text(insureInfo.order.ProductName);
+            $('#insured_name').text(insureInfo.insured.name);
+            $('#coinCount').text(coinRule(insureInfo.order.ProductCode, premium, insureInfo.order.PayEndYear));
+//            if (insureInfo.order.ProductCode == 'F0015C') {
+//                $('#insure-statement').click(function () {
+//                    toRule('DDJR/doc/insureRule.html')
+//                });
+//            } else if (insureInfo.order.ProductCode == 'F0016A') {
+//                $('#insure-statement').click(function () {
+//                    toRule('dreadDisease100/doc/insureRule.html')
+//                });
+//            } else if (insureInfo.order.ProductCode == 'C0016A') {
+//                $('#insure-statement').click(function () {
+//                    toRule('freeRide/doc/insureRule.html')
+//                });
+//            }
+        }
+        catch (e) {
+        }
+    }
+
+    weixinCloseShare();
+    baiduCollection();
+
+    function checkBank(btn) {
+        $('#bank-list').removeClass().addClass('bank-check' + $(btn).attr('class').substr(14, $(btn).attr('class').length - 14));
+        $('#bank-list').attr('val', $(btn).attr('val'));
+        $('#bank-name').text($(btn).find(".bank-text").text()).removeClass('placeholder');
+        toggleBankList();
+    }
+
+    function toggleBankList() {
+        if ($('body').hasClass('list-hide')) {
+//            document.getElementById('bank-list').style.display = 'block';
+            $('#check-bank').removeClass('border-b');
+            $('body').removeClass('list-hide').addClass('list-show');
+        } else {
+//            document.getElementById('bank-list').style.display = 'none';
+            $('#check-bank').addClass('border-b');
+            $('body').removeClass('list-show').addClass('list-hide');
+        }
+    }
+
+    function checkInput() {
+        if ($('#bank-list').attr('val').length == 0) {
+            mui.alert('请选择银行');
+            return false;
+        }
+        if (trim($('#cardNo').val()).length == 0) {
+            mui.alert('请填写银行卡号');
+            return false;
+        }
+        if (!isRead) {
+            mui.alert('请阅读授权声明');
+            return;
+        }
+        if (trim($('#code').val()).length == 0) {
+            mui.alert('请输入验证码');
+            return;
+        }
+        if(ProductCode != "F0015C"){    //好宝宝不需要填写开户行
+            if($("#pro").attr("rel") == "" || $("#city").attr("rel") == ""){
+                mui.alert('请选择完整开户行所在省市');
+                return;
+            }else{
+                if(identifyNumber.substr(0,2) != "11" && $("#pro").attr("rel").substr(0,2) != "11"){
+                    mui.alert("此险种的销售区域为北京，您的户口所在地或银行卡开户行所在地需在北京方可投保，带来不便敬请谅解！");
+                    return;
+                }
+            }
+        }
+        showCenterSpinner();
+
+        //saveData();
+        //toPay();
+        GetAsyncData("Wljw/1052", function (backdata) {
+            //log.print('1052', JSON.stringify(backdata));
+            if (config.payMsgCode == 1) {
+	           	if (backdata.verifyFlag == '0') {
+	                saveData();
+	                toPay();
+	            } else {
+	                hideCenterSpinner();
+	                mui.alert('验证码错误');
+	            }
+	           	
+            }else{
+            	
+            	if (true) {
+                    saveData();
+                    toPay();
+                } else {
+                    hideCenterSpinner();
+                    mui.alert('验证码错误');
+                }  
+            }
+            
+             
+        }, {"messageCode": $('#code').val(), "phoneNumber": $('#mobile-number').text()}); 
+    }
+
+    function saveData() {
+        if (insureInfo != null) {
+            if (insureInfo.policyholder == null)
+                insureInfo.policyholder = {};
+            if (insureInfo.insured == null)
+                insureInfo.insured = {};
+            if (insureInfo.pay == null)
+                insureInfo.pay = {};
+            if (insureInfo.order == null)
+                insureInfo.order = {};
+            insureInfo.pay.cardNo = $('#cardNo').val();
+            insureInfo.pay.bankID = $('#bank-list').attr('val');
+            insureInfo.pay.bankName = $('#bank-name').text();
+            sessionStorage.setItem('insureInfo', JSON.stringify(insureInfo));
+        }
+    }
+
+    function getData() {
+        insureInfo = JSON.parse(sessionStorage.getItem('insureInfo'));
+        //log.print('setData', JSON.stringify(insureInfo));
+        if (insureInfo != null && insureInfo.pay != null && insureInfo.policyholder != null) {
+            $('#mobile-number').text(insureInfo.policyholder.mobile);
+            if (insureInfo.pay != null) {
+                $('#bank-list').attr('val', insureInfo.pay.bankID);
+                $('#bank-name').text(insureInfo.pay.bankName);
+                $('#cardNo').val(insureInfo.pay.cardNo);
+                try {
+                    if (insureInfo.pay.bankID.length != 0) {
+                        $('#bank-name').removeClass('placeholder')
+                    }
+                }
+                catch (e) {
+                }
+
+            }
+        }
+    }
+
+    function checkRule(btn) {
+        $(btn).hasClass('check') ? $(btn).removeClass('check').addClass('uncheck') : $(btn).removeClass('uncheck').addClass('check');
+        if ($(btn).hasClass('check')) {
+            isRead = true;
+        } else {
+            isRead = false;
+        }
+    }
+
+    function getCode(btn) {
+        if (isGettingCode) {
+            return;
+        }
+        isGettingCode = true;
+        var second = 60;
+        btn.innerHTML = second + ' 秒';
+        $(btn).attr("disabled", true);
+        $(btn).css("background-color", "#dddddd");
+        clock = setInterval(function () {
+            second--;
+            if (second > 0) {
+                btn.innerHTML = second + ' 秒';
+
+            } else {
+                clearInterval(clock);
+                btn.innerHTML = '获取验证码';
+                $(btn).attr("disabled", false);
+                $(btn).css("background-color", "#F39A0F");
+                second = 60;
+                isGettingCode = false;
+            }
+        }, 1000);
+        GetAsyncData("Wljw/1051", function (backdata) {
+//            mui.alert(backdata.data.sendMessageFlag);
+            //log.print('1051', JSON.stringify(backdata));
+        }, {"phoneNumber": $('#mobile-number').text()});
+    }
+
+    function toPay() {
+        if (insureInfo == null) {
+            insureInfo = {};
+            if (insureInfo.policyholder == null)
+                insureInfo.policyholder = {};
+            if (insureInfo.insured == null)
+                insureInfo.insured = {};
+            if (insureInfo.pay == null)
+                insureInfo.pay = {};
+            if (insureInfo.order == null)
+                insureInfo.order = {};
+        }
+        if (isFromOrder == '1') {//从订单过来支付
+            if (payInfo == null) {
+                mui.alert('获取信息不全');
+                return;
+            }
+            payInfo.CardBookCode = $("#cardNo").val();
+            payInfo.BankCode = $("#bank-list").attr("val");
+            payInfo.BankName = $("#bank-name").text();
+            payInfo.province = $("#pro").attr("rel");
+            payInfo.city = $("#city").attr("rel");
+            isPaying = true;
+            GetAsyncData("Wljw/5002", function (backdata) {
+                //log.print('5002', JSON.stringify(backdata));
+//                insureInfo = JSON.parse(sessionStorage.getItem('insureInfo'));
+                insureInfo.pay.insuredName = backdata.insuredName;//投保人姓名
+                insureInfo.pay.policyId = backdata.policyId;//保单号
+                insureInfo.pay.productName = backdata.productName;//产品名称
+                insureInfo.pay.startDate = backdata.startDate;//生效日期
+                insureInfo.pay.code = backdata.code;//状态码
+                insureInfo.pay.msg = backdata.msg;//状态信息
+                sessionStorage.setItem('insureInfo', JSON.stringify(insureInfo));
+                hideCenterSpinner();
+                isPaying = false;
+                if (backdata.code == '0') {
+                    if(type != null){
+                        window.location.href = 'paySuccess.html?type='+type;
+                    }else{
+                        window.location.href = 'paySuccess.html';
+                    }
+
+                } else {
+                    if(type != null){
+                        window.location.href = 'payFail.html?openId='+ openId + 'type='+type;
+                    }else{
+                        window.location.href = 'payFail.html';
+                    }
+
+                }
+            }, payInfo);
+        } else {
+            isPaying = true;
+            GetAsyncData("Wljw/5002", function (backdata) {
+                //log.print('5002', JSON.stringify(backdata));
+//                insureInfo = JSON.parse(sessionStorage.getItem('insureInfo'));
+                insureInfo.pay.insuredName = backdata.insuredName;//投保人姓名
+                insureInfo.pay.policyId = backdata.policyId;//保单号
+                insureInfo.pay.productName = backdata.productName;//产品名称
+                insureInfo.pay.startDate = backdata.startDate;//生效日期
+                insureInfo.pay.code = backdata.code;//状态码
+                insureInfo.pay.msg = backdata.msg;//状态信息
+                sessionStorage.setItem('insureInfo', JSON.stringify(insureInfo));
+                hideCenterSpinner();
+                isPaying = false;
+                if (backdata.code == '0') {
+                    window.location.href = 'paySuccess.html'
+                } else {
+                    window.location.href = 'payFail.html'
+                }
+            }, {
+                "openId": openId,
+                "benefitPeriod": insureInfo.order.PayEndYear,     //缴费期间
+                "productCode": insureInfo.order.ProductCode,       //产品代码
+                "OrderId": insureInfo.pay.policyNo,     //订单号
+                "PaymentType": "3",     //缴费方式
+                "CardHolder": insureInfo.policyholder.name,      //持卡人姓名
+                "CardBookType": "01",       //卡折类型
+                "CardBookCode": $("#cardNo").val(),     //卡号
+                "BankCode": $("#bank-list").attr("val"),           //银行编码
+                "BankName": $("#bank-name").text(),               //银行名称
+                "province": $("#pro").attr("rel"),
+                "city": $("#city").attr("rel"),
+                "Money": insureInfo.pay.premium,                     //支付保费
+                "CertificateType": insureInfo.policyholder.identifyType,             //持卡人证件类型
+                "CertificateCode": insureInfo.policyholder.identifyNumber  ,        //持卡人证件号
+                "payEndYear": insureInfo.order.PayEndYear     //缴费期间
+            });
+        }
+    }
+
+    function coinRule(code, premium, benefitPeriod) {
+        /* if (code == 'F0016A') {
+            if (isInActivity) {
+                return Math.floor(0.2 * premium * 50);
+            }
+            if (benefitPeriod == 20) {
+                return Math.floor(0.1 * premium * 10);
+            } else {
+                return Math.floor(0.05 * premium * 10);
+            }
+        } else if (code == 'F0015C') {
+            if (isInActivity) {
+                return Math.floor(0.1 * premium * 50);
+            }
+            else {
+                return Math.floor(0.05 * premium * 10);
+            }
+
+        } else if (code == 'C0016A') {
+            if (isInActivity) {
+                return Math.floor(0.2 * premium * 50);
+            } else {
+                return Math.floor(0.1 * premium * 10);
+
+            }
+        } */
+    	  var data0 = {
+           		 productCode: code,
+           		 premium: premium,
+           		 benefitPeriod: benefitPeriod
+            };
+            GetAsyncData("Wljw/5007",function(backData){
+       	        //alert(backData);
+                //$("#coin").text(backData+"枚");
+                //String productCode,Double premium,String benefitPeriod
+             	$('#coinCount').text(backData);
+           },data0);   
+           
+           
+           /* $.ajax({
+        	async : false,
+       		//url : config.rootUrl + '/weixinouter/rest/weixinbase/1039',
+   			url : "../../../Wljw/5007",
+   			type : 'POST',
+   			data : JSON.stringify(data0),
+   			contentType : "application/json",
+   			dataType : 'json',
+   			success : function(backData) {
+   				alert(backData);
+   				return backData;
+   			}
+   		    });  */
+    }
+
+    function toOrderDetail() {
+        if (isPaying) {
+            return;
+        }
+        saveData();
+        sessionStorage.setItem('orderNo', policyNo);
+        sessionStorage.setItem('mongdbId', mongdbId);
+        window.location.href = '../orderDetail.html?type=1&openId='+openId;
+    }
+
+    function toRule(href) {
+        if (isPaying) {
+            return;
+        }
+        saveData();
+        window.location.href = href;
+    }
+
+    function setArea(pro,city,proval,cityval){     //开户行地址赋值
+        var tpro="",tcity="";
+        if(proval != ""){
+            for(var i in cityData){
+                if(cityData[i].value == proval){    //省
+                    tpro = cityData[i].text;
+                }
+                for(var j in cityData[i].children){
+                    if(cityData[i].children[j].value == cityval){    //市
+                        tcity = cityData[i].children[j].text;
+                    }
+                }
+            }
+        }
+        $(pro).text(tpro).attr("p",proval);
+        $(city).text(tcity).attr("c",cityval);
+    }
+    function getList(list) {
+        var newList = [];
+        for (var i = 0; i < list.length; i++) {
+            var item = {};
+            item.text = list[i].AEEANAME;
+            item.value = list[i].AEEACODE.trim();
+            newList.push(item);
+        }
+        return newList;
+    }
+    String.prototype.trim = function () {
+        return this.replace(/(^\s*)|(\s*$)/g, "");
+    };
+    if (proList.length == 0) {
+        GetData("Wljw/1056", function (backData) {
+                    sessionStorage.setItem('localInfo', JSON.stringify(backData));
+                    proList = getList(backData.data);
+                }, {"productCode": "0"});
+    }
+    (function ($, doc) {
+        $.init();
+        $.ready(function () {
+            var addressPicker = new $.PopPicker();
+            var proButton = doc.getElementById('proR');
+            var cityButton = doc.getElementById('cityR');
+            var proV = doc.getElementById('pro');
+            var cityV = doc.getElementById('city');
+
+            proButton.addEventListener('tap', function (event) {
+                addressPicker.setData(proList);
+                addressPicker.pickers[0].setSelectedIndex(0);
+                addressPicker.show(function (items) {
+                    if (proCode != items[0].value) {//换省 市清空
+                        cityV.setAttribute("rel", '');
+                        cityV.innerText = '选择市';
+                        cityCode = '';
+
+                    }
+                    proV.setAttribute("rel", items[0].value);
+                   // proV.innerText = items[0].text;
+                    jQuery("#pro").text(items[0].text.substr(0,7));
+                    proCode = items[0].value;
+                    GetData("Wljw/1056", function (backData) {
+                        cityList = getList(backData.data);
+                    }, {"productCode": proCode});
+                });
+
+            }, false);
+
+            cityButton.addEventListener('tap', function (event) {
+                if (proCode.length == 0) {
+                    mui.alert('选择省');
+                    return;
+                }
+                addressPicker.setData(cityList);
+                addressPicker.pickers[0].setSelectedIndex(0);
+                addressPicker.show(function (items) {
+                    cityV.setAttribute("rel", items[0].value);
+                   // cityV.innerText = items[0].text;
+                    jQuery("#city").text(items[0].text.substr(0,7));
+                    cityCode = items[0].value;
+                });
+
+            }, false);
+        });
+    })(mui, document);
+</script>
+
+</html>

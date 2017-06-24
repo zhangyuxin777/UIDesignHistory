@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <meta name='apple-mobile-web-app-capable' content='yes'>
+    <meta name='apple-mobile-web-app-status-bar-style' content='black'>
+    <meta name="format-detection" content="telephone=no" />
+    <title>保单详情</title>
+    <style>
+        body{
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+            font-size: 0.12rem;
+            background-color: #f6f4f4;
+            color: #404040;
+            font-family: 'Microsoft YaHei', 'Arial', sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .txt{height:0.45rem;line-height: 0.45rem;padding-left: 0.12rem;font-size: 0.12rem;background-color: #ffffff;}
+        .bold{
+            font-weight: bold;
+            color:#f08300;
+        }
+        p{
+            padding-left: 0.12rem;
+            padding-right: 0.05rem;
+            padding-top: 0.05rem;
+            padding-bottom: 0.05rem;
+            -webkit-margin-after: 0rem;
+            -webkit-margin-before: 0rem;
+        }
+        .grey{color:#606060;padding-right: 0.29rem;}
+        .grey3{color:#606060;padding-right: 0.17rem;}
+        .grey4{color:#606060;padding-right: 0.05rem;}
+        .grey1{
+            height: 0.2rem;
+            line-height: 0.2rem;
+            background-color: rgba(123,211,210,0.8);
+            color: #ffffff;
+            font-size: 0.11rem;
+            padding-left: 0.12rem;
+        }
+        .grey2{color:#aaaaaa;padding-left: 0.12rem;display: block;}
+        .block{background-color: #ffffff;padding: 0.05rem 0}
+        .btn{
+            background-color: #f08300;
+            color: #ffffff;
+            text-align: center;
+            position: absolute;
+            right: 0.12rem;
+            font-size: 0.12rem;
+            padding: 0.08rem;
+            border-radius: 3px;
+            margin-top: 0.12rem;
+
+        }
+        .hide{
+            display: none;
+        }
+        .q1,.q2,#c11,#c12{
+            color: #27b8ff;
+        }
+        .inhr{color: #27b8ff;position: absolute;right: 0.2rem;}
+        .left{color: #404040;}
+        .num{position: absolute;color:#aaaaaa;line-height: 0.16rem;}
+        .po-abt{position: absolute;}
+        #contactsAddr,#insuredcontactsAddr{
+            padding-left: 0.76rem;
+            display: block;
+            min-height: 0.16rem;
+        }
+        hr{width: 92%;}
+        .span-left{
+            position: absolute;
+            padding-left: 0;
+        }
+    </style>
+
+</head>
+<body class="hide">
+<!--车险详情-->
+<div id="cx" class="hide">
+    <div class="txt bold" id="Pname"></div>
+    <div class="grey1">保障期限</div>
+    <div class="block">
+        <p><span class="grey">保障期间</span>
+            <span id="startDate"></span>零时起至<span id="endDate"></span>零时止</p>
+    </div>
+    <div class="grey1">保障项目</div>
+    <div class="block" id="ex">
+        <p><span class="grey">基本保额</span><span id="coverage"></span>元</p>
+        <p><span class="grey">发动机号</span><span id="engineNo"></span></p>
+        <p><span class="grey">车牌号码</span><span id="lcnNo"></span></p>
+
+    </div>
+    <div class="grey1">投保人信息</div>
+    <div class="block">
+        <p><span class="grey">投&nbsp;&nbsp;保&nbsp;&nbsp;人</span><span id="insurebuyer"></span></p>
+        <p><span class="grey">证件类型</span>身份证</p>
+        <div style="display: none">
+        	<p><span class="grey">证件号码</span><span id="identifynumber"></span></p>
+        	<p><span class="grey">手<span style="padding-left: 0.24rem;"></span>机</span><span id="mobile"></span></p>
+        </div>
+    </div>
+    <div class="grey1">被保人信息</div>
+    <div class="block">
+        <p><span class="grey">与投保人关系</span>本人</p>
+    </div>
+</div>
+<!--寿险详情-->
+<div id="oc" class="">
+    <div class="txt bold" id="productName"></div>
+    <div class="grey1">保障期限</div>
+    <div class="block">
+        <p><span class="grey">保障期间</span>
+            <span class="span-left">
+                <span id="insuranceStartPeriod"></span>零时起至
+                <span id="insuranceEndPeriod"></span>零时止</span></p>
+
+    </div>
+    <div class="grey1">保障项目</div>
+    <div class="block">
+        <p><span class="grey">保障期限</span><span id="benefitPeriod"></span></p>
+        <p><span class="grey">基本保额</span><span id="amount"></span>元</p>
+        <p><span class="grey">交费期间</span><span id="payEndYear"></span>年</p>
+        <p><span class="grey">交费频率</span><span id="paymentMode"></span></p>
+    </div>
+    <div class="grey1">投保人信息</div>
+    <div class="block">
+        <p><span class="grey3">投保人姓名</span><span id="contactsName"></span></p>
+        <p><span class="grey">证件类型</span>身份证</p>
+        <p><span class="grey">证件号码</span><span id="certfCode"></span></p>
+        <p><span class="grey">出生日期</span><span id="birthday"></span></p>
+        <p><span class="grey">性<span style="padding-left: 0.24rem;"></span>别</span><span id="sex"></span></p>
+        <p><span class="grey">手<span style="padding-left: 0.24rem;"></span>机</span><span id="mobilePhone"></span></p>
+        <p><span class="grey">邮<span style="padding-left: 0.24rem;"></span>箱</span><span id="email"></span></p>
+        <p><span class="grey po-abt">常住地区</span><span id="contactsAddr"></span></p>
+        <p><span class="grey">职业类型</span><span id="professionName"></span></p>
+        <p><span class="grey">年&nbsp;&nbsp;收&nbsp;&nbsp;入</span><span id="threeYearAveIncome"></span></p>
+        <p><span class="grey">收入来源</span><span id="incomeWay"></span></p>
+    </div>
+    <div class="grey1">被保人信息</div>
+    <div class="block">
+        <p><span class="grey4">与投保人关系</span><span id="insuRelationToApp"></span></p>
+        <div class="relative">
+            <p><span class="grey3">被保人姓名</span><span id="insuredName"></span></p>
+            <p><span class="grey">证件类型</span>身份证</p>
+            <p><span class="grey">证件号码</span><span id="insuredCertfCode"></span></p>
+            <p><span class="grey">出生日期</span><span id="insuredBirthday"></span></p>
+            <p><span class="grey">性<span style="padding-left: 0.24rem;"></span>别</span><span id="insuredSex"></span></p>
+            <p><span class="grey">职业类型</span><span id="insuredprofessionName"></span></p>
+            <p><span class="grey">身<span style="padding-left: 0.24rem;"></span>高</span><span id="stature"></span></p>
+            <p><span class="grey">体<span style="padding-left: 0.24rem;"></span>重</span><span id="avoirdupois"></span></p>
+            <p><span class="grey po-abt">常住地区</span><span id="insuredcontactsAddr"></span></p>
+        </div>
+
+    </div>
+    <div class="grey1 hbb">身故受益人信息</div>
+    <div class="block hbb">
+        <p><span class="grey4">身故保险金受益人</span><span id="inher">法定继承人</span></p>
+    </div>
+    <div class="block inherit hide">
+        <!--<hr>-->
+        <!--<p><span class="grey">受益顺序</span><span>第一受益顺序</span></p>-->
+        <!--<p><span class="grey4">与被保人关系</span><span></span></p>-->
+        <!--<p><span class="grey3">受益人姓名</span><span></span></p>-->
+        <!--<p><span class="grey">证件类型</span>身份证</p>-->
+        <!--<p><span class="grey">证件号码</span><span></span></p>-->
+        <!--<p><span class="grey">性<span style="padding-left: 0.24rem;"></span>别</span><span></span></p>-->
+        <!--<p><span class="grey">出生日期</span><span></span></p>-->
+        <!--<p><span class="grey">受益比例</span><span></span></p>-->
+
+    </div>
+    <div class="grey1">续期保费支付信息</div>
+    <div class="block" style="">
+        <p><span class="grey4">续期缴费银行</span><span id="bankName"></span></p>
+        <p><span class="grey4">续期缴费户名</span><span id="cardHolder"></span></p>
+        <p><span class="grey4">续期缴费账号</span><span id="cardBookCode"></span></p>
+        <p><span class="grey4 hbb1 hide">是否自动续保</span><span id="ifAutomaticRenewal"></span></p>
+    </div>
+    <div class="grey1">健康告知</div>
+    <div class="block" id="gaozhi1">
+
+    </div>
+    <div class="block hide" id="gaozhi2">
+        <!--<p><span class="num">1.</span><span class="grey2"><span>被保险人的在当地平均收入水平之下？</span><span class="left">（是）</span></span></p>-->
+        <!--<p><span class="num">2.</span><span class="grey2"><span>被保险人是否拥有其他有效的有意外身故保险责任的产品，且保额已超过300万？</span><span class="left">（是）</span></span></p>-->
+        <!--<p><span class="num">3.</span><span class="grey2" id="q3"></span></p>-->
+
+    </div>
+    <div style="height: 0.6rem">
+        <div class="btn" onclick="toBuy()">再买一单</div>
+    </div>
+
+</div>
+
+</body>
+</html>
+<script src="../js/jquery-1.9.1.min.js"></script>
+<script src="../js/common.js"></script>
+<script src="../js/city.data-3.js"></script>
+<script>
+    autoWidth();
+    var orderId = sessionStorage.getItem("orderNo");
+    var mongdbId = sessionStorage.getItem("mongdbId");
+    var type = getUrlParam("type");
+    if(type != null){
+        var openId = getUrlParam("openId");
+    }else{
+        openId = window.localStorage.getItem(config.openIdName);
+    }
+    var oc;
+    var inhr;
+    var beneficiaryDto1 = [];
+    var no=0;
+    //G01
+    var str3 = "被保险人是否曾经患有或患有以下疾病或残疾？ A. 神经系统及精神方面疾病：癫痫、肢体瘫痪、脊髓疾病、多发性硬化、重症肌无力、帕金森氏综合症、脑中风、运动神经元病、阿尔茨海默病、脑动/静脉血管瘤及畸形、脑炎或脑膜炎后遗症、精神病、抑郁症、神经官能症、脑部肿瘤、囊肿、脑部损伤或手术史等； B. 呼吸系统疾病：慢性支气管炎、肺气肿、肺心病、哮喘、肺结核、肺栓塞、支气管扩张、尘肺、间质性肺病、肺纤维化、肺部支气管手术史等; C. 循环系统疾病：高血压、冠心病、心绞痛、心律失常、心肌梗塞、先天性心脏病、心脏瓣膜病、风湿性心脏病、心肌病、主动脉疾病、川崎病、心包炎、心肌炎、心内膜炎、肺动脉高压、动脉瘤、心脏血管手术史、心导管等心血管介入治疗等； D. 消化系统疾病：肝炎、乙肝或丙肝病毒携带、多囊肝、胆结石（已治愈，无并发症者除外）、肝硬化、胰腺疾病、胃和/或十二指肠溃疡、慢性或溃疡性结肠炎、克隆病、肝豆状核变性、硬化性胆管炎等； E. 泌尿系统及生殖系统疾病：肾炎、肾病综合症、多囊肾、肾功能不全、尿毒症、肾结核、肾积水、泌尿系统结石、泌尿系统手术史、生殖器官疾病等； F. 内分泌及骨骼、肌肉、结缔组织疾病：糖尿病、甲状腺或甲状旁腺疾病、肾上腺疾病、脑垂体异常、嗜铬细胞瘤、类风湿性关节炎、风湿病、痛风、斯蒂尔病、强直性脊柱炎、肌营养不良症、肌肉骨骼关节疾病、系统性红斑狼疮等； G. 血液系统疾病：中重度贫血、血小板减少、紫癜症、白血病、血友病、再生障碍性贫血、骨髓增生异常综合征、淋巴瘤、造血干细胞移植术史等； H. 五官科疾病：视网膜出血或剥离、白内障、青光眼、高度近视（800度以上）、听力减退、五官手术史等； I. 传染性、感染性疾病:艾滋病、重症手足口病、象皮病、拉博拉病毒感染、坏疽等； J. 癌症、肿瘤（恶性、良性或尚未证实为良性或恶性的）、肿块、息肉、囊肿、赘生物等； K. 先天性疾病、遗传性疾病、急/慢性中毒、职业病、器官移植术史及上述未提及的较严重的疾病； L. 智能障碍、失明、聋哑及言语、咀嚼或身体其他部位残缺、残疾或功能障碍。";
+
+    GetAsyncData("User/1005", function (backdata) {
+        console.log(JSON.stringify(backdata));
+        if(backdata.ocDetailMap == "" || backdata.ocDetailMap == null || backdata.ocDetailMap == "undefined"){
+            var rs = backdata.data[0];
+            $("#cx").removeClass("hide");
+            $("#oc").addClass("hide");
+
+            $("#Pname").text(rs.activityName);
+            $("#startDate").text(rs.startDate.substr(0,10));
+            $("#endDate").text(rs.endDate.substr(0,10));
+            $("#coverage").text(rs.coverage);
+            $("#engineNo").text(rs.engineNo);
+            $("#lcnNo").text(rs.lcnNo);
+            $("#insurebuyer").text(rs.insurebuyer);
+            $("#identifynumber").text(rs.identifynumber);
+            $("#mobile").text(rs.mobile);
+            if(rs.riskCode == "11"){
+                for(var i in rs.riskInfo){
+                    $("#ex").append('<p><span class="grey">'+ rs.riskInfo[i].kindName +'</span>'+ rs.riskInfo[i].kindCoverage +'元</p>');
+                }
+
+            }
+
+        }else{
+            oc = backdata.ocDetailMap;
+            $("#oc").removeClass("hide");
+            $("#cx").addClass("hide");
+
+            $("#productName").text(oc.allList[0].productName);
+            $("#insuranceStartPeriod").text(oc.allList[0].insuranceStartPeriod.substr(0,10));
+            $("#insuranceEndPeriod").text(oc.allList[0].insuranceEndPeriod.substr(0,10));
+            var bpType = oc.allList[0].benefitPeriodType;
+            var bp = oc.allList[0].benefitPeriod;
+            if(bpType == "Y"){
+                $("#benefitPeriod").text(bp + "年");
+            }else if(bpType == "A" && bp == 105){
+                $("#benefitPeriod").text("终身");
+            }else if(bpType == "A" && bp != 105){
+                $("#benefitPeriod").text("至"+ bp +"周岁");
+            }else{
+                $("#benefitPeriod").text("");
+            }
+
+            $("#amount").text(oc.allList[0].amount);
+            $("#payEndYear").text(oc.allList[0].payEndYear);
+            var paymentMode = oc.allList[0].paymentMode;
+            if(paymentMode == "0"){
+                $("#paymentMode").text("趸交");
+            }else if(paymentMode == "12"){
+                $("#paymentMode").text("年交");
+            }
+
+            $("#contactsName").text(oc.allList[0].contactsName);
+            $("#certfCode").text(oc.allList[0].certfCode);
+            $("#birthday").text(oc.allList[0].birthday);
+            var sex = oc.allList[0].sex;
+            if(sex == "0"){
+                $("#sex").text("男");
+            }else{
+                $("#sex").text("女");
+            }
+            $("#mobilePhone").text(oc.allList[0].mobilePhone);
+            $("#email").text(oc.allList[0].email);
+            var tpro,tcity,tarea,bpro,bcity,barea;
+            for(var i in cityData3){
+                if(cityData3[i].value == oc.allList[0].province){    //省
+                    tpro = cityData3[i].text;
+                }
+				
+                if(cityData3[i].value == oc.insuredList[0].province){
+                    bpro = cityData3[i].text;
+                }
+                for(var j in cityData3[i].children){
+                    if(cityData3[i].children[j].value == oc.allList[0].city){    //市
+                        tcity = cityData3[i].children[j].text;
+                    }
+                    
+                    if(cityData3[i].children[j].value == oc.insuredList[0].city){
+                        bcity = cityData3[i].children[j].text;
+                    }
+                    for(var k in cityData3[i].children[j].children){
+                        if(cityData3[i].children[j].children[k].value == oc.allList[0].county){    //区
+                            tarea = cityData3[i].children[j].children[k].text;
+                        }
+                        if(cityData3[i].children[j].children[k].value == oc.insuredList[0].county){
+                            barea = cityData3[i].children[j].children[k].text;
+                        }
+
+                    }
+
+                }
+
+            }
+
+
+            $("#professionName").text(oc.allList[0].professionName);     //职业类型
+            if(oc.allList[0].threeYearAveIncome == 0.0){
+                $("#threeYearAveIncome").text("");    //年收入
+            }else{
+                $("#threeYearAveIncome").text(oc.allList[0].threeYearAveIncome+"万元");    //年收入
+            }
+            var ws = oc.allList[0].incomeWaySalary;   //工资
+            var wo = oc.allList[0].incomeWayOther;   //其他
+            var wi = oc.allList[0].incomeWayInvestment;   //投资
+            var wp = oc.allList[0].incomeWayPrivate;   //私营
+            if(ws == 0 && wo == 0 && wi == 0 && wp == 1){
+                $("#incomeWay").text("私营");
+            }else if(ws == 0 && wo == 0 && wi == 1 && wp == 0){
+                $("#incomeWay").text("投资");
+            }else if(ws == 0 && wo == 1 && wi == 0 && wp == 0){
+                $("#incomeWay").text("其他");
+            }else if(ws == 1 && wo == 0 && wi == 0 && wp == 0){
+                $("#incomeWay").text("工资");
+            }
+
+            var insuRelationToApp = oc.insuredList[0].insuRelationToApp;
+            if(insuRelationToApp == "00"){
+                $("#insuRelationToApp").text("本人");
+                $(".relative").addClass("hide");
+
+            }else if(insuRelationToApp == "05"){
+                $("#insuRelationToApp").text("子女");
+                $("#insuredName").text(oc.insuredList[0].insuredName);
+                $("#insuredCertfCode").text(oc.insuredList[0].certfCode);
+                $("#insuredBirthday").text(oc.insuredList[0].birthday);
+                var bsex = oc.insuredList[0].sex;
+                if(bsex == "0"){
+                    $("#insuredSex").text("男");
+                }else{
+                    $("#insuredSex").text("女");
+                }
+                $("#insuredprofessionName").text(oc.insuredList[0].professionName);
+                if(oc.insuredList[0].stature != ""){
+                    $("#stature").text(oc.insuredList[0].stature + "厘米");  //身高
+                    $("#avoirdupois").text(oc.insuredList[0].avoirdupois +"公斤");  //体重
+                }
+
+            }
+            if(oc.allList[0].productCode == "F0015C"){
+                if(oc.allList[0].ifAutomaticRenewal == 0){
+                    $("#ifAutomaticRenewal").text("是");
+                }else{
+                    $("#ifAutomaticRenewal").text("否");
+                }
+                $(".hbb").addClass("hide");
+                $(".hbb1").removeClass("hide");
+            }else {
+                $("#contactsAddr").text(tpro+ tcity + tarea +oc.allList[0].contactsAddr);
+                $("#insuredcontactsAddr").text(bpro+ bcity + barea +oc.insuredList[0].contactsAddr);  //地址
+                $(".hbb").removeClass("hide");
+                $(".hbb1").addClass("hide");
+            }
+
+            if(oc.allList[0].beneficiaryMode == 1){  //指定受益人
+                $("#inher").html("指定受益人<span class='inhr' onclick='showInher()'>详情</span>");
+                inhr = backdata.benefList;
+                for(var i in inhr){
+                    var beneficiaryOrder = inhr[i].beneficiaryOrder;    //受益顺序
+                    var beneficiaryType = oc.allList[0].beneficiaryMode;
+                    var binterestPercent = inhr[i].interestPercent * 100;   //受益份额,总体不能超100%
+                    var beneficiaryName = inhr[i].beneficiaryName;   //受益人姓名
+                    var beneficiarySex = inhr[i].beneficiarySex;   //受益人性别
+                    var beneficiaryBirthday = inhr[i].beneficiaryBirthday;   //转化格式
+                    var array = getYMD(beneficiaryBirthday.time.toString());
+                    beneficiaryBirthday = array[0]+"-"+array[1]+"-"+array[2];
+                    var beneficiaryIDType = inhr[i].beneficiaryIDType;   //受益人证件类型
+                    var beneficiaryIDNo = inhr[i].beneficiaryIDNo;   //受益人证件号码
+                    var brelationToInsured = inhr[i].relationToInsured;   //受益人与被保人关系
+
+                    var bd = {beneficiaryOrder: beneficiaryOrder,beneficiaryType: beneficiaryType,binterestPercent: binterestPercent,
+                        beneficiaryName: beneficiaryName,beneficiarySex:beneficiarySex,beneficiaryBirthday:beneficiaryBirthday,
+                        beneficiaryIDType:beneficiaryIDType,beneficiaryIDNo:beneficiaryIDNo,brelationToInsured:brelationToInsured
+                    };
+                    beneficiaryDto1.push(bd);
+                }
+
+            }
+
+            $("#bankName").text(oc.allList[0].bankName);
+            $("#cardHolder").text(oc.allList[0].cardHolder);
+            $("#cardBookCode").text(oc.allList[0].cardBookCode);
+
+            var strGao="";
+            var strSub="";
+            var info = backdata.informList;
+            if(info != []){
+                for(var k in info){
+                    var p = parseInt(k)+1;
+                    strGao += '<p><span class="num">'+ p +'.</span>' +
+                            '<span class="grey2" rel="'+info[k].informCode+'"><span id="q'+ k +'">'+info[k].informContent+'</span><span class="left">（'+ info[k].informType +'）</span></span></p>';
+                    if(info[k].informCode == "G01"){
+                        no = k;
+                    }
+
+                }
+                strGao += '<p style="text-align: center"><span class="q2"  onclick="fd()">收起</span></p>';
+                $("#gaozhi2").append(strGao);
+                if(no == k){
+                    fa();
+                }
+                strSub = '<p><span class="grey">1.'+ info[0].informContent.substr(0,15) +'</span>...<span class="q1" onclick="fc()">详情</span></p>';
+                $("#gaozhi1").append(strSub);
+            }
+
+        }
+
+    }, {"policyNo": orderId, "mongdbId": mongdbId, "openId": openId, "page": "1", "pageSize": "10"});
+
+    function fc(){
+        $("#gaozhi1").addClass("hide");
+        $("#gaozhi2").removeClass("hide");
+    }
+    function fd(){
+        $("#gaozhi2").addClass("hide");
+        $("#gaozhi1").removeClass("hide");
+    }
+    function fa(){
+        var str = cutstr(str3,170) + "<span id='c11' onclick='fb()'>↓</span>";
+        $("#q"+no).html(str);
+    }
+    function fb(){
+        var str = str3 + "<span id='c12' onclick='fa()'>↑</span>";
+        $("#q"+no).html(str);
+    }
+    var type = getUrlParam("type");
+    if(type == 1){
+        $(".btn").addClass("hide");
+    }else {
+        $(".btn").removeClass("hide");
+    }
+    
+    //解决js浮点运算bug
+    function accMul(arg1,arg2) 
+    { 
+	    var m=0,s1=arg1.toString(),s2=arg2.toString(); 
+	    try{m+=s1.split(".")[1].length}catch(e){} 
+	    try{m+=s2.split(".")[1].length}catch(e){} 
+	    return Number(s1.replace(".",""))*Number(s2.replace(".",""))/Math.pow(10,m) 
+    } 
+
+    function showInher(){
+        var strInhr = "";
+        $(".inherit").html("");
+        for(var i=0;i<oc.allList[0].bnfNum;i++){
+//            var beneficiaryOrder = inhr[i].beneficiaryOrder;
+//            if(beneficiaryOrder == 1){
+//                beneficiaryOrder = "第一受益人";
+//            }else if(beneficiaryOrder == 2){
+//                beneficiaryOrder = "第二受益人";
+//            }else if(beneficiaryOrder == 3){
+//                beneficiaryOrder = "第三受益人";
+//            }
+            var beneficiaryOrder = "第一受益顺序";
+            var interestPercent = accMul(inhr[i].interestPercent ,100);
+            var beneficiaryName = inhr[i].beneficiaryName;
+            var beneficiarySex = inhr[i].beneficiarySex;
+            if(beneficiarySex == 0){
+                beneficiarySex = "男";
+            }else if(beneficiarySex == 1) {
+                beneficiarySex = "女";
+            }
+            var beneficiaryBirthday = inhr[i].beneficiaryBirthday;   //转化格式
+            var array = getYMD(beneficiaryBirthday.time.toString());
+            var beneficiaryIDType = inhr[i].beneficiaryIDType;
+            if(beneficiaryIDType == 0){
+                beneficiaryIDType = "身份证";
+            }else if(beneficiaryIDType == 3) {
+                beneficiaryIDType = "护照";
+            }
+            var beneficiaryIDNo = inhr[i].beneficiaryIDNo;
+            var relationToInsured = inhr[i].relationToInsured;
+            if(relationToInsured == "01"){
+                relationToInsured = "配偶";
+            }else if(relationToInsured == "03"){
+                relationToInsured = "父亲";
+            }else if(relationToInsured == "04"){
+                relationToInsured = "母亲";
+            }else if(relationToInsured == "05"){
+                relationToInsured = "子女";
+            }
+            strInhr += '<hr/><p><span class="grey">受益顺序</span><span>'+ beneficiaryOrder +'</span></p>'+
+                    '<p><span class="grey4">与被保人关系</span><span>'+ relationToInsured +'</span></p>'+
+                    '<p><span class="grey3">受益人姓名</span><span>'+ beneficiaryName +'</span></p>'+
+                    '<p><span class="grey">证件类型</span><span>'+ beneficiaryIDType +'</span></p>'+
+                    '<p><span class="grey">证件号码</span><span>'+ beneficiaryIDNo +'</span></p>'+
+                    '<p><span class="grey">性<span style="padding-left: 0.24rem;"></span>别</span><span>'+ beneficiarySex +'</span></p>'+
+                    '<p><span class="grey">出生日期</span><span>'+ array[0]+"-"+array[1]+"-"+array[2] +'</span></p>'+
+                    '<p><span class="grey">受益比例</span><span>'+ interestPercent +'%</span></p>';
+        }
+        strInhr += '<p style="text-align: center"><span class="q2"  onclick="hideInher()">收起</span></p>';
+        $(".inherit").append(strInhr);
+        $(".inherit").removeClass("hide");
+        $(".inhr").addClass("hide");
+    }
+    function hideInher(){
+        $(".inherit").addClass("hide");
+        $(".inhr").removeClass("hide");
+    }
+    function cutstr(str, len) {
+        var str_length = 0;
+        var str_len = 0;
+        str_cut = new String();
+        str_len = str.length;
+        for (var i = 0; i < str_len; i++) {
+            a = str.charAt(i);
+            str_length++;
+            if (escape(a).length > 4) {
+                //中文字符的长度经编码之后大于4
+                str_length++;
+            }
+            str_cut = str_cut.concat(a);
+            if (str_length >= len) {
+                str_cut = str_cut.concat("...");
+                return str_cut;
+            }
+        }
+        //如果给定字符串小于指定长度，则返回源字符串；
+        if (str_length < len) {
+            return str;
+        }
+    }
+    function getYMD(nS) {
+        var time = new Date(parseInt(nS));
+        var array = [];
+        array[0] = time.getFullYear();
+        array[1] = time.getMonth() + 1;
+        array[2] = time.getDate();
+        return array;
+    }
+    function toBuy(){
+        var orderDetail = {
+            order:{
+                "DutyAmnt":oc.allList[0].dutyAmnt,   //保额
+                "InsuYear":oc.allList[0].insuYear,       //保险期间
+                "InsuYearFlag":oc.allList[0].insuYearFlag,   //保险期间标识
+                "PayEndYear":oc.allList[0].payEndYear,    //交费期间
+                "payEndYearFlag": oc.allList[0].payEndYearFlag,   //交费期间标识
+                "Premium":oc.allList[0].premium
+            },
+            insured:{
+                "Sex":oc.insuredList[0].sex,
+                "Birthday":oc.insuredList[0].birthday,
+                "name":oc.insuredList[0].insuredName,
+                "identifyNumber":oc.insuredList[0].certfCode,
+                "pro":oc.insuredList[0].province,
+                "city":oc.insuredList[0].city,
+                "area":oc.insuredList[0].county,
+                "address":oc.insuredList[0].contactsAddr,
+                "job":oc.insuredList[0].professionCode,
+                "BprofessionName":oc.insuredList[0].professionName,
+                "BProfessionClass":oc.insuredList[0].professionClass,
+                "threeYearAveIncome": oc.insuredList[0].threeYearAveIncome,
+                "incomeWaySalary": oc.insuredList[0].incomeWaySalary,
+                "incomeWayPrivate": oc.insuredList[0].incomeWayPrivate,
+                "incomeWayInvestment":oc.insuredList[0].incomeWayInvestment,
+                "incomeWayOther": oc.insuredList[0].incomeWayOther
+            },
+            policyholder:{
+                "name":oc.allList[0].contactsName,
+                "identifyNumber":oc.allList[0].certfCode,
+                "Sex":oc.allList[0].sex,
+                "Birthday":oc.allList[0].birthday,
+                "mobile":oc.allList[0].mobilePhone,
+                "email":oc.allList[0].email,
+                "pro":oc.allList[0].province,
+                "city":oc.allList[0].city,
+                "area":oc.allList[0].county,
+                "address":oc.allList[0].contactsAddr,
+                "job":oc.allList[0].professionCode,
+                "TprofessionName":oc.allList[0].professionName,
+                "TProfessionClass":oc.allList[0].professionClass,
+                "income": oc.allList[0].threeYearAveIncome,
+                "incomeWaySalary": oc.allList[0].incomeWaySalary,
+                "incomeWayPrivate": oc.allList[0].incomeWayPrivate,
+                "incomeWayInvestment": oc.allList[0].incomeWayInvestment,
+                "incomeWayOther": oc.allList[0].incomeWayOther
+            },
+            ifAutomaticRenewal: oc.allList[0].ifAutomaticRenewal,   //是否续保
+            insuredRelation: oc.allList[0].insuRelationToApp,    //投被保关系
+            beneficiaryType : oc.allList[0].beneficiaryMode,
+            beneficiaryDto: beneficiaryDto1,
+            bnfNum : oc.allList[0].bnfNum
+        };
+        sessionStorage.setItem("orderDetail",JSON.stringify(orderDetail));
+        GetAsyncData("Product/1090", function (backdata) {
+            if(backdata.isOverdue == 0){
+                if(oc.allList[0].productCode == "F0016A"){
+                    window.location.href = "product/dreadDisease100/trial.html";
+                }else if(oc.allList[0].productCode == "F0015C"){
+                    window.location.href = "product/DDJR/trial.html";
+                }else if(oc.allList[0].productCode == "C0016A"){
+                    if(type != null){
+                        window.location.href = "product/freeRide/trial.html?openId="+openId+"&type="+type;
+                    }else{
+                        window.location.href = "product/freeRide/trial.html";
+                    }
+
+                }
+            }else if(backdata.isOverdue == 1){
+                window.location.href = "close_activity.html";
+            }
+        },{productCode: oc.allList[0].productCode});
+
+    }
+</script>
+
+
+

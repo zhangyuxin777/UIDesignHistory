@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/swiper.min.css">
+    <title>产品列表</title>
+    	<SCRIPT LANGUAGE=JAVASCRIPT>
+		    if (window != parent)
+		        window.top.location = window.self.location;
+		</SCRIPT>
+    <style>
+        body {
+            font-family: 'Microsoft YaHei', 'Hiragino Sans GB', Helvetica, Arial, 'Lucida Grande', sans-serif;
+            width: 3.2rem;
+            margin: 0 auto;
+            background-color: #f6f4f4;
+        }
+
+        .swiper-container {
+            width: 100%;
+            height: 1.2rem;
+        }
+
+        .swiper-pagination-bullet {
+            width: 6px;
+            height: 6px;
+            display: inline-block;
+            border-radius: 100%;
+            background: #bbb;
+            opacity: .7
+        }
+
+        .swiper-pagination-bullet-active {
+            opacity: 1;
+            background: #F39A0F;
+        }
+
+        .swiper-pagination-bullet-active {
+            opacity: 1;
+            background: #F39A0F;
+        }
+
+        .swiper-container-horizontal > .swiper-pagination {
+            bottom: 5px;
+        }
+
+        .swiper-container-horizontal > .swiper-pagination .swiper-pagination-bullet {
+            margin: 4px;
+        }
+
+        .swiper-slide {
+            text-align: center;
+            font-size: 18px;
+            background: #fff;
+
+            /* Center slide text vertically */
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: -webkit-flex;
+            display: flex;
+            -webkit-box-pack: center;
+            -ms-flex-pack: center;
+            -webkit-justify-content: center;
+            justify-content: center;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            -webkit-align-items: center;
+            align-items: center;
+        }
+
+        div, a {
+            margin: 0;
+            padding: 0;
+        }
+
+        a {
+            text-decoration: none;
+            outline: none;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        a:hover {
+            text-decoration: none;
+        }
+
+        .list {
+            background-color: #fff;
+            padding-top: 0.08rem;
+            padding-bottom: 0.1rem;
+            padding-left: 0.18rem;
+            padding-right: 0.18rem;
+            margin-top: 0.05rem;
+            margin-bottom: 0;
+            clear: both;
+            height: 0.5rem;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .margin-t1 {
+            margin-top: 0.05rem;
+        }
+
+        .margin-t2 {
+            margin-top: 0.02rem;
+        }
+
+        .pro-li-title {
+            font-size: 0.14rem;
+            margin-top: 0.01rem;
+            color: rgb(233, 72, 29);
+        }
+
+        .pro-li-content {
+            font-size: 0.11rem;
+            color: rgb(192, 192, 192);
+        }
+
+        .icon {
+            float: right;
+            width: 0.55rem;
+        }
+
+        ul {
+            margin: 0;
+            padding-top: 0;
+        }
+
+        .banner1, .banner2, .banner3, .banner4, .banner5 {
+            width: 100%;
+            height: 1.2rem;
+            background-size: 100% 100%;
+        }
+
+        /*.label-blue {*/
+        /*float: right;*/
+        /*margin-top: 0.39rem;*/
+        /*margin-right: -0.18rem;*/
+        /*width: 0.5rem;*/
+        /*height: 0.175rem;*/
+        /*background: url('../images/productList_label_b.png');*/
+        /*background-size: 100% 100%*/
+        /*}*/
+
+        /*.label-red {*/
+        /*float: right;*/
+        /*margin-top: 0.385rem;*/
+        /*margin-right: -0.18rem;*/
+        /*width: 0.6rem;*/
+        /*height: 0.175rem;*/
+        /*background: url('../images/productList_label_r.png');*/
+        /*background-size: 100% 100%*/
+        /*}*/
+
+        .hide {
+            display: none;
+        }
+
+        @media (device-width: 320px ) and (device-height: 568px) and (-webkit-min-device-pixel-ratio: 2 ) {
+            /* 兼容iphone5 */
+            .pro-li-title {
+                font-size: 0.14rem;
+                margin-top: 0;
+                color: rgb(233, 72, 29);
+            }
+
+            .list {
+                background-color: #fff;
+                padding-top: 0.08rem;
+                padding-bottom: 0.1rem;
+                padding-left: 0.18rem;
+                padding-right: 0.18rem;
+                margin-top: 0.05rem;
+                margin-bottom: 0;
+                clear: both;
+                height: 0.5rem;
+                border-bottom: 0.5px solid #d7d7d7;
+            }
+
+            .margin-t1 {
+                margin-top: 0.01rem;
+            }
+
+            .margin-t2 {
+                margin-top: 0;
+            }
+        }
+
+        @media (device-width: 375px ) and (device-height: 667px) and (-webkit-min-device-pixel-ratio: 2 ) {
+            /* 兼容iphone6 */
+            .pro-li-title {
+                font-size: 0.14rem;
+                margin-top: 0;
+                color: rgb(233, 72, 29);
+            }
+
+            .list {
+                background-color: #fff;
+                padding-top: 0.08rem;
+                padding-bottom: 0.1rem;
+                padding-left: 0.18rem;
+                padding-right: 0.18rem;
+                margin-top: 0.05rem;
+                margin-bottom: 0;
+                clear: both;
+                height: 0.5rem;
+                border-bottom: 0.5px solid #d7d7d7;
+            }
+
+            .margin-t1 {
+                margin-top: 0.01rem;
+            }
+
+            .margin-t2 {
+                margin-top: 0;
+            }
+        }
+
+        @media (device-width: 414px ) and (device-height: 736px) and (-webkit-min-device-pixel-ratio: 2 ) {
+            /* 兼容iphone6 Plus */
+            .pro-li-title {
+                font-size: 0.14rem;
+                margin-top: 0;
+                color: rgb(233, 72, 29);
+            }
+
+            .list {
+                background-color: #fff;
+                padding-top: 0.08rem;
+                padding-bottom: 0.1rem;
+                padding-left: 0.18rem;
+                padding-right: 0.18rem;
+                margin-top: 0.05rem;
+                margin-bottom: 0;
+                clear: both;
+                height: 0.5rem;
+                border-bottom: 0.5px solid #d7d7d7;
+            }
+
+            .margin-t1 {
+                margin-top: 0.01rem;
+            }
+
+            .margin-t2 {
+                margin-top: 0;
+            }
+        }
+
+    </style>
+</head>
+<body class="hide">
+
+<div class="swiper-container">
+    <div class="swiper-wrapper">
+    	<div class="swiper-slide">
+            <img src="../images/banner_eastgold_1.jpg" class="banner5"
+                 onclick="{window.location.href='../../weixin_new/eastgold_fes/index.html'}"/>
+        </div>
+        <div class="swiper-slide">
+            <img src="../images/productList_banner_app.jpg" class="banner1" onclick="toActivity()"/>
+        </div>
+        <div class="swiper-slide">
+            <img src="../images/banner_ak.jpg" class="banner2"
+                 onclick="{window.location.href='product/dreadDisease100/trial.html'}"/>
+        </div>
+        <div class="swiper-slide">
+            <img src="../images/banner_hbb.jpg" class="banner3"
+                 onclick="{window.location.href='product/DDJR/trial.html'}"/>
+        </div>
+        <div class="swiper-slide">
+            <img src="../images/banner_zyx.jpg" class="banner4"
+                 onclick="{window.location.href='product/freeRide/trial.html'}"/>
+        </div>
+    </div>
+    <!-- Add Pagination -->
+    <div class="swiper-pagination"></div>
+</div>
+
+<ul>
+    <!--<li class="list" style="margin-top: 0">-->
+    <!--<a href="#" onclick="buy()">-->
+    <!--<div class="pro-li-title">-->
+    <!--<i class="icon hide" style="float: right"><img src="../images/getCoin.png" width="90%"></i>-->
+    <!--<div class="pro-li-title">车险</div>-->
+    <!--<p class="pro-li-content" style="margin-top: 0.01rem">异地出险，全国通赔通付</p>-->
+    <!--<p class="pro-li-content">足不出户，陪款到家</p>-->
+    <!--</div>-->
+    <!--</a>-->
+    <!--</li>-->
+    <!-- <li class="list">
+        <a href="#" onclick="toCars()">
+             <img src="../images/sale1.png"
+                 style=" float: right; margin-right:-0.18rem;margin-top:-0.08rem;top: 2.73rem;" width="10%">
+            <div class="pro-li-title">中华车险</div>
+            <p class="pro-li-content margin-t1">买车险送豪礼</p>
+            <p class="pro-li-content margin-t2">网购车险多快好省</p>
+        </a>
+    </li> -->
+    <li class="list">
+        <a href="#" onclick="window.location.href='product/dreadDisease100/trial.html'">
+            <img src="../images/sale1.png"
+                 style=" float: right; margin-right:-0.18rem;margin-top:-0.08rem;top: 2.73rem;" width="10%">
+            <div class="pro-li-title">中华健康宝重大疾病保险
+                <!--<div class="label-red"></div>-->
+            </div>
+            <p class="pro-li-content margin-t1">100种疾病保障重疾险</p>
+            <p class="pro-li-content margin-t2">全面守护 确诊即赔</p>
+        </a>
+        <div style="clear: both"></div>
+    </li>
+
+    <li class="list">
+        <a href="#" onclick="window.location.href='product/DDJR/trial.html'">
+            <img src="../images/sale1.png"
+                 style=" float: right; margin-right:-0.18rem;margin-top:-0.08rem;top: 2.73rem;" width="10%">
+            <div class="pro-li-title">中华好保宝少儿重大疾病保险
+                <!--<div class="label-blue"></div>-->
+            </div>
+            <p class="pro-li-content margin-t1">为您的宝贝撑起爱的保护伞</p>
+            <p class="pro-li-content margin-t2">超高性价比</p>
+        </a>
+    </li>
+    <li class="list">
+        <a href="#" onclick="window.location.href='product/freeRide/trial.html'">
+            <img src="../images/sale1.png"
+                 style=" float: right; margin-right:-0.18rem;margin-top:-0.08rem;top: 2.73rem;" width="10%">
+            <div class="pro-li-title">中华自由行两全保险
+                <!--<div class="label-blue"></div>-->
+            </div>
+            <p class="pro-li-content margin-t1">高端出行意外险</p>
+            <p class="pro-li-content margin-t2">百万身价保平安</p>
+        </a>
+    </li>
+
+    <!--li class="list">
+        <a href="../activity_cars/inputInfo.html">
+            <- <i class="icon" style="float: right"><img src="../images/getCoin.png" width="90%"></i> ->
+            <div class="pro-li-title">多车之家</div>
+            <p class="pro-li-content margin-t1">针对多车家庭量身打造的安全车险</p>
+            <p class="pro-li-content margin-t2">一个家庭，两辆以上车投保可享三大安全权益</p>
+        </a>
+    </li-->
+    <li class="list" onclick="toCars(1)">
+    	<img src="../images/sale1.png"
+                 style=" float: right; margin-right:-0.18rem;margin-top:-0.08rem;top: 2.73rem;" width="10%">
+        <!-- <a href="../pages/activity/activity_cars/proIntro_goodCar.html"> -->
+        <a href="###" onclick="toCars(1)">
+            <div class="pro-li-title">中华车险</div>
+            <p class="pro-li-content margin-t1">每满1000元，赠送价值200元的增值服务</p>
+            <p class="pro-li-content margin-t2"></p>
+        </a>
+    </li>
+    
+    <!-- <span style="font-size: 0.12rem">限时加增60万个人账户安全险</span>-->
+    <!--步步安心-->
+    <li class="list">
+        <a href="#" onclick="toBuy('04')">
+            <div class="pro-li-title">交通意外险</div>
+            <p class="pro-li-content margin-t1">最低3元，让出行更自在</p>
+            <p class="pro-li-content margin-t2">海陆空全面保障</p>
+        </a>
+    </li>
+    <!--四海逍遥-->
+    <li class="list">
+        <a href="#" onclick="toBuy('03')">
+            <!--<i class="icon" style="float: right"><img src="../images/getCoin.png" width="90%"></i>-->
+            <div class="pro-li-title">旅游意外险</div>
+            <p class="pro-li-content margin-t1">给说走就走的旅行加点“任性”砝码</p>
+            <p class="pro-li-content margin-t2">游玩更安心</p>
+        </a>
+    </li>
+    <!--乐居保-->
+    <li class="list">
+        <a href="#" onclick="toBuy('02')">
+            <div class="pro-li-title">家庭财产综合保障险</div>
+            <p class="pro-li-content margin-t1">有个家不容易一定要好好保护它</p>
+            <p class="pro-li-content margin-t2">让您一家安心无忧</p>
+        </a>
+    </li>
+    <!--翱翔无忧-->
+    <li class="list">
+        <a href="#" onclick="toBuy('05')">
+            <div class="pro-li-title">"翱翔无忧"航空意外险</div>
+            <p class="pro-li-content margin-t1">天空太大，一份翱翔无忧</p>
+            <p class="pro-li-content margin-t2">让“空人飞人”任性驰骋蓝天</p>
+        </a>
+    </li>
+    <!--出入安心-->
+    <li class="list">
+        <a href="#" onclick="toBuy('06')">
+            <div class="pro-li-title">"出入安心"驾驶员意外险</div>
+            <p class="pro-li-content margin-t1">出门在外，安全第一</p>
+            <p class="pro-li-content margin-t2">专为车主设计，放心开车，一路保障</p>
+        </a>
+    </li>
+</ul>
+<div style="height: 0.05rem;width: 100%"></div>
+<script src="../js/common.js"></script>
+<script src="../js/jquery-1.9.1.min.js"></script>
+<script src="../js/swiper-3.2.7.jquery.min.js"></script>
+<script src="../js/jquery.hiSlider.min.js"></script>
+
+<script>
+    var openId = window.localStorage.getItem(config.openIdName);
+    sessionStorage.removeItem('insureInfo');
+    $(function () {
+        autoWidth();
+        var swiper = new Swiper('.swiper-container', {
+            pagination: '.swiper-pagination',
+            paginationClickable: true,
+            autoplay: 2500,
+            autoplayDisableOnInteraction: false,
+            speed: 1000,
+            loop: true
+        });
+        getOpenId();
+        openId = window.localStorage.getItem(config.openIdName);
+        baiduCollection();
+    });
+
+    function toActivity() {
+        window.location.href = '../pages/activity/activity_app/app.html';
+    }
+    function toBuy(index) {
+        window.location.href = config.productList['url' + index] + '9990' + openId;
+    }
+    /*function toCars(){
+        window.location.href = config.activity.goodCar2Url + "&linkId=1100" + openId;
+    }*/
+    
+    function toCars(isPage3) {
+    	var isFocus = true;
+        if (!isFocus) {
+            showCodeDialog();
+        } else {
+            sessionStorage.page3 = isPage3;
+            sessionStorage.page1 = 0;
+            window.location.href = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=" + config.appIdValue + "&redirect_uri=" + config.shareRootUrl + "/weixinouter/basepage/activity_cars/inputInfo_goodCar.html" +
+                    "&response_type=code&scope=snsapi_base&state=123&connect_redirect=1#wechat_redirect";
+        }
+    }
+</script>
+</body>
+</html>

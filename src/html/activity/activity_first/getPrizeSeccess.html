@@ -47,11 +47,13 @@
             margin-top: 2.1rem;
             margin-left: 2.2rem;
         }
-        .r_text1{
+
+        .r_text1 {
             width: 2.78rem;
             height: 0.95rem;
         }
-        .r_text2{
+
+        .r_text2 {
             width: 2.03rem;
             height: 0.94rem;
             margin-top: 2.15rem;
@@ -123,6 +125,11 @@
 <script src="../../../js/common.js"></script>
 <script>
     autoSize();
+
+//    $('.content-prize').css({
+//        "height": $(window).height(),
+//        "background-size": ("6.4rem " + $(window).height())
+//    });
     var type = getUrlParam("type");
     if (type == "1") {
         $("#result").attr("src", "../../../images/activity/first/get_prize_sucess_text.png");

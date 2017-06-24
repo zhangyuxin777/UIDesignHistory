@@ -1,0 +1,30 @@
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>正在跳转</title>
+</head>
+
+<body>
+  <form id='infoForm' action='' method='post'></form>
+</body>
+<script src="../js/common.js"></script>
+<script src="../js/jquery-1.9.1.min.js"></script>
+<script type="text/javascript">
+
+ var openId = window.localStorage.getItem(config.openIdName);
+$(function(){
+	toShop();
+});
+function toShop() {
+//    showCenterSpinner();
+    GetAsyncData("Wljw/1053", function (backdata) {
+        var form = $('#infoForm');
+        $(form).attr('action', config.goldStoreUrl);//表单提交地址
+        var htmlStr = "<input type='text' style='border: 0' value='" + backdata.pid + "' name='pid'/>"
+                + "<input type='text' style='border: 0' value='" + backdata.v + "' name='v'/>";
+        form.append(htmlStr);
+        form.submit();
+    }, {"openId": openId});
+}
+</script>
+</html>

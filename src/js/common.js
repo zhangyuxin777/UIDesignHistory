@@ -106,6 +106,7 @@ var config = (function() {
 		current = parameter.test;
 		current.rootUrl = 'http://' + window.location.host;
 	}
+  current = parameter.formal;
 	return {
 		openIdName : current.openIdName, // openId在localStorage中的名称
 		shareRootUrl : current.shareRootUrl, // 域名 现在用于分享

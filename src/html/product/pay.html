@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport'
+          content='width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui'>
+    <meta name='apple-mobile-web-app-capable' content='yes'>
+    <meta name='apple-mobile-web-app-status-bar-style' content='black'>
+    <meta name="format-detection" content="telephone=no"/>
+
+    <title>在线支付</title>
+    <style>
+
+
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+            -webkit-appearance: none !important;
+            margin: 0;
+        }
+
+        ::-webkit-inner-spin-button {
+            visibility: hidden;
+        }
+
+        ::-webkit-calendar-picker-indicator {
+            border: 1px solid #ccc;
+            border-radius: 2px;
+            box-shadow: inset 0 1px #fff, 0 1px #eee;
+            background-color: #eee;
+            background-image: -webkit-linear-gradient(top, #f0f0f0, #e6e6e6);
+            color: #666;
+        }
+
+        input[type='number'] {
+            -moz-appearance: textfield;
+            -webkit-appearance: none !important;
+        }
+
+        body {
+            font-family: 'Microsoft YaHei', 'Hiragino Sans GB', Helvetica, Arial, 'Lucida Grande', sans-serif;
+            width: 3.2rem;
+            margin: 0 auto;
+            padding: 0;
+            font-size: 0.12rem;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        ol, ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            border-bottom: 1px solid #d4d4d4;
+            border-top: 1px solid #d4d4d4;
+            background-color: #ffffff;
+        }
+
+        a {
+            text-decoration: none;
+            outline: none;
+            color: #515151;
+        }
+
+        a:hover {
+            text-decoration: none;
+        }
+
+        .col-left {
+            width: 22%;
+            float: left;
+            color: #606060;
+        }
+
+        .col-right {
+            width: 69%;
+            float: left;
+
+        }
+
+        .float-left {
+            float: left;
+        }
+
+        .down-icon {
+            float: right;
+            width: 0.12rem;
+            height: 0.12rem;
+            margin-top: 0.165rem;
+            margin-right: 0.12rem;
+        }
+
+        .down-icon-address {
+            float: right;
+            width: 0.1rem;
+            height: 0.1rem;
+            margin-top: 0.175rem;
+        }
+
+        .address-col-right {
+            width: 70%;
+        }
+
+        .address-width {
+            width: 80%;;
+        }
+
+        .line-div {
+            height: 0.45rem;
+            border-bottom: 1px solid #f0f0f0;
+            font-size: 0.12rem;
+            line-height: 0.45rem;
+            margin: 0 0 0 0.12rem;
+        }
+
+        .line {
+            height: 100%;
+            color: #404040;
+        }
+
+        .line-height {
+            line-height: 0.45rem;
+        }
+
+        #insure-part, #beInsured-part, #beneficiary-part {
+            line-height: 0.35rem;
+        }
+
+        .t-a-right {
+            text-align: left;
+        }
+
+        input {
+            font-family: 'Microsoft YaHei', 'Hiragino Sans GB', Helvetica, Arial, 'Lucida Grande', sans-serif;
+            height: 0.25rem;
+            border: 0 none;
+            background-color: white;
+            outline: none;
+            margin: 0 0 0.025rem 0;
+            width: 100%;
+            -webkit-appearance: none;
+            font-size: 0.12rem;
+            padding: 0;
+            color: #404040;
+        }
+
+        input:focus {
+            outline: none;
+        }
+
+        input[type=date] {
+            width: 100%;
+            opacity: 0;
+        }
+
+        input#incomeNumber {
+            margin: 0.05rem 0;
+            width: 82%
+        }
+
+        .include {
+            position: relative;
+            height: 0.45rem;
+            border-radius: 2px;
+            outline: none;
+            background-color: white;
+            width: 100%;
+            line-height: 0.45rem;
+        }
+
+        .include.address {
+            width: 29.8%;
+            float: left;
+        }
+
+        .address-div {
+            position: absolute;
+            height: 100%;
+        }
+
+        .replace {
+            position: absolute;
+            height: 100%;
+            width: 75%;
+            overflow: hidden;
+            float: right;
+            color: #404040;
+        }
+
+        .placeholder {
+            color: darkgrey;
+        }
+
+        select {
+            height: 0.25rem;
+            opacity: 0;
+            outline: none;
+            width: 100%;
+        }
+
+        select:focus {
+            outline: none;
+        }
+
+        label:focus {
+            background-color: #fff;
+        }
+
+        #income input {
+            width: 75%;
+            float: left;
+            margin: 0.05rem 0;
+        }
+
+        #income div {
+            width: 20%;
+            float: right;
+            text-align: right;
+        }
+
+        .choose-relation-self .insured-info,
+        .choose-beneficiary-legal .beneficiary-info {
+            display: none;
+        }
+
+        .choose-relation-child .insured-info,
+        .choose-beneficiary-appoint .beneficiary-info {
+            display: block;
+        }
+
+        .enter_btn {
+            height: 0.49rem;
+            line-height: 0.49rem;
+            background-color: #F39A0F;
+            color: #ffffff;
+            text-align: center;
+            font-size: 0.175rem;
+            border-radius: 0.04rem;
+            width: 2.96rem;
+            margin: auto;
+        }
+
+        .get_code_btn {
+            height: 0.25rem;
+            line-height: 0.25rem;
+            background-color: #F39A0F;
+            color: #ffffff;
+            text-align: center;
+            border-radius: 0.03rem;
+            width: 0.8rem;
+            float: right;
+            margin-top: 0.1rem;
+            font-size: 0.1rem;
+        }
+
+        .divider {
+            height: 1px;
+            width: 100%;
+            border-bottom: 1px solid #d4d4d4;
+        }
+
+        .title {
+            background-color: #f6f4f4;
+            padding: 0.05rem 0.05rem 0.05rem 0.12rem;
+            color: #aaa;
+            font-size: 0.1rem;
+            color: #F39A0F;
+        }
+
+        .btn-div {
+            background-color: #f6f4f4;
+            width: 100%;
+            padding-top: 0.2rem;
+            padding-bottom: 0.02rem;
+        }
+
+        .margin-left-5 {
+            margin-left: 0.05rem;
+        }
+
+        .margin-top-10 {
+            margin-top: 0.1rem;
+        }
+
+        @media (device-width: 320px ) and (device-height: 568px) and (-webkit-min-device-pixel-ratio: 2 ) {
+            /* 兼容iphone5 */
+            .line-div {
+                border-bottom: 0.5px solid #d4d4d4;
+            }
+        }
+
+        @media (device-width: 375px ) and (device-height: 667px) and (-webkit-min-device-pixel-ratio: 2 ) {
+            /* 兼容iphone6 */
+            .line-div {
+                border-bottom: 0.5px solid #d4d4d4;
+            }
+        }
+
+        @media (device-width: 414px ) and (device-height: 736px) and (-webkit-min-device-pixel-ratio: 2 ) {
+            /* 兼容iphone6 Plus */
+            .line-div {
+                border-bottom: 0.5px solid #d4d4d4;
+            }
+        }
+
+        .no-border {
+            border: 0;
+        }
+
+        .clearfix:after {
+            clear: both;
+        }
+
+        .clear {
+            clear: both;
+        }
+
+        .hide {
+            display: none;
+        }
+
+        .transparent {
+            opacity: 0;
+        }
+
+        .rule {
+            color: #016FEB;
+        }
+
+        .check, .uncheck {
+            float: left;
+            height: 100%;
+            padding-left: 0.12rem;
+            padding-right: 0.12rem;
+        }
+
+        .check .img {
+            background: url('../../images/cars/checked.png');
+            background-size: 100% 100%;
+            width: 0.16rem;
+            height: 0.16rem;
+            margin-top: 0.09rem
+        }
+
+        .uncheck .img {
+            background: url('../../images/cars/unchecked.png');
+            background-size: 100% 100%;
+            width: 0.16rem;
+            height: 0.16rem;
+            margin-top: 0.09rem;
+        }
+
+        .rule-line {
+            height: 0.45rem;
+            font-size: 0.1rem;
+        }
+
+        .rule-div {
+            float: left;
+            width: 2.72rem;
+            height: 100%;
+            line-height: 0.18rem;
+            margin-top: 0.075rem;
+            color: #606060;
+        }
+
+        .transparent {
+            opacity: 0;
+        }
+    </style>
+</head>
+<body class="hide" style="background: #f6f4f4">
+<div id="title" class="title">
+    仅差一步就完成投保了，加油啊！
+</div>
+<div style="background: #fff">
+    <div>
+        <div class="line-div">
+            <div class="col-left line t-a-right">姓<span class="transparent">空</span>名</div>
+            <div class="col-right line" id="name">
+                张伟
+            </div>
+        </div>
+    </div>
+    <div>
+        <div class="line-div">
+            <div class="col-left line t-a-right">身份证</div>
+            <div class="col-right line" id="identify">
+                152103188803071154
+            </div>
+        </div>
+    </div>
+    <div>
+        <div class="line-div">
+            <div class="col-left line t-a-right">手机号</div>
+            <div class="line" id="mobile" style="float:left;width: 75%">
+                13051637677
+                <div class="get_code_btn"
+                     onclick='getCode(this)'>获取验证码
+                </div>
+            </div>
+        </div>
+    </div>
+    <div>
+        <div class="line-div no-border">
+            <div class="col-left line t-a-right">验证码</div>
+            <div class="col-right line">
+                <input id="code" type="text" placeholder="请输入验证码"/>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="clear"></div>
+<div class="rule-line">
+    <div class="uncheck" onclick="checkRule(this)">
+        <div class="img"></div>
+    </div>
+    <div class="rule-div">
+        我已阅读并同意<a class="rule">《保费自动转账及领款授权声明》</a>、<a class="rule">《投保人及被保人声明与授权》</a>
+    </div>
+</div>
+<div class="btn-div">
+    <div class="enter_btn"
+         onclick='toPay()'>立即支付
+    </div>
+</div>
+
+</body>
+<script src='../../js/common.js'></script>
+<script src='../../js/jquery-1.9.1.min.js'></script>
+<script src='../../js/jweixin-1.0.0.js'></script>
+<script src='../../js/spinner.js'></script>
+<script type='text/javascript'>
+
+    var insureInfo = {};
+
+    var isGettingCode = false;
+    var isCheckedCode = false;
+    var isRead = false;
+    var shareUrl = '';
+    var activityId = '';
+    var openId = window.localStorage.getItem(config.openIdName);
+    autoWidth();
+    getData();
+    weixinShare({
+        shareUrl: shareUrl,
+        shareIcon: '',
+        shareText: '',
+        isNeedRecord: true,
+        openId: openId,
+        activityId: activityId,
+        typeTimeline: 'zhbx-3',
+        typeAppMessage: 'zhbx-4',
+        isGiveCoin: 'Y'
+    });
+    baiduCollection();
+
+    function checkRule(btn) {
+        $(btn).hasClass('check') ? $(btn).removeClass('check').addClass('uncheck') : $(btn).removeClass('uncheck').addClass('check');
+        if ($(btn).hasClass('check')) {
+            isRead = true;
+        } else {
+            isRead = false;
+        }
+    }
+
+    function getCode(btn) {
+        if (isGettingCode) {
+            return;
+        }
+        isGettingCode = true;
+        var second = 60;
+        btn.innerHTML = second + ' 秒';
+        $(btn).attr("disabled", true);
+        $(btn).css("background-color", "#dddddd");
+        clock = setInterval(function () {
+            second--;
+            if (second > 0) {
+                btn.innerHTML = second + ' 秒';
+
+            } else {
+                clearInterval(clock);
+                btn.innerHTML = '获取验证码';
+                $(btn).attr("disabled", false);
+                $(btn).css("background-color", "#F39A0F");
+                second = 60;
+                isGettingCode = false;
+            }
+        }, 1000);
+    }
+
+    function toPay() {
+        if (!isRead) {
+            alert('请阅读授权声明');
+            return;
+        }
+        if (trim($('#code').val()).length == 0) {
+            alert('请输入验证码');
+            return;
+        }
+        if (!isCheckedCode) {
+            alert('验证码不正确');
+            return;
+        }
+    }
+
+    function saveData() {
+
+        sessionStorage.setItem('insureInfo', JSON.stringify(insureInfo));
+    }
+
+    function getData() {
+        insureInfo = JSON.parse(sessionStorage.getItem('insureInfo'));
+        if (insureInfo != null && insureInfo.policyholder != null) {
+            $('#name').text(insureInfo.policyholder.name);
+            $('#identify').text(insureInfo.policyholder.identifyNumber);
+            $('#mobile').text(insureInfo.policyholder.mobile);
+            shareUrl = insureInfo.pay.shareUrl;
+            activityId = insureInfo.order.productId;
+        }
+    }
+
+</script>
+
+</html>

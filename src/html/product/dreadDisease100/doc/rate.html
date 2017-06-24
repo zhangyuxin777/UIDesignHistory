@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <title>费率表</title>
+    <style>
+        body,p{
+            margin: 0;
+            padding: 0;
+            font-size: 14px;
+        }
+        .font1{
+            font-size: 16px;
+            text-align: center;
+        }
+        .center{
+            text-align: center;
+        }
+        p{
+            margin: 15px;
+        }
+        table{
+            margin: 5%;
+            width: 90%;
+            border-collapse: collapse;
+        }
+        td{
+            text-align: center;
+            border: 1px solid #d4d4d4;
+        }
+    </style>
+</head>
+<body>
+<p class="font1">中华100重大疾病保险费率表</p>
+<p class="center">（每千元基本保险金额）</p>
+<table id="b">
+    <tr><td>年龄</td><td>性别</td><td>交费期</td><td>保险期间</td><td>保费</td></tr>
+</table>
+</body>
+</html>
+<script src="../../../../js/jquery-1.9.1.min.js"></script>
+<script src="zj_rate.js"></script>
+<script>
+    console.log();
+    for(var i in rate.bf){
+        $("#b").append("<tr><td class='a"+ i +"'>0</td><td class='b"+ i +"'>0</td><td class='c"+ i +"'>10</td><td class='d"+ i +"'>20</td><td>"+ rate.bf[i] +"</td></tr>");
+
+        if(i%2 == 0) {
+            $(".b"+i).text("男");
+        }else{
+            $(".b"+i).text("女");
+        }
+        if(i>= 550){
+            $(".c"+i).text("20");
+        }
+        if(i<112){
+            $(".a"+i).text(rate.age[i]);
+        }else if(i>=112&&i<224){
+            $(".a"+i).text(rate.age[i-112]);
+            $(".d"+i).text("30");
+        }else if(i>=224&&i<326){
+            $(".a"+i).text(rate.age[i-224]);
+            $(".d"+i).text("60");
+        }else if(i>=326&&i<438){
+            $(".a"+i).text(rate.age[i-326]);
+            $(".d"+i).text("75");
+        }else if(i>=438&&i<550){
+            $(".a"+i).text(rate.age[i-438]);
+            $(".d"+i).text("终身");
+        }else if(i>=550&&i<642){
+            $(".a"+i).text(rate.age[i-550]);
+        }else if(i>=642&&i<734){
+            $(".a"+i).text(rate.age[i-642]);
+            $(".d"+i).text("30");
+        }else if(i>=734&&i<816){
+            $(".a"+i).text(rate.age[i-734]);
+            $(".d"+i).text("60");
+        }else if(i>=816&&i<908){
+            $(".a"+i).text(rate.age[i-816]);
+            $(".d"+i).text("75");
+        }else if(i>=908&&i<1000){
+            $(".a"+i).text(rate.age[i-908]);
+            $(".d"+i).text("终身");
+        }
+    }
+
+</script>
+

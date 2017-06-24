@@ -108,6 +108,7 @@
             right: 0.6rem;
             color: #D99718;
         }
+
         @media (device-width: 320px ) and (device-height: 568px) and (-webkit-min-device-pixel-ratio: 2 ) {
             /* 兼容iphone5 */
             .count {
@@ -158,7 +159,7 @@
             <div>快使用<span id="mobile"></span></div>
             <div>登录绿驾app领取吧!</div>
             <div style="margin-top: 0.2rem">还有多种绿色出行奖励等你拿!</div>
-            <div >→_→</div>
+            <div>→_→</div>
         </div>
         <div class="get-btn" onclick="toDown()"></div>
     </div>
@@ -170,14 +171,13 @@
 <script src="../../../js/jquery-1.9.1.min.js"></script>
 
 <script type="text/javascript">
-    closeProduct(109);
     autoWidth();
     var fontSize = $('html').css('font-size').substr(0, $('html').css('font-size').length - 2);
     var minHeight = getBgHeight();
     $('.bg').css("height", minHeight);
 
-    $('#count').text(sessionStorage.getItem('calculator_count'));
-    $('#mobile').text(sessionStorage.getItem('calculator_mobile'));
+    $('#count').text(100);
+    $('#mobile').text('手机号');
     var carbon = sessionStorage.getItem('calculator_carbon');
     var levelText = '三';
     if (carbon > 100 && carbon < 500) {
@@ -185,7 +185,6 @@
     } else if (carbon > 500) {
         levelText = '五';
     }
-    getOpenId();
     var openId = window.localStorage.getItem(config.openIdName);
 
     function toDown() {
@@ -196,18 +195,5 @@
             window.location.href = "http://a.app.qq.com/o/simple.jsp?pkgname=com.wanlianjin.zswl";
         }
     }
-    weixinShare({
-        shareUrl: config.shareRootUrl + '/weixinouter/basepage/pages/activity/activity_calculator/share.html?carbon=' + carbon,
-        shareTitle:'环保星级大比拼',
-        shareText: '我的环保星级是' + levelText + '星，快来测试一下你的环保星级吧！',
-        onlyWeixin: false,
-        isNeedRecord: true,
-        openId: openId,
-        activityId: '109',
-        typeTimeline: 'zhbx-3',
-        typeAppMessage: 'zhbx-4',
-        isGiveCoin: 'N'
-    });
-    //baiduCollection();
 </script>
 </html>

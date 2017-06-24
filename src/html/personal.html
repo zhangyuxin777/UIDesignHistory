@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+    <!--缓存强制清理-->
+    <!--<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"/>-->
+    <!--<meta http-equiv="Pragma" content="no-cache"/>-->
+    <!--<meta http-equiv="Expires" content="0"/>-->
+
+    <title>个人中心</title>
+    		<SCRIPT LANGUAGE=JAVASCRIPT>
+		    if (window != parent)
+		        window.top.location = window.self.location;
+		</SCRIPT>
+    <style>
+        ol, ul {
+            list-style: none;
+            margin-bottom: 0;
+            padding: 0;
+            margin: 0;
+            background-color: #ffffff;
+        }
+
+        a {
+            text-decoration: none;
+            outline: none;
+            color: #515151;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .box-shadow {
+            -webkit-box-shadow: 0 0 0.02rem #555;
+            -moz-box-shadow: 0 0 0.02rem #555;
+            box-shadow: 0 0 0.02rem #555;
+
+        }
+
+        a:hover {
+            text-decoration: none;
+        }
+
+        div, h1, h2, h3, h4, h5, p {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Microsoft YaHei', 'Hiragino Sans GB', Helvetica, Arial, 'Lucida Grande', sans-serif;
+            width: 3.2rem;
+            margin: 0 auto;
+            background-color: #f6f4f4;
+        }
+
+        #header {
+            background: url("../images/personal_banner.jpg") no-repeat;
+            background-size: 100% 100%;
+            min-height: 1.4rem;
+            text-align: center;
+        }
+
+        #icon {
+            position: absolute;
+            border-radius: 50%;
+            width: .75rem;
+            height: .75rem;
+            left: 50%;
+            margin-left: -.375rem;
+            margin-top: .16rem;
+        }
+
+        #username {
+            font-size: .14rem;
+            color: #515151;
+        }
+
+        .list {
+        }
+
+        .list-item {
+            padding-left: 0.08rem;
+        }
+
+        .list-text {
+            margin-left: 0.1rem;
+        }
+
+        .list-icon {
+            float: left;
+            margin-top: 0.14rem;
+            height: 0.22rem;
+        }
+
+        .go-icon {
+            float: right;
+            height: 0.14rem;
+            margin-top: 0.17rem;
+            margin-right: 0.07rem;
+        }
+
+        li {
+            height: 0.48rem;
+            list-style-type: none;
+            line-height: 0.48rem;
+            font-size: 0.14rem;
+            border-bottom: 1px solid #f0f0f0;
+            border-top: 1px solid #f0f0f0;
+            padding-left: 0.1rem;
+        }
+
+        .hide {
+            display: none;
+        }
+
+        .clear {
+            clear: both;
+        }
+
+        .new {
+            margin-top: 0.125rem;
+            background-color: red;
+            color: white;
+            line-height: 0.2rem;
+            height: 0.2rem;
+            padding: 0 0.05rem;
+            border-radius: 0.03rem;
+        }
+
+        .line {
+            height: 0.1rem;
+            background-color: #f6f4f4;
+            width: 100%
+        }
+
+        .no-top-border {
+            border-top: 0;
+        }
+
+        .top-border {
+            border-top: 1px solid #f1f1f1;
+        }
+
+        .new-icon {
+            float: right;
+            height: 0.2rem;
+            margin-top: 0.16rem;
+            margin-right: 0.07rem;
+        }
+        .tool{
+            position: absolute;
+            right: 33%;
+            top: 0.2rem;
+            width: 0.16rem;
+        }
+        @media (device-width: 320px ) and (device-height: 568px) and (-webkit-min-device-pixel-ratio: 2 ) {
+            /* 兼容iphone5 */
+            li {
+                border-bottom: 0.5px solid #d4d4d4;
+                border-top: 0.5px solid #d4d4d4;
+            }
+
+            .top-border {
+                border-top: 0.5px solid #d4d4d4;
+            }
+        }
+
+        @media (device-width: 375px ) and (device-height: 667px) and (-webkit-min-device-pixel-ratio: 2 ) {
+            /* 兼容iphone6 */
+            li {
+                border-bottom: 0.5px solid #d4d4d4;
+                border-top: 0.5px solid #d4d4d4;
+            }
+
+            .top-border {
+                border-top: 0.5px solid #d4d4d4;
+            }
+        }
+
+        @media (device-width: 414px ) and (device-height: 736px) and (-webkit-min-device-pixel-ratio: 2 ) {
+            /* 兼容iphone6 Plus */
+            li {
+                border-bottom: 0.5px solid #d4d4d4;
+                border-top: 0.5px solid #d4d4d4;
+            }
+
+            .top-border {
+                border-top: 0.5px solid #d4d4d4;
+            }
+        }
+    </style>
+</head>
+<body class="hide">
+
+<div id="header">
+
+    <!--<a style="float: left;height: 50px;width: 50px" href="">-->
+    <!--<p style="font-size: 20px;" ></p>-->
+    <!--</a>-->
+    <img src="../images/tool.png" onclick="toMine()" class="tool">
+    <div>
+        <!--<a href="../activity_cars/proIntro_goodCar.html">-->
+        <img id="icon" class="box-shadow" onclick="toMine()" src="../images/personal_avatar.jpg">
+        <!--</a>-->
+    </div>
+    <div style="padding-top: 1rem">
+
+        <p id="username"></p>
+
+    </div>
+</div>
+<div>
+    <ul class="list">
+        <div class="line"></div>
+        <li>
+            <a href="myOrder1.html">
+                <div class="list-item">
+                    <img class="list-icon" src="../images/personal_order_icon.png">
+                    <span class="list-text">我的订单</span>
+                    <img class="go-icon" src="../images/personal_ic_right.png">
+                </div>
+            </a>
+        </li>
+        <div class="line"></div>
+        <li>
+            <a href="myCoin.html">
+
+                <div class="list-item">
+                    <img class="list-icon" src="../images/personal_coin_icon.png">
+                    <span class="list-text">我的万金币</span>
+
+                    <img class="go-icon" src="../images/personal_ic_right.png">
+                    <img class="new-icon" src="../images/personal_new.png">
+                </div>
+            </a>
+        </li>
+        <div class="line"></div>
+        <li>
+            <a href="coupon.html">
+                <div class="list-item">
+                    <img class="list-icon" src="../images/personal_coupon_icon.png">
+                    <span class="list-text">我的优惠券</span>
+                    <img class="go-icon" src="../images/personal_ic_right.png">
+                    <img class="new-icon hide" src="../images/personal_new.png">
+                </div>
+            </a>
+        </li>
+        <li class="no-top-border">
+            <a href="javascript:toMyGifts();">
+                <div class="list-item">
+                    <img class="list-icon" src="../images/personal_card_icon.png">
+                    <span class="list-text">我的礼品</span>
+                    <img class="go-icon" src="../images/personal_ic_right.png">
+                </div>
+            </a>
+        </li>
+<!--         <li class="no-top-border">
+            <a href="myCard1.html">
+                <div class="list-item">
+                    <img class="list-icon" src="../images/personal_card_icon.png">
+                    <span class="list-text">我的礼品【旧版】</span>
+                    <img class="go-icon" src="../images/personal_ic_right.png">
+                </div>
+            </a>
+        </li> -->
+    </ul>
+</div>
+
+</body>
+<script src="../js/common.js"></script>
+<script src="../js/jquery-1.9.1.min.js"></script>
+<script src="../js/jweixin-1.0.0.js"></script>
+<script type="text/javascript">
+    $(function () {
+        getOpenId();
+        var openId = window.localStorage.getItem(config.openIdName);
+
+        GetAsyncData("User/1002", function (backdata) {
+            var json = backdata;
+            var code = json.code;
+            if (code == "0") {
+                var headImgUrl = json.data.headImgUrl;
+                var name = json.data.userName;
+                $("#icon").attr("src", headImgUrl);
+                $("#username").text(name);
+//                $("#username").html("<a href='../activity_cars/proIntro1.html'>" + name + "</a>");
+            }
+        }, {"openId": openId});
+
+        autoWidth();
+        baiduCollection();
+    });
+    function toMine(){
+        window.location.href = "user/mine.html";
+    }
+    
+    function toMyGifts() {    			
+    	location.href = timestamp("mypresent_new.html");
+    }
+    
+    function timestamp(url){  
+	     //  var getTimestamp=Math.random();  
+	       var getTimestamp=new Date().getTime();  
+	      if(url.indexOf("?")>-1){  
+	        url=url+"×tamp="+getTimestamp  
+	      }else{  
+	        url=url+"?timestamp="+getTimestamp  
+	      }  
+	      return url;  
+	    } 
+</script>
+</html>

@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+    <link rel="stylesheet" href="../css/common.css">
+    <style type="text/css">
+        html {
+            height: 100%;
+        }
+
+        body {
+            height: 100%;
+        }
+
+        a {
+            text-decoration: none;
+            outline: none;
+            color: #fff;
+        }
+
+        a:hover {
+            text-decoration: none;
+            outline: none;
+            color: #fff;
+        }
+
+        .no_card {
+            color: rgb(192, 192, 192);
+            font-size: 0.22rem;
+        }
+
+        .no_card_img {
+            width: 1rem;
+            height: 1rem;
+            vertical-align: middle;
+            margin-top: 1.5rem;
+        }
+
+        .content {
+            width: 90%;
+            margin: auto;
+        }
+
+        .discount-pic {
+            margin-bottom: 0.1rem;
+        }
+
+        .prize_bg1 {
+            background: url("../images/activity/first/my_prize_bg1.png") no-repeat;
+            background-size: 100% 100%;
+            height: 1.03rem;
+        }
+
+        .prize_bg2 {
+            background: url("../images/activity/first/my_prize_bg2.png") no-repeat;
+            background-size: 100% 100%;
+            height: 1.03rem;
+        }
+
+        .info {
+            padding-top: 0.22rem;
+            padding-left: 0.13rem;
+            color: #ffffff;
+            font-size: 0.12rem;
+        }
+
+        .date {
+            margin-top: 0.15rem;
+            padding-left: 0.13rem;
+            color: #ffffff;
+            font-size: 0.09rem;
+        }
+
+    </style>
+
+    <title>我的权益</title>
+</head>
+<body>
+
+<div class="content">
+
+
+</div>
+<script src="../js/common.js"></script>
+
+<script src="../js/jquery-1.9.1.min.js"></script>
+<script src="../js/spinner.js"></script>
+<script type="text/javascript">
+    //    showCenterTransparentBgSpinner();
+    $(function () {
+        var openId = window.localStorage.getItem(config.openIdName);
+        var page = 1;
+        var pageSize = 5;
+        var htmlStr = "<div id='#no_card_div' style='height: 100% ;text-align: center; background: #ffffff'>" +
+                "<img class='no_card_img' src='../images/personal_no_card.png'>" +
+                "<div style='height: 20px'></div>" +
+                "<p class='no_card'>暂无优惠券</p>" +
+                " </div>";
+        $("body").append(htmlStr);
+//        GetData("User/1003", function (json) {
+//            var count = json.data.length;
+//            if (count == null || count == 0 || typeof (count) == "undefined" || count == "") {
+//                var htmlStr = "<div id='#no_card_div' style='height: 100% ;text-align: center; background: #ffffff'>" +
+//                        "<img class='no_card_img' src='../images/personal_no_card.png'>" +
+//                        "<div style='height: 20px'></div>" +
+//                        "<p class='no_card'>暂无权益凭证</p>" +
+//                        " </div>";
+//                $("body").append(htmlStr);
+//            } else {
+//                $(".content").append(" <div style='height:  0.1rem'></div>");
+//                var htmlStr = "";
+//                for (var i = 0; i < json.data.length; i++) {
+//                    if (json.data[i].rewardType == 1) {
+//                        htmlStr = "<div class='discount-pic prize_bg1'>" +
+//                                "<div class='info'>" +
+//                                "<p>在“万联金网”公众号投保车险且总保费不</p>" +
+//                                "<p>低于2000元，可获得最高3000元中石化加油卡。</p></div>" +
+//                                "<p class='date'>有效期：2016年1月1日至2016年1月31日</p></div>";
+//                    } else {
+//                        htmlStr = " <div class='discount-pic prize_bg2'>" +
+//                                "<div class='info'>" +
+//                                "<p>在“万联金网”公众号投保,即可获得100</p>" +
+//                                "<p>元中石化加油卡。</p></div>" +
+//                                "<p class='date'>有效期：2016年1月1日至2016年1月31日</p></div>";
+//                    }
+//                    $(".content").append(htmlStr);
+//                }
+//                $("body").css("background-color", "#ffffff");
+//            }
+//        }, {"openId": openId, "page": page, "pageSize": pageSize});
+    });
+    autoWidth();
+    baiduCollection();
+</script>
+
+</body>
+</html>

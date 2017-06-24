@@ -60,6 +60,11 @@
             float: left;
         }
 
+        .col-btn {
+            width: 29.9%;
+            float: right;
+        }
+
         .col-60 {
             width: 59.9%;
             float: left;
@@ -81,8 +86,8 @@
         }
 
         .enter_btn {
-            height: 0.5rem;
-            line-height: 0.5rem;
+            height: 0.4rem;
+            line-height: 0.4rem;
             background-color: rgb(251, 76, 15);
             color: #ffffff;
             text-align: center;
@@ -100,14 +105,24 @@
             height: 0.45rem;
             line-height: 0.45rem;
             font-size: 0.12rem;
-            border-bottom: 1px solid #d4d4d4;
             clear: both;
+        }
+
+        li:after {
+            content: '';
+            height: 1px;
+            width: 100%;
+            background-color: #d7d7d7;
+            display: block;
+            -webkit-transform-origin: 50% 100%;
+            transform-origin: 50% 100%
         }
 
         .banner {
             background: url("../../../images/activity/img/tblr_banner.png") no-repeat;
-            background-size: 100% 100%;
-            min-height: 1.2rem;
+            background-size: 3.2rem 1.1rem;
+            width: 3.2rem;
+            height: 1.1rem;
         }
 
         .get_code_btn {
@@ -124,14 +139,41 @@
         }
 
         .icon {
-            width: 0.15rem;
-            height: 0.15rem;
+            width: 0.1rem;
+            height: 0.1rem;
             float: right;
-            margin-top: 0.14rem;
-            margin-right: 0.15rem;
+            margin-top: 0.165rem;
+            margin-right: 10px;
             background: url("../../../images/activity/img/right.png") no-repeat;
             background-size: contain;
         }
+
+        @media only screen and (-webkit-min-device-pixel-ratio: 2) {
+            li:after {
+                -webkit-transform: scaleY(0.5);
+                transform: scaleY(0.5)
+            }
+
+            .split-line {
+                -webkit-transform: scaleY(0.5);
+                transform: scaleY(0.5)
+            }
+
+        }
+
+        @media only screen and (-webkit-min-device-pixel-ratio: 3) {
+            li:after {
+                -webkit-transform: scaleY(0.33);
+                transform: scaleY(0.33)
+            }
+
+            .split-line {
+                -webkit-transform: scaleY(0.33);
+                transform: scaleY(0.33)
+            }
+
+        }
+
 
     </style>
 
@@ -152,7 +194,7 @@
     <div class="banner">
         <a style=" -webkit-tap-highlight-color: transparent;webkit-touch-callout: none;-webkit-user-select: none;"
            href="detail.html">
-            <div style="float: right; width: 40px;height: 40px;"></div>
+            <div style="float: right; width: 0.4rem;height: 0.4rem"></div>
         </a>
 
     </div>
@@ -163,7 +205,7 @@
             <i class="icon"></i></a>
         </li>
         <li>
-            <div class="col-20">姓名</div>
+            <div class="col-20">姓<span style="opacity: 0">一一</span>名</div>
             <div class="col-60" id="name_div">
 
             </div>
@@ -178,7 +220,7 @@
             <div class="col-20">起保日期</div>
             <div class="col-40" id="date_div">
             </div>
-            <div class="col-40" style="margin-left: -15px;text-align: right">保障7天</div>
+            <div class="col-btn" style="margin-right: 15px;text-align: right">保障7天</div>
         </li>
         <li>
             <div class="col-20">手机号</div>
@@ -191,7 +233,7 @@
             <div class="col-40" id="sendActiveCode_div">
 
             </div>
-            <div class="col-40" style="text-align: right">
+            <div class="col-btn" style="text-align: right">
                 <button id="get_code" class="get_code_btn" onclick="sendCode(this);return false;">获取验证码</button>
             </div>
         </li>
@@ -213,9 +255,7 @@
 <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
 <script src="../../../js/spinner.js"></script>
 <script type="text/javascript">
-//    if (!closeActivity(config.activityEndTime.goHome))
-        autoWidth();
-    //初始化起保日期
+    autoWidth();
     var today = new Date();
     var tomorrow = new Date();
     var tomorrow_milliseconds = today.getTime() + 1000 * 60 * 60 * 24 * 1;
@@ -254,43 +294,9 @@
     $("#mobile_div").append(mobileStr);
     $("#sendActiveCode_div").append(sendActiveCodeStr);
 
-//    initDateRange();
+    //    initDateRange();
     var openId = window.localStorage.getItem(config.openIdName);
-    GetAsyncData("weixinbase/1043", function (backdata) {
-        var data = backdata;
-        // alert("(c)"+data.code+"(t)"+data.timestamp+"(n)"+data.nonceStr+"(s)"+data.signature)
-        wx.config({
-            debug: false,
-            appId: config.appIdValue,   // wx0017a3384b9df4f0
-            timestamp: data.timestamp,
-            nonceStr: data.nonceStr,
-            signature: data.signature,
-            jsApiList: [
-                'checkJsApi',
-                'hideMenuItems',
-                'showMenuItems',
-                'hideAllNonBaseMenuItem'
-            ]
-        });
-    }, {"url": window.location.href.split('#')[0]});
-    wx.ready(function () {
 
-        /*wx.checkJsApi({
-         jsApiList: [
-         'onMenuShareTimeline'
-         ]
-         });*/
-        wx.hideMenuItems({
-            menuList: [
-                'menuItem:share:qq',
-                'menuItem:share:appMessage',
-                'menuItem:share:timeline'
-            ]
-        });
-        wx.error(function (res) {
-            alert('wx.error: ' + JSON.stringify(res));
-        });
-    });
 
     var isShowLoadDialog = false;
 
@@ -301,44 +307,6 @@
         localStorage.setItem("info_insurance_start", $("#insurance_start").val());
         localStorage.setItem("info_mobile", $("#mobile").val());
         localStorage.setItem("info_sendActiveCode", $("#sendActiveCode").val());
-    }
-
-    var uuid = "";
-    var clock;
-    //获取验证码
-    function sendCode(btn) {
-        if (isShowLoadDialog) {
-            return;
-        }
-        var mobile = $.trim($("#mobile").val());
-        if (mobile == "" || mobile.length == 0) {
-            alert("请输入手机号");
-            return;
-        }
-        var nums = 60;
-        btn.innerHTML = nums + ' 秒';
-        $("#get_code").attr("disabled", true);
-        $("#get_code").css("background-color", "#dddddd");
-        clock = setInterval(function () {
-            nums--;
-            if (nums > 0) {
-                btn.innerHTML = nums + ' 秒';
-
-            } else {
-                clearInterval(clock);
-                btn.innerHTML = '获取验证码';
-                $("#get_code").attr("disabled", false);
-                $("#get_code").css("background-color", "rgb(251, 76, 15)");
-                nums = 60;
-            }
-        }, 1000);
-
-        GetAsyncData("Transfer/1011", function (backdata) {
-            var data = backdata.data;
-            //alert("sendCode uuid:" + data.uuid);
-            uuid = data.uuid;
-            console.log(uuid);
-        }, {"mobile": mobile});
     }
 
 

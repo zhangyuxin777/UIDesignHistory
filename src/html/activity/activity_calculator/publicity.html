@@ -50,7 +50,6 @@
     </style>
 
     <style>
-        @charset "utf-8";
         /* CSS Document */
         body, html {
             height: 100%;
@@ -1030,7 +1029,6 @@
 <script src="../../../js/jquery-1.9.1.min.js"></script>
 <script src="../../../js/common-view.js"></script>
 <script type='text/javascript'>
-    closeProduct(109);
     autoWidthCurrent();
     var minHeight = getBgHeight();
     $('.country-wrap').css("height", minHeight);
@@ -1041,7 +1039,6 @@
     });
     $('.wlload').css('width', '100%');
 
-    getOpenId();
     var openId = window.localStorage.getItem(config.openIdName);
     preLoading(['../../../images/activity/app_calculator/star.png',
                 '../../../images/activity/app_calculator/reward.png',
@@ -1078,42 +1075,42 @@
     }
 
     function toResult() {
-        if ($('#fuel').val().length == 0) {
-            alert('请输入百公里耗油数！');
-            return;
-        }
-        if ($('#fuel').val() <= 0) {
-            alert('请输入1-20之间的整数！');
-            return;
-        }
-        if ($('#fuel').val() > 20) {
-            alert('油耗太大啦，坦克车不能参加本次活动哦！请输入20以下的整数！');
-            return;
-        }
-        if ($('#day').val().length == 0) {
-            alert('请输入不开车天数！');
-            return;
-        }
-        if ($('#day').val() <= 0) {
-            alert('请输入1-365之间的整数！');
-            return;
-        }
-        if ($('#day').val() > 365) {
-            alert('对不起，穿越人士无法参与本次活动！请输入1-365之间的的整数！');
-            return;
-        }
-        if ($('#length').val().length == 0) {
-            alert('请输入每天行驶的里程！');
-            return;
-        }
-        if ($('#length').val() <= 0) {
-            alert('请输入1-365之间的整数！');
-            return;
-        }
-        if ($('#length').val() > 1000) {
-            alert('疲劳驾驶可不好哦！请输入1-365之间的整数！');
-            return;
-        }
+//        if ($('#fuel').val().length == 0) {
+//            alert('请输入百公里耗油数！');
+//            return;
+//        }
+//        if ($('#fuel').val() <= 0) {
+//            alert('请输入1-20之间的整数！');
+//            return;
+//        }
+//        if ($('#fuel').val() > 20) {
+//            alert('油耗太大啦，坦克车不能参加本次活动哦！请输入20以下的整数！');
+//            return;
+//        }
+//        if ($('#day').val().length == 0) {
+//            alert('请输入不开车天数！');
+//            return;
+//        }
+//        if ($('#day').val() <= 0) {
+//            alert('请输入1-365之间的整数！');
+//            return;
+//        }
+//        if ($('#day').val() > 365) {
+//            alert('对不起，穿越人士无法参与本次活动！请输入1-365之间的的整数！');
+//            return;
+//        }
+//        if ($('#length').val().length == 0) {
+//            alert('请输入每天行驶的里程！');
+//            return;
+//        }
+//        if ($('#length').val() <= 0) {
+//            alert('请输入1-365之间的整数！');
+//            return;
+//        }
+//        if ($('#length').val() > 1000) {
+//            alert('疲劳驾驶可不好哦！请输入1-365之间的整数！');
+//            return;
+//        }
         sessionStorage.setItem('calculator_fuel', $('#fuel').val());
         sessionStorage.setItem('calculator_day', $('#day').val());
         sessionStorage.setItem('calculator_length', $('#length').val());
@@ -1131,18 +1128,5 @@
         $('.content').css('display', 'block');
     }
 
-    weixinShare({
-        shareUrl: config.shareRootUrl + '/weixinouter/basepage/pages/activity/activity_calculator/publicity.html',
-        shareTitle: '环保星级大比拼',
-        shareText: '我参加环保达人大比拼，赢得100个万金币，你也来试试吧！',
-        onlyWeixin: false,
-        isNeedRecord: true,
-        openId: openId,
-        activityId: '109',
-        typeTimeline: 'zhbx-3',
-        typeAppMessage: 'zhbx-4',
-        isGiveCoin: 'N'
-    });
-    //20161010 yugg 注掉 baiduCollection();
 </script>
 </html>

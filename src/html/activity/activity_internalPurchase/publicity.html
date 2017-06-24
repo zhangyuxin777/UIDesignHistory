@@ -90,13 +90,6 @@
     <script src="../../../js/common.js"></script>
     <script src="../../../js/jweixin-1.0.0.js"></script>
     <script src="../../../js/jquery-1.9.1.min.js"></script>
-    <script type="text/javascript">
-        weixinShare({
-            shareUrl: config.shareRootUrl + '/weixinouter/basepage/pages/activity/activity_internalPurchase/publicity.html',
-            shareText: '东方资产集团旗下员工投保专享三重壕礼',
-            isNeedRecord: false
-        });
-    </script>
 
 </head>
 <body class="hide">
@@ -110,37 +103,23 @@
 </body>
 
 <script type="text/javascript">
-    closeProduct(107);
     autoWidth();
     var fontSize = $('html').css('font-size').substr(0, $('html').css('font-size').length - 2);
     var minHeight = getBgHeight();
     $('.bg').css("height", minHeight);
     $('#btn-div').css("padding-top", minHeight - 0.63 * fontSize);
-    getOpenId();
     var openId = window.localStorage.getItem(config.openIdName);
     var isFocus = false;
     $(function () {
         if (openId != null && openId.length != 0) {
-            GetAsyncData("../../rest/User/1006", function (backData) {
-                isFocus = backData.data.flag;
-                $('.get-btn').addClass('show-btn');
-                $('.detail-btn').addClass('show-btn');
-            }, {"openId": openId});
         } else {
             $('.get-btn').addClass('show-btn');
             $('.detail-btn').addClass('show-btn');
         }
-//        log.print('openId', openId);
-//        log.print('isFocus', isFocus);
-//        log.print('url', config.activity.internalPurchaseUrl + "&linkId=70" + openId);
     });
-    baiduCollection();
     function showDialog() {
-        if (isFocus) {
-            window.location.href = config.activity.internalPurchaseUrl + "&linkId=1070" + openId;
-        } else {
-            showCodeDialog(window.document.location.href.split('basepage')[0] + 'basepage/images/qrCode/qrCode_internalPurchase.jpg');
-        }
+        window.location.href = config.activity.internalPurchaseUrl + "&linkId=1070";
+
     }
 </script>
 </html>

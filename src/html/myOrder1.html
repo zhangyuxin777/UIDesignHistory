@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <title>我的订单</title>
+
+    <link rel="stylesheet" href="../css/myOrder.css">
+    <style>
+
+    </style>
+</head>
+<body class="hide">
+<div class="banner">
+    <div class="bt menu-k bot-red">有效订单</div>
+    <div class="bt menu-l">无效订单</div>
+</div>
+<div id="valid">
+
+    <!--<div class="block">-->
+    <!--<div class="block-banner">-->
+    <!--<span class="text-l">中华健康宝重大疾病保险</span><span class="text-r dz">待支付</span>-->
+    <!--</div>-->
+    <!--<p>订单号:<span>2015456666678888889</span></p>-->
+    <!--<p>保单期限:<span>2016-04-08</span>至<span>2017-04-08</span></p>-->
+    <!--<div class="block-foot">-->
+    <!--<span class="text-l1">保费:<span class="price">¥&nbsp;1886</span></span>-->
+    <!--<span class="text-r2 txt-btn" onclick="orderDet()">查看保单</span>-->
+        <!--<span class="text-r1 txt-btn1" attr="123" onclick="orderCancle(this)">订单撤销</span>-->
+    <!--<span class="text-r txt-btn2" onclick="orderPay()">立即支付</span>-->
+
+    <!--</div>-->
+    <!--</div>-->
+</div>
+<div id="unvalid" class="hide">
+    <!--<div class="block">-->
+    <!--<div class="block-banner">-->
+    <!--<span class="text-l">中华健康宝重大疾病保险</span><span class="text-r gq">已失效</span>-->
+    <!--</div>-->
+    <!--<p>保单号:<span>2345D56666678888889</span></p>-->
+    <!--<p>订单号:<span>2015356666678888889</span></p>-->
+    <!--<p>保单期限:<span>2016-04-08</span>至<span>2017-04-08</span></p>-->
+    <!--<div class="block-foot">-->
+    <!--<span class="text-l1">保费:<span class="price">¥&nbsp;1886</span></span>-->
+    <!--<span class="text-r txt-btn" onclick="orderDet()">查看保单</span>-->
+    <!--</div>-->
+    <!--</div>-->
+</div>
+<div id="load_more" style="text-align: center;font-size:15px;display: none;height: 80px"
+     onclick="load_more()"><p style="padding-top: 30px">点击加载更多</p>
+</div>
+</body>
+</html>
+<script src="../js/jquery-1.9.1.min.js"></script>
+<script src="../js/common.js"></script>
+<script src='../js/spinner.js'></script>
+<script>
+    autoWidth();
+    $("body").css("height",window.screen.height);
+    $(".bt").click(function () {
+        $(this).addClass("bot-red").siblings().removeClass('bot-red');
+        if ($(this).hasClass("menu-k")) {
+            $("#valid").removeClass("hide");
+            $("#unvalid").addClass("hide");
+        } else {
+            $("#valid").addClass("hide");
+            $("#unvalid").removeClass("hide");
+            $("#unvalid").html("");
+            loadOrder("unvalid", 2 ,"");
+        }
+    });
+
+    var type = getUrlParam("type");
+    if(type != null){
+        var openId = getUrlParam("openId");
+    }else{
+        openId = window.localStorage.getItem(config.openIdName);
+    }
+
+    //var openId = "";
+    var page = 1;
+    var pageSize = 30;
+    var haveMore = false;
+    var myData = '';
+    loadOrder("valid", 1 ,"");
+
+    function loadOrder(id, bc,orderId) {
+        showCenterSpinner();
+        GetAsyncData("User/1005", function (backdata) {
+            hideCenterSpinner();
+            if(bc != 3){
+            //alert(JSON.stringify(backdata.data));
+            var rs = backdata.data;
+            var jc = backdata.ocMap;
+            myData = backdata.data;
+            var count = backdata.data.length;
+            var count1 = jc.length;
+            if ((count == null || count == 0 || typeof (count) == "undefined" || count == "") && (count1 == null || count1 == 0 || typeof (count1) == "undefined" || count1 == "")) {
+
+                var noCardHeight = $(window).height() - $('.banner').height() - 1;
+                var htmlStr = "<div id='#no_card_div' style='height: " + noCardHeight + "px;text-align: center; background: #ffffff'>" +
+                        "<img class='no_card_img' src='../images/personal_no_card.png'>" +
+                        "<div style='height: 20px'></div>" +
+                        "<p class='no_card'>暂无订单</p>" +
+                        " </div>";
+                $("#" + id).html(htmlStr);
+            }
+            else {
+                if (count == pageSize) {
+                    haveMore = true;
+                    $("#load_more").css("display", "block");
+                } else {
+                    haveMore = false;
+                    $("#load_more").css("display", "none");
+                }
+                var insureName="";
+                $("#" + id).html("");
+                for (var i in rs) {
+                	insureName="";
+                    if (rs[i].riskCode == "11" || rs[i].riskCode == "12") {
+                        var str = '<span class="text-r txt-btn" rel="' + rs[i].riskCode + '" attr="' + rs[i].policyNo + '" onclick="orderDet(this)">查看保单</span>';
+                    } else {
+                        str = "";
+                    }
+
+                    /* if(rs[i].riskCode=='1953000027'){
+                    	alert();
+                    } */
+                    
+                    if (rs[i].riskCode == "11") {
+                        insureName = "商业险";
+                    } else if (rs[i].riskCode == "12") {
+                        insureName = "交强险";
+                    } else if (rs[i].riskCode == "zx" || rs[i].riskCode == "A0096") {
+                        insureName = "个人交通意外伤害保险(赠)";
+                    }
+                    
+                    
+                    else if (rs[i].riskCode == "A0103") {
+                        insureName = "航空意外险(赠)";
+                    }else if (rs[i].riskCode == "A0170") {
+                    	 insureName = "“四海逍遥”旅游意外险";
+                    	 rs[i].premium=0;
+                    }else if (rs[i].riskCode == "A0172") {
+                    	 insureName = "“步步安心”交通意外险";
+                    	 rs[i].premium=0;
+                    }else if (rs[i].riskCode == "B0041") {
+                    	 insureName = "安租宝家庭财产综合保险";
+                    	 rs[i].premium=0;
+                    }else if (rs[i].riskCode == "B0042") {
+                    	 insureName = "乐居宝家庭财产综合险";
+                    	 rs[i].premium=0;
+                    }
+                    
+                    //非车
+                    else if(rs[i].riskCode=="1953000027"){//交通意外险(步步安心)
+                    	insureName="交通意外险";
+                    }else if(rs[i].riskCode=="1920000109"){//旅游意外险(四海逍遥境内意外险)
+                    	insureName="旅游意外险";
+                    }else if(rs[i].riskCode=="080F"){//家庭财产综合保障险(乐居保)
+                    	insureName="家庭财产综合保障险";
+                    }else if(rs[i].riskCode=="1953000015"){//翱翔无忧航空意外险(翱翔无忧)
+                    	insureName="翱翔无忧航空意外险";
+                    }else if(rs[i].riskCode=="1979000089"){//出入安心驾驶员意外险(出入安心驾驶员意外险)
+                    	insureName="出入安心驾驶员意外险";
+                    }
+
+                    var htmlStr = '<div class="block">' +
+                            '<div class="block-banner">' ;
+                            if(rs[i].riskCode == "A0170"||rs[i].riskCode == "A0172"||rs[i].riskCode == "B0041"||rs[i].riskCode == "B0042")
+                            {
+                            	 htmlStr+=   '<span class="text-l">' +insureName + '</span>' ;
+                            }else{
+                            	 htmlStr+=   '<span class="text-l">' + (rs[i].activityName!=""?(rs[i].activityName+ '-'):"")  + insureName + '</span>' ;
+                            }
+                            htmlStr+= '<span class="text-r" id="state' + bc + i + '"></span>' +
+                            '</div>' +
+                            '<p>保单号:' + rs[i].policyNo + '</p>' +
+                            '<p>订单号:' + rs[i].orderNo + '</p>' +
+                            '<p>保单期限:' + rs[i].startDate + '零时至' + rs[i].endDate + '零时</p>' +
+                            '<div class="block-foot">' +
+                            '<span class="text-l1">保费:<span class="price">¥&nbsp;<span id="price">' + rs[i].premium + '</span></span></span>' +
+                            str +
+                            '</div>' +
+                            '</div>';
+
+                    $("#" + id).append(htmlStr);
+
+                    if (rs[i].bdstatus == "protecting") {
+                        $("#state" + bc + i).text("保障中");
+                        $("#state" + bc + i).addClass("bz");
+                    } else if (rs[i].bdstatus == "waitprotect") {
+                        $("#state" + bc + i).text("已承保");
+                        $("#state" + bc + i).addClass("dz");
+                    } else if (rs[i].bdstatus == "faild") {
+                        $("#state" + bc + i).text("已失效");
+                        $("#state" + bc + i).addClass("gq");
+                    }
+                }
+
+                for (var j in jc) {
+                    var substr = "";
+                    var cm = "";
+                    var pm = "寿险";
+                    if (jc[j].bdstatus == "protecting" || jc[j].bdstatus == "waitprotect" || jc[j].bdstatus == "faild" || jc[j].bdstatus == "exit" || jc[j].bdstatus == "cancle") {
+                        substr = '<span class="text-r txt-btn oc" attr_val="' + jc[j].mongdbId + '" attr="' + jc[j].id + '" onclick="orderDet(this)">查看保单</span>';
+                    } else if (jc[j].bdstatus == "waitpay") {
+                        substr = '<span class="text-r2 txt-btn oc" attr_val="' + jc[j].mongdbId + '" attr="' + jc[j].id + '" onclick="orderDet(this)">查看保单</span>' +
+                                '<span class="text-r1 txt-btn1" attr="' + jc[j].id + '" onclick="orderCancle(this)">订单撤销</span>'+
+                                '<span class="text-r txt-btn2" attr_val="' + jc[j].mongdbId + '" attr="' + jc[j].id + '" onclick="orderPay(this)">立即支付</span>';
+
+                    }
+                    if (jc[j].productcode == "F0016A") {
+                        cm = "健康宝重大疾病保险";
+                    } else if (jc[j].productcode == "F0015C") {
+                        cm = "好保宝少儿重疾险";
+                    } else if (jc[j].productcode == "C0016A") {
+                        cm = "自由行两全保险";
+                    }
+                    var htmlStr1 = '<div class="block">' +
+                            '<div class="block-banner">' +
+                            '<span class="text-l">' + cm + '-' + pm + '</span>' +
+                            '<span class="text-r" id="stated' + bc + j + '"></span>' +
+                            '</div>' +
+                            '<p>保单号:' + jc[j].policyNo + '</p>' +
+                            '<p>订单号:' + jc[j].id + '</p>' +
+                            '<p>保障期限:' + jc[j].beginDate + '零时至' + jc[j].endDate + '零时</p>' +
+                            '<div class="block-foot">' +
+                            '<span class="text-l1">保费:<span class="price">¥&nbsp;<span id="price">' + jc[j].totCost + '</span></span></span>' + substr +
+                            '</div>' +
+                            '</div>';
+
+                    $("#" + id).append(htmlStr1);
+                    if (jc[j].bdstatus == "protecting") {
+                        $("#stated" + bc + j).text("保障中");
+                        $("#stated" + bc + j).addClass("bz");
+                    } else if (jc[j].bdstatus == "waitprotect") {
+                        $("#stated" + bc + j).text("已承保");
+                        $("#stated" + bc + j).addClass("dz");
+                    } else if (jc[j].bdstatus == "waitpay") {
+                        $("#stated" + bc + j).text("待支付");
+                        $("#stated" + bc + j).addClass("dz");
+                    } else if (jc[j].bdstatus == "faild") {
+                        $("#stated" + bc + j).text("已失效");
+                        $("#stated" + bc + j).addClass("gq");
+                    } else if (jc[j].bdstatus == "exit") {
+                        $("#stated" + bc + j).text("已退保");
+                        $("#stated" + bc + j).addClass("gq");
+                    } else if (jc[j].bdstatus == "cancle") {
+                        $("#stated" + bc + j).text("已撤单");
+                        $("#stated" + bc + j).addClass("gq");
+                    }
+                }
+            }
+        }else{
+                loadOrder("valid", 1 ,"");
+            }
+
+        }, {"openId": openId, "businessCode": bc,"policyNo": orderId, "page": page, "pageSize": pageSize});
+
+    }
+
+    var sc = sessionStorage.getItem("scrol");
+    if(sc != null){
+        $("body").scrollTop(sc);
+    }
+    var tur = true;
+    window.onscroll = function(){
+        if(tur){
+            tur = false;
+            setTimeout(scrol(),1000);
+        }else{
+
+        }
+    };
+    function scrol(){
+        tur = true;
+        sessionStorage.setItem("scrol", scroll.getScrollTop());
+    }
+    baiduCollection();
+
+    function load_more() {
+        var isv = 1;
+        if ($("#valid").hasClass("hide")) {
+            isv = 2;
+        }
+        if (haveMore) {
+           $("#load_more").css("display", "none");
+            showBottomSpinner($('#valid'));
+            page++;
+            if (isv == 1) {
+                loadOrder("valid", 1,"");
+            } else {
+                loadOrder("unvalid", 2,"");
+            }
+        }
+    }
+
+    function splitMoney(moneyNumber) {
+        moneyNumber = moneyNumber.trim();
+        var value1 = moneyNumber.split('.')[0];
+        var value2 = moneyNumber.split('.')[1];
+        var splitValue = value1.split('').reverse().join('').replace(/(\d{3})/g, '$1,').replace(/\,$/, '').split('').reverse().join('');
+        if (value2 != undefined && value2 != " " && value2 != null) {
+            splitValue += ".";
+            splitValue += value2;
+        }
+//        alert(splitValue);
+        return splitValue;
+    }
+
+    function expendDetail(btn) {
+        var index = $(btn).attr('id').substring(10, $(btn).attr('id').length);
+        if ($("#detail" + index).hasClass('hide')) {
+            $("#detail" + index).removeClass("hide");
+            $(btn).removeClass('add_btn');
+            $(btn).addClass('delete_btn');
+        } else {
+            $("#detail" + index).addClass("hide");
+            $(btn).removeClass('delete_btn');
+            $(btn).addClass('add_btn');
+        }
+    }
+
+    function orderDet(btn) {
+        if ($(btn).hasClass("oc") || $(btn).attr("rel") == "11" || $(btn).attr("rel") == "12") {//寿险 ,商业险 , 交强险
+            if ($(btn).hasClass("oc")) {
+                sessionStorage.setItem("orderNo", $(btn).attr("attr"));
+                sessionStorage.setItem("mongdbId", $(btn).attr("attr_val"));
+            }
+            if ($(btn).attr("rel") == "11" || $(btn).attr("rel") == "12") {
+                sessionStorage.setItem("orderNo", $(btn).attr("attr"));
+                sessionStorage.setItem("mongdbId", "");
+            }
+            if(type != null){
+                window.location.href = "orderDetail.html?openId="+openId+"&type="+type;
+            }else{
+                window.location.href = "orderDetail.html";
+            }
+
+        } else {
+            alert("赠险暂无详情!");
+        }
+
+    }
+
+    function orderPay(pay) {
+        sessionStorage.setItem("policyNo", $(pay).attr("attr"));
+        sessionStorage.setItem("mongdb", $(pay).attr("attr_val"));
+        sessionStorage.setItem("fromOrder", "1");
+        sessionStorage.setItem("price", $(pay).siblings().find("#price").text());
+        if(type != null){
+            window.location.href = "product/payInfo.html?openId="+openId+"&type="+type;
+        }else{
+            window.location.href = "product/payInfo.html";
+        }
+    }
+
+    function orderCancle(cancle){
+        if(confirm("是否确认撤销该订单?")){
+            var orId = $(cancle).attr("attr");
+            console.log(orId);
+            loadOrder("valid", 3 ,orId);
+
+        }
+
+    }
+</script>
+
+
+
+
+

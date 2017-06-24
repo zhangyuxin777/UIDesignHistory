@@ -142,20 +142,6 @@
         $('.bg').css("height", $(window).height());
         $('body').removeClass('hide');
 
-        baiduCollection();
-        closeActivity(config.activityEndTime.mothersDay);
-    });
-
-    weixinShare({
-        shareUrl: config.shareRootUrl + '/weixinouter/basepage/pages/activity/activity_holiday/mothersDayPublicity.html',
-        shareIcon: config.shareRootUrl + '/weixinouter/basepage/images/mothersDay/share_icon.jpg',
-        shareText: '免费送你20万意外保障，五一带妈安心出游',
-        isNeedRecord: true,
-        openId: openId,
-        activityId: '5',
-        typeTimeline: 'zhbx-3',
-        typeAppMessage: 'zhbx-4',
-        isGiveCoin: 'Y'
     });
 
     //显示灰色 jQuery 遮罩层

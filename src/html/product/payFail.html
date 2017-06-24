@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+    <title>投保结果</title>
+    <style>
+        ol, ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            background-color: #ffffff;
+        }
+
+        a {
+            text-decoration: none;
+            outline: none;
+            color: rgb(25%, 25%, 25%);
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        a:hover {
+            text-decoration: none;
+        }
+
+        div, h1, h2, h3, h4, h5, p {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Microsoft YaHei', 'Hiragino Sans GB', Helvetica, Arial, 'Lucida Grande', sans-serif;
+            width: 3.2rem;
+            margin: 0 auto;
+            font-size: .12rem;
+            background-color: #fff;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .hide {
+            display: none;
+        }
+
+        .clear {
+            clear: both;
+        }
+
+        .margin-t-20 {
+            margin-top: 0.2rem;
+        }
+
+        .pay-btn {
+            height: 0.35rem;
+            line-height: 0.35rem;
+            background-color: #00a8fa;
+            color: #ffffff;
+            text-align: center;
+            border-radius: 0.03rem;
+            width: 0.9rem;
+            float: right;
+            font-size: 0.14rem;
+        }
+
+        .leave-btn {
+            height: 0.35rem;
+            line-height: 0.35rem;
+            background-color: #F39A0F;
+            color: #ffffff;
+            text-align: center;
+            border-radius: 0.03rem;
+            width: 0.9rem;
+            float: left;
+            font-size: 0.14rem;
+        }
+
+        .img-div {
+            float: left;
+            width: 33%;
+            text-align: right;
+        }
+
+        .img-div img {
+            width: 0.6rem;
+        }
+
+        .title-div {
+            float: left;
+            width: 65%;
+            text-align: left;
+            height: 100%;
+            line-height: 1rem;
+            color: #F39A0F;
+            font-size: 0.18rem;
+        }
+
+        .result-div {
+            line-height: 0.25rem;
+            font-size: 0.14rem;
+            margin-top: 0.2rem;
+            margin-left: 0.5rem;
+        }
+
+        .grey {
+            color: #606060;
+        }
+
+        .btn-div {
+            text-align: center;
+            width: 2.2rem;
+            margin: 0.5rem auto;
+        }
+
+        .font-size-10 {
+            font-size: 0.12rem;
+        }
+
+    </style>
+</head>
+<body class="hide">
+<div style="margin-top: 0.5rem">
+    <div class="img-div">
+        <img src="../../images/fail_logo.jpg">
+    </div>
+    <div class="title-div">
+        <span>&nbsp;&nbsp;对不起，支付失败!</span>
+    </div>
+    <div class="clear"></div>
+</div>
+<div class="result-div">
+    <div>尊敬的用户<span id="name"></span>：</div>
+    <div class="grey font-size-10">您投保的订单支付失败,请重新支付</div>
+    <div class="margin-t-20">支付失败原因：</div>
+    <div class="grey font-size-10" id="reason"></div>
+</div>
+<div class="btn-div">
+    <div class="leave-btn" onclick="leave()">
+        确认离开
+    </div>
+    <div class="pay-btn" onclick="toPay()">
+        继续支付
+    </div>
+    <div class="clear"></div>
+</div>
+
+</body>
+<script src="../../js/jquery-1.9.1.min.js"></script>
+<script src='../../js/jweixin-1.0.0.js'></script>
+<script src="../../js/common.js"></script>
+<script type="text/javascript">
+    autoWidth();
+    var type = getUrlParam("type");
+    if(type != null){
+        var openId = getUrlParam("openId");
+    }else{
+        openId = window.localStorage.getItem(config.openIdName);
+    }
+    var insureInfo = JSON.parse(sessionStorage.getItem('insureInfo'));
+    var shareUrl = '';
+    try {
+        $('#name').text(insureInfo.pay.insuredName);
+        $('#reason').text(insureInfo.pay.msg);
+        shareUrl = insureInfo.pay.shareUrl;
+    }
+    catch (e) {
+    }
+    weixinCloseShare();
+    baiduCollection();
+
+    function toPay() {
+        if(type != null){
+            window.location.href = 'payInfo.html?openId='+ openId + 'type='+type;
+        }else{
+            window.location.href = "payInfo.html";
+        }
+    }
+    function leave() {
+        if (insureInfo != null && insureInfo.insured != null) {
+            insureInfo.pay = {};
+            sessionStorage.setItem('insureInfo', JSON.stringify(insureInfo));
+            if (insureInfo.order.ProductCode == 'F0016A') {
+                window.location.href = "dreadDisease100/trial.html";
+            } else if (insureInfo.order.ProductCode == 'F0015C') {
+                window.location.href = "DDJR/trial.html";
+            } else if (insureInfo.order.ProductCode == 'C0016A') {
+                if(type != null){
+                    window.location.href = 'freeRide/trial.html?openId='+ openId + 'type='+type;
+                }else{
+                    window.location.href = "freeRide/trial.html";
+                }
+            } else {
+                if(type != null){
+                    window.location.href = '../myOrder1.html?openId='+ openId + 'type='+type;
+                }else{
+                    window.location.href = "../myOrder1.html";
+                }
+
+            }
+        }
+    }
+</script>
+</html>

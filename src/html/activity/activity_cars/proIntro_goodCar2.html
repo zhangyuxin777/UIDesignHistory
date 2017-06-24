@@ -112,40 +112,13 @@
 <script src="../../../js/jquery-1.9.1.min.js"></script>
 
 <script type="text/javascript">
-    closeProduct(110);
     autoWidth();
     var fontSize = $('html').css('font-size').substr(0, $('html').css('font-size').length - 2);
     var minHeight = getBgHeight();
     $('body').css("height", minHeight);
     var type = getUrlParam("type");
-    if(type != null){
-        var openId = getUrlParam("openId");
-    }else{
-        getOpenId();   //获取openid
-        openId = window.localStorage.getItem(config.openIdName);
-    }
     var isFocus = false;
-    $(function () {
-        if (openId != null && openId.length != 0) {
-            GetAsyncData("../../rest/User/1006", function (backData) {
-                isFocus = backData.data.flag;
-            }, {"openId": openId});
-        } else {
-        }
-        baiduCollection();
-    });
 
-    weixinShare({
-        shareUrl: config.shareRootUrl + '/weixinouter/basepage/pages/activity/activity_cars/proIntro_goodCar2.html',
-        shareIcon: config.shareRootUrl + '/weixinouter/basepage/images/cars/proIntro_goodCar/share-icon.jpg',
-        shareText: '中华好车-中华财险高端车险品牌',
-        isNeedRecord: true,
-        openId: openId,
-        activityId: '110',
-        typeTimeline: 'zhbx-3',
-        typeAppMessage: 'zhbx-4',
-        isGiveCoin: 'Y'
-    });
 
     function showDialog() {
         if (isFocus) {

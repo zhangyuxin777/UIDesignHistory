@@ -295,15 +295,13 @@
 <script src="../../../js/jquery-1.9.1.min.js"></script>
 
 <script type="text/javascript">
-    closeProduct(109);
     autoWidth();
     var fontSize = $('html').css('font-size').substr(0, $('html').css('font-size').length - 2);
     var minHeight = getBgHeight();
     $('.bg').css("height", minHeight);
 
-    getOpenId();
     var openId = window.localStorage.getItem(config.openIdName);
-    var carbon = getUrlParam('carbon');
+    var carbon = 0;
     var tree = Math.ceil(carbon / 1830 * 80);
     var percent = '70%';
     var levelText = '三';
@@ -328,18 +326,5 @@
     function toTest() {
         window.location.href = "publicity.html";
     }
-    weixinShare({
-        shareUrl: config.shareRootUrl + '/weixinouter/basepage/pages/activity/activity_calculator/share.html?carbon=' + carbon,
-        shareTitle: '环保星级大比拼',
-        shareText: '我的环保星级是' + levelText + '星，快来测试一下你的环保星级吧！',
-        onlyWeixin: false,
-        isNeedRecord: true,
-        openId: openId,
-        activityId: '109',
-        typeTimeline: 'zhbx-3',
-        typeAppMessage: 'zhbx-4',
-        isGiveCoin: 'N'
-    });
-   // baiduCollection();
 </script>
 </html>

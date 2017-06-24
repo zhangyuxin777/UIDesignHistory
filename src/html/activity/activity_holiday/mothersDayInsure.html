@@ -52,12 +52,12 @@
         }
 
         .col-20 {
-            width: 19.9%;
+            width: 21.9%;
             float: left;
         }
 
         .col-40 {
-            width: 39.9%;
+            width: 37.9%;
             float: left;
         }
 
@@ -91,8 +91,8 @@
         }
 
         .enter_btn {
-            height: 0.5rem;
-            line-height: 0.5rem;
+            height: 0.4rem;
+            line-height: 0.4rem;
             background-color: rgb(251, 76, 15);
             color: #ffffff;
             text-align: center;
@@ -134,10 +134,11 @@
         }
 
         .icon {
-            width: 0.15rem;
-            height: 0.15rem;
+            width: 0.1rem;
+            height: 0.1rem;
             float: right;
-            margin-top: 0.14rem;
+            margin-top: 0.165rem;
+            margin-right: 0.03rem;
             background: url("../../../images/activity/mothersDay/right.png") no-repeat;
             background-size: contain;
         }
@@ -274,7 +275,7 @@
         </li>
 
         <li class="">
-            <div class="col-20">姓名</div>
+            <div class="col-20">姓<span style="opacity: 0">一</span>名</div>
             <div class="col-60" id="name_div">
 
             </div>
@@ -297,7 +298,7 @@
 
             </div>
             <div class="col-40" style="text-align: right">
-                <button id="get_code" class="get_code_btn disable" onclick="sendCode(this);return false;">获取验证码</button>
+                <button id="get_code" class="get_code_btn" onclick="sendCode(this);return false;">获取验证码</button>
             </div>
         </li>
 
@@ -323,11 +324,6 @@
     var clock;
     var tomorrow = new Date();
     var isFocus = false;
-    if (openId != null && openId.length != 0) {
-        GetAsyncData("../../rest/User/1006", function (backData) {
-            isFocus = backData.data.flag;
-        }, {"openId": openId});
-    }
     $(function () {
         var today = new Date();
         var tomorrow_milliseconds = today.getTime() + 1000 * 60 * 60 * 24 * 1;
@@ -354,21 +350,8 @@
         autoWidth();
         $('body').removeClass('hide');
 
-        baiduCollection();
-        closeActivity(config.activityEndTime.mothersDay);
     });
 
-    weixinShare({
-        shareUrl: config.shareRootUrl + '/weixinouter/basepage/pages/activity/activity_holiday/mothersDayPublicity.html',
-        shareIcon: config.shareRootUrl + '/weixinouter/basepage/images/mothersDay/share_icon.jpg',
-        shareText: '免费送你20万意外保障，五一带妈安心出游',
-        isNeedRecord: true,
-        openId: openId,
-        activityId: '105',
-        typeTimeline: 'zhbx-3',
-        typeAppMessage: 'zhbx-4',
-        isGiveCoin: 'Y'
-    });
 
     function saveData() {
         sessionStorage.setItem("info_name", $("#name").val());
@@ -404,12 +387,6 @@
             }
         }, 1000);
 
-        GetAsyncData("../../rest/Transfer/1011", function (backdata) {
-            var data = backdata.data;
-            //alert("sendCode uuid:" + data.uuid);
-            uuid = data.uuid;
-            console.log(uuid);
-        }, {"mobile": mobile});
     }
 
     function judge() {
@@ -426,10 +403,9 @@
     }
 
     function commit() {
-        if (!isFocus) {
-            showCodeDialog();
-            return;
-        }
+        window.location.href = "mothersDaySuccess.html";
+        return;
+
         var name = $.trim($("#name").val());
         var number = $.trim($("#identifyNumber").val());
         var mobile = $.trim($("#mobile").val());
@@ -468,45 +444,6 @@
             return;
         }
 
-        if ($.trim(code)) {
-            showCenterSpinner();
-            GetAsyncData("../../rest/Transfer/1012", function (backdata) {
-                var data = backdata.data;
-                if (data.resultCode != "0000") {
-                    hideCenterSpinner();
-                    alert("验证码不正确，请重新获取！");
-                } else {
-                    GetAsyncData("../../rest/Transfer/1013", function (backdata) {
-                        console.log(JSON.stringify(backdata));
-//                        alert(backdata.data.resultcode);
-                        if (backdata.data.resultcode == "0001") {
-                            alert(backdata.msg);
-                            hideCenterSpinner();
-                        } else if (backdata.code == 0 && backdata.data.resultcode == "0002") {
-
-                            window.location.href = "mothersDaySuccess.html?first=0";
-                            window.sessionStorage.setItem("mother_name", "");
-                        } else if (backdata.code == 0 && backdata.data.resultcode == "0000") {
-                            var data = backdata.data;
-                            window.location.href = "mothersDaySuccess.html?first=1";
-                            window.sessionStorage.setItem("mother_name", name);
-                        } else {
-                            alert('投保失败');
-                            hideCenterSpinner();
-                        }
-                    }, {
-                        "openid": "1050" + openId,
-                        "productcode": "2014080001",
-                        "combocode": "012016042601",
-                        "cooperatecode": "000209",
-                        "insuredname": name,
-                        "identifynumber": number,
-                        "insuranceStart": tomorrow.format("yyyy-MM-dd"),
-                        "mobile": mobile
-                    });
-                }
-            }, {"checkCode": code, "uuid": uuid});
-        }
     }
 </script>
 </html>

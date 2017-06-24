@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport"
+	content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+<style type="text/css">
+.loading {
+	display: none;
+}
+
+.loading img {
+	width: .6rem;
+	height: .6rem;
+	display: block;
+	margin: 5rem auto 0;
+}
+</style>
+
+<style type="text/css">
+.mask1 {
+	position: absolute;
+	top: 0px;
+	filter: alpha(opacity = 60);
+	background-color: #777;
+	z-index: 1002;
+	left: 0px;
+	opacity: 0.5;
+	-moz-opacity: 0.5;
+}
+</style>
+<title>抽奖</title>
+</head>
+<link rel="stylesheet" type="text/css" href="../css/common-c.css"/>
+	<link rel="stylesheet" type="text/css" href="../css/index.css"/>
+	<body>
+<input type="hidden" id="protype" />
+<input type="hidden" id="proid" />	
+		<div class="header">
+			<img src="../images/header.png"/>
+		</div>
+		<div class="luckyDrow" id="luckyDrow">
+			<img style="width: 6.4rem;" src="../images/luckyBg.png"/> 
+		</div>
+		<div class="center">
+			<a id="share"><img src="../images/center1.png"/></a><!--分享好友-->
+			<a href="#" onclick="towanshan()"><img src="../images/center2.png"/></a><!--完善信息-->
+			<a href="#" onclick="tobuy()"><img src="../images/center3.png"/></a><!--购买商品-->
+			<a href="#" onclick="getuserwjb()" ><img src="../images/center4.png"/></a><!--兑换奖品-->
+			<p>中奖名单</p>
+			<!--滚动-->
+			<div class="Top_Record">
+			    <div class="topRec_List">
+			        <div class="maquee" style="height: 2rem;">
+						<ul id="listLuck">
+						</ul>
+			      	</div>
+			    </div>
+			</div>
+		</div>
+		<div class="bottom">
+			<img class="hudiejie" src="../images/hudiejie.png"/>
+			<img class="yellowLine" src="../images/yellowLine.png"/>
+			<ul>
+                <li>• 福利节期间每位用户免费享有1次抽奖机会</li> 
+                <li>• 每日分享好友或朋友圈可获1次抽奖机会</li> 
+                <li>• 完善个人信息可获1次抽奖机会</li> 
+                <li>• 购买产品可获1次抽奖机会,且奖品升级</li> 
+               <li>• 消费18个万金币可获1次抽奖机会</li>
+               <li>• 用户抽中的万金币、优惠券、礼品等将实时发放到个人中心对应的帐户中。</li>
+            </ul>
+		</div>
+		
+		<!--mask-->
+		<div class="alertBg">
+			<!--万金币不足-->
+			<div class="LackOfGold">
+				<p>您的万金币不足，每次抽奖须消耗18个万金币。</p>
+				<a class="enter" href="#" onclick="noten()" >确定</a>
+			</div>
+			<!--继续抽奖-->
+			<div class="goOn">
+				<p>抽奖需要扣除18个万金币，继续抽奖？</p>
+				<span class="no" onclick="closeLunckDropW()" >取消</span>
+				<span class="yes" onclick="addonechange()">确定</span>
+			</div>
+			<!--中奖-->
+			<div class="winning">
+				<img src="../images/zj.png"/>
+				<p>奖品是 <span  id="showprized">50元中粮为买网电子购物卡</span></p>
+				<p>奖品将发放至您的个人账户</p>
+				<a class="enter" href="###"   onclick="prizesend()">确定</a>
+			</div>
+			<!--大礼包弹框-->
+			<div class="Spree">
+				<img src="../images/dlb.png"/>
+				<p>奖品是 <span>50元中粮为买网电子购物卡</span></p>
+				<p>奖品将发放至您的个人账户</p>
+				<a class="enter" href="###">确定</a>
+			</div>
+			<div class="share">
+				<div class="btn"></div>
+			</div>
+			
+			<div class="loading"><!-- <img src="../images/loading.gif"/> --></div>
+			
+			<!--兑换成功-->
+			<div class="changesuccess">
+				<p align="center">兑换成功</p>
+				<a class="enter" href="#" onclick="changechangesuccesshide()" >确定</a>
+			</div>
+			
+			
+			<!--万金币不足-->
+			<div class="changefail">
+				<p align="center">万金币不足。</p>
+				<a class="enter" href="#" onclick="changefailhide()" >确定</a>
+			</div>
+			
+		</div>
+		
+		<div id="mask" class="mask1"></div>    
+		
+	</body>
+	<script src="../js/common.js"></script>
+    <script src="../js/jweixin-1.0.0.js"></script>
+    <script src="../js/jquery-1.9.1.min.js"></script>
+	<script src="../js/jquery-1.7.2.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../js/rem.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../js/common.js" type="text/javascript" charset="utf-8"></script>
+	<!--<script src="js/scroll.js" type="text/javascript" charset="utf-8"></script>-->
+	<script type="text/javascript">
+      var openId = window.localStorage.getItem(config.openIdName);
+    if(openId==null || openId==""){
+    	getOpenId();
+    }
+    openId=window.localStorage.getItem(config.openIdName); 
+		$(function(){
+			$('.luckyDrow').load('luckyDrow.html');
+			$('.alertBg').bind("touchmove", function (e) {
+	    		e.preventDefault();
+			});
+			
+			setInterval('autoScroll(".maquee")',3000);
+			
+			$('#share').click(function(){
+				
+				 var obj = $("#luckyDrow #turnstatus").val();
+		    	   if(obj=="1"){
+		    		   alert("抽奖中。。。。。");
+		    		   return false;
+		    	   }
+				
+				$('.alertBg').show();
+				$('.share').show();
+			});
+			$('.share .btn').click(function(){
+				$('.alertBg').hide();
+				$('.share').hide();
+			});
+			
+			baiduCollection();
+			
+		});
+		function autoScroll(obj){  
+			$(obj).find("ul").animate({  
+				marginTop : "-.4rem"  
+			},500,function(){  
+				$(this).css({marginTop : "0px"}).find("li:first").appendTo(this);  
+			})  
+		}
+		
+		
+		function changePrz(){
+				$('.alertBg').show();
+				$('.LackOfGold').show();
+		}
+		
+		
+		function noten(){
+			$('.alertBg').hide();
+			$('.LackOfGold').hide();
+			reload();
+		}
+		
+		
+		function closeLunckDropW(){
+			$('.alertBg').hide();
+			$('.goOn').hide();
+			reload();
+		}
+		
+		/*******
+			消耗万金币兑换抽奖机会		    
+		********/
+		function addonechange(){
+            var obj = new Object();
+            obj.openId=openId;
+            obj.wjb="18";
+            $.ajax({
+	            async: false,
+	            url:'../../rest/User/7001',
+	            type: 'POST',
+	            data: JSON.stringify({"openId": openId}),
+	            contentType: "application/json",
+	            dataType: 'json',
+	            success: function (backData) {
+	            	closeLunckDropW();
+	            	if(backData.status=="1"){
+	            		changefailshow();
+	            	}else{
+	            		changechangesuccessshow();
+	            	}
+	            	return backData;
+	            },
+	            error: function (x, y, z) {
+	            	closeLunckDropW();
+	                return false;
+	            }
+	        });			
+			
+		}
+		
+		function getuserwjb(){
+	    	   var obj = $("#luckyDrow #turnstatus").val();
+	    	   if(obj=="1"){
+	    		   alert("抽奖中。。。。。");
+	    		   return false;
+	    	   }
+			$.ajax({
+	            async: false,
+	            url:'../../rest/User/7000',
+	            type: 'POST',
+	            data: JSON.stringify({"openId": openId}),
+	            contentType: "application/json",
+	            dataType: 'json',
+	            beforeSend:function(){
+	            	showloading();
+	    		},
+	            success: function (backData) {
+	            	var wjb = backData.availableAmount;
+	            	//万金币不足
+	            	if(wjb<18){
+	            		changePrz();
+	            	}else{
+	            		 closeloading();
+	            	    $('.alertBg').show();
+	    				$('.goOn').show();
+	            	}
+	            	
+	            	
+	            },
+	            error: function (x, y, z) {
+	               closeloading();
+	                return false;
+	            }
+	        });			
+			
+			
+		}
+		
+		function showloading(){
+			$('.alertBg').show();
+			$('.loading').show();
+		
+		}
+		function closeloading(){
+			$('.alertBg').hide();
+			$('.loading').hide();
+		}
+		
+		//兼容火狐、IE8   
+	    //显示遮罩层    
+	    function showMask(){     
+	        $("#mask").css("height",$(document).height());     
+	        $("#mask").css("width",$(document).width());     
+	        $("#mask").show();     
+	    }  
+	    //隐藏遮罩层  
+	    function hideMask(){     
+	          
+	        $("#mask").hide();     
+	    }  
+		
+	    
+	    function changefailshow(){
+	    	$('.alertBg').show();
+			$('.changefail').show();
+	    }
+	    
+	    function changefailhide(){
+	    	$('.alertBg').hide();
+			$('.changefail').hide();
+			reload();
+	    }
+	    
+	    
+	    
+	    function changechangesuccessshow(){
+	    	$('.alertBg').show();
+			$('.changesuccess').show();
+	    }
+	    
+	    function changechangesuccesshide(){
+	    	$('.alertBg').hide();
+			$('.changesuccess').hide();
+	    }
+	    
+	    weixinShare({
+	        shareUrl: config.shareRootUrl + '/weixinouter/basepage/pages/luckindex.html',
+//	        shareIcon: config.shareRootUrl + '/weixinouter/basepage/images/activity/lifeOnLine/share_icon.jpg',
+	        shareTitle: '万联金网保险狂欢惠不可挡',
+	        shareText: '万联金网保险狂欢惠不可挡!',
+	        shareTimelineText: '万联金网保险狂欢惠不可挡',
+	        isNeedRecord: true,
+	        openId: openId,
+	        activityId: '0927',
+	        typeTimeline: 'zhbx-3',
+	        typeAppMessage: 'zhbx-4',
+	        isGiveCoin: 'N'
+	    });
+
+	    
+	    function getluckuser(){
+	    	
+	    	$.ajax({
+	            async: true,
+	            url:'../../rest/weixin_new/luck_draw/luck_user',
+	            type: 'POST',
+	            contentType: "application/json",
+	            dataType: 'json',
+	            success: function (backData) {
+	            	for (var i = 0; i < backData.length;i++) {
+	            		
+	            		var name = backData[i].channelUserName;
+	            		if(name.length>8){
+	            			name = name.substring(0,8)+"..";
+	            		}
+	            		
+	            		$("#listLuck").append("<li><i>"+name+"</i><span>"+backData[i].prizeName+"</span></li>");
+					}
+	            },
+	            error: function (x, y, z) {
+	                return false;
+	            }
+	        });			
+	    	
+	    }
+	    $(document).ready(function(){
+	    	getluckuser();
+	    });
+	    
+	  
+	    
+	    function showzj(type,priz){
+	    	
+	    	$("#showprized").html(priz);
+	    	
+	    }
+	    
+	    
+	    function getlo(type,id,name){
+	    	$("#showprized").html(name);
+	    	$("#protype").val(type);
+	    	$("#proid").val(id);
+	    	$('.alertBg').show();
+			$('.winning').show();
+	    }
+	    
+	    function prizesend(){
+	    	$('.alertBg').hide();
+			$('.winning').hide();
+			reload();
+	    }
+	    
+	    
+	    function reload(){
+	    	$('.luckyDrow').load('luckyDrow.html');
+	    	getluckuser();
+	    }
+	    
+	    
+	    function toshowchance(){
+	    	$.ajax({
+	            async: false,
+	            url:'../../rest/User/7000',
+	            type: 'POST',
+	            data: JSON.stringify({"openId": openId}),
+	            contentType: "application/json",
+	            dataType: 'json',
+	            beforeSend:function(){
+	            	showloading();
+	    		},
+	            success: function (backData) {
+	            	var wjb = backData.availableAmount;
+	    	    	if(wjb>18||wjb==18){
+	    	    		$('.alertBg').show();
+	    				$('.goOn').show();
+	    	    	}else{
+	    	    		changefailshow();
+	    	    	}
+	            	return wjb;
+	            },
+	            error: function (x, y, z) {
+	               closeloading();
+	                return false;
+	            }
+	        });			
+	    	
+	    }
+	    
+	    function towanshan(){
+	    	 var obj = $("#luckyDrow #turnstatus").val();
+	    	   if(obj=="1"){
+	    		   alert("抽奖中。。。。。");
+	    		   return false;
+	    	   }
+	    	window.location.href="user/mine.html";
+	    	
+	    }
+	    
+	    
+	    function tobuy(){
+	    	 var obj = $("#luckyDrow #turnstatus").val();
+	    	   if(obj=="1"){
+	    		   alert("抽奖中。。。。。");
+	    		   return false;
+	    	   }
+	    	window.location.href="productList.html";
+	    	
+	    }
+	    
+	</script>
+</html>

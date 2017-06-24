@@ -39,7 +39,6 @@
             margin-left: -1.07rem;
             bottom: 0.3rem;
             z-index: 8;
-            opacity: 0;
         }
 
         .show-btn {
@@ -122,43 +121,13 @@
     autoWidth();
     $('.bg').css("height", $(window).height());
     $('body').removeClass('hide');
-    getOpenId();
     var openId = window.localStorage.getItem(config.openIdName);
     var isFocus = false;
 
-    $(function () {
-        if (openId != null && openId.length != 0) {
-            GetAsyncData("../../rest/User/1006", function (backData) {
-                isFocus = backData.data.flag;
-                $('.get-btn').addClass('show-btn');
-            }, {"openId": openId});
-        } else {
-            $('.get-btn').addClass('show-btn');
-        }
-        baiduCollection();
-        closeActivity(config.activityEndTime.mothersDay);
-    });
-
-    weixinShare({
-        shareUrl: config.shareRootUrl + '/weixinouter/basepage/pages/activity/activity_holiday/mothersDayPublicity.html',
-        shareIcon: config.shareRootUrl + '/weixinouter/basepage/images/mothersDay/share_icon.jpg',
-        shareText: '免费送你20万意外保障，五一带妈安心出游',
-        isNeedRecord: true,
-        openId: openId,
-        activityId: '105',
-        typeTimeline: 'zhbx-3',
-        typeAppMessage: 'zhbx-4',
-        isGiveCoin: 'Y'
-    });
 
 
     function showDialog() {
-        if (isFocus) {
-            window.location.href = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=" + config.appIdValue + "&redirect_uri=" + config.shareRootUrl + "/weixinouter/basepage/pages/activity/activity_holiday/mothersDayInsure.html" +
-                    "&response_type=code&scope=snsapi_base&state=123&connect_redirect=1#wechat_redirect";
-        } else {
-            showCodeDialog();
-        }
+        window.location.href = "mothersDayInsure.html";
     }
 </script>
 </html>

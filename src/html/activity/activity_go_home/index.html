@@ -114,95 +114,13 @@
 <script src="../../../js/jquery-1.9.1.min.js"></script>
 <script src="../../../js/common.js"></script>
 <script type="text/javascript">
+
+    autoSize();
+
     $('.bg').css("height", $(window).height());
-//    closeActivity(config.activityEndTime.goHome);
 
-    var openId = window.localStorage.getItem(config.openIdName);
-    if (openId == null || openId == "undefined") {
-        getOpenId();
-        openId = window.localStorage.getItem(config.openIdName);
-    }
-    GetAsyncData("weixinbase/1043", function (backdata) {
-        var data = backdata;
-        // alert("(c)"+data.code+"(t)"+data.timestamp+"(n)"+data.nonceStr+"(s)"+data.signature)
-        wx.config({
-            debug: false,
-            appId: config.appIdValue,   // wx0017a3384b9df4f0
-            timestamp: data.timestamp,
-            nonceStr: data.nonceStr,
-            signature: data.signature,
-            jsApiList: [
-                'checkJsApi',
-                'onMenuShareTimeline',
-                'onMenuShareAppMessage',
-                'hideMenuItems',
-                'showMenuItems',
-                'hideAllNonBaseMenuItem'
-            ]
-        });
-    }, {"url": window.location.href.split('#')[0]});
 
-    wx.ready(function () {
 
-        /*wx.checkJsApi({
-         jsApiList: [
-         'onMenuShareTimeline'
-         ]
-         });*/
-        wx.hideMenuItems({
-            menuList: [
-                'menuItem:share:qq'
-            ]
-        });
-//        wx.showMenuItems({
-//            menuList: [
-//                'menuItem:profile',
-//                'menuItem:refresh'
-//            ]
-//        });
-        wx.onMenuShareAppMessage({
-            title: '万联金网',
-            desc: '过年了，放下手机陪陪父母，四十万安全回家保障金温暖每条回家路。',
-            link: config.shareRootUrl + '/weixinouter/basepage/new_year2016/go_home.html?type=1000',
-            imgUrl: config.shareRootUrl + '/weixinouter/basepage/img/new_year2016/go_home_share.png',
-            type: '', // 分享类型,music、video或link，不填默认为link
-            dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
-            success: function () {
-                // 用户确认分享后执行的回调函数
-                GetData("Reward/1008", function (json) {
-                    //alert("1008 code:" + json.code);
-                }, {"openId": openId, "type": "zhbx--1000"});
-            },
-            cancel: function () {
-                // 用户取消分享后执行的回调函数
-            },
-            complete: function () {
-                //closeBg();
-            }
-
-        });
-        wx.onMenuShareTimeline({
-            title: '过年了，放下手机陪陪父母，四十万安全回家保障金温暖每条回家路。',
-            link: config.shareRootUrl + '/weixinouter/basepage/new_year2016/go_home.html?type=1000',
-            imgUrl: config.shareRootUrl + '/weixinouter/basepage/img/new_year2016/go_home_share.png',
-            success: function () {
-                // 用户确认分享后执行的回调函数
-                GetData("Reward/1008", function (json) {
-                    //alert("1008 code:" + json.code);
-                }, {"openId": openId, "type": "zhbx-1000"});
-            },
-            cancel: function () {
-                // 用户取消分享后执行的回调函数
-            },
-            complete: function () {
-                // closeBg();
-            }
-        });
-
-        wx.error(function (res) {
-            alert('wx.error: ' + JSON.stringify(res));
-        });
-    });
     $("#getcard").click(function () {
         window.location.href = "tblr.html";
     });
@@ -214,10 +132,5 @@
         var target = $('.detail_bg');
         target.css("display", "none");
     }
-    localStorage.removeItem("info_name");//清除info_name的值
-    localStorage.removeItem("info_identifyNumber");//清除info_identifyNumber的值
-    localStorage.removeItem("info_insurance_start");//清除info_insurance_start的值
-    localStorage.removeItem("info_mobile");//清除info_mobile的值
-    localStorage.removeItem("info_sendActiveCode");//清除info_sendActiveCode的值
 </script>
 </html>

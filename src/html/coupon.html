@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta name="format-detection" content="telphone=no, email=no" />
+
+  <title>我的优惠券</title>
+  <script src="../js/common.js"></script>
+<script src="../js/rem.js"></script>
+<script src="../js/jquery-1.7.2.min.js"></script>
+<script src="../js/template-native.js"></script>
+  <link rel="stylesheet" href="../css/common-coupon.css">
+  <link rel="stylesheet" href="../css/coupon.css">
+</head>
+<body>
+<ul class="title">
+  <li class="choose radu" data-status="use">有效优惠券</li>
+  <li data-status="used">已使用优惠券</li>
+  <li data-status="outdated">已过期优惠券</li>
+</ul>
+<div class="use list">
+</div>
+<div class="used list">
+  </div>
+<div class="outdated list">
+</div>
+</body>
+</html>
+
+<script type="text/temp" id="templ">
+  <a href="./cpDetils.html?id=<%=id%>">
+    <div class="module clearfix">
+      <p class="cpStyle">
+        <img src="<%=images%>"/>
+      </p>
+      <div class="cpDetiles">
+        <h3 style="color:<%=color%>"><%=couponName%></h3>
+        <p>使用期限：<span><%=timeLimit%></span></p>
+       <p>商品范围：<span><%=useLimit%></span></p>
+        <% if (num>=2) { %>
+          <i class="num"><%=num%></i>
+        <% } %>
+      </div>
+      <i class="status"></i>
+    </div>
+</a>
+</script>
+<script>
+var openId = window.localStorage.getItem(config.openIdName);
+if(openId==null || openId==""){
+	getOpenId();
+}
+function getTime(nS){
+	if(null==nS){
+		return " 年-月-日";
+	}
+	var date = new Date(nS.time);
+    var year = date.getFullYear();
+    var month = date.getMonth()+1;
+    var day = date.getDate();
+    return year+"-"+month+"-"+day; 
+    return newTime;
+}
+  $(function () {
+//    模板引擎
+//    data的格式最好与cpDetils中的data一致
+    var data = [];
+    	//获取列表,初始化data
+    	$.ajax({
+            async: false,
+            url:'../../rest/Coupon/1029',
+            type: 'POST',
+            data: JSON.stringify({"openId": openId}),
+            contentType: "application/json",
+            dataType: 'json',
+            success: function (backData) {
+            	data=backData.data;
+            	if(null==data){
+            		data=[];
+            	}
+            },
+            error: function (x, y, z) {
+            	/*  closeloading(); */ 
+                return false;
+            }
+        });			
+    
+		initList(data);
+//      tab切换
+     $('li').each(function (i,ele) {
+      var status;
+      if($(ele).hasClass('choose')){
+        status = $(this).data('status');
+        $('.'+status).css('display','block');
+      }
+      $(ele).click(function () {
+        $(this).addClass('choose').siblings().removeClass('choose');
+        status = $(this).data('status');
+        $('.list').css('display','none')
+        $('.'+status).css('display','block');
+      });
+    }); 
+  });
+   function initList(data){
+	    var str='';
+	    if(data.length == 0){
+	      //没有优惠券的时候显示内容
+	      $('body').addClass('nocpbg');
+	      $('body').html("<h3 class='nocp'>您还没有优惠券哦～</h3>");
+	    }else {
+	      for(var i = 0;i<data.length;i++){
+	        switch (data[i].status){
+	          case 3:
+	        	data[i].images="../images/bg_03.png";
+	        	data[i].timeLimit=getTime(data[i].startDate)+"到"+getTime(data[i].endDate);
+	        	data[i].color="#e7560e";
+	        	if(data[i].couponName.indexOf("加油")>=0){
+	        	data[i].useLimit="仅限车险使用";
+	        	}else if(data[i].couponName.indexOf("我买")>0){
+	        		data[i].useLimit="除车险外的其他保险投保享有";	
+	        	}
+	            str = template('templ',data[i]);
+	            $('.use').html($('.use').html()+str);
+	            break;
+	          case 2:
+	          	data[i].images="../images/bg_03.png";
+	        	data[i].timeLimit=getTime(data[i].startDate)+"到"+getTime(data[i].endDate);
+	        	data[i].color="##e7560e";
+	        	if(data[i].couponName.indexOf("加油")>=0){
+		        	data[i].useLimit="仅限车险使用";
+		        	}else if(data[i].couponName.indexOf("我买")>0){
+		        		data[i].useLimit="除车险外的其他保险投保享有";	
+		        	}
+	            str = template('templ',data[i]);
+	            $('.used').html($('.used').html()+str);
+	            break;
+	          case 4:
+	          	data[i].images="../images/outdated_present.png";
+	        	data[i].timeLimit=getTime(data[i].startDate)+"到"+getTime(data[i].endDate);
+	        	data[i].color="#e7560e";
+	        	if(data[i].couponName.indexOf("加油")>=0){
+		        	data[i].useLimit="仅限车险使用";
+		        	}else if(data[i].couponName.indexOf("我买")>0){
+		        		data[i].useLimit="除车险外的其他保险投保享有";	
+		        	}
+	            str = template('templ',data[i]);
+	            $('.outdated').html($('.outdated').html()+str);
+	            break;
+	        }
+	      }
+	    }
+   }
+
+</script>
+

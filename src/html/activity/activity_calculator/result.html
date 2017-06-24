@@ -257,6 +257,19 @@
             transition: opacity 0.5s ease-in-out 2.6s;
         }
 
+        ::-webkit-input-placeholder { /* WebKit browsers */
+            color: #ccc;
+            font-size: 0.18rem;
+        }
+        :-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+            color: #ccc;
+            font-size: 0.18rem;
+        }
+        ::-moz-placeholder { /* Mozilla Firefox 19+ */
+            color: #ccc;
+            font-size: 0.18rem;
+        }
+
     </style>
     <link rel="stylesheet" href="../../../css/common-view.css">
 
@@ -299,7 +312,6 @@
 <script src="../../../js/lottery.js"></script>
 
 <script type="text/javascript">
-    closeProduct(109);
     autoWidth();
     var fontSize = $('html').css('font-size').substr(0, $('html').css('font-size').length - 2);
     var minHeight = getBgHeight();
@@ -355,7 +367,6 @@
         //        lottery.init('http://www.baidu.com/img/bdlogo.gif', 'image');
         lottery.init(rewardText, 'text', true, '请 刮 奖');
     };
-    getOpenId();
     var openId = window.localStorage.getItem(config.openIdName);
     var isShare = 'N';
     function getReward() {
@@ -375,37 +386,7 @@
 //        sessionStorage.setItem('calculator_count', count);
 //        sessionStorage.setItem('calculator_carbon', carbon);
 //        window.location.href = 'downloadApp.html';
-        GetAsyncData("Product/1091", function (backdata) {
-            if (backdata.code == '0') {
-                if (backdata.errCode != '0') {
-                    alert(backdata.errMsg);
-                } else {
-                    if (isShare == 'Y') {
-                        count = count * 2;
-                    }
-                    sessionStorage.setItem('calculator_mobile', $('#mobile').val());
-                    sessionStorage.setItem('calculator_count', count);
-                    sessionStorage.setItem('calculator_carbon', carbon);
-                    window.location.href = 'downloadApp.html';
-                }
-            }
-        }, {'phoneNumber': $('#mobile').val(), 'openId': openId, 'isShare': isShare, 'rewardLevel': rewardLevel});
 
     }
-    weixinShare({
-        shareUrl: config.shareRootUrl + '/weixinouter/basepage/pages/activity/activity_calculator/share.html?carbon=' + carbon,
-        shareTitle:'环保星级大比拼',
-        shareText: '我的环保星级是' + levelText + '星，快来测试一下你的环保星级吧！',
-        onlyWeixin: false,
-        isNeedRecord: true,
-        openId: openId,
-        activityId: '109',
-        typeTimeline: 'zhbx-3',
-        typeAppMessage: 'zhbx-4',
-        isGiveCoin: 'N'
-    }, function () {
-        isShare = 'Y';
-    });
-   // baiduCollection();
 </script>
 </html>

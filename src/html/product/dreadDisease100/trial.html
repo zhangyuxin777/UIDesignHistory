@@ -1,0 +1,803 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <meta name="format-detection" content="telephone=no" />
+    <title>中华健康宝重大疾病保险</title>
+    <link rel="stylesheet" href="../../../css/product.css">
+    <link rel="stylesheet" href="../../../css/mui/mui.min.css">
+    <link rel="stylesheet" type="text/css" href="../../../css/mui/mui.picker.min.css"/>
+    <script src="../../../js/mui/mui.min.js"></script>
+    <script src="../../../js/mui/mui.picker.min.js"></script>
+</head>
+<body class="hide">
+<div class="header"><img src="../../../images/banner_ak.jpg" alt="100重大疾病" width="100%"></div>
+<!--选项内容-->
+<div class="content">
+    <div style="background-color: #ffffff;border-bottom: 1px solid #f0f0f0;">
+        <div class="bf" id="age">
+            <div class="bf-text">被保险人生日</div>
+            <div class="bf-content">
+                <div class="replace input-replace" id="ageResult">1985-08-01</div>
+                <div class="arrow-r"><img src="../../../images/personal_ic_right.png" width="100%"></div>
+                <!--<input type="date" value="1985-08-01" onchange="ageChange()"/>-->
+            </div>
+        </div>
+
+        <div class="bf" id="sex">
+            <div class="bf-text">被保险人性别</div>
+            <div class="bf-content">
+                <div class="replace sex-replace" rel="0" id="sexResult">男</div>
+                <div class="arrow-r"><img src="../../../images/personal_ic_right.png" width="100%"></div>
+            </div>
+        </div>
+
+        <div class="bf" id="amount">
+            <div class="bf-text">保险金额</div>
+            <div class="bf-content">
+                <div class="replace amount-replace" rel="200000" id="amountResult">20万</div>
+                <div class="arrow-r"><img src="../../../images/personal_ic_right.png" width="100%"></div>
+            </div>
+        </div>
+
+        <div class="bf" id="policy_period">
+            <div class="bf-text">保险期间</div>
+            <div class="bf-content">
+                <div class="replace policy-replace" rel="Y" attr_value="20" id="policyResult">20年</div>
+                <div class="arrow-r"><img src="../../../images/personal_ic_right.png" width="100%"></div>
+            </div>
+        </div>
+
+        <div class="bf" id="fee_period">
+            <div class="bf-text">交费期间</div>
+            <div class="bf-content">
+                <div class="replace fee-replace" rel="Y" attr_value="20" id="feeResult">20年</div>
+                <div class="arrow-r"><img src="../../../images/personal_ic_right.png" width="100%"></div>
+            </div>
+        </div>
+
+        <div class="bf" style="border:0;">
+            <div class="bf-text">交费方式</div>
+            <div class="bf-content">
+                <span style="padding-right: 30px;">年交</span>
+            </div>
+        </div>
+    </div>
+    <div class="bf" style="border:0;margin-top: 10px;margin-left: 0;padding-left: 0.12rem;">
+        <div class="bf-text"><img src="../../../images/zeng.png" width="27" style="padding-top: 0.11rem;float: left;padding-right: 0.05rem;"/>由万联金网赠送<span style="color: #FB3450;" id="coin">9720枚</span>万金币</div>
+    </div>
+    <div class="tk">
+        <span class="xq clicked" style="border-right: 1px solid #ffffff;">产品详情</span>
+        <span class="xz">投保须知</span>
+        <span class="xb" style="border-left: 1px solid #ffffff;">保险条款</span>
+    </div>
+    <!--产品详情-->
+    <div class="" id="xq">
+        <!--<p class="bord-left">中华健康宝重大疾病保险</p>-->
+        <div class="xq-title2"><div class="">产品特色</div></div>
+        <div style="margin: auto;text-align: center;padding: 0.17rem 0 0.1rem 0;;background-color: #f7f7f7">
+            <img src="doc/ak100.png" width="96%" >
+        </div>
+        <div class="xq-title1"><div class="">保险责任</div></div>
+        <p class="xq-list-content1"><span class="xq-list color1">
+            <a href="doc/wj30.html" onclick="return formData()">30种早期危重疾病</a></span>覆盖原位癌、早期肝硬化等30种早期危重疾病，并非致命大病，可赔付基本保额的20%</p>
+        <p class="xq-list-content1"><span class="xq-list color1">
+            <a href="doc/zj70.html" onclick="return formData()">70种重大疾病</a></span>包含肝癌、肺癌、急性心梗等70种常发重疾，最高可保50万</p>
+        <p class="xq-list-content1"><span class="xq-list color1">身故保障</span>疾病身故，意外身故全都赔！赔付100%基本金额</p>
+        <table>
+            <tr><td class="color-td1" width="15%">保险事故</td><td class="color-td1">重大疾病</td><td class="color-td1">早期危重疾病</td><td class="color-td1">身故</td></tr>
+            <tr><td class="color-td2">90天内因疾病</td><td colspan="3" class="color-td2">无息返还所交保费，合同终止</td></tr>
+            <tr><td rowspan="2" class="color-td3">因意外或90天后因疾病</td>
+                <td rowspan="2" class="color-td3">赔付基本保额，合同终止(扣除已赔付早期危重疾病保险金)</td>
+                <td rowspan="2" class="color-td3">赔付基本保额20%，本项保险责任终止</td>
+                <td class="color-td3">18周岁前，返还已交保费(扣除已赔付早期危重疾病保险金)</td></tr>
+            <tr><td class="color-td3">18周岁后，赔付基本保额(扣除已赔付早期危重疾病保险金)</td></tr>
+        </table>
+        <p class="xq-d">早期危重保险金仅支付一次<br>
+            本合同的重大疾病保险金和身故保险金，我们在保险期间内只给付一项，在给付其中任意一项后，本合同终止</p>
+        <div class="xq-title"><div class="">投保说明</div></div>
+        <p class="xq-list-content"><span class="xq-list color">投保年龄</span>30天-55周岁</p>
+        <p class="xq-list-content"><span class="xq-list color">保险期间</span>20年，30年，至60周岁，至75周岁，终身</p>
+        <p class="xq-list-content"><span class="xq-list color">交费方式</span>年交</p>
+        <p class="xq-list-content"><span class="xq-list color">交费期间</span>10年，20年</p>
+        <p class="xq-list-content"><span class="xq-list color">保险金额</span>5万，10万，20万，30万，40万，50万</p>
+        <p class="xq-d">产品条款报备文件编号：中华人寿发[2016]250号 <!-- 中华人寿发[2016]13号 --><br>
+            本产品由中华联合人寿保险股份有限公司销售并承保</p>
+    </div>
+    <!--投保须知-->
+    <div class="hide" id="xz">
+        <div class="">
+            <div class="block block-cl clearfix">
+                <i class="icon-xz"></i>
+                <span class="block-left">投保须知</span>
+                <span class="block-right img-arrow"></span>
+            </div>
+            <div class="block-show hide">
+                <p class="block-title">•	犹豫期</p>
+                <p class="block-content">自您签收本合同的次日起，有21日的犹豫期。在此期间，请您仔细阅读本合同，如果您认为本合同与您的需求不相符，您可以在犹豫期结束前解除本合同。犹豫期内解除本合同，我们将无息退还您所交纳的保险费。</p>
+                <p class="block-title">•	等待期</p>
+                <p class="block-content">自本合同生效时起90日为等待期。如果本合同曾一次或多次恢复效力，则自每次合同效力恢复之日零时起90日均为等待期。在等待期内，被保险人发病或身故，我们不承担给付保险金的责任，但向您无息退还已交保险费，本合同终止。</p>
+                <p class="block-title">•	保单形式</p>
+                <p class="block-content">本保险提供电子保单，电子保单与纸质保单具有相同法律效力，您投保成功后，由中华联合人寿为您生成保单，并向您投保时填写的邮箱发送电子保单。如需纸质保单或发票，请拨打中华联合人寿客服热线95585提出申请，我们将免费给您寄送一次。</p>
+                <p class="block-title">•	承保公司及服务咨询/投诉</p>
+                <p class="block-content">本产品由中华联合人寿保险股份有限公司(以下简称“中华人寿”)销售并承保，有任何关于投保、理赔、退保、保全服务及投诉的需求，请联系中华人寿全国统一客服热线95585或官方网站http://life.cic.cn/的在线客服进行咨询。中华人寿公司地址：北京市东城区建国门内大街26号新闻大厦20层。</p>
+                <p class="block-title">•	销售区域</p>
+                <p class="block-content">中华人寿保险产品可销售区域为北京。本产品由中华联合人寿保险股份有限公司承保，目前该公司尚未在北京以外的地区开设分支机构，对于在北京以外地区的客户，可能存在后续服务不到位、时效差等问题。</p>
+                <p class="block-title">为了使您详知所投保的保险内容并维护您的合法权益，请在投保之前仔细阅读保险条款、投保提示书，并确认已了解保险合同的各项内容（尤其是重点关注保险责任、责任免除、犹豫期、费用扣除、退保可能会产生的损失、现金价值等关键信息）</p>
+                <p class="block-content1">投保资料是您向本公司申请投保的重要文件，本公司对投保资料及告知内容承担保密义务。</p>
+            </div>
+        </div>
+        <div class="">
+            <div class="block block-cl clearfix">
+                <i class="icon-gz"></i>
+                <span class="block-left">告知事项</span>
+                <span class="block-right img-arrow"></span>
+            </div>
+            <div class="block-show hide">
+                <p class="block-title">•	如实告知</p>
+                <p class="block-content">投保人（被保险人）在投保时应如实告知投保流程中的各项内容，不得故意隐瞒或不实告知，否则本公司有权依据法律规定及本保险合同约定解除保险合同，所有告知事项均以书面告知为准，口头告知无效。投保人故意不履行如实告知义务的，或因重大过失未履行如实告知义务对保险事故的发生有严重影响的，保险人对于合同解除前发生的保险事故不承担赔偿或者给付保险金的责任。</p>
+            </div>
+        </div>
+        <div class="">
+            <div class="block block-cl clearfix">
+                <i class="icon-mz"></i>
+                <span class="block-left">责任免除</span>
+                <span class="block-right img-arrow"></span>
+            </div>
+            <div class="block-show hide">
+                <p class="block-title">•	因下列情形之一导致被保险人身故的，我们不承担给付身故保险金的责任：</p>
+                <p class="list-content"><span class="list">1.</span>投保人对被保险人的故意杀害、故意伤害；</p>
+                <p class="list-content"><span class="list">2.</span>被保险人故意自伤、故意犯罪或者抗拒依法采取的刑事强制措施；</p>
+                <p class="list-content"><span class="list">3.</span>被保险人主动吸食或注射毒品；</p>
+                <p class="list-content"><span class="list">4.</span>被保险人酒后驾驶，无合法有效驾驶证驾驶，或驾驶无有效行驶证的机动车；</p>
+                <p class="list-content"><span class="list">5.</span>被保险人感染艾滋病病毒或患艾滋病，重大疾病定义中“经输血导致的人类免疫缺陷病毒感染”和“因职业关系导致的人类免疫缺陷病毒感染”的情形除外；</p>
+                <p class="list-content"><span class="list">6.</span>战争、军事冲突、暴乱或武装叛乱；</p>
+                <p class="list-content"><span class="list">7.</span>核爆炸、核辐射或核污染；</p>
+                <p class="list-content"><span class="list">8.</span>遗传性疾病、先天性畸形、变形或染色体异常。</p>
+                <p class="block-content" style="margin-top: 0.1rem;">发生上述第1项情形导致被保险人身故或患重大疾病的，本合同终止，导致被保险人身故的，我们向身故保险金受益人退还本合同的现金价值，若投保人与身故保险金受益人为同一人且没有其他身故保险金受益人的情况下，则向被保险人的继承人退还本合同的现金价值；导致被保险人患重大疾病的，我们向被保险人退还本合同的现金价值。</p>
+                <p class="block-content">发生上述其他情形导致被保险人身故或患重大疾病的，本合同终止，我们向您退还本合同的现金价值。</p>
+                <p class="block-content">具体条款以保险条款为准。</p>
+            </div>
+        </div>
+        <div class="">
+            <div class="block block-cl clearfix">
+                <i class="icon-lc"></i>
+                <span class="block-left">业务流程</span>
+                <span class="block-right img-arrow"></span>
+            </div>
+            <div class="block-show hide">
+                <p class="block-title">投保流程</p>
+                <p class="block-content">
+                    1.选择投保险种<br>
+                    2.完成订单信息<br>
+                    3.确认投保信息并进行保费支付<br>
+                    4.投保成功<br>
+                    5.完成回访</p>
+                <p class="block-title">理赔流程</p>
+                <p class="block-content">
+                    1.理赔报案<br>
+                    2.递交索赔申请资料<br>
+                    3.理赔申请<br>
+                    4.结案及理赔金支付
+                </p>
+                <p class="block-title">退保流程</p>
+                <p class="block-content">
+                    1.进入中华人寿官网（http://life.cic.cn/）保单管理-办理业务<br>
+                    2.选择“退保”选项及保单号<br>
+                    3.提交退保申请<br>
+                    4.退保审核<br>
+                    5.退保金支付
+                </p>
+            </div>
+        </div>
+        <div class="">
+            <div class="block1 block-cl clearfix">
+                <i class="icon-zf"></i>
+                <span class="block-left">支付方式</span>
+                <span class="block-right img-arrow"></span>
+            </div>
+            <div class="block-show hide">
+                <p class="block-title">本产品购买采用银行转账扣款的模式，无须开通网银。</p>
+                <p class="block-title">主要覆盖银行</p>
+                <p class="block-content1">中国银行，中国光大银行，中国农业银行，中国建设银行，中国工商银行，招商银行，浦发银行，平安银行，交通银行，中国民生银行，兴业银行，中信银行，华夏银行，中国邮政储蓄银行等。</p>
+                <p class="block-title">保险金、保险赔款的支付方式为转账至指定的银行账号。如无特殊情况，退保金的支付方式为转账至原投保账号。</p>
+            </div>
+        </div>
+    </div>
+    <!--保险条款-->
+    <div class="hide" id="xb">
+        <p><a href="doc/ak100.pdf" target="_blank" onclick="return formData()">中华健康宝重大疾病保险条款</a></p>
+        <p><a href="http://m.wanlianjin.com/wlcs/html/dreadDisease100/doc/bxts.docx" target="_blank" onclick="return formData()">人身保险投保提示书</a></p>
+        <p><a href="doc/rate.docx" target="_blank" onclick="return formData()">费率表</a></p>
+        <p>中华健康宝重大疾病保险<a href="doc/ak100jzb.xlsx" onclick="return formData()">现金价值表</a></p>
+        <p>保险责任请参考以上条款，并敬请特别留意条款中的“责任免除”部分</p>
+    </div>
+
+</div>
+<!--结束-->
+<div class="footer">
+    <div class="price">
+        <span style="color:#F39A0F;font-size: 0.14rem">¥<span id="price">972</span></span>
+        <!--<span>试算保费</span>-->
+    </div>
+    <div class="btn" onclick="submit()">立即购买</div>
+</div>
+</body>
+</html>
+<script src="../../../js/jquery-1.9.1.min.js"></script>
+<script src="../../../js/common.js"></script>
+<script src='../../../js/jweixin-1.0.0.js'></script>
+<script>
+    autoWidth();
+    getOpenId();   //获取openid
+    var openId = window.localStorage.getItem(config.openIdName);
+    var isFocus = false;
+    $(function () {
+        if (openId != null && openId.length != 0) {
+            GetAsyncData("../../rest/User/1006", function (backData) {
+                isFocus = backData.data.flag;
+            }, {"openId": openId});
+        } else {
+        }
+
+    });
+    var dates;  //出生天数
+    var age = getAge("1985-08-01");   //出生年龄
+    (function($, doc) {
+        $.init();
+        $.ready(function () {
+            //被保人出生日期选择
+            var birth = document.getElementById('age');
+            var birthResult = document.getElementById('ageResult');
+            var myDate = new Date();
+            var Year = myDate.getFullYear();
+            var beginYear = Year - 56;
+            var endYear = Year;
+            var optionsJson = {
+                "type":"date",
+                "value": "1985-08-01",
+                "beginYear":beginYear,
+                "endYear":endYear
+            };
+
+            var picker = new $.DtPicker(optionsJson);
+            birth.addEventListener('tap', function() {
+                picker.show(function(rs) {
+                    birthResult.innerText = rs.text;
+                    //调用时间改变事件
+                    ageChange();
+                });
+
+            }, false);
+            //性别选择
+            var sexPicker = new $.PopPicker();
+            sexPicker.setData([{
+                value: '0',
+                text: '男'
+            }, {
+                value: '1',
+                text: '女'
+            }]);
+            var sex = doc.getElementById('sex');
+            var sexResult = doc.getElementById('sexResult');
+            sex.addEventListener('tap', function(event) {
+                sexPicker.show(function(items) {
+                    sexResult.setAttribute("rel", items[0].value);
+                    sexResult.innerText = items[0].text;
+                    //返回 false 可以阻止选择框的关闭
+                    //return false;
+                    cal();
+                });
+            }, false);
+            //保额选择
+            var amountPicker = new $.PopPicker();
+
+            var amount = doc.getElementById('amount');
+            var amountResult = doc.getElementById('amountResult');
+            amount.addEventListener('tap', function(event) {
+                if(age<=17){
+                    amountPicker.setData([{
+                        value: '50000',
+                        text: '5万'
+                    },{
+                        value: '100000',
+                        text: '10万'
+                    }, {
+                        value: '200000',
+                        text: '20万'
+                    }, {
+                        value: '300000',
+                        text: '30万'
+                    }]);
+                }else if(age>17&&age<=40){
+                    amountPicker.setData([{
+                        value: '50000',
+                        text: '5万'
+                    },{
+                        value: '100000',
+                        text: '10万'
+                    }, {
+                        value: '200000',
+                        text: '20万'
+                    }, {
+                        value: '300000',
+                        text: '30万'
+                    }, {
+                        value: '400000',
+                        text: '40万'
+                    }, {
+                        value: '500000',
+                        text: '50万'
+                    }]);
+                }else if(age>40&&age<=45){
+                    amountPicker.setData([{
+                        value: '50000',
+                        text: '5万'
+                    },{
+                        value: '100000',
+                        text: '10万'
+                    }, {
+                        value: '200000',
+                        text: '20万'
+                    }, {
+                        value: '300000',
+                        text: '30万'
+                    }, {
+                        value: '400000',
+                        text: '40万'
+                    }]);
+                }else if(age>45&&age<=50){
+                    amountPicker.setData([{
+                        value: '50000',
+                        text: '5万'
+                    },{
+                        value: '100000',
+                        text: '10万'
+                    }, {
+                        value: '200000',
+                        text: '20万'
+                    }]);
+                }else if(age>50&&age<=55){
+                    amountPicker.setData([{
+                        value: '50000',
+                        text: '5万'
+                    },{
+                        value: '100000',
+                        text: '10万'
+                    }]);
+                }
+                amountPicker.show(function(items) {
+                    amountResult.setAttribute("rel", items[0].value);
+                    amountResult.innerText = items[0].text;
+
+                    //返回 false 可以阻止选择框的关闭
+                    //return false;
+                    cal();
+                });
+
+            }, false);
+            //保险期间选择
+            var policyPicker = new $.PopPicker();
+            var policy_period = doc.getElementById('policy_period');
+            var policyResult = doc.getElementById('policyResult');
+            policy_period.addEventListener('tap', function(event) {
+                if (age>=51&&age<=55){
+                    policyPicker.setData([{
+                        rel: 'Y',
+                        value: '20',
+                        text: '20年'
+                    }, {
+                        rel: 'Y',
+                        value: '30',
+                        text: '30年'
+                    }, {
+                        rel: 'A',
+                        value: '75',
+                        text: '至75周岁'
+                    }, {
+                        rel: 'A',
+                        value: '105',
+                        text: '终身'
+                    }]);
+                }else {
+                    policyPicker.setData([{
+                        rel: 'Y',
+                        value: '20',
+                        text: '20年'
+                    }, {
+                        rel: 'Y',
+                        value: '30',
+                        text: '30年'
+                    }, {
+                        rel: 'A',
+                        value: '60',
+                        text: '至60周岁'
+                    }, {
+                        rel: 'A',
+                        value: '75',
+                        text: '至75周岁'
+                    }, {
+                        rel: 'A',
+                        value: '105',
+                        text: '终身'
+                    }]);
+                }
+                policyPicker.show(function(items) {
+                    policyResult.setAttribute("rel", items[0].rel);
+                    policyResult.setAttribute("attr_value", items[0].value);
+                    policyResult.innerText = items[0].text;
+                    if(age>40&&age<46){
+                        if(items[0].value == "60"){
+                            doc.getElementById('feeResult').setAttribute("rel","Y");
+                            doc.getElementById('feeResult').setAttribute("attr_value","10");
+                            doc.getElementById('feeResult').innerText = "10年";
+                        }
+                    }
+                    //返回 false 可以阻止选择框的关闭
+                    //return false;
+                    cal();
+                });
+
+            }, false);
+           //交费期间选择
+            var feePicker = new $.PopPicker();
+            var fee_period = doc.getElementById('fee_period');
+            var feeResult = doc.getElementById('feeResult');
+            fee_period.addEventListener('tap', function(event) {
+                var policyRe = doc.getElementById('policyResult').getAttribute("attr_value");
+                if (age>=46&&age<=55){
+                    feePicker.setData([{
+                        rel: 'Y',
+                        value: '10',
+                        text: '10年'
+                    }]);
+                }else if(age>=41&&age<=45&&policyRe=="60"){
+                    feePicker.setData([{
+                        rel: 'Y',
+                        value: '10',
+                        text: '10年'
+                    }]);
+                } else{
+                    feePicker.setData([{
+                        rel: 'Y',
+                        value: '10',
+                        text: '10年'
+                    }, {
+                        rel: 'Y',
+                        value: '20',
+                        text: '20年'
+                    }]);
+                }
+                feePicker.show(function(items) {
+                    feeResult.setAttribute("rel", items[0].rel);
+                    feeResult.setAttribute("attr_value", items[0].value);
+                    feeResult.innerText = items[0].text;
+
+                    //返回 false 可以阻止选择框的关闭
+                    //return false;
+                    cal();
+                });
+
+            }, false);
+
+        });
+    })(mui, document);
+    //改变下拉框选项
+//    function changeSel(e){
+//        var c =  $("#"+e+" option:selected").text();
+//        $("#"+e).prev().prev().html(c);
+//        cal();
+//    }
+
+    //条款,详情,须知
+    $(".tk span").click(function(){
+        $(this).siblings().removeClass("clicked");
+        $(this).addClass("clicked");
+        if($(this).hasClass("xq")){
+            $("#xq").removeClass("hide");
+            $("#xz").addClass("hide");
+            $("#xb").addClass("hide");
+        }else if($(this).hasClass("xz")){
+            $("#xz").removeClass("hide");
+            $("#xq").addClass("hide");
+            $("#xb").addClass("hide");
+        }else if($(this).hasClass("xb")){
+            $("#xb").removeClass("hide");
+            $("#xz").addClass("hide");
+            $("#xq").addClass("hide");
+        }
+    });
+    $(".block-cl").click(function(){
+        $(this).siblings().toggleClass("hide");
+        $(this).find(".img-arrow").toggleClass("arrow-down");
+    });
+    //改变出生日期
+    function ageChange(){
+        var amountResult1 = $("#amountResult");
+        var policyResult1 = $("#policyResult");
+        var feeResult1 = $("#feeResult");
+        var birth = $("#ageResult").text();
+        if(birth != "" || birth != 0){
+            age = getAge(birth);
+            console.log("age="+age+";dates="+dates);
+
+            if(age > 55){
+                mui.alert("超过投保年龄范围,请重新选择!");
+                $("#ageResult").text("1985-08-01");
+                age = getAge("1985-08-01");
+            } else if(age>=51&&age<=55){
+                amountResult1.attr("rel","100000");
+                amountResult1.text("10万");
+
+                policyResult1.attr("rel","Y");
+                policyResult1.attr("attr_value","20");
+                policyResult1.text("20年");
+
+                feeResult1.attr("rel","Y");
+                feeResult1.attr("attr_value","10");
+                feeResult1.text("10年");
+
+            }else if(age>=46&&age<=50){
+                amountResult1.attr("rel","200000");
+                amountResult1.text("20万");
+
+                feeResult1.attr("rel","Y");
+                feeResult1.attr("attr_value","10");
+                feeResult1.text("10年");
+
+            }else if(age>=41&&age<=45){
+                amountResult1.attr("rel","200000");
+                amountResult1.text("20万");
+
+                if($("#policyResult").attr("attr_value") == "60"){
+                    feeResult1.attr("rel","Y");
+                    feeResult1.attr("attr_value","10");
+                    feeResult1.text("10年");
+
+                }
+
+            }else if(age>=18&&age<=40){
+
+            }else if(age>0&&age<=17){
+                amountResult1.attr("rel","200000");
+                amountResult1.text("20万");
+
+            }else if(age == 0 && dates >= 30){
+                amountResult1.attr("rel","200000");
+                amountResult1.text("20万");
+
+            } else if(age == 0 && dates < 30){
+                mui.alert("年龄小于30天,请重新选择!");
+                $("#ageResult").text("1985-08-01");
+                age = getAge("1985-08-01");
+
+            }else if(age < 0){
+                mui.alert("请选择正确出生日期!");
+                $("#ageResult").text("1985-08-01");
+                age = getAge("1985-08-01");
+            }
+            cal();
+        }else {
+            return false;
+        }
+        return true;
+    }
+    
+
+
+
+    
+    
+    function formData(){
+        var insureInfo =
+        {
+            order: {    //订单数据
+                ProductCode: "F0016A",
+                ProductName: "中华健康宝重大疾病保险",
+                DutyCode: "001518",       //产品责任编码
+                DutyAmnt: $("#amountResult").attr("rel"), //保额
+                InsuYear: $("#policyResult").attr("attr_value"),  //保险期间
+                PayEndYear: $("#feeResult").attr("attr_value"),    //缴费期间
+                payEndYearFlag: "Y",
+                PayIntv: "12",//交费方式
+                UnitCount: "1",
+                InsuredNum: "1",
+                InsuYearFlag: $("#policyResult").attr("rel"),  //保险期间标志
+                Premium: $("#price").text(),     //保费
+                openId: openId
+            },
+            insured: {      //被保人
+                Sex: $("#sexResult").attr("rel"),
+                Birthday: $("#ageResult").text()
+            }
+
+        };
+
+        sessionStorage.setItem("insureInfo",JSON.stringify(insureInfo));
+
+    }
+
+    var bz = sessionStorage.getItem("biaoz");
+    var oc = sessionStorage.getItem("insureInfo");
+    var od = sessionStorage.getItem("orderDetail");
+
+    if(od != null && bz == null){
+        setValue(od);
+    }
+    if(oc != null){
+        setValue(oc);
+    }
+    function submit(){
+        sessionStorage.setItem("biaoz","1");
+        formData();
+        if (true) {
+            window.location.href="input.html";
+        }else{
+            showCodeDialog();
+        }
+    }
+
+    function setValue(value){
+        var val = JSON.parse(value);
+        var age = val.insured.Birthday;
+        var sex = val.insured.Sex;
+        var amount = val.order.DutyAmnt;
+        var insu = val.order.InsuYear;
+        var insu_bz = val.order.InsuYearFlag;
+        var fee = val.order.PayEndYear;
+        var fee_bz = val.order.payEndYearFlag;
+        var bf = val.order.Premium;
+        var coin = parseInt(bf*50*20/100);
+
+        //被保人生日
+        $("#ageResult").text(age);
+        ageChange();
+        //被保人性别
+        sex==0?$("#sexResult").text("男"):$("#sexResult").text("女");
+        $("#sexResult").attr("rel",sex);
+        //保额
+        $("#amountResult").text(amount.substr(0,2)+"万");
+        $("#amountResult").attr("rel",amount);
+        //保期
+        if(insu==20||insu==30){
+            $("#policyResult").text(insu+"年");
+        }else if(insu==60||insu==75){
+            $("#policyResult").text("至"+insu+"周岁");
+        }else if(insu==105){
+            $("#policyResult").text("终身");
+        }
+
+        $("#policyResult").attr("attr_value",insu);
+        $("#policyResult").attr("rel",insu_bz);
+
+        //交期
+        $("#feeResult").text(fee+"年");
+        $("#feeResult").attr("attr_value",fee);
+        $("#feeResult").attr("rel",fee_bz);
+
+        //保费
+        //$("#price").text(bf);
+        //$("#coin").text(coin+"枚");
+        
+        
+        
+        cal();
+
+    }
+
+    baiduCollection();
+    function parseDate(str){
+
+        if(str.match(/^\d{4}[\-\/\s+]\d{1,2}[\-\/\s+]\d{1,2}$/)){
+            return new Date(str);
+        }else if(str.match(/^\d{8}$/)){
+            return new Date(str.substring(0,4)+'/'+str.substring(4,6)+'/'+str.substring(6));
+        }else{
+            mui.alert('日期格式不正确!');
+        }
+    }
+    function getAge(dat){
+        if(dat != "") {
+            var age;
+            var aDate = new Date();
+            var thisYear = aDate.getFullYear();
+            var thisMonth = aDate.getMonth() + 1;
+            var thisDay = aDate.getDate();
+            var birth = parseDate(dat);
+            var birthy = birth.getFullYear();
+            var birthm = birth.getMonth() + 1;
+            var birthd = birth.getDate();
+            dates = parseInt(Math.abs((aDate - birth)) / (1000 * 60 * 60 * 24));
+
+            if (thisYear - birthy < 0) {
+                //alert("请选择正确出生日期!");
+                age = -1;
+            } else {
+                if (thisMonth - birthm < 0) {
+                    age = thisYear - birthy - 1;
+                } else if (thisMonth - birthm > 0) {
+                    age = thisYear - birthy;
+                } else {
+                    if (thisDay - birthd >= 0) {
+                        age = thisYear - birthy;
+                    } else {
+                        age = thisYear - birthy - 1;
+                    }
+                }
+            }
+
+            return age;
+        }
+    }
+    //自定义分享
+    weixinShare({
+        shareUrl: config.shareRootUrl + '/weixinouter/basepage/pages/product/dreadDisease100/trial.html',
+        shareIcon: '',
+        shareTitle: '中华健康宝重大疾病保险',
+        shareText: '100种疾病保障重疾险,全面守护,高效赔付',
+        isNeedRecord: true,
+        openId: openId,
+        activityId: 'F0016A',
+        typeTimeline: 'zhbx-3',
+        typeAppMessage: 'zhbx-4',
+        isGiveCoin: 'Y'
+    });
+    
+    
+    
+    function cal(){
+        var data = {
+            ProductCode: "F0016A",     //产品代码
+            DutyCode: "001518",       //产品责任编码
+            Sex: $("#sexResult").attr("rel"),
+            Birthday: $("#ageResult").text(),
+            DutyAmnt: $("#amountResult").attr("rel"), //保额
+            InsuYear: $("#policyResult").attr("attr_value"),  //保险期间
+            PayEndYear: $("#feeResult").attr("attr_value"),    //缴费期间
+            PayIntv: "12",
+            UnitCount: "1",
+            InsuYearFlag: $("#policyResult").attr("rel"),  //保险期间标志
+            openId: openId
+        };
+        GetAsyncData("Wljw/5000",function(backData){
+        	
+            //alert(JSON.stringify(backData));
+            var price =  backData.premium;
+           // if($("#feeResult").attr("attr_value") == "10"){
+                var coin = parseInt(price*50*20/100);
+           // }else if($("#feeResult").attr("attr_value") == "20"){
+           //     coin = parseInt(price*10*10/100);
+           // }
+           
+             $("#price").text(price);//保费
+           
+             
+             var data0 = {
+            		 productCode: "F0016A",
+            		 premium: price,
+            		 benefitPeriod: $("#feeResult").attr("attr_value") 
+             };
+            //赠送金币计算
+            GetAsyncData("Wljw/5007",function(backData){
+        	    //alert(backData);
+            	$("#coin").text(backData+"枚");
+            	//String productCode,Double premium,String benefitPeriod
+            },data0);
+           
+           
+            
+
+        },data);
+
+    }
+    
+    $(function(){
+    	
+    	 cal();//初始化
+    })
+   
+</script>
+
+
+

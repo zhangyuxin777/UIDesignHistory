@@ -1,0 +1,868 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/swiper.min.css">
+    <title>产品列表</title>
+</head>
+<body class="hide">
+
+
+<div style="background: #E9481D;color:white;width: 2rem;height:0.5rem;text-align: center;line-height: 0.5rem;margin: auto auto"
+     onclick="doTask()">DO!
+</div>
+
+<script src="../js/jquery-1.9.1.min.js"></script>
+<script src="../js/swiper-3.2.7.jquery.min.js"></script>
+<script src="../js/common.js"></script>
+<script>
+    autoWidth();
+    var list = {
+        "data": [
+            {
+                "isShare": "N",
+                "openId": "oYdRowMxKCf6jfuOZv27XityJ6zA",
+                "phoneNumber": "17701089679",
+                "rewardLevel": "3"
+            },
+            {
+                "isShare": "N",
+                "openId": "oYdRowKE4hJpRFk3LJWWaRi4NGfQ",
+                "phoneNumber": "15544676676",
+                "rewardLevel": "3"
+            },
+            {
+                "isShare": "N",
+                "openId": "oYdRowNCx_kL6Uqufl3T9Z7UrxwM",
+                "phoneNumber": "13811722696",
+                "rewardLevel": "1"
+            },
+            {
+                "isShare": "N",
+                "openId": "",
+                "phoneNumber": "15652302180",
+                "rewardLevel": "1"
+            },
+            {
+                "isShare": "Y",
+                "openId": "oYdRowH1uLq1zFoDREaapYqEpUvI",
+                "phoneNumber": "18682315978",
+                "rewardLevel": "3"
+            },
+            {
+                "isShare": "N",
+                "openId": "",
+                "phoneNumber": "13919820375",
+                "rewardLevel": "2"
+            },
+            {
+                "isShare": "N",
+                "openId": "",
+                "phoneNumber": "18611237300",
+                "rewardLevel": "1"
+            },
+            {
+                "isShare": "N",
+                "openId": "",
+                "phoneNumber": "13910018015",
+                "rewardLevel": "2"
+            },
+            {
+                "isShare": "N",
+                "openId": "",
+                "phoneNumber": "13805317796",
+                "rewardLevel": "2"
+            },
+            {
+                "isShare": "Y",
+                "openId": "",
+                "phoneNumber": "13700603138",
+                "rewardLevel": "1"
+            },
+            {
+                "isShare": "N",
+                "openId": "",
+                "phoneNumber": "15858281981",
+                "rewardLevel": "1"
+            },
+            {
+                "isShare": "N",
+                "openId": "",
+                "phoneNumber": "13910527072",
+                "rewardLevel": "1"
+            },
+            {
+                "isShare": "N",
+                "openId": "",
+                "phoneNumber": "18522066066",
+                "rewardLevel": "1"
+            },
+            {
+                "isShare": "N",
+                "openId": "",
+                "phoneNumber": "15059995100",
+                "rewardLevel": "3"
+            },
+            {
+                "isShare": "N",
+                "openId": "",
+                "phoneNumber": "15564338587",
+                "rewardLevel": "2"
+            },
+            {
+                "isShare": "N",
+                "openId": "",
+                "phoneNumber": "18931806488",
+                "rewardLevel": "2"
+            },
+            {
+                "isShare": "N",
+                "openId": "",
+                "phoneNumber": "13915905788",
+                "rewardLevel": "1"
+            },
+            {
+                "isShare": "N",
+                "openId": "",
+                "phoneNumber": "13827211996",
+                "rewardLevel": "3"
+            },
+            {
+                "isShare": "N",
+                "openId": "",
+                "phoneNumber": "13393019278",
+                "rewardLevel": "2"
+            },
+            {
+                "isShare": "N",
+                "openId": "",
+                "phoneNumber": "18131496761",
+                "rewardLevel": "1"
+            },
+            {
+                "isShare": "N",
+                "openId": "",
+                "phoneNumber": "13932442309",
+                "rewardLevel": "1"
+            },
+            {
+                "isShare": "N",
+                "openId": "",
+                "phoneNumber": "15120515547",
+                "rewardLevel": "3"
+            },
+            {
+                "isShare": "N",
+                "openId": "",
+                "phoneNumber": "15142485927",
+                "rewardLevel": "2"
+            },
+            {
+                "isShare": "N",
+                "openId": "",
+                "phoneNumber": "13828796420",
+                "rewardLevel": "1"
+            },
+            {
+                "isShare": "N",
+                "openId": "oYdRowKE4hJpRFk3LJWWaRi4NGfQ",
+                "phoneNumber": "13311112222",
+                "rewardLevel": "3"
+            },
+            {
+                "isShare": "Y",
+                "openId": "oYdRowKE4hJpRFk3LJWWaRi4NGfQ",
+                "phoneNumber": "13346598646",
+                "rewardLevel": "3"
+            },
+            {
+                "isShare": "N",
+                "openId": "",
+                "phoneNumber": "13161569595",
+                "rewardLevel": "1"
+            },
+            {
+                "isShare": "N",
+                "openId": "",
+                "phoneNumber": "13872703071",
+                "rewardLevel": "2"
+            },
+            {
+                "isShare": "N",
+                "openId": "",
+                "phoneNumber": "18936002855",
+                "rewardLevel": "1"
+            },
+            {
+                "isShare": "N",
+                "openId": "",
+                "phoneNumber": "13568869463",
+                "rewardLevel": "1"
+            },
+            {
+                "isShare": "N",
+                "openId": "",
+                "phoneNumber": "15869909897",
+                "rewardLevel": "1"
+            },
+            {
+                "isShare": "Y",
+                "openId": "",
+                "phoneNumber": "13003762627",
+                "rewardLevel": "2"
+            },
+            {
+                "isShare": "N",
+                "openId": "oYdRowOBBNu-SmZenh4y-KhgnyRM",
+                "phoneNumber": "18235753570",
+                "rewardLevel": "1"
+            },
+            {
+                "isShare": "N",
+                "openId": "oYdRowL-AjFeRI7jWDKfigyqkY9k",
+                "phoneNumber": "18502908639",
+                "rewardLevel": "1"
+            },
+            {
+                "isShare": "Y",
+                "openId": "",
+                "phoneNumber": "15961718329",
+                "rewardLevel": "1"
+            },
+            {
+                "isShare": "Y",
+                "openId": "",
+                "phoneNumber": "13162255159",
+                "rewardLevel": "2"
+            },
+            {
+                "isShare": "N",
+                "openId": "",
+                "phoneNumber": "15586913658",
+                "rewardLevel": "2"
+            },
+            {
+                "isShare": "N",
+                "openId": "",
+                "phoneNumber": "13455498883",
+                "rewardLevel": "1"
+            },
+            {
+                "isShare": "N",
+                "openId": "",
+                "phoneNumber": "18250824112",
+                "rewardLevel": "1"
+            },
+            {
+                "isShare": "N",
+                "openId": "oYdRowA1D8aMgNB6vCu4VeD3tGQk",
+                "phoneNumber": "15652961441",
+                "rewardLevel": "1"
+            },
+            {
+                "isShare": "N",
+                "openId": "oYdRowKE4hJpRFk3LJWWaRi4NGfQ",
+                "phoneNumber": "13051637672",
+                "rewardLevel": "3"
+            },
+            {
+                "isShare": "N",
+                "openId": "oYdRowKE4hJpRFk3LJWWaRi4NGfQ",
+                "phoneNumber": "18811111111",
+                "rewardLevel": "3"
+            },
+            {
+                "isShare": "N",
+                "openId": "oYdRowFxgtnxJ7zReZbBYzfQDwd4",
+                "phoneNumber": "18701219077",
+                "rewardLevel": "3"
+            },
+            {
+                "isShare": "N",
+                "openId": "",
+                "phoneNumber": "18999775912",
+                "rewardLevel": "2"
+            },
+            {
+                "isShare": "N",
+                "openId": "",
+                "phoneNumber": "13700132670",
+                "rewardLevel": "2"
+            },
+            {
+                "isShare": "N",
+                "openId": "",
+                "phoneNumber": "18678105683",
+                "rewardLevel": "2"
+            },
+            {
+                "isShare": "N",
+                "openId": "",
+                "phoneNumber": "13831302131",
+                "rewardLevel": "3"
+            },
+            {
+                "isShare": "N",
+                "openId": "",
+                "phoneNumber": "18923969696",
+                "rewardLevel": "2"
+            },
+            {
+                "isShare": "N",
+                "openId": "",
+                "phoneNumber": "13852082056",
+                "rewardLevel": "1"
+            },
+            {
+                "isShare": "N",
+                "openId": "",
+                "phoneNumber": "15859570118",
+                "rewardLevel": "2"
+            },
+            {
+                "isShare": "N",
+                "openId": "",
+                "phoneNumber": "18811617935",
+                "rewardLevel": "3"
+            },
+            {
+                "isShare": "N",
+                "openId": "oYdRowBXgBM0_9FCZgjm5ulJ67VY",
+                "phoneNumber": "18093768187",
+                "rewardLevel": "1"
+            },
+            {
+                "isShare": "N",
+                "openId": "",
+                "phoneNumber": "15082809097",
+                "rewardLevel": "3"
+            },
+            {
+                "isShare": "N",
+                "openId": "",
+                "phoneNumber": "18335532038",
+                "rewardLevel": "1"
+            },
+            {
+                "isShare": "N",
+                "openId": "",
+                "phoneNumber": "13933500912",
+                "rewardLevel": "2"
+            },
+            {
+                "isShare": "N",
+                "openId": "",
+                "phoneNumber": "13770503360",
+                "rewardLevel": "2"
+            },
+            {
+                "isShare": "N",
+                "openId": "",
+                "phoneNumber": "13599025828",
+                "rewardLevel": "2"
+            },
+            {
+                "isShare": "N",
+                "openId": "",
+                "phoneNumber": "13261021332",
+                "rewardLevel": "2"
+            },
+            {
+                "isShare": "N",
+                "openId": "",
+                "phoneNumber": "15523423424",
+                "rewardLevel": "2"
+            },
+            {
+                "isShare": "N",
+                "openId": "",
+                "phoneNumber": "15523423425",
+                "rewardLevel": "2"
+            },
+            {
+                "isShare": "N",
+                "openId": "",
+                "phoneNumber": "18810981812",
+                "rewardLevel": "2"
+            },
+            {
+                "isShare": "N",
+                "openId": "",
+                "phoneNumber": "13513291910",
+                "rewardLevel": "2"
+            },
+            {
+                "isShare": "N",
+                "openId": "",
+                "phoneNumber": "13563455995",
+                "rewardLevel": "1"
+            },
+            {
+                "isShare": "N",
+                "openId": "oYdRowKeql9GY-moqyTw3FEjtArQ",
+                "phoneNumber": "18662085556",
+                "rewardLevel": "1"
+            },
+            {
+                "isShare": "N",
+                "openId": "oYdRowLCHnkE7wk5fSHdCGpDz3Nk",
+                "phoneNumber": "18647109998",
+                "rewardLevel": "1"
+            },
+            {
+                "isShare": "N",
+                "openId": "",
+                "phoneNumber": "13897888659",
+                "rewardLevel": "2"
+            },
+            {
+                "isShare": "N",
+                "openId": "",
+                "phoneNumber": "15841600704",
+                "rewardLevel": "2"
+            },
+            {
+                "isShare": "N",
+                "openId": "",
+                "phoneNumber": "15688726636",
+                "rewardLevel": "3"
+            },
+            {
+                "isShare": "N",
+                "openId": "oYdRowKFga971zKk7DC1twOlbOKY",
+                "phoneNumber": "13120555664",
+                "rewardLevel": "2"
+            },
+            {
+                "isShare": "N",
+                "openId": "oYdRowKFga971zKk7DC1twOlbOKY",
+                "phoneNumber": "18612965664",
+                "rewardLevel": "3"
+            },
+            {
+                "isShare": "Y",
+                "openId": "",
+                "phoneNumber": "18890473400",
+                "rewardLevel": "3"
+            },
+            {
+                "isShare": "N",
+                "openId": "oYdRowO1O3aJNQP31asACcw7VoJg",
+                "phoneNumber": "13593155553",
+                "rewardLevel": "2"
+            },
+            {
+                "isShare": "N",
+                "openId": "",
+                "phoneNumber": "15343438884",
+                "rewardLevel": "2"
+            },
+            {
+                "isShare": "N",
+                "openId": "",
+                "phoneNumber": "13906920051",
+                "rewardLevel": "1"
+            },
+            {
+                "isShare": "N",
+                "openId": "",
+                "phoneNumber": "13593127317",
+                "rewardLevel": "2"
+            },
+            {
+                "isShare": "N",
+                "openId": "",
+                "phoneNumber": "15226797655",
+                "rewardLevel": "1"
+            },
+            {
+                "isShare": "N",
+                "openId": "",
+                "phoneNumber": "15698465626",
+                "rewardLevel": "3"
+            },
+            {
+                "isShare": "N",
+                "openId": "",
+                "phoneNumber": "18099507317",
+                "rewardLevel": "1"
+            },
+            {
+                "isShare": "N",
+                "openId": "",
+                "phoneNumber": "13923743665",
+                "rewardLevel": "1"
+            },
+            {
+                "isShare": "N",
+                "openId": "",
+                "phoneNumber": "15159257005",
+                "rewardLevel": "1"
+            },
+            {
+                "isShare": "Y",
+                "openId": "oYdRowBufEW7oNKzjoW0mdqWLbZI",
+                "phoneNumber": "18610838644",
+                "rewardLevel": "2"
+            },
+            {
+                "isShare": "N",
+                "openId": "",
+                "phoneNumber": "13501082625",
+                "rewardLevel": "1"
+            },
+            {
+                "isShare": "N",
+                "openId": "",
+                "phoneNumber": "13609886582",
+                "rewardLevel": "2"
+            },
+            {
+                "isShare": "N",
+                "openId": "",
+                "phoneNumber": "13834597022",
+                "rewardLevel": "2"
+            },
+            {
+                "isShare": "N",
+                "openId": "",
+                "phoneNumber": "15028108538",
+                "rewardLevel": "3"
+            },
+            {
+                "isShare": "N",
+                "openId": "",
+                "phoneNumber": "15925115605",
+                "rewardLevel": "1"
+            },
+            {
+                "isShare": "N",
+                "openId": "",
+                "phoneNumber": "18600863930",
+                "rewardLevel": "3"
+            },
+            {
+                "isShare": "N",
+                "openId": "",
+                "phoneNumber": "18618289133",
+                "rewardLevel": "1"
+            },
+            {
+                "isShare": "N",
+                "openId": "",
+                "phoneNumber": "18618189133",
+                "rewardLevel": "1"
+            },
+            {
+                "isShare": "N",
+                "openId": "",
+                "phoneNumber": "13865903962",
+                "rewardLevel": "3"
+            },
+            {
+                "isShare": "N",
+                "openId": "oYdRowP08j28rI9PX7LxsRJ4oBXE",
+                "phoneNumber": "13901104364",
+                "rewardLevel": "2"
+            },
+            {
+                "isShare": "Y",
+                "openId": "",
+                "phoneNumber": "13969236260",
+                "rewardLevel": "3"
+            },
+            {
+                "isShare": "N",
+                "openId": "oYdRowBJwzh7Gje33K5tg8JtVoMw",
+                "phoneNumber": "18538402233",
+                "rewardLevel": "2"
+            },
+            {
+                "isShare": "N",
+                "openId": "",
+                "phoneNumber": "15069381776",
+                "rewardLevel": "2"
+            },
+            {
+                "isShare": "N",
+                "openId": "",
+                "phoneNumber": "13582333640",
+                "rewardLevel": "2"
+            },
+            {
+                "isShare": "Y",
+                "openId": "oYdRowND9BRmluZZvWDAL-MIB8BI",
+                "phoneNumber": "15063574054",
+                "rewardLevel": "2"
+            },
+            {
+                "isShare": "N",
+                "openId": "",
+                "phoneNumber": "15963788195",
+                "rewardLevel": "2"
+            },
+            {
+                "isShare": "N",
+                "openId": "",
+                "phoneNumber": "13012167193",
+                "rewardLevel": "1"
+            },
+            {
+                "isShare": "N",
+                "openId": "oYdRowLvrPyMyRjANs48iugZXEHA",
+                "phoneNumber": "13918525910",
+                "rewardLevel": "1"
+            },
+            {
+                "isShare": "N",
+                "openId": "",
+                "phoneNumber": "15849801000",
+                "rewardLevel": "2"
+            },
+            {
+                "isShare": "Y",
+                "openId": "",
+                "phoneNumber": "18530587568",
+                "rewardLevel": "2"
+            },
+            {
+                "isShare": "N",
+                "openId": "",
+                "phoneNumber": "18530587558",
+                "rewardLevel": "2"
+            },
+            {
+                "isShare": "N",
+                "openId": "oYdRowBufEW7oNKzjoW0mdqWLbZI",
+                "phoneNumber": "13253047234",
+                "rewardLevel": "1"
+            },
+            {
+                "isShare": "N",
+                "openId": "",
+                "phoneNumber": "18731717633",
+                "rewardLevel": "1"
+            },
+            {
+                "isShare": "N",
+                "openId": "",
+                "phoneNumber": "15203729625",
+                "rewardLevel": "2"
+            },
+            {
+                "isShare": "N",
+                "openId": "",
+                "phoneNumber": "15867293745",
+                "rewardLevel": "2"
+            },
+            {
+                "isShare": "N",
+                "openId": "oYdRowL3Ch7D-dYEHi4MwI57cv5A",
+                "phoneNumber": "18936002735",
+                "rewardLevel": "1"
+            },
+            {
+                "isShare": "N",
+                "openId": "",
+                "phoneNumber": "18600092967",
+                "rewardLevel": "2"
+            },
+            {
+                "isShare": "N",
+                "openId": "oYdRowPo34k5E8N9rm78CgdFgxiE",
+                "phoneNumber": "13600097866",
+                "rewardLevel": "1"
+            },
+            {
+                "isShare": "N",
+                "openId": "",
+                "phoneNumber": "18905339122",
+                "rewardLevel": "3"
+            },
+            {
+                "isShare": "N",
+                "openId": "",
+                "phoneNumber": "13971629115",
+                "rewardLevel": "2"
+            },
+            {
+                "isShare": "N",
+                "openId": "",
+                "phoneNumber": "18963458199",
+                "rewardLevel": "2"
+            },
+            {
+                "isShare": "N",
+                "openId": "",
+                "phoneNumber": "13252359635",
+                "rewardLevel": "1"
+            },
+            {
+                "isShare": "N",
+                "openId": "",
+                "phoneNumber": "15515573687",
+                "rewardLevel": "1"
+            },
+            {
+                "isShare": "N",
+                "openId": "",
+                "phoneNumber": "13164795093",
+                "rewardLevel": "1"
+            },
+            {
+                "isShare": "N",
+                "openId": "",
+                "phoneNumber": "15840636777",
+                "rewardLevel": "2"
+            },
+            {
+                "isShare": "N",
+                "openId": "",
+                "phoneNumber": "15891387605",
+                "rewardLevel": "1"
+            },
+            {
+                "isShare": "N",
+                "openId": "",
+                "phoneNumber": "15603998502",
+                "rewardLevel": "1"
+            },
+            {
+                "isShare": "N",
+                "openId": "oYdRowJYTK-sCL3eau8ceZuRtncc",
+                "phoneNumber": "13508434003",
+                "rewardLevel": "1"
+            },
+            {
+                "isShare": "N",
+                "openId": "oYdRowDkW2bS_48QXQdzA82WQnxo",
+                "phoneNumber": "18912502171",
+                "rewardLevel": "1"
+            },
+            {
+                "isShare": "N",
+                "openId": "",
+                "phoneNumber": "13811470130",
+                "rewardLevel": "1"
+            },
+            {
+                "isShare": "N",
+                "openId": "",
+                "phoneNumber": "13787840811",
+                "rewardLevel": "1"
+            },
+            {
+                "isShare": "N",
+                "openId": "",
+                "phoneNumber": "13592510163",
+                "rewardLevel": "1"
+            },
+            {
+                "isShare": "N",
+                "openId": "",
+                "phoneNumber": "15260231230",
+                "rewardLevel": "1"
+            },
+            {
+                "isShare": "N",
+                "openId": "",
+                "phoneNumber": "13674848792",
+                "rewardLevel": "1"
+            },
+            {
+                "isShare": "N",
+                "openId": "",
+                "phoneNumber": "13028841423",
+                "rewardLevel": "1"
+            },
+            {
+                "isShare": "N",
+                "openId": "oYdRowJF849pTISv-E1h9PtyUllU",
+                "phoneNumber": "18602981911",
+                "rewardLevel": "3"
+            },
+            {
+                "isShare": "N",
+                "openId": "",
+                "phoneNumber": "13582333648",
+                "rewardLevel": "1"
+            },
+            {
+                "isShare": "N",
+                "openId": "",
+                "phoneNumber": "15867349945",
+                "rewardLevel": "1"
+            },
+            {
+                "isShare": "N",
+                "openId": "",
+                "phoneNumber": "18631185363",
+                "rewardLevel": "1"
+            },
+            {
+                "isShare": "N",
+                "openId": "",
+                "phoneNumber": "13562100490",
+                "rewardLevel": "2"
+            },
+            {
+                "isShare": "N",
+                "openId": "oYdRowERLReId4H1kiS7rOnEkgxY",
+                "phoneNumber": "13390116915",
+                "rewardLevel": "3"
+            },
+            {
+                "isShare": "N",
+                "openId": "oYdRowF6bOWQjZZyG2M5A14pYCR0",
+                "phoneNumber": "13322221111",
+                "rewardLevel": "1"
+            },
+            {
+                "isShare": "N",
+                "openId": "oYdRowKE4hJpRFk3LJWWaRi4NGfQ",
+                "phoneNumber": "13311113333",
+                "rewardLevel": "3"
+            },
+            {
+                "isShare": "N",
+                "openId": "oYdRowKFga971zKk7DC1twOlbOKY",
+                "phoneNumber": "13322223333",
+                "rewardLevel": "3"
+            },
+            {
+                "isShare": "N",
+                "openId": "oYdRowKFga971zKk7DC1twOlbOKY",
+                "phoneNumber": "13120555666",
+                "rewardLevel": "2"
+            }
+        ]
+    };
+    function doTask() {
+        alert(list.data.length);
+        for (var i = 0; i < list.data.length; i++) {
+            GetAsyncData("Product/1091", function (backdata) {
+                if (backdata.code == '0') {
+                    if (backdata.errCode != '0') {
+                        console.log(list.data.phoneNumber);
+                    } else {
+
+
+                    }
+                }
+            }, {
+                'phoneNumber': list.data[i].phoneNumber,
+                'openId': list.data[i].openId,
+                'isShare': list.data[i].isShare,
+                'rewardLevel': list.data[i].rewardLevel
+            });
+        }
+    }
+</script>
+</body>
+</html>

@@ -36,7 +36,7 @@
         }
 
         .center {
-            margin-top: 220px;
+            margin-top: 270px;
             text-align: center;
         }
 
@@ -116,88 +116,6 @@
     var openId = window.localStorage.getItem(config.openIdName);
     var serialNo = getUrlParam("serialNo");
     var visits = 10056;
-    GetAsyncData("weixinbase/1043", function (backdata) {
-        var data = backdata;
-        // alert("(c)"+data.code+"(t)"+data.timestamp+"(n)"+data.nonceStr+"(s)"+data.signature)
-        wx.config({
-            debug: false,
-            appId: config.appIdValue,   // wx0017a3384b9df4f0
-            timestamp: data.timestamp,
-            nonceStr: data.nonceStr,
-            signature: data.signature,
-            jsApiList: [
-                'checkJsApi',
-                'onMenuShareTimeline',
-                'onMenuShareAppMessage',
-                'hideMenuItems',
-                'showMenuItems',
-                'hideAllNonBaseMenuItem'
-            ]
-        });
-    }, {"url": window.location.href.split('#')[0]});
-    wx.ready(function () {
-        /*wx.checkJsApi({
-         jsApiList: [
-         'onMenuShareTimeline'
-         ]
-         });*/
-        wx.hideMenuItems({
-            menuList: [
-                'menuItem:share:qq'
-            ]
-        });
-
-        wx.onMenuShareAppMessage({
-            title: '万联金网',
-            desc: '辛苦了一年的游子，回家吧！我领取到了第' + visits + '份安全回家保障。传递爱心，免费领取四十万安心回家保障！', // 分享描述
-            link: config.shareRootUrl + '/weixinouter/basepage/yinxiao/extend.html?serialNo=' + serialNo,
-            imgUrl: config.shareRootUrl + '/weixinouter/basepage/img/share.png',
-            type: '', // 分享类型,music、video或link，不填默认为link
-            dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
-            success: function () {
-                // 用户确认分享后执行的回调函数
-                GetData("Reward/1008", function (json) {
-                    //alert("1008 code:" + json.code);
-                }, {"openId": openId, "type": "zhbx-4"});
-            },
-            cancel: function () {
-                // 用户取消分享后执行的回调函数
-            },
-            complete: function () {
-                closeBg();
-            }
-
-        });
-        wx.onMenuShareTimeline({
-            title: '辛苦了一年的游子，回家吧！我领取到了第' + visits + '份安全回家保障。传递爱心，免费领取四十万安心回家保障！',
-            link: config.shareRootUrl + '/weixinouter/basepage/new_year2016/go_home.html?type=1000',
-            imgUrl: config.shareRootUrl + '/weixinouter/basepage/img/new_year2016/go_home_share.png',
-            success: function () {
-                // 用户确认分享后执行的回调函数
-                GetData("Reward/1008", function (json) {
-                    //alert("1008 code:" + json.code);
-                }, {"openId": openId, "type": "zhbx-1000"});
-            },
-            cancel: function () {
-                // 用户取消分享后执行的回调函数
-            },
-            complete: function () {
-                closeBg();
-            }
-        });
-
-        wx.error(function (res) {
-            alert('wx.error: ' + JSON.stringify(res));
-        });
-    });
-
-
-    GetData("Transfer/1015", function (backdata) {
-        var data = backdata.data;
-        visits = data.visits;
-        $("#visit").html(data.visits);
-
-    }, {});
     //显示灰色 jQuery 遮罩层
     function showBg() {
         var bh = $("body").height();

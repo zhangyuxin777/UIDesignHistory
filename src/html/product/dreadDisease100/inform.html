@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <title>健康告知</title>
+    <style>
+        body{
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+            font-size: 14px;
+            color: #404040;
+            background-color: #f6f4f4;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .jk-ques{font-size: 0.14rem;padding:0.1rem 0.12rem;}
+        .ques-a{
+            padding-left: 0.12rem;
+            font-size: 0.12rem;
+            background-color: #ffffff;
+            margin-bottom: 0.1rem;
+        }
+        .ques-a1{
+            padding-left: 0.12rem;
+            padding-bottom: 0.12rem;
+            font-size: 0.12rem;
+            background-color: #ffffff;
+            margin-bottom: 0.1rem;
+            clear: both;
+        }
+        .con{
+            height: 0.45rem;
+            line-height: 0.45rem;
+            clear: both;
+        }
+        input{font-size: 0.12rem;border: 0;width: 2rem;}
+        .he{color: #e0e0e0;}
+        .a11 input{font-size: 0.12rem;border: 0;padding-left: 0.35rem;}
+        .ques-a .btn-yes,.ques-a .btn-no,.ques-a1 .btn-no,.btn-yes2,.btn-no2{
+            padding: 8px 18px;
+            margin-left: 0.35rem;
+            background-color: #e0e0e0;
+            color: #ffffff;
+            border-radius: 3px;
+        }
+        .ques-a .btn-no,.ques-a1 .btn-no,.btn-no2{
+            margin-left: 0.2rem;
+        }
+        .btn-yes1{
+            padding: 8px 18px;
+            margin-left: 31%;
+            background-color: #e0e0e0;
+            color: #ffffff;
+            border-radius: 3px;
+        }
+        .btn-jiu{
+            padding: 8px 10px;
+            margin-left: 0.20rem;
+            background-color: #e0e0e0;
+            color: #ffffff;
+            border-radius: 3px;
+        }
+        .clicked{
+            background-color: #F39A0F !important;
+        }
+        #c11,#c12{color:#27b8ff;}
+        .hide{display:none;}
+        .ques-c{margin-bottom: 0.2rem;padding: 0.12rem 0.12rem 0.12rem 0;}
+        .line{border-bottom: 1px solid #d4d4d4;}
+        .c-l{
+            width: 5%;
+            float: left;
+        }
+        .c-r{
+            width: 95%;
+            float: left;
+            padding-bottom: 0.2rem;
+        }
+        .sm{
+            font-size: 0.1rem;
+            padding: 0 0.12rem 0.12rem 0.12rem;
+            color: #c0c0c0;
+            margin-bottom: 0.49rem;
+            clear: both;
+        }
+        .footer{
+            position: fixed;
+            bottom: -1px;
+            height: 0.45rem;
+            line-height: 0.45rem;
+            text-align: center;
+            font-size: 0.15rem;
+            width: 100%;
+        }
+        .submit{
+            width: 50%;
+            background-color: rgba(243,154,15,1);
+            color: #ffffff;
+            float: left;
+        }
+        .fou{
+            width: 50%;
+            background-color: rgba(255,255,255,1);
+            color: #F39A0F;
+            float: left;
+            border-top: 1px solid #f0f0f0;
+            height: 0.44rem;
+        }
+        .red{
+            margin-top: 0.025rem;float: left;color: #F39A0F;padding-right: 0.05rem;font-size: 0.17rem;
+        }
+        .rule-href {
+            text-decoration: none;
+            outline: none;
+            color: #27b8ff;
+        }
+        .rule-line {
+            height: 0.25rem;
+            font-size: 0.1rem;
+        }
+        .rule-div {
+            float: left;
+            width: 2.72rem;
+            height: 100%;
+            line-height: 0.18rem;
+            margin-top: 0.075rem;
+            color: #606060;
+        }
+        .check, .uncheck {
+            float: left;
+            height: 100%;
+            padding-left: 0.12rem;
+            padding-right: 0.12rem;
+        }
+        .check .img {
+            background: url('../../../images/cars/checked.png');
+            background-size: 100% 100%;
+            width: 0.16rem;
+            height: 0.16rem;
+            margin-top: 0.09rem
+        }
+        .uncheck .img {
+            background: url('../../../images/cars/unchecked.png');
+            background-size: 100% 100%;
+            width: 0.16rem;
+            height: 0.16rem;
+            margin-top: 0.09rem;
+        }
+        @media (device-width: 320px ) and (device-height: 568px) and (-webkit-min-device-pixel-ratio: 2 ) {
+            /* 兼容iphone5 */
+            .line{border-bottom: 0.5px solid #d4d4d4;}
+            .fou{border-top: 0.5px solid #d4d4d4;}
+        }
+
+        @media (device-width: 375px ) and (device-height: 667px) and (-webkit-min-device-pixel-ratio: 2 ) {
+            /* 兼容iphone6 */
+            .line{border-bottom: 0.5px solid #d4d4d4;}
+            .fou{border-top: 0.5px solid #d4d4d4;}
+        }
+
+        @media (device-width: 414px ) and (device-height: 736px) and (-webkit-min-device-pixel-ratio: 2 ) {
+            /* 兼容iphone6 Plus */
+           .line{border-bottom: 0.5px solid #d4d4d4;}
+            .fou{border-top: 0.5px solid #d4d4d4;}
+        }
+
+    </style>
+
+</head>
+<body class="hide">
+<div class="ques-a">
+    <div class="con line">
+        <span class="red">*</span>身高：<input type="number" id="height" value="" onkeyup="this.value=this.value.replace(/[^\d]/g,'')"><span class="he">厘米</span></div>
+    <div class="con">
+        <span class="red">*</span>体重：<input type="number" id="weight" value="" onkeyup="this.value=this.value.replace(/[^\d]/g,'')"><span class="he">公斤</span></div>
+</div>
+
+<div class="ques-a1">
+    <div class="ques-c"><span class="c-l">1、</span><span class="c-r"  rel="C01" id="q1">被保险人是否曾经被保险公司拒保、延期、附加条件承保,是否得到过任何保险公司人身保险理赔（医疗险赔付金额小于1000元除外）？</span></div>
+    <span class="btn-yes1 btn">是</span><span class="btn-no btn">否</span>
+</div>
+<div class="ques-a1" rel="">
+    <div class="ques-c"><span class="c-l">2、</span><span class="c-r" rel="" id="q2"></span></div>
+    <span class="btn-yes1 btn">是</span><span class="btn-no btn">否</span>
+</div>
+<div class="ques-a1" rel="">
+    <div class="ques-c"><span class='c-l'>3、</span><span class='c-r' rel="" id="q3"></span></div>
+    <span class="btn-yes1 btn">是</span><span class="btn-no btn">否</span>
+</div>
+<div class="ques-a1 a33 hide" rel="">
+    <div class="ques-c"><span class="c-l">4、</span><span class="c-r" rel="" id="q4"></span></div>
+    <span class="btn-yes1 btn">是</span><span class="btn-no btn">否</span>
+</div>
+<div class="ques-a1 a44 hide" rel="">
+    <div class="ques-c"><span class="c-l">5、</span><span class="c-r" rel="" id="q5"></span></div>
+    <span class="btn-yes1 btn">是</span><span class="btn-no btn">否</span>
+</div>
+<div class="ques-a1 a55 hide" rel="">
+    <div class="ques-c"><span class="c-l">6、</span><span class="c-r" rel="" id="q6"></span></div>
+    <span class="btn-yes1 btn">是</span><span class="btn-no btn">否</span>
+</div>
+<div class="ques-a1 a66 hide" rel="">
+    <div class="ques-c"><span class="c-l">7、</span><span class="c-r" rel="" id="q7"></span></div>
+    <span class="btn-yes1 btn">是</span><span class="btn-no btn">否</span>
+</div>
+<div class="rule-line">
+    <div class="uncheck read" onclick="checkRule(this)">
+        <div class="img"></div>
+    </div>
+    <div class="rule-div">
+        我已阅读并同意<a class="rule-href" onclick="rule()" href="#">《投保人及被保人声明与授权》</a>
+    </div>
+</div>
+<div class="sm">声明：投保信息由中华联合人寿审核，投保人（被保险人）在投保时应如实告知投保流程中的各项内容，不得故意隐瞒或不实告知，否则本公司有权依据法律规定及本保险合同约定解除保险合同，所有告知事项均以书面告知为准，口头告知无效。</div>
+<div class="footer">
+    <div class="fou" onclick="fou()">全否</div>
+    <div class="submit" onclick="submit()">提交投保申请</div>
+</div>
+
+
+</body>
+</html>
+<script src="../../../js/jquery-1.9.1.min.js"></script>
+<script src="../../../js/common.js"></script>
+<script src='../../../js/jweixin-1.0.0.js'></script>
+<script src='../../../js/spinner.js'></script>
+<script>
+    autoWidth();
+    $(".con .btn-yes").click(function(){
+        $(".a11").removeClass("hide");
+    });
+    $(".con .btn-no").click(function(){
+        $(".a11").addClass("hide");
+    });
+    $(".con .btn-yes2").click(function(){
+        $(".a22").removeClass("hide");
+    });
+    $(".con .btn-no2").click(function(){
+        $(".a22").addClass("hide");
+    });
+    $(".con .btn").click(function(){
+        $(this).siblings().removeClass("clicked");
+        $(this).addClass("clicked");
+    });
+    $(".btn-jiu").click(function(){
+        $(this).toggleClass("clicked");
+    });
+    $(".ques-a1 .btn").click(function(){
+        $(this).siblings().removeClass("clicked");
+        $(this).addClass("clicked");
+    });
+    var isRead = false;
+//    var sex = 1;
+//    var age = 18;
+//    var amount = 100000;
+    var qus,a;
+    var data = JSON.parse(sessionStorage.getItem("insureInfo"));
+    var sex = data.insured.Sex;   //被保人性别
+    var age = data.insured.age;   //被保人年龄
+    var amount = data.order.DutyAmnt;   //保额
+    var or = data.order;
+    var tb = data.policyholder;
+    var bb = data.insured;
+
+    //D01
+    var str1 = "被保险人是否出现过以下一种或几种情况：出生时曾有早产、难产、产伤、窒息、新生儿缺血缺氧性脑病、出生时体重小于2500克或大于4500g等异常情况？";
+    //E01
+    var str2 = "被保险人是否有如下情况：1）在近2年内有过住院，且住院天数超过14天；2）被医生建议手术、穿刺、活检、微创介入治疗（病理结果为良性，且目前已经治愈无需复诊及治疗、服药者除外）；3）被医生建议透析、血浆置换、化疗、放疗、呼吸机辅助呼吸治疗，或因诊断未明确需要做其他检查？";
+    //G01
+    var str3 = "被保险人是否曾经患有或患有以下疾病或残疾？ A. 神经系统及精神方面疾病：癫痫、肢体瘫痪、脊髓疾病、多发性硬化、重症肌无力、帕金森氏综合症、脑中风、运动神经元病、阿尔茨海默病、脑动/静脉血管瘤及畸形、脑炎或脑膜炎后遗症、精神病、抑郁症、神经官能症、脑部肿瘤、囊肿、脑部损伤或手术史等； B. 呼吸系统疾病：慢性支气管炎、肺气肿、肺心病、哮喘、肺结核、肺栓塞、支气管扩张、尘肺、间质性肺病、肺纤维化、肺部支气管手术史等; C. 循环系统疾病：高血压、冠心病、心绞痛、心律失常、心肌梗塞、先天性心脏病、心脏瓣膜病、风湿性心脏病、心肌病、主动脉疾病、川崎病、心包炎、心肌炎、心内膜炎、肺动脉高压、动脉瘤、心脏血管手术史、心导管等心血管介入治疗等； D. 消化系统疾病：肝炎、乙肝或丙肝病毒携带、多囊肝、胆结石（已治愈，无并发症者除外）、肝硬化、胰腺疾病、胃和/或十二指肠溃疡、慢性或溃疡性结肠炎、克隆病、肝豆状核变性、硬化性胆管炎等； E. 泌尿系统及生殖系统疾病：肾炎、肾病综合症、多囊肾、肾功能不全、尿毒症、肾结核、肾积水、泌尿系统结石、泌尿系统手术史、生殖器官疾病等； F. 内分泌及骨骼、肌肉、结缔组织疾病：糖尿病、甲状腺或甲状旁腺疾病、肾上腺疾病、脑垂体异常、嗜铬细胞瘤、类风湿性关节炎、风湿病、痛风、斯蒂尔病、强直性脊柱炎、肌营养不良症、肌肉骨骼关节疾病、系统性红斑狼疮等； G. 血液系统疾病：中重度贫血、血小板减少、紫癜症、白血病、血友病、再生障碍性贫血、骨髓增生异常综合征、淋巴瘤、造血干细胞移植术史等； H. 五官科疾病：视网膜出血或剥离、白内障、青光眼、高度近视（800度以上）、听力减退、五官手术史等； I. 传染性、感染性疾病:艾滋病、重症手足口病、象皮病、拉博拉病毒感染、坏疽等； J. 癌症、肿瘤（恶性、良性或尚未证实为良性或恶性的）、肿块、息肉、囊肿、赘生物等； K. 先天性疾病、遗传性疾病、急/慢性中毒、职业病、器官移植术史及上述未提及的较严重的疾病； L. 智能障碍、失明、聋哑及言语、咀嚼或身体其他部位残缺、残疾或功能障碍。";
+    //E02
+    var str4 = "被保险人是否有如下情况：1）除了阑尾炎、痔疮、疝气、剖宫产及胆结石手术住院外，在近2年内曾有过住院，且住院天数超过14天；2）使用过任何成瘾药物，如镇静安眠剂、迷幻药、吸食有机溶剂或毒品；3）被医生建议手术、穿刺、活检、微创介入治疗（病理结果为良性，且目前已经治愈无需复诊及治疗、服药者除外）；4）被医生建议透析、血浆置换、化疗、放疗、呼吸机辅助呼吸治疗，或因诊断未明确需要做其他检查？";
+    //H01
+    var str5 = "被保险人是否正在怀孕，且孕周超过28周，或孕周未超过28周，但孕期检查结果有异常？";
+   //H02
+    var str6 = "被保险人是否患有或曾经患有以下女性疾病,例如：子宫肌瘤、子宫内膜异位症、异位妊娠、畸胎瘤、葡萄胎、乳腺包块或肿块、血性溢乳、阴道不规律出血？";
+    //S01
+    var str7 = "如被保险人有吸烟习惯，是否每天吸烟＞20支，吸烟年数＞10年？";    //保额大于等于20万显示
+    //D02
+    var str8 = "如被保险人有饮酒习惯，是否饮用红酒量大于600毫升/天，或饮用白酒量大于200毫升/天，或饮用啤酒量大于1000毫升/天，且饮酒年限超过2年？";   //保额大于等于20万显示
+    if(age>=0&&age<=2){
+        $("#q2").html(str1);
+        $("#q2").attr("rel","D01");
+        $("#q3").html(str2);
+        $("#q3").attr("rel","E01");
+        qus = "q4";
+        fa();   //qus4初始化显示
+        $("#q4").attr("rel","G01");
+        $(".a33").removeClass("hide");
+    }else if(age>2&&age<=17){
+        $("#q2").html(str2);
+        $("#q2").attr("rel","E01");
+        qus = "q3";
+        fa();   //qus3初始化显示
+        $("#q3").attr("rel","G01");
+       // $(".a33").addClass("hide");
+       // $(".a44").addClass("hide");
+    }else{
+        if(sex==1){
+            $("#q2").html(str4);
+            $("#q2").attr("rel","E02");
+            qus = "q3";
+            fa();   //qus3初始化显示
+            $("#q3").attr("rel","G01");
+            $("#q4").html(str5);
+            $("#q4").attr("rel","H01");
+            $("#q5").html(str6);
+            $("#q5").attr("rel","H02");
+            if(amount>=200000){
+                $("#q6").html(str7);
+                $("#q6").attr("rel","S01");
+                $("#q7").html(str8);
+                $("#q7").attr("rel","D01");
+                $(".a55").removeClass("hide");
+                $(".a66").removeClass("hide");
+            }
+            $(".a33").removeClass("hide");
+            $(".a44").removeClass("hide");
+
+        }else{
+            $("#q2").html(str4);
+            $("#q2").attr("rel","E02");
+            qus = "q3";
+            fa();   //qus3初始化显示
+            $("#q3").attr("rel","G01");
+            if(amount>=200000){
+                $("#q4").html(str7);
+                $("#q4").attr("rel","S01");
+                $("#q5").html(str8);
+                $("#q5").attr("rel","D01");
+                $(".a33").removeClass("hide");
+                $(".a44").removeClass("hide");
+            }
+
+        }
+    }
+
+    if(amount<=200000){
+        $(".ques-a").addClass("hide");
+    }else{
+        $(".ques-a").removeClass("hide");
+    }
+    //fa("q4");  //qus初始化显示
+    function fa(){
+        var str = cutstr(str3,370) + "<span id='c11' onclick='fb()'>展开↓</span>";
+        $("#"+qus).html(str);
+    }
+    function fb(){
+        var str = str3 + "<span id='c12' onclick='fa()'>收起↑</span>";
+        $("#"+qus).html(str);
+    }
+    function fou(){
+        $(".btn-no").addClass("clicked");
+        $(".btn-yes1").removeClass("clicked");
+        scroll();
+    }
+    function checkRule(btn) {
+        $(btn).hasClass('check') ? $(btn).removeClass('check').addClass('uncheck') : $(btn).removeClass('uncheck').addClass('check');
+        if ($(btn).hasClass('check')) {
+            isRead = true;
+        } else {
+            isRead = false;
+        }
+    }
+    function scroll() {
+        var position = $('body ').height();
+        $('html,body').animate({scrollTop: position + 'px'});
+    }
+    function val(){
+        var h = $('#height').val();
+        var w = $('#weight').val();
+        if(amount<=200000){
+            h = 1;
+            w = 1;
+        }
+        if(h==""||h=="undefined"){
+            alert("请输入被保人身高!");
+            return false;
+        }else if(h<1||h>300){
+            alert("请输入正确被保人身高!");
+            return false;
+        }
+        if(w==""||w=="undefined"){
+            alert("请输入被保人体重!");
+            return false;
+        }else if(w<1||w>300){
+            alert("请输入正确被保人体重!");
+            return false;
+        }
+        $(".ques-a1").each(function(){
+            if(!$(this).hasClass("hide")){
+                if(!$(this).find(".btn").hasClass("clicked")){
+                    alert("请完成所有问卷调查");
+                    a = 0;
+                    return false;
+                }else{
+                    a = 1;
+                }
+            }
+        });
+        if(a==0){
+            return false;
+        }
+        if(!isRead){
+            alert("请阅读投被保人声明与授权!");
+            return false;
+        }
+        return true;
+    }
+    function submit(){
+        var informList = [];
+        $(".ques-a1").each(function(){
+            if(!$(this).hasClass("hide")){
+                var InformCode = $(this).find(".c-r").attr("rel");
+                if(InformCode == "G01"){
+                    var InformContent = str3;
+                }else{
+                    InformContent = $(this).find(".c-r").text();
+                }
+
+                if($(this).find(".btn-yes1").hasClass("clicked")){
+                    var InformType = "是";
+                }else{
+                    InformType = "否";
+                }
+                var cc = {InformCode: InformCode,InformContent: InformContent,InformType: InformType};
+                informList.push(cc);
+            }
+
+        });
+
+        if(val()){
+            var product = {
+                userId: or.openId,
+                ProductCode: or.ProductCode,    // 产品代码
+                ProductName: or.ProductName,   //产品名称
+                Premium: or.Premium,  //产品金额
+                Amount: or.DutyAmnt,  //产品保额
+                BenefitPeriodType: or.InsuYearFlag,  //保险期间类型
+                BenefitPeriod: or.InsuYear,  //保障年期
+                InsuranceStartPeriod: "",  //保险生效日期
+                InsuranceEndPeriod: "",   //保险终止日期
+                PaymentMode: or.PayIntv, //缴费频率
+                PaymentDuration: or.PayEndYear,  //缴费期间
+                PaymentDurationMode: or.payEndYearFlag,  //缴费期间标志
+
+                DutyCode: or.DutyCode,//产品责任编码
+                DutyPrem: or.Premium,   //保险金额
+                DutyAmnt: or.DutyAmnt,   //保险保额
+                InsuYearFlag: or.InsuYearFlag,   //保险期间标志
+                insuYear: or.InsuYear,  //保险期间
+                payEndYearFlag: or.payEndYearFlag,  //缴费期间标志
+                payEndYear: or.PayEndYear,  //缴费期间
+                payIntv: or.PayIntv,  //缴费频率
+
+                informList:informList,
+                paymentType: or.PayIntv,  //缴费方式
+                unitCount: or.UnitCount,   //份数
+                insuredNum: or.InsuredNum,   //被保人数
+                beneficiaryMode: data.beneficiaryType,  //是否是法定受益人
+                NoticeWay: "01",  //通知方式，必填 00 纸质 01 电子
+                AcceptWay: "00",  //接收方式 00 邮件 01 短信 02 微信 03 打印
+                bnfNum: data.bnfNum,  //受益人数
+                beneficiaryDto: data.beneficiaryDto,  //受益人信息
+                InsBeginDate: "",  //商业险起期
+                ifAutomaticRenewal: data.ifAutomaticRenewal,  //是否继续续保
+
+                TApplicantName: tb.name,    //投保人姓名
+                TSex: tb.Sex,   //投保人性别
+                TBirthday: tb.Birthday,  //投保人生日
+                TCertfCls: tb.identifyType,  //证件类型
+                TCertfCode: tb.identifyNumber,  //证件号
+                TCountry: tb.nationality,  //国家
+                TProfessionClass: tb.TProfessionClass,  //职业类别
+                TProfessionCode: tb.job,  //职业代码
+                TMobilePhone: tb.mobile,  //电话
+                TProvince: tb.pro,  //省份
+                Tcity: tb.city,  //城市
+                TCounty: tb.area,  //县区
+                TContactsAddr: tb.address,  //地址
+                TEmail: tb.email,  //邮箱地址
+                TprofessionName: tb.TprofessionName,  //职业名称
+                TincomeWaySalary: tb.incomeWaySalary,   //是否工资
+                TincomeWayOther: tb.incomeWayOther,   //是否其他
+                TincomeWayInvestment: tb.incomeWayInvestment,   //是否投资
+                TincomeWayPrivate: tb.incomeWayPrivate,   // 是否私营
+                ThreeYearAvelncome: tb.income,   //年收入
+
+                BinsuRelationToApp: data.insuredRelation,  //投被保人关系
+                BApplicantName: bb.name,  //被保人姓名
+                BSex: bb.Sex,   //被保人性别
+                BBirthday: bb.Birthday,  //被保人生日
+                BCertfCls: bb.identifyType,   //证件类型
+                BCertfCode: bb.identifyNumber,  //证件号
+                BCountry: bb.nationality,  //国家
+                BProfessionClass: bb.BProfessionClass,  //职业类别
+                BProfessionCode: bb.job,  //职业代码
+                BMobilePhone: bb.mobile,  //电话
+                BProvince: bb.pro,  //省份
+                Bcity: bb.city,  //城市
+                BCounty: bb.area,  //县区
+                BContactsAddr: bb.address,  //地址
+                BEmail: bb.email,
+                BStature: $('#height').val(),  //身高
+                BAvoirdupois: $('#weight').val(),  //体重
+                BprofessionName: bb.BprofessionName,  //职业名称
+                BincomeWay:"",      // 收入来源
+                BthreeYearAveIncome:bb.threeYearAveIncome,      //被保人年收入
+                BincomeWaySalary: bb.incomeWaySalary,   //是否工资
+                BincomeWayOther: bb.incomeWayOther,      //是否其他
+                BincomeWayInvestment: bb.incomeWayInvestment,  //是否投资
+                BincomeWayPrivate: bb.incomeWayPrivate     //是否私营
+
+            };
+            console.log(JSON.stringify(product));
+            showCenterSpinner();     //加载...
+
+            GetAsyncData("Wljw/5001",function(backData){
+                //alert(JSON.stringify(backData));
+                hideCenterSpinner();    //加载完成
+                saveData();
+                if(backData.code == "0"){
+                    insureInfo.pay.premium = backData.premium;
+                    insureInfo.pay.policyNo = backData.policyNo;
+                    insureInfo.pay.mongdbId = backData.mongdbId;
+                    sessionStorage.setItem('insureInfo', JSON.stringify(insureInfo));
+                    window.location.href="../payInfo.html";
+                }else{
+                    insureInfo.pay.failReason = backData.msg;
+                    sessionStorage.setItem('insureInfo', JSON.stringify(insureInfo));
+                    window.location.href="../insureFail.html";
+                }
+
+            },product);
+
+        }
+
+    }
+    getData();
+    function rule(){
+        saveData();
+        sessionStorage.setItem('insureInfo', JSON.stringify(insureInfo));
+        window.location.href="doc/insureRule.html";
+    }
+    function getData() {
+        insureInfo = JSON.parse(sessionStorage.getItem('insureInfo'));
+
+        if (insureInfo != null && insureInfo.infoList != null) {
+            var  insure = insureInfo.infoList;
+            for(var i=0;i<insure.length;i++){
+                if(insure.substr(i,1) == "是"){
+                    $(".ques-a1:eq("+i+")").find(".btn-yes1").addClass("clicked");
+                }else if(insure.substr(i,1) == "否"){
+                    $(".ques-a1:eq("+i+")").find(".btn-no").addClass("clicked");
+                }else{
+
+                }
+
+            }
+
+        }
+        if(insureInfo.insured.checkSM){
+            isRead = true;
+            $(".read").addClass("check").removeClass("uncheck");
+        }
+        $("#height").val(insureInfo.insured.height);
+        $("#weight").val(insureInfo.insured.weight);
+    }
+    function saveData() {
+        if (insureInfo != null) {
+            if (insureInfo.infoList == null)
+                insureInfo.infoList = "";
+            var Info="";
+            $(".ques-a1").each(function(){
+                if(!$(this).hasClass("hide")){
+                    if($(this).find(".btn-yes1").hasClass("clicked")){
+                        var InfoContent = "是";
+                    }else if($(this).find(".btn-no").hasClass("clicked")){
+                        InfoContent = "否";
+                    }else{
+                        InfoContent = "空";
+                    }
+                    Info += InfoContent;
+                }
+
+            });
+            insureInfo.infoList = Info;
+            insureInfo.insured.checkSM = isRead;
+            insureInfo.insured.height = $("#height").val();
+            insureInfo.insured.weight = $("#weight").val();
+
+        }
+    }
+    function cutstr(str, len) {
+        var str_length = 0;
+        var str_len = 0;
+        str_cut = new String();
+        str_len = str.length;
+        for (var i = 0; i < str_len; i++) {
+            a = str.charAt(i);
+            str_length++;
+            if (escape(a).length > 4) {
+                //中文字符的长度经编码之后大于4
+                str_length++;
+            }
+            str_cut = str_cut.concat(a);
+            if (str_length >= len) {
+                str_cut = str_cut.concat("...");
+                return str_cut;
+            }
+        }
+        //如果给定字符串小于指定长度，则返回源字符串；
+        if (str_length < len) {
+            return str;
+        }
+    }
+    //自定义分享
+    weixinShare({
+        shareUrl: config.shareRootUrl + '/weixinouter/basepage/pages/product/dreadDisease100/trial.html',
+        shareIcon: '',
+        shareTitle: '中华健康宝重大疾病保险',
+        shareText: '100种疾病保障重疾险,全面守护,确诊即付',
+        isNeedRecord: true,
+        openId: or.openId,
+        activityId: 'F0016A',
+        typeTimeline: 'zhbx-3',
+        typeAppMessage: 'zhbx-4',
+        isGiveCoin: 'Y'
+    });
+
+</script>
+
+
+
+
