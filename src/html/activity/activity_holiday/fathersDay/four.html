@@ -57,6 +57,7 @@
     </style>
 </head>
 <body>
+<div class="bg"></div>
 <div id="qrCode"
      style="z-index: 997; position: fixed; height: 6.7rem; width: 4rem; padding-top: 2.5rem; margin-left: -2rem; left: 50%; display: none">
     <div style="position: absolute; width: 0.7rem; height: 0.7rem; right: 0; z-index: 999;"
@@ -99,20 +100,22 @@
 <script src='../../../../js/jweixin-1.0.0.js'></script>
 <script src='../../../../js/common.js'></script>
 <script>
-    getOpenId();
+    //    getOpenId();
     var openId = window.localStorage.getItem(config.openIdName);
     var isFocus = false;
     var result = -1;
     $(function () {
         if (openId != null && openId.length != 0) {
-            GetAsyncData("../../../rest/User/1006", function (backData) {
-                isFocus = backData.data.flag;
-            }, {"openId": openId});
+//            GetAsyncData("../../../rest/User/1006", function (backData) {
+//                isFocus = backData.data.flag;
+//            }, {"openId": openId});
         } else {
         }
 //        closeActivity(config.activityEndTime.mothersDay);
 
         $('.next').click(function () {
+            window.location.href = "../../activity_internalPurchase/publicity.html";
+            return;
             var $score = $('input[name="score"]:checked').val();
             if ($score) {
                 var lastTotal = sessionStorage.getItem('totles');
@@ -131,39 +134,39 @@
                     result = 3;
                 }
                 console.log(totles);
-                weixinShare({
-                    shareUrl: config.shareRootUrl + '/weixinouter/basepage/pages/activity/activity_holiday/fathersDay/index.html',
-                    shareIcon: config.shareRootUrl + '/weixinouter/basepage/pages/activity/activity_holiday/fathersDay/img/share_icon' + result + '.jpg',
-                    shareText: '我的老爸是XXXX型。【老爸性格大测试】快来测测你真的了解你的老爸吗？',
-                    isNeedRecord: true,
-                    openId: openId,
-                    activityId: '8',
-                    typeTimeline: 'zhbx-3',
-                    typeAppMessage: 'zhbx-4',
-                    isGiveCoin: 'N'
-                }, function () {
-                    $(".transpond").css('display', "none");
-                    $('#result-div').css('display', 'block');
-                    $('#result').addClass('result' + result);
-                    $('.qustion').remove();
-                    $('body').css('background', "url('')");
-                    baiduCollection();
-                });
+//                weixinShare({
+//                    shareUrl: config.shareRootUrl + '/weixinouter/basepage/pages/activity/activity_holiday/fathersDay/index.html',
+//                    shareIcon: config.shareRootUrl + '/weixinouter/basepage/pages/activity/activity_holiday/fathersDay/img/share_icon' + result + '.jpg',
+//                    shareText: '我的老爸是XXXX型。【老爸性格大测试】快来测测你真的了解你的老爸吗？',
+//                    isNeedRecord: true,
+//                    openId: openId,
+//                    activityId: '8',
+//                    typeTimeline: 'zhbx-3',
+//                    typeAppMessage: 'zhbx-4',
+//                    isGiveCoin: 'N'
+//                }, function () {
+//                    $(".transpond").css('display', "none");
+//                    $('#result-div').css('display', 'block');
+//                    $('#result').addClass('result' + result);
+//                    $('.qustion').remove();
+//                    $('body').css('background', "url('')");
+//                    baiduCollection();
+//                });
             }
         });
     });
 
-    weixinShare({
-        shareUrl: config.shareRootUrl + '/weixinouter/basepage/pages/activity/activity_holiday/fathersDay/index.html',
-        shareIcon: config.shareRootUrl + '/weixinouter/basepage/pages/activity/activity_holiday/fathersDay/img/share_icon' + Math.ceil(Math.random() * 3) + '.jpg',
-        shareText: '我的老爸是XXXX型。【老爸性格大测试】快来测测你真的了解你的老爸吗？',
-        isNeedRecord: true,
-        openId: openId,
-        activityId: '108',
-        typeTimeline: 'zhbx-3',
-        typeAppMessage: 'zhbx-4',
-        isGiveCoin: 'N'
-    });
+    //    weixinShare({
+    //        shareUrl: config.shareRootUrl + '/weixinouter/basepage/pages/activity/activity_holiday/fathersDay/index.html',
+    //        shareIcon: config.shareRootUrl + '/weixinouter/basepage/pages/activity/activity_holiday/fathersDay/img/share_icon' + Math.ceil(Math.random() * 3) + '.jpg',
+    //        shareText: '我的老爸是XXXX型。【老爸性格大测试】快来测测你真的了解你的老爸吗？',
+    //        isNeedRecord: true,
+    //        openId: openId,
+    //        activityId: '108',
+    //        typeTimeline: 'zhbx-3',
+    //        typeAppMessage: 'zhbx-4',
+    //        isGiveCoin: 'N'
+    //    });
     function toBuy() {
         if (isFocus) {
             window.location.href = config.activity.fathersDay['url' + result] + "&linkId=1080" + openId;
@@ -171,5 +174,5 @@
             $('#qrCode').css('display', 'block');
         }
     }
-    closeActivity(config.activityEndTime.fathersDay);
+    //    closeActivity(config.activityEndTime.fathersDay);
 </script>

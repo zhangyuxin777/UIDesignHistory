@@ -139,7 +139,7 @@
 
 <script type="text/javascript">
     $('.bg').css("height", $(window).height());
-//    closeActivity(config.activityEndTime.goHome);
+    //    closeActivity(config.activityEndTime.goHome);
 
     var detail = $('.detail_bg');
     var dialog = $('.code');
@@ -157,7 +157,7 @@
     }
     function showDialog() {
         if (!isFocus) {
-            window.location.href = "tblr.html";
+            window.location.href = "tblr.html?type=1";
         } else {
             closeDetail();
             dialog.css("display", "block");
@@ -170,7 +170,6 @@
     var isFocus = false;
     var openId = window.localStorage.getItem(config.openIdName);
     var type = getUrlParam("type");
-
 
 
 </script>

@@ -103,8 +103,8 @@
         }
 
         .enter_btn {
-            height: 0.5rem;
-            line-height: 0.5rem;
+            height: 0.4rem;
+            line-height: 0.4rem;
             background-color: rgb(251, 76, 15);
             color: #ffffff;
             text-align: center;
@@ -313,17 +313,9 @@
     var uuid = "";
     var clock;
     var saveNumber = 0;
-    getOpenId();
     var openId = window.localStorage.getItem(config.openIdName);
     var isFocus = false;
-    // closeProduct(104);
     $(function () {
-        if (openId != null && openId.length != 0) {
-            GetData("User/1006", function (backData) {
-                isFocus = backData.data.flag;
-            }, {"openId": openId});
-        }
-
         $('#infoForm').attr('action', config.activity.goodCarUrl);//表单提交地址
         $("#sendActiveCode").val('');
         if (!$.trim($('#mobile').val()).match(/^(0|86|17951)?(13[0-9]|15[012356789]|17[678]|18[0-9]|14[57])[0-9]{8}$/)) {
@@ -335,20 +327,8 @@
         autoWidth();
         $('body').removeClass('hide');
 
-        baiduCollection();
     });
 
-    weixinShare({
-        shareUrl: config.shareRootUrl + '/weixinouter/basepage/activity_cars/proIntro_goodCar.html',
-        shareIcon: config.shareRootUrl + '/weixinouter/basepage/images/cars/proIntro_goodCar/share-icon.jpg',
-        shareText: '中华好车-中华财险高端车险品牌',
-        isNeedRecord: true,
-        openId: openId,
-        activityId: '104',
-        typeTimeline: 'zhbx-3',
-        typeAppMessage: 'zhbx-4',
-        isGiveCoin: 'Y'
-    });
 
     function judge() {
         var name = $.trim($('#name').val());
@@ -418,6 +398,9 @@
     }
 
     function submitForm(enterBtn) {
+        window.location.href='../activity_holiday/mothersDayPublicity.html';
+        return;
+
         if (!isFocus) {
             showCodeDialog();
             return;
@@ -564,9 +547,6 @@
             "plateNumber": plateNumber,
             "isNew": isNewCar
         };
-        GetAsyncData("Cars/1024", function (backdata) {
-//                alert("1022接口成功");
-        }, sData);
 
     }
 

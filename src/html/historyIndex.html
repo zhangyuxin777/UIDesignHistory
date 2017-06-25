@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+    <title>list</title>
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        ol, ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            border-bottom: 1px solid #d4d4d4;
+            background-color: #ffffff;
+        }
+
+        body {
+            font-family: 'Microsoft YaHei', 'Hiragino Sans GB', Helvetica, Arial, 'Lucida Grande', sans-serif;
+            width: 6.4rem;
+            margin: 0 auto;
+            font-size: 0.24rem;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .line {
+            list-style-type: none;
+            height: 0.45rem;
+            line-height: 0.45rem;
+            font-size: 0.12rem;
+            clear: both;
+        }
+
+        .line:after {
+            content: '';
+            height: 1px;
+            width: 100%;
+            background-color: #d7d7d7;
+            display: block;
+            -webkit-transform-origin: 50% 100%;
+            transform-origin: 50% 100%
+        }
+
+        a {
+            display: inline-block;
+            width: 100%;
+            height: 100%;
+            padding-left: 0.1rem;
+            text-decoration: none;
+        }
+
+        a:link {
+            color: #000000;
+            text-decoration: none;
+        }
+
+        a:visited {
+            color: #000000;
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: #000000;
+            text-decoration: none;
+        }
+
+        .hide {
+            display: none;
+        }
+
+        @media only screen and (-webkit-min-device-pixel-ratio: 2) {
+            .line:after {
+                -webkit-transform: scaleY(0.5);
+                transform: scaleY(0.5)
+            }
+        }
+
+        @media only screen and (-webkit-min-device-pixel-ratio: 3) {
+            .line:after {
+                -webkit-transform: scaleY(0.33);
+                transform: scaleY(0.33)
+            }
+        }
+
+    </style>
+</head>
+<body class="hide">
+<ul>
+    <li class="line">
+        <a href="activity/activity_first/fengqiang.html">1月"疯抢油卡"</a>
+    </li>
+
+    <li class="line">
+        <a href="activity/activity_go_home/index.html">2月"温暖回家路1期"</a>
+    </li>
+
+    <li class="line">
+        <a href="activity/activity_go_home/go_home.html">2月"温暖回家路2期"</a>
+    </li>
+
+    <li class="line">
+        <a href="activity/activity_cars/proIntro.html">3月"多车之家"</a>
+    </li>
+
+    <li class="line">
+        <a href="activity/activity_cars/proIntro_goodCar.html">4月"中华好车"</a>
+    </li>
+
+    <li class="line">
+        <a href="activity/activity_holiday/mothersDayPublicity.html">5月"感恩母亲节"</a>
+    </li>
+    <li class="line">
+        <a href="activity/activity_calculator/publicity.html">5月"环保星级大比拼"</a>
+    </li>
+
+    <li class="line">
+        <a href="activity/activity_refueling/publicity.html">5月"为爱加油"</a>
+    </li>
+
+    <li class="line">
+        <a href="activity/activity_holiday/fathersDay/index.html">6月"父亲节-老爸测试"</a>
+    </li>
+    <li class="line">
+        <a href="activity/activity_internalPurchase/publicity.html">6月"东方资产团购"</a>
+    </li>
+
+    <li class="line">
+        <a href="activity/activity_lifeOnLine/publicity.html">7月"爱健康 惠生活"</a>
+    </li>
+
+    <li class="line">
+        <a href="activity/activity_app/app.html">7月"绿驾APP宣传"</a>
+    </li>
+</ul>
+
+</body>
+<script src="../js/common.js"></script>
+<script src="../js/jquery-1.9.1.min.js"></script>
+<script>
+    autoWidth();
+</script>
+</html>

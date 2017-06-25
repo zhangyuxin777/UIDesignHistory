@@ -581,13 +581,14 @@
     }
 
     function toCars(isPage3) {
+        window.location.href = "inputInfo_goodCar.html";
+        return;
         if (!isFocus) {
             showCodeDialog();
         } else {
             sessionStorage.page3 = isPage3;
             sessionStorage.page1 = 0;
-            window.location.href = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=" + config.appIdValue + "&redirect_uri=" + config.shareRootUrl + "/weixinouter/basepage/activity_cars/inputInfo_goodCar.html" +
-                    "&response_type=code&scope=snsapi_base&state=123&connect_redirect=1#wechat_redirect";
+            window.location.href = "inputInfo_goodCar.html";
         }
 
     }

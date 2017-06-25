@@ -118,8 +118,8 @@
         }
 
         .enter_btn {
-            height: 0.5rem;
-            line-height: 0.5rem;
+            height: 0.4rem;
+            line-height: 0.4rem;
             background-color: rgb(251, 76, 15);
             color: #ffffff;
             text-align: center;
@@ -739,6 +739,9 @@
     }
 
     function showDialog() {
+        window.location.href = "../activity_cars/proIntro_goodCar.html";
+        return;
+
         var name = $.trim($('#name').val());
         var mobile = $.trim($('#mobile').val());
         var code = $.trim($("#sendActiveCode").val());
@@ -949,6 +952,9 @@
     }
 
     function submitForm(enterBtn) {
+        window.location.href = "../activity_cars/proIntro_goodCar.html";
+        return;
+
         if (typeof($(enterBtn).attr("myTag")) == "undefined") {
             return;
         }

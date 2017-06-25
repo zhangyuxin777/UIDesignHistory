@@ -370,6 +370,9 @@
     var openId = window.localStorage.getItem(config.openIdName);
     var isShare = 'N';
     function getReward() {
+        window.location.href='../activity_refueling/publicity.html';
+        return;
+
         if (completePercent < 40) {
             alert('请先刮奖');
             return;

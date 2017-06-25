@@ -256,6 +256,8 @@
 <script src="../../../js/spinner.js"></script>
 <script type="text/javascript">
     autoWidth();
+    var type = getUrlParam('type');
+
     var today = new Date();
     var tomorrow = new Date();
     var tomorrow_milliseconds = today.getTime() + 1000 * 60 * 60 * 24 * 1;
@@ -317,7 +319,7 @@
         var mobile = $.trim($("#mobile").val());
         var code = $.trim($("#sendActiveCode").val());
 
-        window.location.href = "tbsuccess.html?serialNo=1";
+        window.location.href = "tbsuccess.html?serialNo=1&type=" + type;
 
 //        if (name == "" || name.length == 0) {
 //            alert("请输入姓名");

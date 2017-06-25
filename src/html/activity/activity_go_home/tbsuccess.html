@@ -115,6 +115,7 @@
     $('.bg').css("height", $(window).height());
     var openId = window.localStorage.getItem(config.openIdName);
     var serialNo = getUrlParam("serialNo");
+    var type = getUrlParam('type');
     var visits = 10056;
     //显示灰色 jQuery 遮罩层
     function showBg() {
@@ -126,7 +127,12 @@
             display: "block"
         });
         $("#dialog").show();
-        window.location.href = "index.html";
+        if (type == '2') {
+            window.location.href = "go_home.html";
+        } else {
+            window.location.href = "../activity_cars/proIntro.html";
+        }
+
     }
     //关闭灰色 jQuery 遮罩
     function closeBg() {

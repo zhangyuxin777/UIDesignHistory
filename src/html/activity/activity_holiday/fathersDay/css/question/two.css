@@ -1,4 +1,7 @@
-body {
-  background: url("../../img/two.jpg") no-repeat top left;
-  background-size: 6.4rem 10.38rem;
+.bg {
+    position: absolute;
+    background: url("../../img/two.jpg") no-repeat top left;
+    background-size: 6.4rem 10.38rem;
+    height: 100%;
+    width: 6.4rem;
 }
