@@ -18,7 +18,6 @@
             list-style: none;
             padding: 0;
             margin: 0;
-            border-bottom: 1px solid #d4d4d4;
             background-color: #ffffff;
         }
 
@@ -43,10 +42,7 @@
             height: 0.9rem;
             line-height: 0.9rem;
             font-size: 0.24rem;
-            clear: both;
             width: 3.18rem;
-            display: inline-block;
-            float: left;
         }
 
         .line:after {
@@ -57,14 +53,6 @@
             display: block;
             -webkit-transform-origin: 50% 100%;
             transform-origin: 50% 100%
-        }
-
-        a {
-            display: inline-block;
-            padding-left: 0.2rem;
-            width: 100%;
-            height: 100%;
-            text-decoration: none;
         }
 
         a:link {
@@ -79,6 +67,23 @@
 
         a:hover {
             color: #000000;
+            text-decoration: none;
+        }
+
+        .a_logo {
+            display: inline-block;
+            width: 100%;
+            line-height: 0.9rem;
+            height: 0.9rem;
+            text-decoration: none;
+        }
+
+        .a_text {
+            display: inline-block;
+            padding-left: 0.2rem;
+            width: 100%;
+            line-height: 0.9rem;
+            height: 0.9rem;
             text-decoration: none;
         }
 
@@ -100,11 +105,44 @@
 
         .place {
             width: 100%;
-            height: 0.4rem;
-            line-height: 0.4rem;
+            height: 0.5rem;
+            line-height: 0.5rem;
             padding-left: 0.2rem;
             font-size: 0.22rem;
 
+        }
+
+        .logo {
+            position: absolute;
+            width: 0.5rem;
+            height: 0.5rem;
+            margin-top: 0.2rem;
+        }
+
+        .logo_box {
+            height: 0.9rem;
+        }
+
+        .logo_yaixin {
+            background-image: url('../images/logo_ai_online.png');
+            background-size: 2rem 0.5rem;
+            width: 2rem;
+            height: 0.5rem;
+            margin-left: 0.2rem;
+            margin-top: 0.2rem;
+        }
+
+        .logo_huaxin {
+            background-image: url('../images/logo_huaxiang.png');
+            background-size: 2rem 0.5rem;
+            width: 2rem;
+            height: 0.5rem;
+            margin-left: 0.2rem;
+            margin-top: 0.2rem;
+        }
+
+        .text {
+            margin-left: 0.6rem;
         }
 
         @media only screen and (-webkit-min-device-pixel-ratio: 2) {
@@ -134,96 +172,137 @@
     </style>
 </head>
 <body class="hide">
-<div class="place">宣传活动</div>
+
+<div class="place">PC网站</div>
 <ul class="list">
     <li class="line">
-        <a href="activity/activity_first/fengqiang.html">1月"疯抢油卡"</a>
+        <a class="a_text" href="https://youku170.tmall.com/index.htm">
+            <img class="logo" src="../images/logo_pc_youku.jpg" alt="">
+            <span class="text">优酷移动</span>
+        </a>
     </li>
     <span class="split-line-v"></span>
 
     <li class="line">
-        <a href="activity/activity_go_home/index.html">2月"温暖回家路1期"</a>
-    </li>
-
-    <li class="line">
-        <a href="activity/activity_go_home/go_home.html">2月"温暖回家路2期"</a>
-    </li>
-    <span class="split-line-v"></span>
-    <li class="line">
-        <a href="activity/activity_cars/proIntro.html">3月"多车之家"</a>
-    </li>
-
-    <li class="line">
-        <a href="activity/activity_cars/proIntro_goodCar.html">4月"中华好车"</a>
-    </li>
-    <span class="split-line-v"></span>
-    <li class="line">
-        <a href="activity/activity_holiday/mothersDayPublicity.html">5月"感恩母亲节"</a>
+        <div class="logo_box">
+            <a href="http://www.ai-ol.com/" class="a_logo logo_yaixin">
+            </a>
+        </div>
     </li>
     <li class="line">
-        <a href="activity/activity_calculator/publicity.html">5月"环保星级大比拼"</a>
+        <div class="logo_box">
+            <a href="http://www.hua10036.cn/MVNO-OBH/" class="a_logo logo_huaxin">
+            </a>
+        </div>
     </li>
-    <span class="split-line-v"></span>
-    <li class="line">
-        <a href="activity/activity_refueling/publicity.html">5月"为爱加油"</a>
-    </li>
-
-    <li class="line">
-        <a href="activity/activity_holiday/fathersDay/index.html">6月"父亲节-老爸测试"</a>
-    </li>
-    <span class="split-line-v"></span>
-    <li class="line">
-        <a href="activity/activity_internalPurchase/publicity.html">6月"东方资产团购"</a>
-    </li>
-
-    <li class="line">
-        <a href="activity/activity_lifeOnLine/publicity.html">7月"爱健康 惠生活"</a>
-    </li>
-    <span class="split-line-v"></span>
-    <li class="line">
-        <a href="activity/activity_app/app.html">7月"绿驾APP宣传"</a>
-    </li>
-    <div style="clear: both"></div>
 </ul>
 
 <div class="place">公众号</div>
 <ul class="list">
     <li class="line">
-        <a href="http://weixin.wanlianjin.com/weixinouter/basepage/pages/personal.html">万联金网</a>
+        <span onclick="toWeixin(0)" class="a_text"
+              href="http://weixin.wanlianjin.com/weixinouter/basepage/pages/personal.html">
+            <img class="logo" src="../images/app_logo.jpg" alt="">
+            <span class="text">万联金网</span>
+        </span>
     </li>
     <span class="split-line-v"></span>
 
     <li class="line">
-        <a href="http://wlweixin.wanlianjin.com/gxbweixinouter/o2o/html/my/personal.html">共享保</a>
+        <span onclick="toWeixin(1)" class="a_text"
+              href="http://wlweixin.wanlianjin.com/gxbweixinouter/o2o/html/my/personal.html">
+            <img src="http://wlweixin.wanlianjin.com/gxbweixinouter/o2o/image/logo.png" alt="" class="logo">
+            <span class="text">共享保</span>
+        </span>
     </li>
 </ul>
+<div class="place">APP</div>
+<ul class="list">
+    <li class="line">
+        <a class="a_text" href="http://appurl.cc/130999">
+            <img class="logo" src="../images/logo_app.png" alt="">
+            <span class="text">绿驾</span>
+        </a>
+    </li>
+</ul>
+<div class="place">限时活动</div>
+<ul class="list">
+    <li class="line">
+        <a class="a_text" href="activity/activity_first/fengqiang.html">1月"疯抢油卡"</a>
+    </li>
+    <span class="split-line-v"></span>
+
+    <li class="line">
+        <a class="a_text" href="activity/activity_go_home/index.html">2月"温暖回家路1期"</a>
+    </li>
+
+    <li class="line">
+        <a class="a_text" href="activity/activity_go_home/go_home.html">2月"温暖回家路2期"</a>
+    </li>
+    <span class="split-line-v"></span>
+    <li class="line">
+        <a class="a_text" href="activity/activity_cars/proIntro.html">3月"多车之家"</a>
+    </li>
+
+    <li class="line">
+        <a class="a_text" href="activity/activity_cars/proIntro_goodCar.html">4月"中华好车"</a>
+    </li>
+    <span class="split-line-v"></span>
+    <li class="line">
+        <a class="a_text" href="activity/activity_holiday/mothersDayPublicity.html">5月"感恩母亲节"</a>
+    </li>
+    <li class="line">
+        <a class="a_text" href="activity/activity_calculator/publicity.html">5月"环保星级大比拼"</a>
+    </li>
+    <span class="split-line-v"></span>
+    <li class="line">
+        <a class="a_text" href="activity/activity_refueling/publicity.html">5月"为爱加油"</a>
+    </li>
+
+    <li class="line">
+        <a class="a_text" href="activity/activity_holiday/fathersDay/index.html">6月"父亲节-老爸测试"</a>
+    </li>
+    <span class="split-line-v"></span>
+    <li class="line">
+        <a class="a_text" href="activity/activity_internalPurchase/publicity.html">6月"东方资产团购"</a>
+    </li>
+
+    <li class="line">
+        <a class="a_text" href="activity/activity_lifeOnLine/publicity.html">7月"爱健康 惠生活"</a>
+    </li>
+    <span class="split-line-v"></span>
+    <li class="line">
+        <a class="a_text" href="activity/activity_app/app.html">7月"绿驾APP宣传"</a>
+    </li>
+</ul>
+
 
 <div class="place">保险产品</div>
 <ul class="list">
     <li class="line">
-        <a href="activity/activity_first/fengqiang.html">车险</a>
+        <a class="a_text" href="activity/activity_first/fengqiang.html">车险</a>
     </li>
     <span class="split-line-v"></span>
 
     <li class="line">
-        <a href="activity/activity_go_home/index.html">关爱英才</a>
+        <a class="a_text" href="activity/activity_go_home/index.html">关爱英才</a>
     </li>
     <li class="line">
-        <a href="activity/activity_first/fengqiang.html">四海逍遥</a>
-    </li>
-    <span class="split-line-v"></span>
-
-    <li class="line">
-        <a href="activity/activity_go_home/index.html">中华爱宝保</a>
-    </li>
-
-    <li class="line">
-        <a href="activity/activity_first/fengqiang.html">吉祥保</a>
+        <a class="a_text" href="activity/activity_first/fengqiang.html">四海逍遥</a>
     </li>
     <span class="split-line-v"></span>
 
     <li class="line">
-        <a href="activity/activity_go_home/index.html">本命保</a>
+        <a class="a_text" href="activity/activity_go_home/index.html">中华爱宝保</a>
+    </li>
+
+    <li class="line">
+        <a class="a_text" href="activity/activity_first/fengqiang.html">吉祥保</a>
+    </li>
+    <span class="split-line-v"></span>
+
+    <li class="line">
+        <a class="a_text" href="activity/activity_go_home/index.html">本命保</a>
     </li>
 </ul>
 
@@ -232,5 +311,13 @@
 <script src="../js/jquery-1.9.1.min.js"></script>
 <script>
     autoSize();
+
+    function toWeixin(index) {
+        if (index == 0) {
+            window.location.href='https://mp.weixin.qq.com/mp/profile_ext?action=home&__biz=MzIyODA5NTU4NQ==&scene=124#wechat_redirect';
+        }else{
+            window.location.href='https://mp.weixin.qq.com/mp/profile_ext?action=home&__biz=MzIwOTUzNDkwMA==&scene=124#wechat_redirect';
+        }
+    }
 </script>
 </html>
