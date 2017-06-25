@@ -26,16 +26,27 @@
             font-family: 'Microsoft YaHei', 'Hiragino Sans GB', Helvetica, Arial, 'Lucida Grande', sans-serif;
             width: 6.4rem;
             margin: 0 auto;
-            font-size: 0.24rem;
+            padding: 0;
+            font-size: .24rem;
             -webkit-tap-highlight-color: transparent;
+            background-color: #efefef;
+            color: #404040
+        }
+
+        .list {
+            display: flex;
+            flex-wrap: wrap;
         }
 
         .line {
             list-style-type: none;
-            height: 0.45rem;
-            line-height: 0.45rem;
-            font-size: 0.12rem;
+            height: 0.9rem;
+            line-height: 0.9rem;
+            font-size: 0.24rem;
             clear: both;
+            width: 3.18rem;
+            display: inline-block;
+            float: left;
         }
 
         .line:after {
@@ -50,9 +61,9 @@
 
         a {
             display: inline-block;
+            padding-left: 0.2rem;
             width: 100%;
             height: 100%;
-            padding-left: 0.1rem;
             text-decoration: none;
         }
 
@@ -75,10 +86,36 @@
             display: none;
         }
 
+        .split-line-v {
+            content: '';
+            height: 0.6rem;
+            margin-top: 0.15rem;
+            width: 1px;
+            background-color: #d7d7d7;
+            display: inline-block;
+            -webkit-transform-origin: 50% 100%;
+            transform-origin: 50% 100%;
+            float: left;
+        }
+
+        .place {
+            width: 100%;
+            height: 0.4rem;
+            line-height: 0.4rem;
+            padding-left: 0.2rem;
+            font-size: 0.22rem;
+
+        }
+
         @media only screen and (-webkit-min-device-pixel-ratio: 2) {
             .line:after {
                 -webkit-transform: scaleY(0.5);
                 transform: scaleY(0.5)
+            }
+
+            .split-line-v {
+                -webkit-transform: scaleX(0.5);
+                transform: scaleX(0.5)
             }
         }
 
@@ -87,15 +124,22 @@
                 -webkit-transform: scaleY(0.33);
                 transform: scaleY(0.33)
             }
+
+            .split-line-v {
+                -webkit-transform: scaleX(0.33);
+                transform: scaleX(0.33)
+            }
         }
 
     </style>
 </head>
 <body class="hide">
-<ul>
+<div class="place">宣传活动</div>
+<ul class="list">
     <li class="line">
         <a href="activity/activity_first/fengqiang.html">1月"疯抢油卡"</a>
     </li>
+    <span class="split-line-v"></span>
 
     <li class="line">
         <a href="activity/activity_go_home/index.html">2月"温暖回家路1期"</a>
@@ -104,7 +148,7 @@
     <li class="line">
         <a href="activity/activity_go_home/go_home.html">2月"温暖回家路2期"</a>
     </li>
-
+    <span class="split-line-v"></span>
     <li class="line">
         <a href="activity/activity_cars/proIntro.html">3月"多车之家"</a>
     </li>
@@ -112,14 +156,14 @@
     <li class="line">
         <a href="activity/activity_cars/proIntro_goodCar.html">4月"中华好车"</a>
     </li>
-
+    <span class="split-line-v"></span>
     <li class="line">
         <a href="activity/activity_holiday/mothersDayPublicity.html">5月"感恩母亲节"</a>
     </li>
     <li class="line">
         <a href="activity/activity_calculator/publicity.html">5月"环保星级大比拼"</a>
     </li>
-
+    <span class="split-line-v"></span>
     <li class="line">
         <a href="activity/activity_refueling/publicity.html">5月"为爱加油"</a>
     </li>
@@ -127,6 +171,7 @@
     <li class="line">
         <a href="activity/activity_holiday/fathersDay/index.html">6月"父亲节-老爸测试"</a>
     </li>
+    <span class="split-line-v"></span>
     <li class="line">
         <a href="activity/activity_internalPurchase/publicity.html">6月"东方资产团购"</a>
     </li>
@@ -134,9 +179,51 @@
     <li class="line">
         <a href="activity/activity_lifeOnLine/publicity.html">7月"爱健康 惠生活"</a>
     </li>
-
+    <span class="split-line-v"></span>
     <li class="line">
         <a href="activity/activity_app/app.html">7月"绿驾APP宣传"</a>
+    </li>
+    <div style="clear: both"></div>
+</ul>
+
+<div class="place">公众号</div>
+<ul class="list">
+    <li class="line">
+        <a href="http://weixin.wanlianjin.com/weixinouter/basepage/pages/personal.html">万联金网</a>
+    </li>
+    <span class="split-line-v"></span>
+
+    <li class="line">
+        <a href="http://wlweixin.wanlianjin.com/gxbweixinouter/o2o/html/my/personal.html">共享保</a>
+    </li>
+</ul>
+
+<div class="place">保险产品</div>
+<ul class="list">
+    <li class="line">
+        <a href="activity/activity_first/fengqiang.html">车险</a>
+    </li>
+    <span class="split-line-v"></span>
+
+    <li class="line">
+        <a href="activity/activity_go_home/index.html">关爱英才</a>
+    </li>
+    <li class="line">
+        <a href="activity/activity_first/fengqiang.html">四海逍遥</a>
+    </li>
+    <span class="split-line-v"></span>
+
+    <li class="line">
+        <a href="activity/activity_go_home/index.html">中华爱宝保</a>
+    </li>
+
+    <li class="line">
+        <a href="activity/activity_first/fengqiang.html">吉祥保</a>
+    </li>
+    <span class="split-line-v"></span>
+
+    <li class="line">
+        <a href="activity/activity_go_home/index.html">本命保</a>
     </li>
 </ul>
 
@@ -144,6 +231,6 @@
 <script src="../js/common.js"></script>
 <script src="../js/jquery-1.9.1.min.js"></script>
 <script>
-    autoWidth();
+    autoSize();
 </script>
 </html>
