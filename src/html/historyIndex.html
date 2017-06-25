@@ -7,7 +7,7 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
 
-    <title>list</title>
+    <title>作品展示</title>
     <style>
 
         * {
@@ -53,6 +53,11 @@
             display: block;
             -webkit-transform-origin: 50% 100%;
             transform-origin: 50% 100%
+        }
+
+        .no_line:after {
+            content: '';
+            height: 0;
         }
 
         a:link {
@@ -189,7 +194,7 @@
             </a>
         </div>
     </li>
-    <li class="line">
+    <li class="line no_line">
         <div class="logo_box">
             <a href="http://www.hua10036.cn/MVNO-OBH/" class="a_logo logo_huaxin">
             </a>
@@ -199,7 +204,7 @@
 
 <div class="place">公众号</div>
 <ul class="list">
-    <li class="line">
+    <li class="line no_line">
         <span onclick="toWeixin(0)" class="a_text"
               href="http://weixin.wanlianjin.com/weixinouter/basepage/pages/personal.html">
             <img class="logo" src="../images/app_logo.jpg" alt="">
@@ -208,7 +213,7 @@
     </li>
     <span class="split-line-v"></span>
 
-    <li class="line">
+    <li class="line no_line">
         <span onclick="toWeixin(1)" class="a_text"
               href="http://wlweixin.wanlianjin.com/gxbweixinouter/o2o/html/my/personal.html">
             <img src="http://wlweixin.wanlianjin.com/gxbweixinouter/o2o/image/logo.png" alt="" class="logo">
@@ -218,7 +223,7 @@
 </ul>
 <div class="place">APP</div>
 <ul class="list">
-    <li class="line">
+    <li class="line no_line">
         <a class="a_text" href="http://appurl.cc/130999">
             <img class="logo" src="../images/logo_app.png" alt="">
             <span class="text">绿驾</span>
@@ -267,11 +272,11 @@
         <a class="a_text" href="activity/activity_internalPurchase/publicity.html">6月"东方资产团购"</a>
     </li>
 
-    <li class="line">
+    <li class="line no_line">
         <a class="a_text" href="activity/activity_lifeOnLine/publicity.html">7月"爱健康 惠生活"</a>
     </li>
     <span class="split-line-v"></span>
-    <li class="line">
+    <li class="line no_line">
         <a class="a_text" href="activity/activity_app/app.html">7月"绿驾APP宣传"</a>
     </li>
 </ul>
@@ -280,29 +285,29 @@
 <div class="place">保险产品</div>
 <ul class="list">
     <li class="line">
-        <a class="a_text" href="activity/activity_first/fengqiang.html">车险</a>
+        <a class="a_text" href="http://wlweixin.wanlianjin.com/gxbweixinouter/o2o/html/product/automobile/publicity.html?openId=101otJ1Nvw-CN16YDmQyADQTdMFpUqQ&isShare=0">车险</a>
     </li>
     <span class="split-line-v"></span>
 
     <li class="line">
-        <a class="a_text" href="activity/activity_go_home/index.html">关爱英才</a>
+        <a class="a_text" href="http://wlweixin.wanlianjin.com/gxbweixinouter/o2o/html/product/nonAuto/turnToChildSafety.html?openId=101otJ1Nvw-CN16YDmQyADQTdMFpUqQ&isShare=0">关爱英才</a>
     </li>
     <li class="line">
-        <a class="a_text" href="activity/activity_first/fengqiang.html">四海逍遥</a>
-    </li>
-    <span class="split-line-v"></span>
-
-    <li class="line">
-        <a class="a_text" href="activity/activity_go_home/index.html">中华爱宝保</a>
-    </li>
-
-    <li class="line">
-        <a class="a_text" href="activity/activity_first/fengqiang.html">吉祥保</a>
+        <a class="a_text" href="http://wlweixin.wanlianjin.com/gxbweixinouter/o2o/html/product/nonAuto/turnToTravelAccident.html?openId=101otJ1Nvw-CN16YDmQyADQTdMFpUqQ&isShare=0">四海逍遥</a>
     </li>
     <span class="split-line-v"></span>
 
     <li class="line">
-        <a class="a_text" href="activity/activity_go_home/index.html">本命保</a>
+        <a class="a_text" href="http://wlweixin.wanlianjin.com/gxbweixinouter/o2o/html/product/nonAuto/turnToDDJR.html?openId=101otJ1Nvw-CN16YDmQyADQTdMFpUqQ&isShare=0">中华爱宝保</a>
+    </li>
+
+    <li class="line no_line">
+        <a class="a_text" href="http://wlweixin.wanlianjin.com/gxbweixinouter/o2o/html/product/nonAuto/turnToFate.html?openId=101otJ1Nvw-CN16YDmQyADQTdMFpUqQ&isShare=0">吉祥保</a>
+    </li>
+    <span class="split-line-v"></span>
+
+    <li class="line no_line">
+        <a class="a_text" href="http://weixin.wanlianjin.com/weixinouter/weixin_new/bmb/redirect.html">本命保</a>
     </li>
 </ul>
 
@@ -314,9 +319,9 @@
 
     function toWeixin(index) {
         if (index == 0) {
-            window.location.href='https://mp.weixin.qq.com/mp/profile_ext?action=home&__biz=MzIyODA5NTU4NQ==&scene=124#wechat_redirect';
-        }else{
-            window.location.href='https://mp.weixin.qq.com/mp/profile_ext?action=home&__biz=MzIwOTUzNDkwMA==&scene=124#wechat_redirect';
+            window.location.href = 'https://mp.weixin.qq.com/mp/profile_ext?action=home&__biz=MzIyODA5NTU4NQ==&scene=124#wechat_redirect';
+        } else {
+            window.location.href = 'https://mp.weixin.qq.com/mp/profile_ext?action=home&__biz=MzIwOTUzNDkwMA==&scene=124#wechat_redirect';
         }
     }
 </script>
