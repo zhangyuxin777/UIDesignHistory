@@ -222,7 +222,7 @@ function autoSize(scale, callback) {
         minWidth = actualWidth < actualHeight ? actualWidth : actualHeight;
     }
     //在pc端没必要也宽度充满,1024是 iPadPro的宽度
-    minWidth = minWidth > 1024 ? 1024 : minWidth;
+    minWidth = minWidth > 480 ? 480 : minWidth;
     docEle.style.fontSize = minWidth / initWidth * initSize + 'px';
 
     //移除隐藏body 的hide class

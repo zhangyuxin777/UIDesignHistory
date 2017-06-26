@@ -130,20 +130,29 @@
 
         .logo_yaixin {
             background-image: url('../images/logo_ai_online.png');
-            background-size: 2rem 0.5rem;
-            width: 2rem;
-            height: 0.5rem;
+            background-size: 1.5rem 0.375rem;
+            width: 1.5rem;
+            height: 0.375rem;
             margin-left: 0.2rem;
-            margin-top: 0.2rem;
+            margin-top: 0.24rem;
         }
 
         .logo_huaxin {
             background-image: url('../images/logo_huaxiang.png');
-            background-size: 2rem 0.5rem;
-            width: 2rem;
-            height: 0.5rem;
+            background-size: 1.5rem 0.375rem;
+            width: 1.5rem;
+            height: 0.375rem;
             margin-left: 0.2rem;
-            margin-top: 0.2rem;
+            margin-top: 0.24rem;
+        }
+
+        .logo_youku {
+            background-image: url('../images/logo_youku.svg');
+            background-size: 1.6rem 0.4rem;
+            width: 1.6rem;
+            height: 0.4rem;
+            margin-left: 0.2rem;
+            margin-top: 0.24rem;
         }
 
         .text {
@@ -181,10 +190,10 @@
 <div class="place">PC网站</div>
 <ul class="list">
     <li class="line">
-        <a class="a_text" href="https://youku170.tmall.com/index.htm">
-            <img class="logo" src="../images/logo_pc_youku.jpg" alt="">
-            <span class="text">优酷移动</span>
-        </a>
+        <div class="logo_box">
+            <a href="https://youku170.tmall.com/index.htm" class="a_logo logo_youku">
+            </a>
+        </div>
     </li>
     <span class="split-line-v"></span>
 
@@ -202,7 +211,7 @@
     </li>
 </ul>
 
-<div class="place">公众号</div>
+<div class="place">微信公众号</div>
 <ul class="list">
     <li class="line no_line">
         <span onclick="toWeixin(0)" class="a_text"
@@ -223,64 +232,63 @@
 </ul>
 <div class="place">APP</div>
 <ul class="list">
-    <li class="line no_line" onclick="toDown()">
+    <li class="line no_line" onclick="toDown(0)">
         <div class="a_text">
             <img class="logo" src="../images/logo_app.png" alt="">
             <span class="text">绿驾</span>
         </div>
     </li>
+    <span class="split-line-v"></span>
+    <li class="line no_line" onclick="toDown(1)">
+        <div class="a_text">
+            <img class="logo" src="../images/logo_app_yunwei.png" alt="">
+            <span class="text">云维</span>
+        </div>
+    </li>
 </ul>
-<div class="place">限时活动</div>
+<div class="place">H5 宣传活动</div>
 <ul class="list">
-    <li class="line">
-        <a class="a_text" href="activity/activity_first/fengqiang.html">1月"疯抢油卡"</a>
+    <li class="line no_line">
+        <a class="a_text" href="../weixin_new/eastgold_fes/common_act.html">东方金融节</a>
     </li>
     <span class="split-line-v"></span>
 
     <li class="line">
-        <a class="a_text" href="activity/activity_go_home/index.html">2月"温暖回家路1期"</a>
+        <a class="a_text" href="activity/activity_cars/proIntro.html">多车之家</a>
     </li>
 
     <li class="line">
-        <a class="a_text" href="activity/activity_go_home/go_home.html">2月"温暖回家路2期"</a>
+        <a class="a_text" href="activity/activity_calculator/publicity.html">环保星级大比拼</a>
     </li>
     <span class="split-line-v"></span>
     <li class="line">
-        <a class="a_text" href="activity/activity_cars/proIntro.html">3月"多车之家"</a>
+        <a class="a_text" href="activity/activity_holiday/fathersDay/index.html">父亲节-老爸测试</a>
     </li>
 
     <li class="line">
-        <a class="a_text" href="activity/activity_cars/proIntro_goodCar.html">4月"中华好车"</a>
+        <a class="a_text" href="activity/activity_holiday/mothersDayPublicity.html">感恩母亲节</a>
     </li>
     <span class="split-line-v"></span>
+
     <li class="line">
-        <a class="a_text" href="activity/activity_holiday/mothersDayPublicity.html">5月"感恩母亲节"</a>
+        <a class="a_text" href="activity/activity_app/app.html">绿驾APP宣传</a>
     </li>
     <li class="line">
-        <a class="a_text" href="activity/activity_calculator/publicity.html">5月"环保星级大比拼"</a>
+        <a class="a_text" href="activity/activity_refueling/publicity.html">为爱加油</a>
     </li>
     <span class="split-line-v"></span>
+
     <li class="line">
-        <a class="a_text" href="activity/activity_refueling/publicity.html">5月"为爱加油"</a>
+        <a class="a_text" href="activity/activity_go_home/go_home.html">温暖回家路</a>
     </li>
 
     <li class="line">
-        <a class="a_text" href="activity/activity_holiday/fathersDay/index.html">6月"父亲节-老爸测试"</a>
+        <a class="a_text" href="activity/activity_internalPurchase/publicity.html">东方资产团购</a>
     </li>
     <span class="split-line-v"></span>
-    <li class="line">
-        <a class="a_text" href="activity/activity_internalPurchase/publicity.html">6月"东方资产团购"</a>
-    </li>
 
     <li class="line no_line">
-        <a class="a_text" href="activity/activity_lifeOnLine/publicity.html">7月"爱健康 惠生活"</a>
-    </li>
-    <span class="split-line-v"></span>
-    <li class="line no_line">
-        <a class="a_text" href="activity/activity_app/app.html">7月"绿驾APP宣传"</a>
-    </li>
-    <li class="line no_line">
-        <a class="a_text" href="../weixin_new/eastgold_fes/common_act.html">"东方金融节"</a>
+        <a class="a_text" href="activity/activity_lifeOnLine/publicity.html">爱健康 惠生活</a>
     </li>
 </ul>
 
@@ -333,15 +341,26 @@
         }
     }
 
-    function toDown() {
+    function toDown(id) {
         var ua = navigator.userAgent.toLowerCase();
-        if (/iphone|ipad|ipod/.test(ua)) {
-            window.location.href = "http://appurl.cc/130999";
-        } else if (/android/.test(ua)) {
-            window.location.href = "http://a.app.qq.com/o/simple.jsp?pkgname=com.wanlianjin.zswl";
+        if (id == 0) {
+            if (/iphone|ipad|ipod/.test(ua)) {
+                window.location.href = "itms-apps://itunes.apple.com/cn/app/绿驾/id1125861959?mt=8";
+            } else if (/android/.test(ua)) {
+                window.location.href = "http://a.app.qq.com/o/simple.jsp?pkgname=com.wanlianjin.zswl";
+            } else {
+                window.location.href = "http://sj.qq.com/myapp/detail.htm?apkName=com.wanlianjin.zswl";
+            }
         } else {
-            window.location.href = "http://a.app.qq.com/o/simple.jsp?pkgname=com.wanlianjin.zswl";
+            if (/iphone|ipad|ipod/.test(ua)) {
+                window.location.href = "itms-apps://itunes.apple.com/cn/app/云维-运维云平台/id1241584033?mt=8";
+            } else if (/android/.test(ua)) {
+                window.location.href = "http://a.app.qq.com/o/simple.jsp?pkgname=com.reining.cts";
+            } else {
+                window.location.href = "http://sj.qq.com/myapp/detail.htm?apkName=com.reining.cts";
+            }
         }
+
     }
 </script>
 </html>
