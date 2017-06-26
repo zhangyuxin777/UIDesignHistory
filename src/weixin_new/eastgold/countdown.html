@@ -1,0 +1,28 @@
+<html>
+<head>
+<head>
+		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<title></title>
+
+<script type="text/javascript">
+	var today = new Date();
+	
+	var y = today.getFullYear();
+	var m = today.getMonth();
+	var d = today.getDate();
+	if (y <= 2016) {
+		if (m <= 9) {	//10��
+			if (d == 28) {
+				window.location.href = "countdown_3.html";
+			} else if (d == 29) {
+				window.location.href = "countdown_2.html";
+			} else if (d == 30||d == 31) {
+				window.location.href = "countdown_1.html";
+			}
+		}
+	}
+</script>
+</head>
+<div id="bg"><img src="img/icon_1.jpg"/></div>
+</html>

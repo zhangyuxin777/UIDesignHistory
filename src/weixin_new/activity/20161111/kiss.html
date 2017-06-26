@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link rel="stylesheet" type="text/css" href="../../../basepage/css/activity_20161111/common.css"/>
+		<style type="text/css">
+			html,body{
+				height: 100%;
+				width: 100%;
+			}
+			.GenderContainer{
+				position: relative;
+				height: 100%;
+				width: 100%;
+				background: url(../../../basepage/images/activity_20161111/Bg1.jpg) no-repeat;
+				background-size: 100% 100%;
+			}
+			.man{
+				position: absolute;
+				width: 320px;
+				height: 35%;
+				left: 0;
+				top: 42%;
+			}
+			.woman{
+				position: absolute;
+				width: 320px;
+				height: 35%;
+				right: 0;
+				top: 42%;
+			}
+
+			
+			.kissContainer{
+				position: relative;
+				height: 100%;
+				width: 100%;
+				background: url(../../../basepage/images/activity_20161111/kissBg.jpg) no-repeat;
+				background-size: 100% 100%;
+			}
+			.kiss{
+				position: absolute;
+				left: 126px;
+				top: 27%;
+			}
+			.kissFadeIn{
+				position: absolute;
+				left: 126px;
+				top: 27%;
+				display: block;
+				width: 387px;
+				height: 297px;
+				animation: fadeIn  3s 1; 
+				-webkit-animation: fadeIn  3s 1; 
+			}
+			@keyframes fadeIn{
+			    0%   {opacity: 0;}
+				20%   {opacity: 1;}
+				21%   {transform:scale(1.25) }
+				40%   {transform:scale(0.75) }
+				60%   {transform:scale(1.25) }
+				80%   {transform:scale(0.75) }
+				90%   {transform:scale(1.5) }
+				100%   {transform:scale(1) }
+				}
+				@-webkit-keyframes fadeIn{
+			    0%   {opacity: 0;}
+				20%   {opacity: 1;}
+				21%   {-webkit-transform:scale(1.25) }
+				40%   {-webkit-transform:scale(0.75) }
+				60%   {-webkit-transform:scale(1.25) }
+				80%   {-webkit-transform:scale(0.75) }
+				90%   {-webkit-transform:scale(1.5) }
+				100%   {-webkit-transform:scale(1) }
+				}
+			
+			.kissBtn{
+				width: 320px;
+				height: 140px;
+				position: absolute;
+				left: 0px;
+				top: 82.5%;
+			}
+			.biuBtn{
+				width: 320px;
+				height: 140px;
+				position: absolute;
+				right: 0px;
+				top: 82.5%;
+			}
+			.message{
+				background: url(../../../basepage/images/activity_20161111/dialog.png) no-repeat;
+				height: 270px;
+				width: 548px;
+				position: absolute;
+				left: 46px;
+				bottom: 20%;
+			}
+			.message textarea{
+				display: block;
+				width: 455px;
+				height: 120px;
+				position: absolute;
+				left: 25px;
+				top: 30px;
+				font-size: 40px;
+				font-weight: 900;
+				color: #af0505;
+				line-height: 60px;
+				text-indent: 20px;
+			}
+			.messageBtn{
+				position: absolute;
+				left: 300px;
+				bottom: 48px;
+				width: 140px;
+				height: 70px;
+			}
+			.changeBtn{
+				position: absolute;
+				left: 30px;
+				bottom: 48px;
+				width: 200px;
+				height: 70px;
+			}
+			.share{
+				width: 100%;
+				height: 100%;
+				position: absolute;
+				left: 0;right: 0;
+				top: 0;bottom: 0;
+				background: url(../../../basepage/images/activity_20161111/fxBg.png) no-repeat;
+			}
+			.mask{
+				width:100%;
+				height:100%;
+				position: absolute;
+				left: 0;right: 0;
+				top: 0;bottom: 0;
+				z-index:99;
+				background:rgba(0,0,0,0.65);
+			}
+			#qrCode img{
+				width:100%!important;
+				height:100%!important;
+			}
+		</style>
+		<title>单身告白</title>
+	</head>
+	<body style="display: none;">
+		<div class="mask"></div>	
+		<div class="GenderContainer">
+			<div class="man"></div>
+			<div class="woman"></div>
+		</div>
+		
+		<div class="kissContainer dpn">
+			<img class="kiss dpn" src="../../../basepage/images/activity_20161111/kiss.png"/>
+			<div class="kissBtn"></div>
+			<div class="biuBtn"></div>
+			<div class="message dpn">
+				<textarea id="message" name="" rows="" cols="" disabled="disabled" maxlength="30"></textarea>
+				<div class="messageBtn"></div>
+				<div class="changeBtn"></div>
+			</div>
+			<div class="share dpn"></div>
+		</div>
+		
+		
+		 <audio id="musicfx" loop="loop" autoplay="autoplay">
+            <source src="bg.mp3" type="audio/mpeg">
+        </audio>
+	</body>
+	<script src="../../../basepage/js/jquery-1.7.2.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../../basepage/js/activity_20161111/zoom.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../../basepage/js/activity_20161111/common.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../../basepage/js/activity_20161111/gesture.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../../basepage/js/common.js" type="text/javascript" charset="utf-8"></script>
+	<script src='../../../basepage/js/jweixin-1.0.0.js'></script>
+	<script type="text/javascript">
+		//var openId = "oGK75siNulVcwZnn2r41v_I1ojkY";
+		  getOpenId();   //获取openid
+		var openId = window.localStorage.getItem(config.openIdName);
+		var num = 0;	//告诉文字序号
+		var gender;		//性别
+	    var isFocus = false;
+	    var userInfo;
+	    var shareSign;	//该分享唯一标识
+	    
+	    $(function () {
+	        if (openId != null && openId.length != 0) {
+	            GetAsyncData("../rest/User/1006", function (backData) {
+	                isFocus = backData.data.flag;
+	                showIt()
+	            }, {"openId": openId});
+	        }
+	    });
+		function showIt(){
+	        if(isFocus) {
+	        	$('.mask').hide();
+	        	init();
+	        } else {
+	          	 showCodeDialog(config.shareRootUrl+"/weixinouter/basepage/images/qr_code.jpg");
+	        	return;
+	        }
+		}
+		//	判断亲吻动作
+		(function () {
+            var events = ['press', 'dualtouchstart', 'panstart', 'horizontalpanstart', 'verticalpanstart',
+                            'pan', 'verticalpan', 'horizontalpan', 'dualtouch', 'dualtouchend',
+                            'tap', 'doubletap', 'panend', 'flick', 'verticalflick', 'horizontalflick',
+                            'pressend'
+                        ]
+                ;
+            var srcEl = document.querySelector('.kissContainer');
+
+            events.forEach(function(name) 
+            {
+                srcEl.addEventListener(name, function(event) 
+                {
+                    console.log(name);
+                }, false);
+            });
+
+            document.body.addEventListener('touchmove', function(e) {
+                e.preventDefault();
+                return false;
+            }, false);
+            document.body.addEventListener("dualtouchend", function(event) {
+				var e = event || window.event;
+//				$('.kiss').show();
+				$('.kiss').attr("class","kissFadeIn");
+				
+			}, false);  
+			$('.kissBtn').click(function(){
+		     	$('.message').show();
+		     	
+		     });
+        	
+        	var msg = new Array("单膝跪下向你告白","举起了代表永恒的戒指","第108次向你告白","求求你，看在人民币的份上，你就接受吧");
+        	$('#message').val(msg[num]);
+        	$('.changeBtn').click(function(){
+        		num++;
+        		num = num >= msg.length? 0 : num;
+        		$('#message').val(msg[num]);
+        	});
+        	
+		     $('.messageBtn').click(function(){
+		     	$('.message').hide();
+		     	var message = $('#message').val();
+		     	localStorage.message = message;
+		     });
+		     
+		     //发起分享
+		     $('.biuBtn').click(function(){
+		     	if($(".kiss").is(":hidden")){
+		     		alert('请先完成亲吻动作');
+		     	}else{
+		     		$('.share').show();
+		     	}
+		     	setShareInfo();
+        	});
+		     
+        	$('.share').click(function(){
+        		$(this).hide();
+        	});
+        	
+        	$('.man').click(function(){	
+        		gender = 1;
+				localStorage.sex = 'man';
+				$('.GenderContainer').hide();
+				$('.kissContainer').show();
+//				commonAjax(url,{sex:"man"},function(data){
+//				
+//						setTimeout(function(){
+//	                    	$('.GenderContainer').hide();
+//							$('.kissContainer').show();	
+//	                    },200)
+//	                    return;
+//
+//				});
+				
+			});
+			$('.woman').click(function(){
+				gender = 0;
+				localStorage.sex = 'woman';
+				$('.GenderContainer').hide();
+				$('.kissContainer').show();
+				
+//				commonAjax(url,{sex:"woman"},function(data){
+//				
+//					setTimeout(function(){
+//	                    $('.GenderContainer').hide();
+//						$('.kissContainer').show();	
+//	                },200)
+//	               return;
+//
+//				});	
+			});
+		})();
+		
+		function init() {
+			console.log("init")
+			GetAsyncData("weixin_new/weixin/getUserInfo", function(backData){
+				userInfo = backData;
+	        }, {"openId": openId});
+			
+			
+			GetAsyncData("weixin_new/activity/activity20161111", function(backData){
+				shareSign = backData.shareSign;
+				console.log(shareSign)
+	        }, {"openId": openId, "opt": "1"}, "application/json");
+		};
+		
+		
+	    function setShareInfo() {
+	    	var url = config.shareRootUrl + '/weixinouter/weixin_new/activity/20161111/receive.html?txt=' + num + "&gender=" + gender + "&nickname=" + escape(userInfo.nickname) + "&shareSign=" + shareSign;
+	    	console.log("shareUrl: " + url);
+		    weixinShare(
+		    {
+		        shareUrl: url,
+		        shareIcon: config.shareRootUrl + '/weixinouter/basepage/images/activity_20161111/1111.jpg',
+		        shareTitle: userInfo.nickname + '发起了爱的告白，他：' + $('#message').val(),
+		        shareText: $('#message').val(),
+		        shareTimelineText: userInfo.nickname + '发起了爱的告白，他：' + $('#message').val(),
+		        isNeedRecord: false,
+		        openId: openId,
+		        activityId: '20161111',
+		        typeTimeline: '',
+		        typeAppMessage: '',
+		        isGiveCoin: 'N'
+		    });
+	    }
+
+	</script>
+</html>      

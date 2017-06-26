@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>东方金融节第三弹</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+	</head>
+		<link rel="stylesheet" type="text/css" href="../../basepage/css/eastgold_fes/thirdcommon.css"/>
+		<script src="../../basepage/js/jquery-1.7.2.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../basepage/js/rem.js" type="text/javascript" charset="utf-8"></script>	
+		<SCRIPT LANGUAGE=JAVASCRIPT>
+		    if (window != parent)
+		        window.top.location = window.self.location;
+		</SCRIPT>
+			<script src="../../basepage/js/common.js"></script>
+				<style type="text/css">
+			body,html{
+				
+			}
+			#container{
+				width:6.4rem;
+				height:22.9rem;
+				background:url(../../basepage/images/thirdimg/bg.jpg) no-repeat;
+				background-size:100%;
+			}
+			#container img{
+				display: block;
+				float:left;
+			}
+			#foot{
+				width:6.4rem;
+				height:.78rem;
+				background:#ffb12e;
+			}
+			.head img{
+				width:6.4rem;
+			}
+			.content img{
+				width:6.4rem;
+				margin-top:-.6rem;
+			}
+			.content img:nth-of-type(2){
+				margin-top:-0.3rem;
+				margin-bottom: .6rem;
+			}
+			.content img:nth-of-type(3){
+				margin-top:-.85rem;
+			}
+			.content a{
+				display: block;
+				width:2.2rem;
+				height:.6rem;
+				position:absolute;
+				left:2.1rem;
+			}
+			.btn1{
+				top:9.5rem;
+			}
+			.btn2{
+				top:15.6rem;
+			}
+			.btn3{
+				top:21.5rem;
+			}
+			#foot a{
+				width:6.4rem;
+				height:.78rem;
+				line-height: .78rem;
+				display: block;
+				text-align: center;
+				font-size: .26rem;
+				color:#FFFFFF;
+				z-index: 9999;
+			}
+		</style>
+	<body>
+		<div id="container">
+			<div class="head">
+				<img src="../../basepage/images/thirdimg/head.jpg"/>
+			</div>
+			<div class="content">
+				<img src="../../basepage/images/thirdimg/1.png"/>
+				<img src="../../basepage/images/thirdimg/2.png"/>
+				<img src="../../basepage/images/thirdimg/3.png"/>
+				<a href="javascript:towanlian()" class="btn1"></a>
+				<a href="http://wx.dxzq.net/dxweixin_client/publich5/zhinengchaogu/zhinengchaogu.html" class="btn2"></a>
+				<a href="http://www.eastlending.com/mm/register?rsou=16N184&LP=LP16016" class="btn3"></a>
+			</div>
+		</div>
+		<div id="foot">
+			<a href="read.html">
+				戳我了解东方金融节诞生记
+			</a>
+		</div>
+		  <form id='infoForm' action='' method='post'></form>
+	</body>
+	<script type="text/javascript">
+	$(function(){
+		$('.goTop').click(function(){
+			$('body,html').animate({scrollTop:0},500);
+		});
+	});
+	function GetQueryString(name) {
+	    var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+	    var r = window.location.search.substr(1).match(reg);
+	    if (r != null)return unescape(r[2]);
+	    return null;
+	}
+	var key=GetQueryString("key");
+	if(""==key||null==key){
+		key="wl";
+	}
+	var openId=GetQueryString("openId");
+	getOpenId();
+	if(""==openId||openId==null){
+		openId = window.localStorage.getItem(config.openIdName);
+	}
+		function towanlian(){
+			 $.ajax({
+			        async: true,
+			        url: config.rootUrl +'/weixinouter/rest/weixin_new/activity/toPage',
+			        type: 'POST',
+			        data: JSON.stringify({"openId":openId,"key":key}),
+			        contentType: "application/json",
+			        dataType: 'json',
+			        success: function (backdata) {
+			        	 var form = $('#infoForm');
+			        	 form.html("");
+			 	        var htmlStr = "<input type='hidden' value='" + backdata.pid + "' name='pid'/>"
+			               + "<input type='hidden' value='" + backdata.v + "' name='v'/>";
+			             form.append(htmlStr);
+			 	        $(form).attr('action', backdata.url);//表单提交地址
+			 	        form.submit();
+			        },
+			        error: function (x, y, z) {
+			        }
+			    });
+				
+			//location.href=config.rootUrl+"/weixinouter/weixin_new/eastgold_fes/index.html?key=wl"
+			//location.href=config.rootUrl+"/weixinouter/weixin_new/eastgold_fes/redirect.html?key=wl&openId="+openId;
+		}
+	</script>
+</html>

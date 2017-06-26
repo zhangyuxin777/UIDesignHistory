@@ -1,14 +1,24 @@
 body {
-   background: url("../img/bgc.jpg") no-repeat bottom left;
-   background-size: 100% 100%;
+    margin: 0 auto;
+}
 
- }
+.bg {
+    background: url("../img/bgc.jpg") no-repeat bottom left;
+    background-size: 6.4rem 100%;
+    height: 100%;
+    width: 6.4rem;
+    position: absolute;
+    z-index: 0;
+}
+
 a {
-  display: block;
-  width: 3.09rem;
-  height: 0.83rem;
-  background-size: 100% 100%;
-  margin: 3.36rem auto;
-  border: 1px solid transparent;
-  box-sizing: content-box;
+    display: block;
+    width: 3.09rem;
+    height: 0.83rem;
+    background-size: 100% 100%;
+    margin: 3.36rem auto;
+    border: 1px solid transparent;
+    box-sizing: content-box;
+    position: relative;
+    z-index: 1;
 }

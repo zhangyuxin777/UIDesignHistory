@@ -22,4 +22,9 @@
 <script type="text/javascript">
    // closeProduct(112);
     autoWidth();
+   (function (id) {
+       if (isPC()) {
+           $(id).css('width', '3.2rem');
+       }
+   })('body')
 </script>

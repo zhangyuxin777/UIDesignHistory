@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link rel="stylesheet" type="text/css" href="../../../basepage/css/activity_20161111/common.css"/>
+		<style type="text/css">
+			@charset "utf-8";
+			html,body{
+				height: 100%;
+				width: 100%;
+			}
+			.receiveContainer{
+				position: relative;
+				height: 100%;
+				width: 100%;
+				background: url(../../../basepage/images/activity_20161111/receive.jpg) no-repeat;
+				background-size: 100% 100%;
+			}
+			.OK{
+				width: 320px;
+				height: 140px;
+				position: absolute;
+				left: 0;
+				bottom: 8%;
+			}
+			.NO{
+				width: 320px;
+				height: 140px;
+				position: absolute;
+				right: 0;
+				bottom: 8%;
+			}
+			.kissFadeIn{
+				position: absolute;
+				left: 126px;
+				top: 35%;
+				width: 387px;
+				height: 297px;
+				animation: fadeIn  3s 1; 
+				-webkit-animation: fadeIn  3s 1; 
+			}
+			@keyframes fadeIn{
+			    0%   {opacity: 0;}
+				20%   {opacity: 1;}
+				21%   {transform:scale(1.25) }
+				40%   {transform:scale(0.75) }
+				60%   {transform:scale(1.25) }
+				80%   {transform:scale(0.75) }
+				90%   {transform:scale(1.5) }
+				100%   {transform:scale(1) }
+				}
+				.message2{
+					width: 440px;
+					height: 100px;
+					position: absolute;
+					left: 100px;
+					top: 8%;
+					font-size: 26px;
+					color: #e38089;
+					line-height: 50px;
+				}
+				
+				
+				/*成功失败*/
+				/*.failContainer{
+					position: relative;
+					height: 100%;
+					width: 100%;
+					background: url(img/fail.jpg) no-repeat;
+					background-size: 100% 100%;
+				}
+				.change{
+					position: absolute;
+					left: 120px;
+					top: 74%;
+					width: 400px;
+					height: 17.6%;
+				}
+				
+				.successContainer{
+					position: relative;
+					height: 100%;
+					width: 100%;
+					background: url(img/success.jpg) no-repeat;
+					background-size: 100% 100%;
+				}
+				.share{
+					display: block;
+					position: absolute;
+					left: 120px;
+					top: 74%;
+					width: 400px;
+					height: 17.6%;
+				}*/
+				
+				
+				/*kissBack*/
+				.kissBackContainer{
+					position: relative;
+					height: 100%;
+					width: 100%;
+					background: url(../../../basepage/images/activity_20161111/kissBack.jpg) no-repeat;
+					background-size: 100% 100%;
+				}
+				.kissBack{
+					position: absolute;
+					left: 126px;
+					top: 16%;
+				}
+				
+				
+				
+				.message{
+					background: url(../../../basepage/images/activity_20161111/dialog.png) no-repeat;
+					height: 264px;
+					width: 548px;
+					position: absolute;
+					left: 46px;
+					bottom: 20%;
+				}
+				.message textarea{
+					display: block;
+					width: 455px;
+					height: 120px;
+					position: absolute;
+					left: 25px;
+					top: 30px;
+					font-size: 40px;
+					font-weight: 900;
+					color: #af0505;
+					line-height: 60px;
+					text-indent: 20px;
+				}
+				.messageBtn{
+					position: absolute;
+					left: 240px;
+					bottom: 48px;
+					width: 140px;
+					height: 70px;
+				}
+				.changeBtn{
+					position: absolute;
+					left: 30px;
+					bottom: 48px;
+					width: 200px;
+					height: 70px;
+				}
+				
+				
+			.kissFadeIn{
+				display: block;
+				width: 387px;
+				height: 297px;
+				animation: fadeIn  3s 1; 
+				-webkit-animation: fadeIn  3s 1; 
+			}
+			@keyframes fadeIn{
+			    0%   {opacity: 0;}
+				20%   {opacity: 1;}
+				21%   {transform:scale(1.25) }
+				40%   {transform:scale(0.75) }
+				60%   {transform:scale(1.25) }
+				80%   {transform:scale(0.75) }
+				90%   {transform:scale(1.5) }
+				100%   {transform:scale(1) }
+				}
+				@-webkit-keyframes fadeIn{
+			    0%   {opacity: 0;}
+				20%   {opacity: 1;}
+				21%   {-webkit-transform:scale(1.25) }
+				40%   {-webkit-transform:scale(0.75) }
+				60%   {-webkit-transform:scale(1.25) }
+				80%   {-webkit-transform:scale(0.75) }
+				90%   {-webkit-transform:scale(1.5) }
+				100%   {-webkit-transform:scale(1) }
+				}
+		</style>
+		<title></title>
+	</head>
+	<body style="display: none;">
+		<!--分享打开-->
+		<div class="receiveContainer">
+			<p id="message1" class="dpn"></p>
+			<p id="message2" class="message2"></p>
+			<img class="kissFadeIn" src="../../../basepage/images/activity_20161111/kiss.png"/>
+			<div class="OK" ></div>
+			<div class="NO"></div>
+			<div class="message dpn">
+				<textarea id="message" name="" rows="" cols="" disabled="disabled" maxlength="30"></textarea>
+				<div class="messageBtn"></div>
+				<div class="changeBtn"></div>
+			</div>
+			
+			
+			
+		</div>
+		
+		
+		<!--失败-->
+		<div class="failContainer dpn">
+		
+		</div>
+			
+		<!--成功-->	
+		<div class="successContainer dpn">
+			
+		</div>
+		
+		<!--kissback-->
+		<div class="kissBackContainer dpn">
+			<img class="kissBack dpn" src="../../../basepage/images/activity_20161111/kiss.png"/>
+		</div>
+		<!--bgmusic-->
+		 <audio id="musicfx" loop="loop" autoplay="autoplay">
+            <source src="bg.mp3" type="audio/mpeg">
+        </audio>
+	</body>
+	<script src="../../../basepage/js/jquery-1.7.2.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../../basepage/js/activity_20161111/zoom.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../../basepage/js/activity_20161111/gesture.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../../basepage/js/common.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+	var openId = window.localStorage.getItem(config.openIdName);
+	function GetQueryString(name) {
+	    var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+	    var r = window.location.search.substr(1).match(reg);
+	    if (r != null)return unescape(r[2]);
+	    return null;
+	}
+	var succ;
+	var shareSign=GetQueryString('shareSign');
+	var txt=GetQueryString('txt');
+	var gender=GetQueryString('gender');
+	var nickname=GetQueryString('nickname');
+	var replyNum;
+	
+	var msg = new Array("单膝跪下向你告白","举起了代表永恒的戒指","第108次向你告白","求求你，看在人民币的份上，你就接受吧");
+	var msg1 = new Array("狠狠的抽ta一巴掌","臭不要脸的，轻轻的抽了ta一下","360度的无死角的抽了ta一巴掌","媚笑着抽ta一巴掌","无情的抽ta一巴掌","双11剁手节的日子，只能用脚抽ta一巴掌");
+	var msg2 = new Array("轻轻的吻了一下", "抱住ta咬了一口", "深情的吻在了额头");
+	var kiss = true;
+	$('#message1').html(msg[txt]);
+	(function () {
+          var events = ['press', 'dualtouchstart', 'panstart', 'horizontalpanstart', 'verticalpanstart',
+                          'pan', 'verticalpan', 'horizontalpan', 'dualtouch', 'dualtouchend',
+                          'tap', 'doubletap', 'panend', 'flick', 'verticalflick', 'horizontalflick',
+                          'pressend'
+                      ]
+              ;
+	            var srcEl = document.querySelector('.kissBackContainer');
+	
+	            events.forEach(function(name) {
+	                srcEl.addEventListener(name, function(event) {
+	                    console.log(name);
+	                }, false);
+	            });
+	
+	            document.body.addEventListener('touchmove', function(e) {
+	                e.preventDefault();
+	                return false;
+	            }, false);
+	            document.body.addEventListener("dualtouchend", function(event) {
+					var e = event || window.event;
+					
+					localStorage.state = "OK";
+					$('.kissBack').show();
+					window.location = "success.html";
+				}, false);  
+				
+			
+		})();
+		
+		function shareTo(){
+		  weixinShare(
+			 {
+			        shareUrl: config.shareRootUrl + '/weixinouter/weixin_new/activity/20161111/receive.html?txt=' + num + "&gender=" + gender + "&nickname=" + escape(nickname) + "&shareSign="+shareSign,
+			        shareIcon: config.shareRootUrl + '/weixinouter/basepage/images/activity_20161111/1111.jpg',
+			        shareTitle: decodeURIComponent(nickname)+"被告白了",
+			        shareText:txt,
+			        isNeedRecord: false,
+			        openId: openId,
+			        activityId: '20161111',
+			        typeTimeline: '',
+			        typeAppMessage: '',
+			        isGiveCoin: 'N'
+			  });
+		}
+			
+		
+		//内容
+	    var num = parseInt(Math.random()*msg.length);
+	    var num1 = parseInt(Math.random()*msg1.length);		
+		$(function(){
+			$('.OK').click(function(){
+				GetAsyncData("weixin_new/activity/activity20161111", function(backData){
+					shareSign = backData.shareSign;
+					if(backData.success){
+						$('.message').show();
+						kiss = true;
+						$('#message').val(msg2[num]);	
+						succ='1';
+						//location.href='success.html?shareSign='+shareSign+'&nickname='+escape(nickname);
+					}else{
+						alert('操作失败！');
+					}
+					
+		        }, {"openId": openId, "opt": "2","action":"2","shareSign":shareSign});
+			});
+			
+			$('.messageBtn').click(function(){
+				if(succ=='1'){
+					location.href='success.html?shareSign='+shareSign+'&nickname='+escape(nickname)+'&reback='+ replyNum;
+	
+				}else{
+					location.href='fail.html?shareSign='+shareSign+'&nickname='+escape(nickname)+'&reback='+replyNum;
+
+				}
+			});
+			$('.NO').click(function(){
+				GetAsyncData("weixin_new/activity/activity20161111", function(backData){
+					shareSign = backData.shareSign;
+					if(backData.success){
+					$('.message').show();
+					kiss = false;
+					$('#message').val(msg1[num1]);
+					succ='0';
+					//location.href='fail.html?shareSign='+shareSign+'&nickname='+escape(nickname);
+					}else{
+						alert('操作失败！');
+					}
+		        }, {"openId": openId, "opt": "2","action":"1","shareSign":shareSign});
+			});
+			
+	        	$('#message').val(msg[num]);
+	        	$('.changeBtn').click(function(){
+	        		if(kiss){
+	        			replyNum = parseInt(Math.random()*msg2.length);	
+	        			$('#message').val(msg2[replyNum]);
+	        			
+	        		}else{
+	        			replyNum = parseInt(Math.random()*msg1.length);	
+	        			$('#message').val(msg1[replyNum]);
+	        			
+	        		}
+	        	});
+	        	
+	        	$('.messageBtn').click(function(){
+	        		if(kiss){
+	        			$('.receiveContainer').hide();
+						$('.kissBackContainer').show();
+	        			
+	        		}else{
+	        			$('.receiveContainer').hide();
+						//window.location = "fail.html";
+	        			
+	        		}
+	        	});
+		     
+//		   	  判断是否亲吻
+		     $('.biuBtn').click(function(){
+		     	if($(".kiss").is(":hidden")){
+		     		alert('请先完成亲吻动作');
+		     	}else{
+		     		$('.share').show();
+		     	}
+        		
+        	});
+			
+			
+		});
+		
+		
+		~function(window,undefined){
+		function $$(id){
+			return (!id) ? null :document.getElementById(id);
+		}
+
+		function printWord(){
+			this.con1=$$('message1'),
+			this.con2=$$('message2'),
+			this.speed=200;
+			this.printIn();
+		}
+		printWord.prototype={
+			printIn:function(){
+				var elem=this.con2,
+					str=this.con1.innerHTML,
+					speed=this.speed,
+					timer=null,
+					count=0;
+				timer=setInterval(function(){
+					elem.innerHTML=str.substring(0,count)+'|';
+					count++;
+					if(count>=str.length){
+						clearInterval(timer);
+						elem.innerHTML=str.substring(0,count);
+					}
+				},speed)					
+			}
+		}
+
+		window.printWord=printWord;
+	}(window)
+	new printWord();
+	</script>
+</html>

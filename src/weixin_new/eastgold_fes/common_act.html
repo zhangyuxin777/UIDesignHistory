@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"/>
+    <title>东方金融节</title>
+    <link rel="stylesheet" type="text/css" href="../../css/eastgold_fes/common.css"/>
+    <link rel="stylesheet" type="text/css" href="../../css/eastgold_fes/index.css"/>
+
+    <style type="text/css">
+        .rotateX70 {
+            position: absolute;
+            left: 1.75rem;
+            top: 13rem;
+            transform: rotateX(60deg);
+            width: 3rem;
+            height: 3rem;
+            background: url(../../images/eastgold_fes/zhuanpan1.png) no-repeat left top;
+            background-size: 3rem;
+        }
+
+        .turntable {
+            -webkit-animation: zhuan 1s infinite linear;
+            display: block;
+            height: 2.5rem;
+            width: 2.5rem;
+            position: absolute;
+            left: .25rem;
+            top: .25rem;
+        }
+
+        .center {
+            position: absolute;
+            left: 1rem;
+            top: 0.9rem;
+            width: 1rem;
+            height: 1rem;
+            z-index: 99999;
+        }
+
+        @-webkit-keyframes zhuan {
+            form {
+                -webkit-transform: rotate(0deg);
+            }
+            to {
+                -webkit-transform: rotate(360deg);
+            }
+        }
+
+        .centerBtn {
+            display: block;
+            position: absolute;
+            left: 2.2rem;
+            top: 3.4rem;
+            width: 2rem;
+            height: 2rem;
+            z-index: 100;
+            background: url(../../images/eastgold_fes/wlLogo.png) no-repeat left top;
+            background-size: 2rem;
+        }
+
+        /*自行车*/
+        .bike {
+            z-index: 200;
+            width: 1.3rem;
+            height: 1.34rem;
+            position: absolute;
+            left: 2.5rem;
+            background: url(../../images/eastgold_fes/zixingche1.png) no-repeat;
+            background-size: 1.3rem 1.34rem;
+            animation: bikeMove 10s linear infinite;
+            -webkit-animation: bikeMove 10s linear infinite;
+        }
+
+        @keyframes bikeMove {
+            0% {
+                top: 46.27%;
+                left: 7.81%;
+                background-image: url(../../images/eastgold_fes/zixingche1.png);
+            }
+            25% {
+                top: 49.35%;
+                left: 42.97%;
+                background-image: url(../../images/eastgold_fes/zixingche1.png);
+            }
+            49% {
+                top: 47%;
+                left: 71.40%;
+                background-image: url(../../images/eastgold_fes/zixingche1.png);
+            }
+            50% {
+                top: 47%;
+                left: 71.40%;
+                background-image: url(../../images/eastgold_fes/zixingche2.png);
+            }
+            75% {
+                top: 49.35%;
+                left: 43.75%;
+                background-image: url(../../images/eastgold_fes/zixingche2.png);
+            }
+            99% {
+                top: 46.27%;
+                left: 7.81%;
+                background-image: url(../../images/eastgold_fes/zixingche2.png);
+            }
+            100% {
+                top: 46.27%;
+                left: 7.81%;
+                background-image: url(../../images/eastgold_fes/zixingche1.png);
+            }
+        }
+
+        @-webkit-keyframes bikeMove {
+            0% {
+                top: 46.27%;
+                left: 7.81%;
+                background-image: url(../../images/eastgold_fes/zixingche1.png);
+            }
+            25% {
+                top: 49.35%;
+                left: 42.97%;
+                background-image: url(../../images/eastgold_fes/zixingche1.png);
+            }
+            49% {
+                top: 47%;
+                left: 71.40%;
+                background-image: url(../../images/eastgold_fes/zixingche1.png);
+            }
+            50% {
+                top: 47%;
+                left: 71.40%;
+                background-image: url(../../images/eastgold_fes/zixingche2.png);
+            }
+            75% {
+                top: 49.35%;
+                left: 43.75%;
+                background-image: url(../../images/eastgold_fes/zixingche2.png);
+            }
+            99% {
+                top: 46.27%;
+                left: 7.81%;
+                background-image: url(../../images/eastgold_fes/zixingche2.png);
+            }
+            100% {
+                top: 46.27%;
+                left: 7.81%;
+                background-image: url(../../images/eastgold_fes/zixingche1.png);
+            }
+        }
+
+        /*牛市*/
+        .niu {
+            width: 1.5rem;
+            height: .8rem;
+            position: absolute;
+            left: 3.25rem;
+            top: 19.9rem;
+        }
+
+        .left {
+            width: 1.8rem;
+            height: 2.8rem;
+            position: absolute;
+            left: -.2rem;
+            top: 1rem;
+            animation: leftmove 2s infinite;
+            -webkit-animation: leftmove 2s infinite;
+        }
+
+        .right {
+            width: 1.8rem;
+            height: 2.8rem;
+            position: absolute;
+            right: -.2rem;
+            top: 1rem;
+            animation: rightmove 2s infinite;
+            -webkit-animation: rightmove 2s infinite;
+        }
+
+        @keyframes leftmove {
+            0% {
+                left: -10%;
+            }
+            50% {
+                left: -3%;
+            }
+            100% {
+                left: -10%;
+            }
+        }
+
+        @-webkit-keyframes leftmove {
+            0% {
+                left: -10%;
+            }
+            50% {
+                left: -3%;
+            }
+            100% {
+                left: -10%;
+            }
+        }
+
+        @keyframes rightmove {
+            0% {
+                right: -6%;
+            }
+            50% {
+                right: 0%;
+            }
+            100% {
+                right: -6%;
+            }
+        }
+
+        @-webkit-keyframes rightmove {
+            0% {
+                right: -6%;
+            }
+            50% {
+                right: 0%;
+            }
+            100% {
+                right: -6%;
+            }
+        }
+
+        .left .left1 {
+            position: absolute;
+            left: .2rem;
+            top: 0;
+            display: block;
+            width: 1.8rem;
+            height: 2.8rem;
+        }
+
+        .left .left2 {
+            position: absolute;
+            left: -.3rem;
+            top: 0;
+            display: block;
+            width: 1.8rem;
+            height: 2.8rem;
+        }
+
+        .left .left3 {
+            position: absolute;
+            left: .2rem;
+            top: 0;
+            display: block;
+            width: 1.8rem;
+            height: 2.8rem;
+        }
+
+        .right .right1 {
+            position: absolute;
+            left: .3rem;
+            top: 0;
+            display: block;
+            width: 1.8rem;
+            height: 2.8rem;
+        }
+
+        .right .right2 {
+            position: absolute;
+            left: -.2rem;
+            top: 0;
+            display: block;
+            width: 2rem;
+            height: 2.8rem;
+        }
+
+        .right .right3 {
+            position: absolute;
+            left: 1rem;
+            top: 0;
+            display: block;
+            width: 1.8rem;
+            height: 2.8rem;
+        }
+
+        .right img {
+            position: absolute;
+            left: 0;
+            top: 0;
+            display: block;
+            width: 2rem;
+            height: 2.5rem;
+        }
+
+        .phone {
+            width: .4rem;
+            height: 1.2rem;
+            position: absolute;
+            left: 4rem;
+            top: 13.6rem;
+        }
+
+        /*时间框*/
+        .time {
+            position: absolute;
+            left: 1.45rem;
+            top: 5.3rem;
+            width: 3.5rem;
+            height: 1.17rem;
+            text-align: center;
+            line-height: 1.27rem;
+            letter-spacing: .05rem;
+            color: #d5390e;
+            background: url(../../images/eastgold_fes/time.png) no-repeat;
+            background-size: 3.5rem 1.17rem;
+        }
+
+        .dfjrj {
+            position: absolute;
+            width: 5.19rem;
+            height: 2.72rem;
+            left: .6rem;
+            top: .03rem;
+            z-index: 1000;
+        }
+    </style>
+</head>
+<body>
+<div class="main">
+    <div class="shan"></div>
+    <div class="content1"></div>
+    <div class="content2"></div>
+    <div class="content3"></div>
+    <div class="time">2016.10.28—12.28</div>
+    <div class="rotateX70"><img class="turntable" src="../../images/eastgold_fes/zhuanpanBg.png"/><img class="center"
+                                                                                                       src="../../images/eastgold_fes/zhuanpan2.png"/>
+    </div>
+    <img class="dfjrj" src="../../images/eastgold_fes/dfjrj.png"/>
+    <div class="bike"></div>
+    <div class="centerBtn"></div>
+    <img class="phone" src="../../images/eastgold_fes/iphone7.png"/>
+    <div class="left">
+        <img class="left1" src="../../images/eastgold_fes/left1.png"/>
+        <img class="left2" src="../../images/eastgold_fes/left2.png"/>
+        <img class="left3" src="../../images/eastgold_fes/left3.png"/>
+    </div>
+    <div class="right">
+        <img class="right1" src="../../images/eastgold_fes/right1.png"/>
+        <img class="right2" src="../../images/eastgold_fes/right2.png"/>
+        <img class="right3" src="../../images/eastgold_fes/right3.png"/>
+    </div>
+    <img class="niu" src="../../images/eastgold_fes/niu.gif"/>
+    <!--东兴证券-->
+    <a class="dxzq" href="https://wskh.dxzq.net/osoa/views/downapp_indexapp.html?channel=22&qrcode_id=2694"></a>
+    <a class="dxzq2" href="https://wskh.dxzq.net/osoa/views/downapp_indexapp.html?channel=22&qrcode_id=2694"></a>
+    <!--万联金网-->
+    <a class="wljw" href="http://www.eastlending.com/mm/register?rsou=16N184&LP=LP16016"></a>
+    <a class="wljw2" href="http://www.eastlending.com/mm/register?rsou=16N184&LP=LP16016"></a>
+    <!--东方汇-->
+    <a class="dfh" href="http://www.eastlending.com/mm/register?rsou=16N184&LP=LP16016"></a>
+    <a class="dfh2" href="http://www.eastlending.com/mm/register?rsou=16N184&LP=LP16016"></a>
+
+</div>
+</body>
+<script src="../../js/eastgold_fes/rem.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/common.js"></script>
+<script src="../../js/jquery-1.9.1.min.js"></script>
+<script>
+    var openId = window.localStorage.getItem(config.openIdName);
+    function towanlian() {
+        location.href = config.rootUrl + "/weixinouter/weixin_new/eastgold_fes/redirect.html?key=wl&openId=" + openId;
+    }
+</script>
+</html>

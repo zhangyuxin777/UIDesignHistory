@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>东方金融节-二维码关注</title>
+<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<script type="text/javascript">
+/******** 
+接收地址栏参数 
+key:参数名称 
+**********/ 
+function GetQueryString(name) {
+    var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+    var r = window.location.search.substr(1).match(reg);
+    if (r != null)
+    	return unescape(r[2]);
+    return null;
+}
+
+	//var key=GetQueryString("key");
+	//var openId=GetQueryString("openId");
+	
+window.onload = function(){ 
+    // alert(GetQueryString("key"));
+	var key=GetQueryString("key");
+	if(key=="dfh"){
+		document.getElementById("dfh").style.display="";//显示;//显示
+	}else if(key=="dx"){
+		document.getElementById("dx").style.display="";//显示;//显示
+	}else{
+		document.getElementById("wl").style.display="";//默认或者key为空
+	}
+} 
+</script>
+</head>
+<body >
+<!-- <div id="wl" style="display: none;background-image:url(../../basepage/images/eastgold_fes/wanlian.jpg);width: 640px;height:1136px;">
+万联
+</div>
+
+<div id="dfh" style="display: none;background-image:url(../../basepage/images/eastgold_fes/dongfanghui.jpg);width: 640px;height:1136px;">
+东方汇
+</div>
+
+<div id="dx" style="display: none;background-image:url(../../basepage/images/eastgold_fes/dongxing.jpg);width: 640px;height:1136px;" >
+东兴
+</div> -->
+
+<div id="wl" style="display: none;"><img src="../../basepage/images/eastgold_fes/wanlian.jpg" style="width: 100%;height: 100%"/></div>
+<div id="dfh" style="display: none;"><img src="../../basepage/images/eastgold_fes/dongfanghui.jpg" style="width: 100%;height: 100%"/></div>
+<div id="dx" style="display: none;"><img src="../../basepage/images/eastgold_fes/dongxing.jpg" style="width: 100%;height: 100%"/></div>
+
+</body>
+</html>

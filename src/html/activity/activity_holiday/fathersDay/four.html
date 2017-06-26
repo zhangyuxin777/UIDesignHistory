@@ -114,12 +114,9 @@
 //        closeActivity(config.activityEndTime.mothersDay);
 
         $('.next').click(function () {
-            window.location.href = "../../activity_internalPurchase/publicity.html";
-            return;
             var $score = $('input[name="score"]:checked').val();
             if ($score) {
                 var lastTotal = sessionStorage.getItem('totles');
-                $(".transpond").css('display', "block");
                 var totles = parseFloat(lastTotal) + parseFloat($score);
                 if (totles >= 4 && totles <= 6) {
                     result = 0;
@@ -133,7 +130,11 @@
                 else if (totles >= 13 && totles <= 16) {
                     result = 3;
                 }
-                console.log(totles);
+                $(".transpond").css('display', "none");
+                $('#result-div').css('display', 'block');
+                $('#result').addClass('result' + 1);
+                $('.qustion').remove();
+                $('body').css('background', "url('')");
 //                weixinShare({
 //                    shareUrl: config.shareRootUrl + '/weixinouter/basepage/pages/activity/activity_holiday/fathersDay/index.html',
 //                    shareIcon: config.shareRootUrl + '/weixinouter/basepage/pages/activity/activity_holiday/fathersDay/img/share_icon' + result + '.jpg',
@@ -168,11 +169,7 @@
     //        isGiveCoin: 'N'
     //    });
     function toBuy() {
-        if (isFocus) {
-            window.location.href = config.activity.fathersDay['url' + result] + "&linkId=1080" + openId;
-        } else {
-            $('#qrCode').css('display', 'block');
-        }
+        window.location.href = config.activity.fathersDay['url' + 1] + "&linkId=1080" + openId;
     }
     //    closeActivity(config.activityEndTime.fathersDay);
 </script>

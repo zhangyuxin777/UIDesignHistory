@@ -17,8 +17,10 @@
     <div class="swiper-wrapper">
         <div class="swiper-slide" id="page0" style="overflow: hidden">
             <div id="page0_div" class="height-co bkg-01">
-                <p class="font01 center ani" swiper-animate-effect="fadeIn" swiper-animate-duration="2s" swiper-animate-delay="0.5s">多车之家</p>
-                <p class="font01-1 bold center ani" swiper-animate-effect="fadeIn" swiper-animate-duration="2s" swiper-animate-delay="1.5s">配得上您身份的好车险</p>
+                <p class="font01 center ani" swiper-animate-effect="fadeIn" swiper-animate-duration="2s"
+                   swiper-animate-delay="0.5s">多车之家</p>
+                <p class="font01-1 bold center ani" swiper-animate-effect="fadeIn" swiper-animate-duration="2s"
+                   swiper-animate-delay="1.5s">配得上您身份的好车险</p>
                 <p class="font01-2 top-230 center">中华财险高端车险品牌</p>
                 <p class="font01-2 font01-3 center">为拥有多辆车家庭量身打造</p>
             </div>
@@ -27,7 +29,8 @@
             </div>
         </div>
         <div class="swiper-slide" id="page1" style="overflow: hidden">
-            <div id="page1_div" class="height-co bkg-11 ani" swiper-animate-effect="myact3" swiper-animate-duration="3s">
+            <div id="page1_div" class="height-co bkg-11 ani" swiper-animate-effect="myact3"
+                 swiper-animate-duration="3s">
                 <div class="bg-text02">
                     <p class="font02 bold center">颠覆传统开启保险2.0时代</p>
                     <p class="font02-1 center">配备汽车主动安全系统</p>
@@ -70,9 +73,12 @@
                 </div>
                 <img src="../../../images/cars/proIntro/earth.png" class="earth">
                 <!--&lt;!&ndash;闪光点&ndash;&gt;-->
-                <div class="ic3 ani" swiper-animate-effect="myact6" swiper-animate-duration="2s" swiper-animation-iteration-count="infinite"></div>
-                <div class="ic2 ani" swiper-animate-effect="myact5" swiper-animate-duration="2s" swiper-animation-iteration-count="infinite"></div>
-                <div class="ic1 ani" swiper-animate-effect="myact4" swiper-animate-duration="2s" swiper-animation-iteration-count="infinite"></div>
+                <div class="ic3 ani" swiper-animate-effect="myact6" swiper-animate-duration="2s"
+                     swiper-animation-iteration-count="infinite"></div>
+                <div class="ic2 ani" swiper-animate-effect="myact5" swiper-animate-duration="2s"
+                     swiper-animation-iteration-count="infinite"></div>
+                <div class="ic1 ani" swiper-animate-effect="myact4" swiper-animate-duration="2s"
+                     swiper-animation-iteration-count="infinite"></div>
                 <!--结束-->
                 <div class="btn03" onclick="toCars()"><img src="../../../images/cars/proIntro/butt.png"></div>
                 <p class="font-qa1 center">商业险保费满2500元可享受上述所有服务( 湖北地区客户暂不享受航空意外险保障 )</p>
@@ -100,15 +106,15 @@
 <script>
     var wh = $(window).height();
     $('.swiper-container').css("height", wh);
-    $('.top-230').css("margin-top", wh*132/667);
+    $('.top-230').css("margin-top", wh * 132 / 667);
 
     var index;  //页面索引
     if (sessionStorage.a == 1) {
         //        mySwiper.slideTo(3, 1000, false);//切换到最后一个slide，速度为1秒
         index = 3;
-        $(".ic1").css("display","none");
-        $(".ic2").css("display","none");
-        $(".ic3").css("display","none");
+        $(".ic1").css("display", "none");
+        $(".ic2").css("display", "none");
+        $(".ic3").css("display", "none");
     } else {
         index = 0;
     }
@@ -146,7 +152,7 @@
 
             }
         });
-        if(sessionStorage.a == 1){
+        if (sessionStorage.a == 1) {
 //            mySwiper.slideTo(3, 1000, false);//切换到最后一个slide，速度为1秒
             //  index = 4;
         }
@@ -158,7 +164,7 @@
         window.location.href = "QA.html";
     }
 
-    function FW(){
+    function FW() {
         sessionStorage.b = 2;
         window.location.href = "FW.html";
     }
@@ -166,4 +172,9 @@
     function toCars() {
         window.location.href = "inputInfo.html";
     }
+    (function () {
+        if (isPC()) {
+            $('.swiper-container').css('width', '480px');
+        }
+    })('.swiper-container')
 </script>

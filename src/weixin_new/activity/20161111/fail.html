@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link rel="stylesheet" type="text/css" href="../../../basepage/css/activity_20161111/common.css"/>
+		<style type="text/css">
+			@charset "utf-8";
+			html,body{
+				height: 100%;
+				width: 100%;
+			}
+			.failContainer{
+				position: relative;
+				height: 100%;
+				width: 100%;
+				background: url(../../../basepage/images/activity_20161111/failBg.jpg) no-repeat;
+				background-size: 100% 100%;
+			}
+			.kissNum{
+				position: absolute;
+				left: 190px;
+				top: 6.8%;
+				color: #e38089;
+				font-size: 40px;
+			}
+			.hitNum{
+				position: absolute;
+				left: 395px;
+				top: 6.8%;
+				color: #e38089;
+				font-size: 40px
+			}
+			.message{
+				position: absolute;
+				left: 50px;
+				width: 500px;
+				padding: 0 20px;
+				line-height: 40px;
+				top: 63%;
+				color: #e38089;
+				font-size: 26px;
+				text-align: center;
+			}
+			.Confession{
+				display: block;
+				width: 300px;
+				height: 200px;
+				position: absolute;
+				left: 170px;
+				bottom: 6%;
+			}
+
+			.name{
+				position: absolute;
+				left: 50px;
+				top: 1%;
+				font-weight:900;	
+				color: #e38089;
+				font-size: 40px;				
+			}
+				#qrCode img{
+				width:100%!important;
+				height:100%!important;
+			}
+		</style>
+		<title>告白失败</title>
+	</head>
+	<body style="display: none;">
+		<div class="failContainer">
+			<p class="kissNum">0</p>
+			<p class="hitNum">0</p>
+			<p class="message"></p>
+		<!-- 	<p class="name" id="wname"></p> -->
+			<!--发起告白-->
+			<a class="Confession" href="#" onclick="topage()"></a>
+		</div>
+		
+	</body>
+	<script src="../../../basepage/js/jquery-1.7.2.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../../basepage/js/activity_20161111/zoom.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../../basepage/js/common.js" type="text/javascript" charset="utf-8"></script>
+	<script src='../../../basepage/js/jweixin-1.0.0.js'></script>
+	<script type="text/javascript">
+	var openId = window.localStorage.getItem(config.openIdName);
+	var reback = GetQueryString('reback');
+	var isFocus = false;
+	var msg = new Array("狠狠的抽ta一巴掌","臭不要脸的，轻轻的抽了ta一下","360度的无死角的抽了ta一巴掌","媚笑着抽ta一巴掌","无情的抽ta一巴掌","双11剁手节的日子，只能用脚抽ta一巴掌");
+	$(".message").text(msg[reback]);
+	
+	function GetQueryString(name) {
+	    var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+	    var r = window.location.search.substr(1).match(reg);
+	    if (r != null)return unescape(r[2]);
+	    return null;
+	}
+  
+    var shareSign=GetQueryString('shareSign');
+	    $(function () { 
+	    	var nickName = GetQueryString('nickname')
+	    	$("#wname").html(nickName);
+	        if (openId != null && openId.length != 0) {
+	            GetAsyncData("../rest/User/1006", function (backData) {
+	                isFocus = backData.data.flag;
+	            }, {"openId": openId});
+	        }
+	        GetAsyncData("weixin_new/activity/activity20161111", function(backData){
+				//shareSign = backData.shareSign;
+				if(backData.success){
+					$('.hitNum').html(backData.chou);
+					$('.kissNum').html(backData.kiss);
+				}else{
+					alert('操作失败！');
+				}
+	        }, {"opt": "3","shareSign":shareSign}, "application/json");
+	    });
+		function topage(){
+	        if(isFocus) {
+	        	location.href="kiss.html";
+	        } else {
+	          	 showCodeDialog(config.shareRootUrl+"/weixinouter/basepage/images/qr_code.jpg");
+	        	return;
+	        }
+		}
+	</script>
+</html>

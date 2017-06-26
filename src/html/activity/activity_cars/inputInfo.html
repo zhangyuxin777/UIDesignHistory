@@ -739,7 +739,7 @@
     }
 
     function showDialog() {
-        window.location.href = "../activity_cars/proIntro_goodCar.html";
+        window.location.href = config.activity.refuelingUrl + "&linkId=1060" + openId;
         return;
 
         var name = $.trim($('#name').val());
@@ -952,7 +952,7 @@
     }
 
     function submitForm(enterBtn) {
-        window.location.href = "../activity_cars/proIntro_goodCar.html";
+        window.location.href = config.activity.refuelingUrl + "&linkId=1060" + openId;
         return;
 
         if (typeof($(enterBtn).attr("myTag")) == "undefined") {

@@ -48,5 +48,6 @@ html {
 body {
   width: 6.40rem;
   height: 100%;
+    margin: 0 auto;
   border: 1px solid transparent;
 }
