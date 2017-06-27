@@ -616,6 +616,15 @@ function isPC() {
 }
 
 /**
+ * 字段 非undefined 非空 长度非0
+ * @param val
+ * @returns {boolean}
+ */
+function hasVal(val) {
+    return (val != undefined && val != null && val.length != 0);
+}
+
+/**
  * 判断是否为微信打开
  */
 function isWeixin() {
