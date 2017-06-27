@@ -104,9 +104,10 @@
 <script src="../../../js/swiper-3.2.7.jquery.min.js"></script>
 
 <script>
-    var wh = $(window).height();
-    $('.swiper-container').css("height", wh);
-    $('.top-230').css("margin-top", wh * 132 / 667);
+    autoSize();
+//    var wh = $(window).height();
+//    $('.swiper-container').css("height", wh);
+//    $('.top-230').css("margin-top", wh * 132 / 667);
 
     var index;  //页面索引
     if (sessionStorage.a == 1) {

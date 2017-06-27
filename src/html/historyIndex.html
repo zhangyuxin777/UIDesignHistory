@@ -160,7 +160,11 @@
         .text {
             margin-left: 0.6rem;
         }
-        .swiper-wrapper{
+
+        .swiper-pagination{
+            color: white;
+        }
+        .swiper-wrapper {
             background: white;
             height: 3.55rem;
         }
@@ -320,6 +324,18 @@
         <div class="swiper-slide" id="page3">
             <img class="swiper-img" src="../images/illustration/ill4.jpg" alt="">
         </div>
+        <div class="swiper-slide" id="page4">
+            <img class="swiper-img" src="../images/illustration/ill5.jpg" alt="">
+        </div>
+        <div class="swiper-slide" id="page5">
+            <img class="swiper-img" src="../images/illustration/ill7.jpg" alt="">
+        </div>
+        <div class="swiper-slide" id="page6">
+            <img class="swiper-img" src="../images/illustration/ill8.jpg" alt="">
+        </div>
+        <div class="swiper-slide" id="page7">
+            <img class="swiper-img" src="../images/illustration/ill9.jpg" alt="">
+        </div>
     </div>
     <div class="swiper-pagination"></div>
 </div>
@@ -371,7 +387,8 @@
         speed: 1000,
         loop: true,  //循环
         effect: 'slide',   //切换效果--淡入
-        pagination : '.swiper-pagination',
+        pagination: '.swiper-pagination',
+        paginationType : 'fraction',
         preloadImages: true   //异步加载图片
 
     });
