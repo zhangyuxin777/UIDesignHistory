@@ -6,7 +6,17 @@
           content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
-
+    <script src="../js/common.js"></script>
+    <script>
+        var v = getUrlParam('v');
+        var sp = '?';
+        if (window.location.href.split('?').length > 1) {
+            sp = '&';
+        }
+        if (!v) {
+            window.location.replace(window.location.href + sp + 'v=' + Math.random());
+        }
+    </script>
     <title>线上部分作品展示</title>
     <link rel="stylesheet" href="../css/swiper.min.css">
     <link rel="stylesheet" href="../css/animate.min.css">
@@ -360,7 +370,6 @@
 
 
 </body>
-<script src="../js/common.js"></script>
 <script src="../js/wl-common-view.js"></script>
 <script src="../js/jquery-1.9.1.min.js"></script>
 <script src="../js/swiper-3.4.2.jquery.min.js"></script>
