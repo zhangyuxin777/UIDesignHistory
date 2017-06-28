@@ -1,14 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta name="apple-touch-fullscreen" content="YES">
-    <meta name="format-detection" content="telephone=no">
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <meta http-equiv="Expires" content="-1">
-    <meta http-equiv="pragram" content="no-cache">
-    <meta name="viewport" content="width=640, user-scalable=no, target-densitydpi=device-dpi">
 
     <style>
 
@@ -18,11 +15,16 @@
             padding: 0;
         }
 
+        body {
+            width: 6.4rem;
+            margin: 0 auto
+        }
+
         .bg {
             background: url("../../../images/activity/img/new_year2016/go_home_bg.png") no-repeat;
-            background-size: 100% 100%;
-            width: 100%;
-            height: 1008px;
+            background-size: 6.4rem 10.08rem;
+            width: 6.4rem;
+            height: 10.08rem;
             overflow: hidden;
             margin: 0 auto;
         }
@@ -31,15 +33,14 @@
             position: relative;
             background: url("../../../images/activity/img/new_year2016/go_home_detail_bg.png") no-repeat;
             /*background-size: 100% 100%;*/
-            width: 558px;
-            height: 759px;
+            width: 5.58rem;
+            height: 7.59rem;
             /*left: 50%;*/
             /*margin-left: -279px;*/
             margin-left: auto;
             margin-right: auto;
-            margin-top: 40px;
-            margin-bottom: 0;
-            font-size: 20px;
+            margin-top: 0.4rem;
+            font-size: 0.2rem;
             color: #ffffff;
             display: none;
             z-index: 9;
@@ -70,21 +71,21 @@
 
         .go_home_text {
             position: absolute;
-            width: 447px;
-            height: 83px;
+            width: 4.47rem;
+            height: .83rem;
             left: 50%;
-            margin-left: -223px;
-            bottom: 135px;
+            margin-left: -2.23rem;
+            bottom: 1.35rem;
             z-index: 8;
         }
 
         .get_btn {
             position: absolute;
-            width: 429px;
-            height: 86px;
+            width: 4.29rem;
+            height: .86rem;
             left: 50%;
-            margin-left: -215px;
-            bottom: 30px;
+            margin-left: -2.15rem;
+            bottom: .3rem;
             z-index: 8;
         }
     </style>
@@ -138,8 +139,7 @@
 <script src="../../../js/jquery-1.9.1.min.js"></script>
 
 <script type="text/javascript">
-    $('.bg').css("height", $(window).height());
-    //    closeActivity(config.activityEndTime.goHome);
+    autoSize();
 
     var detail = $('.detail_bg');
     var dialog = $('.code');
@@ -171,10 +171,5 @@
     var openId = window.localStorage.getItem(config.openIdName);
     var type = getUrlParam("type");
 
-    (function () {
-        if (isPC()) {
-            $('.swiper-container').css('width', '480px');
-        }
-    })('.bg')
 </script>
 </html>

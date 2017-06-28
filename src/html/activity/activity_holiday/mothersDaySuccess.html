@@ -2,63 +2,57 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="apple-touch-fullscreen" content="YES">
-    <meta name="format-detection" content="telephone=no">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <meta http-equiv="Expires" content="-1">
-    <meta http-equiv="pragram" content="no-cache">
-    <meta name="viewport" content="width=640, user-scalable=no, target-densitydpi=device-dpi">
 
-    <!--缓存强制清理-->
-    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"/>
-    <meta http-equiv="Pragma" content="no-cache"/>
-    <meta http-equiv="Expires" content="0"/>
     <title>感恩母亲</title>
     <style>
-        html, body, p, div {
-            font-family: 'Microsoft YaHei', 'Hiragino Sans GB', Helvetica, Arial, 'Lucida Grande', sans-serif;
-            margin: 0;
-            padding: 0;
+
+        body{
+            width: 6.4rem;
+            margin: 0 auto;
         }
 
         .bg {
             background: url("../../../images/activity/mothersDay/success_bg.jpg") no-repeat;
-            background-size: 100% 100%;
-            width: 640px;
-            height: 1008px;
+            background-size: 6.4rem 10.08rem;
+            width: 6.4rem;
+            height: 10.08rem;
             overflow: hidden;
             margin: 0 auto;
+            position: relative;
         }
 
         .font {
             font-family: 'Microsoft YaHei', 'Arial', sans-serif;
-            font-size: 38px;
+            font-size: 0.38rem;
             text-shadow: #aaa 1px 1px;
             font-weight: 700;
-            line-height: 60px;
+            line-height: 0.6rem;
             color: #ffffff;
         }
 
         .center {
-            margin-top: 370px;
+            margin-top: 3.7rem;
             text-align: center;
         }
 
         .btn1 {
             position: relative;
             float: left;
-            left: 64px;
-            width: 229px;
-            height: 84px;
+            left: 0.64rem;
+            width: 2.29rem;
+            height: 0.84rem;
         }
 
         .btn2 {
             position: relative;
             float: right;
-            right: 64px;
-            width: 229px;
-            height: 84px;
+            right: 0.64rem;
+            width: 2.29rem;
+            height: 0.84rem;
         }
 
         img {
@@ -68,27 +62,24 @@
 
         #fullbg {
             background-color: #000000;
-            left: 0;
             opacity: 0.75;
-            position: absolute;
             top: 0;
             z-index: 3;
-            filter: alpha(opacity=75);
-            -moz-opacity: 0.75;
-            -khtml-opacity: 0.75;
+            width: 6.4rem;
+            height: 100%;
+            position: fixed;
+            display: none;
         }
 
         #dialog {
             background: url("../../../images/bkg-share.png") no-repeat;
-            background-size: 100%;
-            min-height: 100%;
-            right: 25px;
-            position: fixed !important; /* 浮动对话框 */
-            /*position: absolute;*/
-            top: 10px;
-            width: 70%;
+            background-size: 4.31rem 4.41rem;
+            right:0.25rem;
+            position: absolute;
+            top: 0.1rem;
+            width: 4.31rem;
+            height: 4.41rem;
             z-index: 5;
-            display: none;
         }
 
         .clear {
@@ -97,8 +88,8 @@
 
         .btn_div {
             position: absolute;
-            width: 640px;
-            bottom: 72px;
+            width: 6.40rem;
+            bottom: .72rem;
         }
 
         .hide {
@@ -123,13 +114,16 @@
     </div>
 
 </div>
-<div id="fullbg"></div>
-<div id="dialog"></div>
+<div id="fullbg">
+    <div id="dialog"></div>
+
+</div>
 </body>
 <script src="../../../js/common.js"></script>
 <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
 <script src="../../../js/jquery-1.9.1.min.js"></script>
 <script type="text/javascript">
+    autoSize();
     var openId = window.localStorage.getItem(config.openIdName);
     var isFirst = getUrlParam("first");
     $(function () {
@@ -139,23 +133,12 @@
         } else {
             $('#text').html('<div class="center font">您已经<br>领取过了呦!<br>将爱心传递出去吧!</div>');
         }
-        $('.bg').css("height", $(window).height());
-        $('body').removeClass('hide');
 
     });
 
     //显示灰色 jQuery 遮罩层
     function showBg() {
-        window.location.href='../activity_calculator/publicity.html';
-        return;
-
-        var bh = $("body").height();
-        var bw = $("body").width();
-        $("#fullbg").css({
-            height: bh,
-            width: bw,
-            display: "block"
-        });
+        $("#fullbg").show();
         $("#dialog").show();
     }
     //关闭灰色 jQuery 遮罩

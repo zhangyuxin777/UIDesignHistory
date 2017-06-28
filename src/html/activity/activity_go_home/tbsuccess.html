@@ -17,45 +17,51 @@
             padding: 0;
         }
 
+        body {
+            width: 6.4rem;
+            margin: 0 auto;
+        }
+
         .bg {
             background: url("../../../images/activity/img/tb01.png") no-repeat;
-            background-size: 100% 100%;
-            width: 100%;
-            height: 1008px;
+            background-size: 6.4rem 10.08rem;
+            width: 6.4rem;
+            height: 10.08rem;
             overflow: hidden;
             margin: 0 auto;
+            position: relative;
         }
 
         .font {
             font-family: 'Microsoft YaHei', 'Arial', sans-serif;
-            font-size: 38px;
+            font-size: .38rem;
             text-shadow: #666 1px 1px;
             font-weight: 700;
-            line-height: 60px;
+            line-height: .60rem;
             color: #ffffff;
         }
 
         .center {
-            margin-top: 270px;
+            margin-top: 2.10rem;
             text-align: center;
         }
 
         .btn1 {
             float: left;
             position: absolute;
-            left: 64px;
-            bottom: 72px;
-            width: 227px;
-            height: 81px;
+            left: .64rem;
+            bottom: .72rem;
+            width: 2.27rem;
+            height: .81rem;
         }
 
         .btn2 {
             float: left;
             position: absolute;
-            right: 64px;
-            bottom: 72px;
-            width: 227px;
-            height: 81px;
+            right: .64rem;
+            bottom: .72rem;
+            width: 2.27rem;
+            height: .81rem;
         }
 
         img {
@@ -65,26 +71,27 @@
 
         #fullbg {
             background-color: #000000;
-            left: 0;
             opacity: 0.75;
-            position: absolute;
             top: 0;
             z-index: 3;
-            filter: alpha(opacity=75);
-            -moz-opacity: 0.75;
-            -khtml-opacity: 0.75;
+            width: 6.4rem;
+            height: 100%;
+            position: fixed;
+            display: none;
         }
 
         #dialog {
             background: url("../../../images/bkg-share.png") no-repeat;
-            background-size: 100%;
-            min-height: 100%;
-            right: 25px;
-            position: fixed !important; /* 浮动对话框 */
+            background-size: 4.31rem 4.41rem;
+            right:0.25rem;
             position: absolute;
-            top: 10px;
-            width: 70%;
+            top: 0.1rem;
+            width: 4.31rem;
+            height: 4.41rem;
             z-index: 5;
+        }
+
+        .hide {
             display: none;
         }
     </style>
@@ -100,19 +107,21 @@
         })();
     </script>
 </head>
-<body>
+<body class="hide">
 <div class="bg">
     <div class="center font">您已领取<br>四十万安心保障<br>成为第<span id="visit">10006</span>位<br>温暖回家路的用户</div>
     <div class="btn1" onclick="showBg()"><img src="../../../images/activity/img/tb02.png" alt="share"></div>
     <div class="btn2" onclick="showBg()"><img src="../../../images/activity/img/tb03.png" alt="share"></div>
 </div>
-<div id="fullbg"></div>
-<div id="dialog"></div>
+<div id="fullbg">
+    <div id="dialog"></div>
+</div>
+
 </body>
 <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
 <script src="../../../js/jquery-1.9.1.min.js"></script>
 <script type="text/javascript">
-    $('.bg').css("height", $(window).height());
+    autoSize();
     var openId = window.localStorage.getItem(config.openIdName);
     var serialNo = getUrlParam("serialNo");
     var type = getUrlParam('type');
@@ -121,27 +130,18 @@
     function showBg() {
         var bh = $("body").height();
         var bw = $("body").width();
-        $("#fullbg").css({
-            height: bh,
-            width: bw,
-            display: "block"
-        });
-        $("#dialog").show();
-        if (type == '2') {
-            window.location.href = "go_home.html";
-        } else {
-            window.location.href = "../activity_cars/proIntro.html";
-        }
+
+        $("#fullbg").show();
+//        if (type == '2') {
+//            window.location.href = "go_home.html";
+//        } else {
+//            window.location.href = "../activity_cars/proIntro.html";
+//        }
 
     }
     //关闭灰色 jQuery 遮罩
     function closeBg() {
         $("#fullbg,#dialog").hide();
     }
-    (function (id) {
-        if (isPC()) {
-            $(id).css('width', '480px');
-        }
-    })('.bg')
 </script>
 </html>
