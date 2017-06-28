@@ -377,14 +377,14 @@
     autoSize();
 
     var mySwiper = new Swiper('.swiper-container', {
-        autoplay: 3000,
+        autoplay: 2700,
         speed: 1000,
         loop: true,  //循环
         effect: 'slide',   //切换效果--淡入
         pagination: '.swiper-pagination',
         paginationType: 'fraction',
-        preloadImages: true   //异步加载图片
-
+        preloadImages: true,   //异步加载图片
+        autoplayDisableOnInteraction: false
     });
 
 
